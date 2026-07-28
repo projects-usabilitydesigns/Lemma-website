@@ -2,7 +2,6 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
-import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -67,7 +66,7 @@ export function Cta() {
       />
 
       <Container className="relative text-center">
-        <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-7">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-7">
           <SectionLabel label="Let's talk" />
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Make your next
@@ -89,7 +88,7 @@ export function Cta() {
               </Button>
             </MagneticButton>
           </div>
-        </FadeUp>
+        </div>
       </Container>
     </section>
   );

@@ -11,7 +11,7 @@ import type {
 } from "@/types";
 
 export const navItems: NavItem[] = [
-  { label: "Who We Are?", href: "#solutions", hasDropdown: true },
+  { label: "Who We Are?", href: "/about", hasDropdown: true },
   { label: "What We Do?", href: "#products", hasDropdown: true },
   { label: "Resources", href: "#blog", hasDropdown: true },
   { label: "Contact Us", href: "#cta" },

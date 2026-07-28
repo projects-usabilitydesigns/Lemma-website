@@ -34,6 +34,7 @@
     #f05a27 100%
   );
   --gradient-blue: linear-gradient(90deg, #008fdb 0%, #005481 100%);
+  --gradient-cta: linear-gradient(90deg, #00b8ff 0%, #6b5cff 48%, #ed2e80 100%);
   --gradient-hero: linear-gradient(
     148.69deg,
     #fdf2f8 0%,
@@ -70,6 +71,12 @@ body {
   font-family: var(--font-inter), "Inter", "Google Sans Flex", system-ui, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+a[href],
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
 }
 
 img {

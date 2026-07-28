@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -22,24 +21,22 @@ export function CaseStudies() {
     <section id="case-studies" className="overflow-hidden bg-white py-16 md:py-[90px]">
       <Container className="mb-12">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <FadeUp className="space-y-5">
+          <div className="space-y-5">
             <SectionLabel label="Selected work" />
             <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-              Lemmagnified success stories.
+              Lemmatified success stories.
             </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <a
-              href="#case-studies"
-              className="group inline-flex items-center gap-2 text-[16px] text-[var(--color-slate)]"
-            >
-              <span className="relative">
-                All case studies
-                <span className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all group-hover:w-full" />
-              </span>
-              <span aria-hidden>→</span>
-            </a>
-          </FadeUp>
+          </div>
+          <a
+            href="#case-studies"
+            className="group inline-flex items-center gap-2 text-[16px] text-[var(--color-slate)]"
+          >
+            <span className="relative">
+              All case studies
+              <span className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all group-hover:w-full" />
+            </span>
+            <span aria-hidden>→</span>
+          </a>
         </div>
       </Container>
 

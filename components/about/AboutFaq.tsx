@@ -6,26 +6,26 @@ import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { faqs } from "@/lib/data";
+import { aboutFaqs } from "@/lib/about-data";
 import { cn } from "@/lib/utils";
 
-export function Faq() {
-  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
+export function AboutFaq() {
+  const [openId, setOpenId] = useState<string | null>(aboutFaqs[0]?.id ?? null);
 
   return (
-    <section id="faq" className="bg-white pb-16 md:pb-[100px]">
+    <section id="faq" className="bg-[var(--color-cream-soft)] pb-16 md:pb-[100px] pt-16 md:pt-[100px]">
       <Container>
         <div className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
           <SectionLabel label="FAQ" align="center" dual />
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Helpful Answers Before
+            Helpful resources before
             <br />
-            You Get Started
+            you get started
           </h2>
         </div>
 
         <div className="mx-auto flex max-w-[1188px] flex-col gap-4">
-          {faqs.map((item) => {
+          {aboutFaqs.map((item) => {
             const open = openId === item.id;
             return (
               <div
@@ -35,7 +35,7 @@ export function Faq() {
                 <button
                   type="button"
                   aria-expanded={open}
-                  aria-controls={`faq-${item.id}`}
+                  aria-controls={`about-faq-${item.id}`}
                   className={cn(
                     "flex w-full items-start justify-between gap-4 px-5 text-left",
                     open ? "py-5" : "items-center py-2.5",
@@ -60,7 +60,7 @@ export function Faq() {
                 <AnimatePresence initial={false}>
                   {open ? (
                     <motion.div
-                      id={`faq-${item.id}`}
+                      id={`about-faq-${item.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -79,7 +79,7 @@ export function Faq() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button href="#faq" variant="primary">
+          <Button href="/#faq" variant="primary">
             VIEW ALL
           </Button>
         </div>

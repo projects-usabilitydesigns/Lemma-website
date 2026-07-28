@@ -7,7 +7,6 @@ import { Autoplay, Keyboard, Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -21,7 +20,7 @@ export function AiFeatures() {
     <section id="ai" className="bg-white py-16 md:pb-[50px] md:pt-10">
       <Container>
         <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <FadeUp className="max-w-xl space-y-5">
+          <div className="max-w-xl space-y-5">
             <SectionLabel label="AI at Lemma" accent="blue" />
             <div className="flex items-start gap-4">
               <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
@@ -33,13 +32,11 @@ export function AiFeatures() {
                 <Image src="/icons/ai-sparkle.svg" alt="" fill className="object-contain" />
               </div>
             </div>
-          </FadeUp>
-          <FadeUp delay={0.1} className="max-w-md pt-2">
-            <p className="text-[16px] leading-[22px] text-[var(--color-slate)]">
-              Lemma&apos;s AI stack powers every layer of our omnichannel platform — from audience
-              intelligence and creative generation to bidding, attribution and brand safety.
-            </p>
-          </FadeUp>
+          </div>
+          <p className="max-w-md pt-2 text-[16px] leading-[22px] text-[var(--color-slate)]">
+            Lemma&apos;s AI stack powers every layer of our omnichannel platform — from audience
+            intelligence and creative generation to bidding, attribution and brand safety.
+          </p>
         </div>
 
         <Swiper

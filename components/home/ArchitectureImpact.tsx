@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -86,7 +85,7 @@ export function ArchitectureImpact() {
         }}
       />
       <Container className="relative">
-        <FadeUp className="mx-auto mb-10 max-w-3xl space-y-5 text-center">
+        <div className="mx-auto mb-10 max-w-3xl space-y-5 text-center">
           <SectionLabel label="Interactive Assessment" accent="blue" align="center" dual />
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Project Your Lemma
@@ -97,10 +96,9 @@ export function ArchitectureImpact() {
             Adjust the parameters below to estimate cost-efficiency savings and total request volume
             capacity across your omnichannel stack.
           </p>
-        </FadeUp>
+        </div>
 
-        <FadeUp delay={0.1}>
-          <div className="border border-[var(--color-border)] bg-[rgba(249,248,245,0.6)] p-6 backdrop-blur-[4px] md:p-10">
+        <div className="border border-[var(--color-border)] bg-[rgba(249,248,245,0.6)] p-6 backdrop-blur-[4px] md:p-10">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
               <div className="flex flex-col justify-center gap-10">
                 <SliderField
@@ -172,12 +170,11 @@ export function ArchitectureImpact() {
                 </Button>
               </div>
             </div>
-          </div>
-        </FadeUp>
+        </div>
 
         <div className="mt-10 flex justify-center">
           <Button href="#architecture" variant="primary">
-            learn more
+            Calculate Your ROI Impact
           </Button>
         </div>
       </Container>

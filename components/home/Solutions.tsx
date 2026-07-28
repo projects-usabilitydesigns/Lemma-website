@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { FadeUp, Stagger, staggerItem } from "@/components/animation";
+import { Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -19,19 +19,17 @@ export function Solutions() {
 
       <Container className="relative">
         <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <FadeUp className="max-w-xl space-y-5">
+          <div className="max-w-xl space-y-5">
             <SectionLabel label="Solutions" />
             <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
               Built for the people
               <br />
               who move media.
             </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="max-w-sm text-[16px] leading-[22px] text-[var(--color-slate)] lg:text-right">
-              One platform — two sides of the same outcome.
-            </p>
-          </FadeUp>
+          </div>
+          <p className="max-w-sm text-[16px] leading-[22px] text-[var(--color-slate)] lg:text-right">
+            One platform — two sides of the same outcome.
+          </p>
         </div>
 
         <Stagger className="grid gap-6 lg:grid-cols-2">

@@ -20,7 +20,7 @@ type ButtonProps = {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "text-[var(--color-btn-text)] border border-white/8 px-8 py-4 rounded-full uppercase tracking-[2.52px] text-[14px] font-medium shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
+    "text-white border-0 px-10 py-3.5 rounded-full uppercase tracking-[2.5px] text-[14px] font-semibold shadow-none hover:shadow-[0_10px_30px_rgba(237,46,128,0.35)]",
   secondary:
     "bg-white text-[var(--color-ink)] border border-[var(--color-border)] px-8 py-[17px] rounded-full text-[14px] font-medium",
   outline:
@@ -54,14 +54,14 @@ export function Button({
   );
 
   const classes = cn(
-    "group inline-flex items-center justify-center gap-3 transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-blue)] focus-visible:ring-offset-2",
+    "group inline-flex cursor-pointer items-center justify-center gap-2.5 transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-pink)] focus-visible:ring-offset-2",
     variants[variant],
     className,
   );
 
   const style =
     variant === "primary"
-      ? { backgroundImage: "var(--gradient-blue)" }
+      ? { backgroundImage: "var(--gradient-cta)" }
       : undefined;
 
   if (href) {
