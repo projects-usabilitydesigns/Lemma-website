@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Stagger, staggerItem } from "@/components/animation";
+import { Play } from "lucide-react";
+import { BlurReveal, FadeRight, FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { useCountUp } from "@/hooks/useCountUp";
 import { heroStats } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import { animation } from "@/lib/design-system";
+
 function StatItem({
   end,
   decimals = 0,
@@ -47,6 +48,7 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 40]);
 
   return (
     <section
@@ -54,6 +56,9 @@ export function Hero() {
       className="relative overflow-hidden pb-16 pt-[120px] md:pb-24 md:pt-[160px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
+      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-50">
+        <Image src="/images/hero-bg.png" alt="" fill className="object-cover object-left" priority />
+      </motion.div>
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -66,40 +71,28 @@ export function Hero() {
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="flex min-h-[360px] flex-col justify-between gap-10">
             <div className="space-y-6">
-              <motion.h1
-                initial={{ opacity: 0, filter: "blur(10px)", y: 16 }}
-                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                transition={{ duration: animation.duration.slow, ease: animation.easeOut }}
-                className="text-[40px] font-semibold leading-[1.05] text-[var(--color-ink)] md:text-[56px] md:leading-[51.84px]"
-              >
-                Outdoor to Outcome.
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.1 }}
-                className="text-[24px] font-semibold tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.4]"
-              >
-                An AI-First Full-Funnel Attribution Platform
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.18 }}
-                className="max-w-xl text-[18px] leading-[1.4] text-[var(--color-ink)] md:text-[22px]"
-              >
-                AI Powered platform. Full-funnel performance across DOOH, CTV, mobile, and digital
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.26 }}
-              >
-                <Button href="#products" variant="primary" arrow="right">
+              <BlurReveal>
+                <h1 className="text-[40px] font-semibold leading-[1.05] text-[var(--color-ink)] md:text-[56px] md:leading-[51.84px]">
+                  Outdoor to Outcome.
+                </h1>
+              </BlurReveal>
+              <FadeUp delay={0.1}>
+                <p className="text-[24px] font-semibold tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.4]">
+                  An AI-First Full-Funnel Attribution Platform
+                </p>
+              </FadeUp>
+              <FadeUp delay={0.18}>
+                <p className="max-w-xl text-[18px] leading-[1.4] text-[var(--color-ink)] md:text-[22px]">
+                  AI Powered platform. Full-funnel performance across DOOH, CTV, mobile, and digital
+                </p>
+              </FadeUp>
+              <FadeUp delay={0.26}>
+                <Button href="#products" variant="ghost" arrow="up-right">
                   learn more
                 </Button>
-              </motion.div>
+              </FadeUp>
             </div>
+
             <Stagger className="grid grid-cols-3 gap-3 md:gap-6" delay={0.2}>
               {heroStats.map((stat) => (
                 <motion.div key={stat.label} variants={staggerItem}>
@@ -114,28 +107,36 @@ export function Hero() {
             </Stagger>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 32 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.15 }}
-            style={{ y }}
-            className="group relative overflow-hidden rounded-[25px]"
-          >
-            <button
-              type="button"
-              aria-label="Watch the Lemma platform in action"
-              className="relative block w-full overflow-hidden rounded-[25px]"
-            >
-              <Image
-                src="/images/banner_homepage.png"
-                alt="Watch the Lemma platform in action — see how Lemma turns impressions into outcomes"
-                width={676}
-                height={408}
-                className="h-auto w-full rounded-[25px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                priority
-              />
-            </button>
-          </motion.div>        </div>
+          <FadeRight delay={0.15}>
+            <motion.div style={{ y }} className="group relative overflow-hidden rounded-[25px]">
+              <div className="relative aspect-[676/408] w-full overflow-hidden rounded-[25px]">
+                <Image
+                  src="/images/hero-demo.jpg"
+                  alt="Lemma platform demo"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] to-black/65" />
+                <button
+                  type="button"
+                  aria-label="Play demo video"
+                  className="absolute left-1/2 top-[42%] flex size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-pink-alt)] shadow-[0px_10px_40px_-5px_#ed2e80] transition-transform duration-300 group-hover:scale-110"
+                >
+                  <Play className="ml-1 size-8 fill-white text-white" />
+                </button>
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-[30px]">
+                  <p className="mb-2.5 text-[14px] font-semibold uppercase tracking-[2px] text-white/70 md:text-[16px]">
+                    Watch the platform in action
+                  </p>
+                  <p className="text-[20px] font-semibold text-white md:text-[24px] md:leading-5">
+                    See how Lemma turns impressions into outcomes
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </FadeRight>
+        </div>
       </Container>
     </section>
   );

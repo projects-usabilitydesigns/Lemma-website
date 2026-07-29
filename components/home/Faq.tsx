@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
+import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -15,14 +16,14 @@ export function Faq() {
   return (
     <section id="faq" className="bg-white pb-16 md:pb-[100px]">
       <Container>
-        <div className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
+        <FadeUp className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
           <SectionLabel label="FAQ" align="center" dual />
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Helpful Answers Before
             <br />
             You Get Started
           </h2>
-        </div>
+        </FadeUp>
 
         <div className="mx-auto flex max-w-[1188px] flex-col gap-4">
           {faqs.map((item) => {

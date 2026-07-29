@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Calendar, Clock, Eye } from "lucide-react";
 import { motion } from "framer-motion";
-import { Stagger, staggerItem } from "@/components/animation";
+import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -13,14 +13,14 @@ export function Blog() {
   return (
     <section id="blog" className="bg-white py-16 md:py-[100px]">
       <Container>
-        <div className="mb-12 max-w-2xl space-y-6">
+        <FadeUp className="mb-12 max-w-2xl space-y-6">
           <SectionLabel label="Blogs & Insights" />
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Fresh thinking on media,
             <br />
             AI & outcomes
           </h2>
-        </div>
+        </FadeUp>
 
         <Stagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (

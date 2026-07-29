@@ -3,14 +3,17 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { Sparkles } from "lucide-react";
+import { FadeIn } from "@/components/animation";
 import { channels, clientLogos } from "@/lib/data";
 
 export function LogosMarquee() {
   return (
     <section className="overflow-hidden bg-white py-8 md:py-10" aria-label="Trusted brands and channels">
+      <FadeIn>
         <p className="mb-8 text-center text-[14px] font-semibold uppercase tracking-[2px] text-[var(--color-slate)]">
           Trusted by leading brands worldwide
         </p>
+      </FadeIn>
 
       <div className="marquee-fade mb-8">
         <Marquee pauseOnHover speed={40} gradient={false}>
