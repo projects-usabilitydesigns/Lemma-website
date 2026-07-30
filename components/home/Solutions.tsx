@@ -11,13 +11,23 @@ import { solutions } from "@/lib/data";
 
 export function Solutions() {
   return (
-    <section id="solutions" className="relative overflow-hidden py-16 md:py-[100px]">
-      <div className="pointer-events-none absolute inset-0">
-        <Image src="/images/solutions/bg.png" alt="" fill className="object-cover object-bottom opacity-40" />
-        <div className="absolute inset-0 bg-white/75" />
+    <section id="solutions" className="relative overflow-hidden bg-white py-16 md:py-[100px]">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-0 flex w-[min(640px,58%)] items-center justify-end md:w-[min(720px,52%)]"
+      >
+        <Image
+          src="/images/solutions/bg.png"
+          alt=""
+          width={1024}
+          height={935}
+          className="h-[85%] w-auto max-w-none object-contain object-right opacity-45"
+          sizes="(max-width: 768px) 60vw, 45vw"
+          priority={false}
+        />
       </div>
 
-      <Container className="relative">
+      <Container className="relative z-10">
         <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <FadeUp className="max-w-xl space-y-5">
             <SectionLabel label="Solutions" />

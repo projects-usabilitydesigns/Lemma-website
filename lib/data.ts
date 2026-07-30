@@ -4,6 +4,7 @@ import type {
   CaseStudy,
   ClientLogo,
   FaqItem,
+  MegaMenuConfig,
   NavItem,
   Product,
   Solution,
@@ -11,11 +12,164 @@ import type {
 } from "@/types";
 
 export const navItems: NavItem[] = [
-  { label: "Who We Are?", href: "/about", hasDropdown: true },
-  { label: "What We Do?", href: "#products", hasDropdown: true },
+  { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
+  { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
   { label: "Resources", href: "#blog", hasDropdown: true },
   { label: "Contact Us", href: "#cta" },
 ];
+
+export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
+  "who-we-are": {
+    id: "who-we-are",
+    columns: [
+      {
+        id: "company",
+        label: "Company",
+        items: [
+          {
+            id: "about",
+            title: "About Us",
+            description: "Our story & mission",
+            href: "/about",
+          },
+          {
+            id: "company",
+            title: "Company",
+            description: "Leadership & values",
+            href: "/about#values",
+          },
+          {
+            id: "careers",
+            title: "Careers",
+            description: "Join the team",
+            href: "/about#team",
+          },
+        ],
+      },
+      {
+        id: "connect",
+        label: "Connect",
+        items: [
+          {
+            id: "events",
+            title: "Events",
+            description: "Where to meet us",
+            href: "/about#community",
+          },
+          {
+            id: "contact",
+            title: "Contact Us",
+            description: "Get in touch",
+            href: "#cta",
+          },
+        ],
+      },
+    ],
+    featured: {
+      eyebrow: "See it live",
+      title: "Meet the team behind Lemma.",
+      description: "A global crew shaping the future of omnichannel ad-tech.",
+      ctaLabel: "Request a Demo",
+      ctaHref: "#cta",
+      image: "/images/banner_homepage.png",
+    },
+  },
+  "what-we-do": {
+    id: "what-we-do",
+    columns: [
+      {
+        id: "products",
+        label: "Products",
+        items: [
+          {
+            id: "integral",
+            title: "Integral",
+            description: "Full-funnel platform",
+            href: "#products",
+            iconColor: "#009352",
+            iconSymbol: "∫",
+          },
+          {
+            id: "delta",
+            title: "Delta",
+            description: "Demand-side platform",
+            href: "#products",
+            iconColor: "#f82d89",
+            iconSymbol: "Δ",
+          },
+          {
+            id: "sigma",
+            title: "Sigma",
+            description: "Supply-side platform",
+            href: "#products",
+            iconColor: "#008fdb",
+            iconSymbol: "Σ",
+          },
+          {
+            id: "phi",
+            title: "Phi",
+            description: "Content management",
+            href: "#products",
+            iconColor: "#74be44",
+            iconSymbol: "φ",
+          },
+          {
+            id: "infibid",
+            title: "Infibid",
+            description: "Header bidding",
+            href: "#products",
+            iconColor: "#f05a27",
+            iconSymbol: "∞",
+          },
+        ],
+      },
+      {
+        id: "solutions",
+        label: "Solutions",
+        items: [
+          {
+            id: "brands",
+            title: "For Brands & Advertisers",
+            description: "Omnichannel activation",
+            href: "/solutions/brands-advertisers",
+          },
+          {
+            id: "owners",
+            title: "For Media Owners",
+            description: "Yield optimization",
+            href: "#solutions",
+          },
+          {
+            id: "agencies",
+            title: "For Agencies",
+            description: "Cross-screen buying",
+            href: "#solutions",
+          },
+          {
+            id: "publishers",
+            title: "For Publishers",
+            description: "Programmatic monetization",
+            href: "#solutions",
+          },
+          {
+            id: "operators",
+            title: "For Network Operators",
+            description: "DOOH control plane",
+            href: "#solutions",
+          },
+        ],
+      },
+    ],
+    featured: {
+      eyebrow: "See it live",
+      title: "Turn impressions into outcomes.",
+      description: "Get a tailored walkthrough of the Lemma stack with our team.",
+      ctaLabel: "Request a Demo",
+      ctaHref: "#cta",
+      image: "/images/solutions/brands.jpg",
+    },
+  },
+};
 
 export const heroStats: Stat[] = [
   { value: "3.5M", numericValue: 3.5, decimals: 1, suffix: "M", label: "SCREENS GLOBALLY" },
@@ -93,24 +247,26 @@ export const solutions: Solution[] = [
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "azorte",
+    brand: "Azorte",
+    category: "Retail",
+    year: "2025",
+    index: "01 / 06",
+    description: "Fashion moments that move footfall.",
+    image: "/images/case-studies/azorte.jpg",
+    href: "#case-studies",
+    videoUrl: "https://youtu.be/xmAOz-ACaNA?si=vQU3dsmU8SgihXy1",
+  },
+  {
     id: "burger-king",
     brand: "Burger King",
     category: "QSR",
     year: "2025",
-    index: "01 / 06",
+    index: "02 / 06",
     description: "15-minute express delivery, on every screen.",
     image: "/images/case-studies/burger-king.png",
     href: "#case-studies",
-  },
-  {
-    id: "etihad",
-    brand: "Etihad Airways",
-    category: "Travel",
-    year: "2024",
-    index: "02 / 06",
-    description: "Premium travel, premium placements.",
-    image: "/images/case-studies/etihad.png",
-    href: "#case-studies",
+    videoUrl: "https://youtu.be/P2uxStZDZ_4?si=Zu9Gu_6nMQZfKfEb",
   },
   {
     id: "schwarzkopf",
@@ -121,19 +277,21 @@ export const caseStudies: CaseStudy[] = [
     description: "Dynamic DOOH for Bonacure.",
     image: "/images/case-studies/schwarzkopf.png",
     href: "#case-studies",
+    videoUrl: "https://youtu.be/aTrdGgKb0IA?si=bnUN3AUa3ag4OPlz",
   },
   {
-    id: "burger-king-2",
-    brand: "Burger King",
-    category: "QSR",
+    id: "oneplus",
+    brand: "OnePlus",
+    category: "Tech",
     year: "2024",
     index: "04 / 06",
-    description: "Omnichannel recall that converts to footfall.",
-    image: "/images/case-studies/burger-king.png",
+    description: "Launch moments across premium screens.",
+    image: "/images/case-studies/oneplus.jpg",
     href: "#case-studies",
+    videoUrl: "https://youtu.be/cctyfmhFbbU?si=MqR7JPaK8nNpmoct",
   },
   {
-    id: "etihad-2",
+    id: "etihad",
     brand: "Etihad Airways",
     category: "Travel",
     year: "2023",
@@ -141,16 +299,18 @@ export const caseStudies: CaseStudy[] = [
     description: "Airport-to-device journey orchestration.",
     image: "/images/case-studies/etihad.png",
     href: "#case-studies",
+    videoUrl: "https://youtu.be/7Fi_UbKeKPo?si=lISBefuQtR5qE4_v",
   },
   {
-    id: "schwarzkopf-2",
-    brand: "Schwarzkopf",
-    category: "Beauty",
-    year: "2023",
+    id: "burger-king-2",
+    brand: "Burger King",
+    category: "QSR",
+    year: "2024",
     index: "06 / 06",
-    description: "Context-aware creative across city screens.",
-    image: "/images/case-studies/schwarzkopf.png",
+    description: "Omnichannel recall that converts to footfall.",
+    image: "/images/case-studies/burger-king.png",
     href: "#case-studies",
+    videoUrl: "https://youtu.be/P2uxStZDZ_4?si=Zu9Gu_6nMQZfKfEb",
   },
 ];
 

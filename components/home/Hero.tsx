@@ -68,18 +68,18 @@ export function Hero() {
       />
 
       <Container className="relative">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="grid items-start gap-10 lg:grid-cols-2">
           <div className="flex min-h-[360px] flex-col justify-between gap-10">
-            <div className="space-y-6">
+            <div className="space-y-4">
               <BlurReveal>
                 <h1 className="text-[40px] font-semibold leading-[1.05] text-[var(--color-ink)] md:text-[56px] md:leading-[51.84px]">
                   Outdoor to Outcome.
                 </h1>
               </BlurReveal>
               <FadeUp delay={0.1}>
-                <p className="text-[24px] font-semibold tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.4]">
+                <h2 className="text-[24px] font-semibold tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.2]">
                   An AI-First Full-Funnel Attribution Platform
-                </p>
+                </h2>
               </FadeUp>
               <FadeUp delay={0.18}>
                 <p className="max-w-xl text-[18px] leading-[1.4] text-[var(--color-ink)] md:text-[22px]">

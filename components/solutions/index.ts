@@ -1,0 +1,10 @@
+export { BrandsHero } from "./Hero";
+export { WhyLemma } from "./WhyLemma";
+export { ChannelGrid } from "./ChannelGrid";
+export { JourneySection } from "./JourneySection";
+export { PlatformFeatures } from "./PlatformFeatures";
+export { CampaignAnalytics } from "./CampaignAnalytics";
+export { SuccessStories } from "./SuccessStories";
+export { Testimonials } from "./Testimonials";
+export { BrandsFAQ } from "./FAQ";
+export { CTASection } from "./CTASection";

@@ -1,0 +1,59 @@
+"use client";
+
+import { FadeUp, Stagger, staggerItem } from "@/components/animation";
+import { Container } from "@/components/ui/Container";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { useCountUp } from "@/hooks/useCountUp";
+import { brandsSuccessMetrics, type BrandsStat } from "@/lib/solutions-brands-data";
+import { motion } from "framer-motion";
+
+function Metric({
+  end,
+  decimals = 0,
+  suffix = "",
+  label,
+}: BrandsStat & { end: number }) {
+  const { ref, value } = useCountUp({ end, decimals });
+  return (
+    <motion.div
+      variants={staggerItem}
+      className="rounded-[20px] border border-[var(--color-border)] bg-white px-5 py-7 text-center shadow-[0_8px_24px_rgba(9,19,26,0.04)]"
+    >
+      <p
+        ref={ref as React.RefObject<HTMLParagraphElement>}
+        className="font-heading text-[36px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[44px]"
+      >
+        {decimals > 0 ? value.toFixed(decimals) : Math.round(value)}
+        {suffix}
+      </p>
+      <p className="mt-2 text-[13px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]">
+        {label}
+      </p>
+    </motion.div>
+  );
+}
+
+export function CampaignAnalytics() {
+  return (
+    <section className="bg-white py-16 md:py-[90px]">
+      <Container>
+        <FadeUp className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
+          <SectionLabel label="Success metrics" align="center" dual accent="blue" />
+          <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+            Scale that compounds into outcomes
+          </h2>
+          <p className="text-[16px] leading-relaxed text-[var(--color-slate)]">
+            Tap into global audiences with inventory, intelligence, and measurement built for
+            modern brand growth.
+          </p>
+        </FadeUp>
+
+        <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5" delay={0.08}>
+          {brandsSuccessMetrics.map((metric) => (
+            <Metric key={metric.id} {...metric} end={metric.value} />
+          ))}
+        </Stagger>
+      </Container>
+    </section>
+  );
+}

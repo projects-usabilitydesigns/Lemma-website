@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -10,13 +10,18 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { VideoModal } from "@/components/ui/VideoModal";
 import { caseStudies } from "@/lib/data";
+import type { CaseStudy } from "@/types";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export function CaseStudies() {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [activeVideo, setActiveVideo] = useState<CaseStudy | null>(null);
+
+  const closeVideo = useCallback(() => setActiveVideo(null), []);
 
   return (
     <section id="case-studies" className="overflow-hidden bg-white py-16 md:py-[90px]">
@@ -66,45 +71,54 @@ export function CaseStudies() {
           {caseStudies.map((study) => (
             <SwiperSlide key={study.id} className="!h-auto">
               <article className="case-card group relative h-[520px] overflow-hidden rounded-[30px] border border-[var(--color-border)] transition-transform duration-500 md:h-[700px]">
-                  <Image
-                    src={study.image}
-                    alt={study.brand}
-                    fill
-                    className="object-cover object-bottom grayscale transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                    <span
-                      className="rounded-full px-3 py-1.5 text-[14px] font-extrabold tracking-[-0.28px] text-transparent"
-                      style={{ backgroundImage: "var(--gradient-brand)", backgroundClip: "text", WebkitBackgroundClip: "text" }}
-                    >
-                      LEMMA
-                    </span>
-                    <span className="rounded-full bg-[rgba(252,252,249,0.8)] px-3 py-1.5 text-[10px] uppercase tracking-[1.8px] text-[rgba(3,10,17,0.8)] backdrop-blur-[4px]">
-                      {study.year}
-                    </span>
+                <Image
+                  src={study.image}
+                  alt={study.brand}
+                  fill
+                  className="object-cover object-bottom grayscale transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
+                  <span
+                    className="rounded-full px-3 py-1.5 text-[14px] font-extrabold tracking-[-0.28px] text-transparent"
+                    style={{
+                      backgroundImage: "var(--gradient-brand)",
+                      backgroundClip: "text",
+                      WebkitBackgroundClip: "text",
+                    }}
+                  >
+                    LEMMA
+                  </span>
+                  <span className="rounded-full bg-[rgba(252,252,249,0.8)] px-3 py-1.5 text-[10px] uppercase tracking-[1.8px] text-[rgba(3,10,17,0.8)] backdrop-blur-[4px]">
+                    {study.year}
+                  </span>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button
+                    type="button"
+                    aria-label={`Play ${study.brand} case study`}
+                    onClick={() => {
+                      if (!study.videoUrl) return;
+                      setActiveVideo(study);
+                      swiperRef.current?.autoplay?.stop();
+                    }}
+                    className="flex size-16 items-center justify-center rounded-full bg-[rgba(252,252,249,0.85)] backdrop-blur-[4px] transition group-hover:scale-110"
+                  >
+                    <Play className="ml-0.5 size-6 fill-[var(--color-pink-alt)] text-[var(--color-pink-alt)]" />
+                  </button>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(252,252,249,0.95)] via-[rgba(252,252,249,0.6)] to-transparent p-6">
+                  <div className="mb-1 flex items-center justify-between text-[11px] uppercase tracking-[1.98px] text-[var(--color-slate)]">
+                    <span>{study.category}</span>
+                    <span>{study.index}</span>
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <button
-                      type="button"
-                      aria-label={`Play ${study.brand} case study`}
-                      className="flex size-16 items-center justify-center rounded-full bg-[rgba(252,252,249,0.85)] backdrop-blur-[4px] transition group-hover:scale-110"
-                    >
-                      <Play className="ml-0.5 size-6 fill-[var(--color-pink-alt)] text-[var(--color-pink-alt)]" />
-                    </button>
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(252,252,249,0.95)] via-[rgba(252,252,249,0.6)] to-transparent p-6">
-                    <div className="mb-1 flex items-center justify-between text-[11px] uppercase tracking-[1.98px] text-[var(--color-slate)]">
-                      <span>{study.category}</span>
-                      <span>{study.index}</span>
-                    </div>
-                    <h3 className="text-[22px] font-extrabold tracking-[-0.44px] text-[var(--color-ink)]">
-                      {study.brand}
-                    </h3>
-                    <p className="mt-1 text-[14px] leading-5 text-[var(--color-slate)]">
-                      {study.description}
-                    </p>
-                  </div>
-                </article>
+                  <h3 className="text-[22px] font-extrabold tracking-[-0.44px] text-[var(--color-ink)]">
+                    {study.brand}
+                  </h3>
+                  <p className="mt-1 text-[14px] leading-5 text-[var(--color-slate)]">
+                    {study.description}
+                  </p>
+                </div>
+              </article>
             </SwiperSlide>
           ))}
         </Swiper>
@@ -138,6 +152,16 @@ export function CaseStudies() {
           </Button>
         </div>
       </Container>
+
+      <VideoModal
+        open={Boolean(activeVideo?.videoUrl)}
+        title={activeVideo ? `${activeVideo.brand} case study` : "Case study video"}
+        videoUrl={activeVideo?.videoUrl ?? ""}
+        onClose={() => {
+          closeVideo();
+          swiperRef.current?.autoplay?.start();
+        }}
+      />
     </section>
   );
 }
