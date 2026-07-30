@@ -2,25 +2,27 @@
 
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import { Sparkles } from "lucide-react";
 import { FadeIn } from "@/components/animation";
 import { channels, clientLogos } from "@/lib/data";
 
 export function LogosMarquee() {
   return (
-    <section className="overflow-hidden bg-white py-8 md:py-10" aria-label="Trusted brands and channels">
+    <section
+      className="overflow-hidden bg-white py-5 md:py-6"
+      aria-label="Trusted brands and channels"
+    >
       <FadeIn>
-        <p className="mb-8 text-center text-[14px] font-semibold uppercase tracking-[2px] text-[var(--color-slate)]">
+        <p className="mb-4 text-center text-[14px] font-semibold uppercase tracking-[2px] text-[var(--color-slate)]">
           Trusted by leading brands worldwide
         </p>
       </FadeIn>
 
-      <div className="marquee-fade mb-8">
+      <div className="marquee-fade mb-4">
         <Marquee pauseOnHover speed={40} gradient={false}>
           {clientLogos.map((logo) => (
             <div
               key={logo.id}
-              className="mx-8 flex h-10 items-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0 md:mx-12"
+              className="mx-8 flex h-9 items-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0 md:mx-12"
             >
               <Image
                 src={logo.src}
@@ -34,16 +36,23 @@ export function LogosMarquee() {
         </Marquee>
       </div>
 
-      <div className="mx-auto mb-6 h-px w-full max-w-[1400px] bg-[var(--color-border)]" />
+      <div className="mx-auto mb-3 h-px w-full max-w-[1400px] bg-[var(--color-border)]" />
 
       <div className="marquee-fade">
         <Marquee pauseOnHover speed={35} gradient={false} direction="right">
           {[...channels, ...channels].map((channel, index) => (
-            <div key={`${channel}-${index}`} className="mx-6 flex items-center gap-6 md:mx-10">
-              <span className="text-[28px] font-light text-[var(--color-logo-muted,#9da6ad)] md:text-[40px]">
+            <div key={`${channel}-${index}`} className="ml-5 flex items-center gap-4 md:ml-8 md:gap-5">
+              <span className="text-[26px] font-light text-[var(--color-logo-muted,#9da6ad)] md:text-[36px]">
                 {channel}
               </span>
-              <Sparkles className="size-4 text-[var(--color-pink)] md:size-5" aria-hidden />
+              <Image
+                src="/icons/star-sparkle.svg"
+                alt=""
+                width={18}
+                height={18}
+                className="size-4 shrink-0 md:size-5"
+                aria-hidden
+              />
             </div>
           ))}
         </Marquee>

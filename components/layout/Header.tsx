@@ -1,37 +1,66 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useScrolled } from "@/hooks/useScrolled";
-import { navItems } from "@/lib/data";
+import { megaMenus, navItems } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { MegaMenuPanel } from "@/components/layout/MegaMenu";
 
 export function Header() {
-  const scrolled = useScrolled(16);
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMega, setActiveMega] = useState<"who-we-are" | "what-we-do" | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<"who-we-are" | "what-we-do" | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const megaRegionId = useId();
+
+  const clearCloseTimer = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  const openMega = (id: "who-we-are" | "what-we-do") => {
+    clearCloseTimer();
+    setActiveMega(id);
+  };
+
+  const scheduleCloseMega = () => {
+    clearCloseTimer();
+    closeTimer.current = setTimeout(() => setActiveMega(null), 120);
+  };
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveMega(null);
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  useEffect(() => () => clearCloseTimer(), []);
 
   return (
     <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-white/80 shadow-[0px_4px_10px_rgba(0,0,0,0.1)] backdrop-blur-[10px]"
-          : "bg-transparent",
-      )}
+      className="fixed inset-x-0 top-0 z-50 bg-white/95 shadow-[0px_4px_10px_rgba(0,0,0,0.08)] backdrop-blur-[10px] transition-all duration-300"
+      onMouseLeave={scheduleCloseMega}
     >
-      <Container className="flex h-[90px] items-center justify-between">
+      <Container className="relative flex h-[90px] items-center justify-between">
         <Link href="/" aria-label="Lemma Technologies home" className="relative h-[35px] w-[170px]">
           <Image
             src="/images/logo-lemma.svg"
@@ -43,20 +72,67 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-[38px] lg:flex" aria-label="Primary">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="group relative inline-flex items-center gap-1 text-[18px] font-medium text-[var(--color-ink-muted)]"
-            >
-              <span>{item.label}</span>
-              {item.hasDropdown ? <ChevronDown className="size-3.5 opacity-70" /> : null}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--color-ink)] transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isMega = Boolean(item.megaMenu);
+            const isOpen = item.megaMenu != null && activeMega === item.megaMenu;
+
+            if (!isMega || !item.megaMenu) {
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group relative inline-flex items-center gap-1 text-[18px] font-medium text-[var(--color-ink-muted)]"
+                  onMouseEnter={scheduleCloseMega}
+                  onFocus={scheduleCloseMega}
+                >
+                  <span>{item.label}</span>
+                  {item.hasDropdown ? <ChevronDown className="size-3.5 opacity-70" /> : null}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--color-ink)] transition-all duration-300 group-hover:w-full" />
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => openMega(item.megaMenu!)}
+                onFocus={() => openMega(item.megaMenu!)}
+              >
+                <button
+                  type="button"
+                  className={cn(
+                    "group relative inline-flex items-center gap-1 text-[18px] font-medium text-[var(--color-ink-muted)]",
+                    isOpen && "text-[var(--color-ink)]",
+                  )}
+                  aria-expanded={isOpen}
+                  aria-controls={megaRegionId}
+                  onClick={() =>
+                    setActiveMega((current) =>
+                      current === item.megaMenu ? null : item.megaMenu!,
+                    )
+                  }
+                >
+                  <span>{item.label}</span>
+                  <ChevronDown
+                    className={cn(
+                      "size-3.5 opacity-70 transition-transform duration-200",
+                      isOpen && "rotate-180",
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-px bg-[var(--color-ink)] transition-all duration-300",
+                      isOpen ? "w-full" : "w-0 group-hover:w-full",
+                    )}
+                  />
+                </button>
+              </div>
+            );
+          })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:block" onMouseEnter={scheduleCloseMega}>
           <Button href="#cta" variant="outline" arrow="none">
             Request Demo
           </Button>
@@ -65,50 +141,121 @@ export function Header() {
         <button
           type="button"
           className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--color-border)] lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((value) => !value)}
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </Container>
 
+      <div className="pointer-events-none absolute inset-x-0 top-full hidden lg:block">
+        <Container className="pointer-events-auto pt-2">
+          <div
+            id={megaRegionId}
+            onMouseEnter={clearCloseTimer}
+            onMouseLeave={scheduleCloseMega}
+          >
+            <AnimatePresence mode="wait">
+              {activeMega ? (
+                <MegaMenuPanel
+                  key={activeMega}
+                  menu={megaMenus[activeMega]}
+                  onNavigate={() => setActiveMega(null)}
+                />
+              ) : null}
+            </AnimatePresence>
+          </div>
+        </Container>
+      </div>
+
       <AnimatePresence>
-        {open ? (
+        {mobileOpen ? (
           <>
             <motion.div
               className="fixed inset-0 z-40 bg-black/40 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setOpen(false)}
+              onClick={() => setMobileOpen(false)}
             />
             <motion.aside
-              className="fixed right-0 top-0 z-50 flex h-dvh w-[min(100%,360px)] flex-col bg-white p-6 shadow-xl lg:hidden"
+              className="fixed right-0 top-0 z-50 flex h-dvh w-[min(100%,400px)] flex-col bg-white shadow-xl lg:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
             >
-              <div className="mb-8 flex items-center justify-between">
+              <div className="flex items-center justify-between border-b border-[var(--color-border)] px-5 py-5">
                 <span className="text-lg font-semibold">Menu</span>
-                <button type="button" aria-label="Close menu" onClick={() => setOpen(false)}>
+                <button type="button" aria-label="Close menu" onClick={() => setMobileOpen(false)}>
                   <X className="size-5" />
                 </button>
               </div>
-              <nav className="flex flex-col gap-5" aria-label="Mobile">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="text-lg font-medium text-[var(--color-ink)]"
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-              <div className="mt-auto" onClick={() => setOpen(false)}>
+
+              <div className="flex-1 overflow-y-auto px-4 py-4">
+                <nav className="flex flex-col gap-1" aria-label="Mobile">
+                  {navItems.map((item) => {
+                    if (!item.megaMenu) {
+                      return (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="rounded-xl px-3 py-3 text-lg font-medium text-[var(--color-ink)]"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      );
+                    }
+
+                    const expanded = mobileExpanded === item.megaMenu;
+                    const menu = megaMenus[item.megaMenu];
+
+                    return (
+                      <div key={item.label} className="border-b border-[var(--color-border)] pb-2">
+                        <button
+                          type="button"
+                          className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-lg font-medium text-[var(--color-ink)]"
+                          aria-expanded={expanded}
+                          onClick={() =>
+                            setMobileExpanded((current) =>
+                              current === item.megaMenu ? null : item.megaMenu!,
+                            )
+                          }
+                        >
+                          {item.label}
+                          <ChevronDown
+                            className={cn(
+                              "size-4 transition-transform",
+                              expanded && "rotate-180",
+                            )}
+                          />
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {expanded ? (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pb-3 pl-2">
+                                <MegaMenuPanel
+                                  menu={menu}
+                                  onNavigate={() => setMobileOpen(false)}
+                                />
+                              </div>
+                            </motion.div>
+                          ) : null}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </nav>
+              </div>
+
+              <div className="border-t border-[var(--color-border)] p-5" onClick={() => setMobileOpen(false)}>
                 <Button href="#cta" variant="primary" className="w-full" arrow="none">
                   Request Demo
                 </Button>

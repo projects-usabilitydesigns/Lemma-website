@@ -21,7 +21,7 @@ export function LinkArrow({
     <Link
       href={href}
       className={cn(
-        "group inline-flex items-center gap-1.5 text-[14px] font-medium capitalize",
+        "group inline-flex cursor-pointer items-center gap-1.5 text-[14px] font-medium capitalize",
         color,
         className,
       )}

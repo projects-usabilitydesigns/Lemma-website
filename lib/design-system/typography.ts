@@ -1,4 +1,9 @@
 export const typography = {
+  fontFamily: {
+    body: 'var(--font-inter), "Inter", system-ui, sans-serif',
+    heading:
+      'var(--font-google-sans-flex), googleSansFlex, "Google Sans Flex", system-ui, sans-serif',
+  },
   hero: {
     size: "56px",
     lineHeight: "51.84px",

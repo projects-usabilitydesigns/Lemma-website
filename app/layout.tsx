@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import "./globals.css";
 
@@ -7,6 +8,19 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+});
+
+const googleSansFlex = localFont({
+  src: [
+    { path: "./fonts/GoogleSansFlex-400.woff", weight: "400", style: "normal" },
+    { path: "./fonts/GoogleSansFlex-500.woff", weight: "500", style: "normal" },
+    { path: "./fonts/GoogleSansFlex-600.woff", weight: "600", style: "normal" },
+    { path: "./fonts/GoogleSansFlex-700.woff", weight: "700", style: "normal" },
+    { path: "./fonts/GoogleSansFlex-800.woff", weight: "800", style: "normal" },
+  ],
+  variable: "--font-google-sans-flex",
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 });
 
 const siteUrl = "https://lemmamedia.com";
@@ -76,7 +90,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} ${googleSansFlex.variable} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

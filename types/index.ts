@@ -34,6 +34,7 @@ export type CaseStudy = {
   description: string;
   image: string;
   href: string;
+  videoUrl?: string;
 };
 
 export type AiFeature = {
@@ -66,6 +67,38 @@ export type NavItem = {
   label: string;
   href: string;
   hasDropdown?: boolean;
+  megaMenu?: "who-we-are" | "what-we-do";
+};
+
+export type MegaMenuLink = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon?: string;
+  iconColor?: string;
+  iconSymbol?: string;
+};
+
+export type MegaMenuColumn = {
+  id: string;
+  label: string;
+  items: MegaMenuLink[];
+};
+
+export type MegaMenuFeatured = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  image: string;
+};
+
+export type MegaMenuConfig = {
+  id: "who-we-are" | "what-we-do";
+  columns: MegaMenuColumn[];
+  featured: MegaMenuFeatured;
 };
 
 export type ClientLogo = {
