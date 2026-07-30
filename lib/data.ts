@@ -42,7 +42,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "careers",
             title: "Careers",
             description: "Join the team",
-            href: "/about#team",
+            href: "/careers",
           },
         ],
       },
