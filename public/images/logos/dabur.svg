@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="36" viewBox="0 0 110 36" fill="none" role="img" aria-label="Dabur">
+  <!-- Leaf mark -->
+  <path fill="#9DA6AD" d="M18.5 6c-5.2 3.8-8.8 9.4-9.4 15.6-.1 1.2.9 2.2 2.1 2 4.8-.8 9.1-3.6 12-7.4 2.9-3.8 4.2-8.5 3.6-13.2-.1-.9-1.2-1.3-1.9-.7-2 1.2-4.2 2.3-6.4 3.7z"/>
+  <path fill="#9DA6AD" d="M11.2 22.8c2.1-4.6 5.6-8.4 10-11.1-1.8 4.2-4.9 7.8-8.8 10.3-.5.3-1.2.1-1.2-.8z"/>
+  <!-- Wordmark -->
+  <text x="34" y="24" fill="#9DA6AD" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5">Dabur</text>
+</svg>

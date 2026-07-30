@@ -59,12 +59,12 @@ export function CaseStudies() {
           keyboard={{ enabled: true }}
           autoplay={{ delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }}
           spaceBetween={28}
-          slidesPerView={1.15}
+          slidesPerView={1.35}
           centeredSlides={false}
           breakpoints={{
-            640: { slidesPerView: 1.4 },
-            768: { slidesPerView: 2 },
-            1200: { slidesPerView: 3 },
+            640: { slidesPerView: 1.65 },
+            768: { slidesPerView: 2.35 },
+            1200: { slidesPerView: 3.53 },
           }}
           className="!overflow-visible"
         >
@@ -75,7 +75,7 @@ export function CaseStudies() {
                   src={study.image}
                   alt={study.brand}
                   fill
-                  className="object-cover object-bottom grayscale transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-center grayscale transition-[transform,filter] duration-700 group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
                   <span
