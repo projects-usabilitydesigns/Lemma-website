@@ -12,7 +12,7 @@ export function LogosMarquee() {
       aria-label="Trusted brands and channels"
     >
       <FadeIn>
-        <p className="mb-4 text-center text-[14px] font-semibold uppercase tracking-[2px] text-[var(--color-slate)]">
+        <p className="mb-7 text-center text-[14px] font-semibold uppercase tracking-[2px] text-[var(--color-slate)] md:mb-8">
           Trusted by leading brands worldwide
         </p>
       </FadeIn>
@@ -22,7 +22,7 @@ export function LogosMarquee() {
           {clientLogos.map((logo) => (
             <div
               key={logo.id}
-              className="mx-8 flex h-9 items-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0 md:mx-12"
+              className="mx-8 flex h-9 items-center opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 md:mx-12"
             >
               <Image
                 src={logo.src}

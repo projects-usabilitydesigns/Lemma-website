@@ -207,7 +207,7 @@ export const products: Product[] = [
     name: "Phi",
     description:
       "Plan, schedule, and deliver DOOH content seamlessly. Manage content distribution across screens, locations, and formats from a single streamlined platform.",
-    logo: "/images/products/phi-main.svg",
+    logo: "/images/products/phi.svg",
     href: "#products",
   },
   {
@@ -253,7 +253,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2025",
     index: "01 / 06",
     description: "Fashion moments that move footfall.",
-    image: "/images/case-studies/azorte.jpg",
+    image: "/images/case-studies/azorte.png",
     href: "#case-studies",
     videoUrl: "https://youtu.be/xmAOz-ACaNA?si=vQU3dsmU8SgihXy1",
   },
@@ -286,7 +286,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024",
     index: "04 / 06",
     description: "Launch moments across premium screens.",
-    image: "/images/case-studies/oneplus.jpg",
+    image: "/images/case-studies/oneplus.png",
     href: "#case-studies",
     videoUrl: "https://youtu.be/cctyfmhFbbU?si=MqR7JPaK8nNpmoct",
   },
@@ -456,8 +456,10 @@ export const clientLogos: ClientLogo[] = [
   { id: "schwarzkopf", name: "Schwarzkopf", src: "/images/logos/schwarzkopf.svg", width: 120, height: 36 },
   { id: "etihad", name: "Etihad", src: "/images/logos/etihad.svg", width: 120, height: 36 },
   { id: "pepsi", name: "Pepsi", src: "/images/logos/pepsi.svg", width: 90, height: 36 },
-  { id: "samsung", name: "Samsung", src: "/images/logos/samsung.svg", width: 110, height: 36 },
-  { id: "nestle", name: "Nestlé", src: "/images/logos/nestle.svg", width: 115, height: 36 },
+  { id: "samsung", name: "Samsung", src: "/images/logos/samsung.svg", width: 140, height: 26 },
+  { id: "nestle", name: "Nestlé", src: "/images/logos/nestle.svg", width: 125, height: 36 },
+  { id: "dabur", name: "Dabur", src: "/images/logos/dabur.svg", width: 110, height: 36 },
+  { id: "amazon-prime-video", name: "Amazon Prime Video", src: "/images/logos/amazon-prime-video.svg", width: 150, height: 36 },
 ];
 
 export const footerLinks = {
