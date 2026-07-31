@@ -3,9 +3,16 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { FadeIn } from "@/components/animation";
-import { channels, clientLogos } from "@/lib/data";
+import { channels as defaultChannels, clientLogos as defaultClientLogos } from "@/lib/data";
+import type { ClientLogo } from "@/types";
 
-export function LogosMarquee() {
+export function LogosMarquee({
+  clientLogos,
+}: {
+  clientLogos?: ClientLogo[];
+}) {
+  const logos = clientLogos?.length ? clientLogos : defaultClientLogos;
+  const channels = defaultChannels;
   return (
     <section
       className="overflow-hidden bg-white py-5 md:py-6"
@@ -19,7 +26,7 @@ export function LogosMarquee() {
 
       <div className="marquee-fade mb-4">
         <Marquee pauseOnHover speed={40} gradient={false}>
-          {clientLogos.map((logo) => (
+          {logos.map((logo) => (
             <div
               key={logo.id}
               className="mx-8 flex h-9 items-center opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 md:mx-12"

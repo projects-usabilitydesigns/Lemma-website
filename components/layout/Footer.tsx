@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FadeUp } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
-import { footerLinks } from "@/lib/data";
+import { footerLinks as defaultFooterLinks } from "@/lib/data";
 
 const aiTools = [
   { name: "ChatGPT", src: "/icons/ai-chatgpt.svg" },
@@ -14,7 +14,17 @@ const aiTools = [
   { name: "Perplexity", src: "/icons/ai-perplexity.svg" },
 ];
 
-export function Footer() {
+export function Footer({
+  footerLinks,
+}: {
+  footerLinks?: {
+    products: readonly string[];
+    solutions: readonly string[];
+    company: readonly string[];
+    legal: readonly string[];
+  };
+}) {
+  const links = footerLinks ?? defaultFooterLinks;
   return (
     <footer className="border-t border-[var(--color-border)] bg-white pb-12 pt-12">
       <Container>
@@ -55,9 +65,9 @@ export function Footer() {
             </div>
 
             {[
-              { title: "Products", items: footerLinks.products },
-              { title: "Solutions", items: footerLinks.solutions },
-              { title: "Company", items: footerLinks.company },
+              { title: "Products", items: links.products },
+              { title: "Solutions", items: links.solutions },
+              { title: "Company", items: links.company },
             ].map((col) => (
               <div key={col.title}>
                 <p className="mb-5 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate)]">
@@ -115,7 +125,7 @@ export function Footer() {
         <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-[var(--color-border)] pt-8 text-[12px] text-[var(--color-slate)] md:flex-row md:items-center">
           <p>© 2026 Lemma Technologies. All rights reserved.</p>
           <div className="flex gap-6">
-            {footerLinks.legal.map((item) => (
+            {links.legal.map((item) => (
               <Link key={item} href="#" className="hover:underline">
                 {item}
               </Link>

@@ -11,10 +11,12 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { aiFeatures } from "@/lib/data";
+import { aiFeatures as defaultAiFeatures } from "@/lib/data";
+import type { AiFeature } from "@/types";
 import "swiper/css";
 
-export function AiFeatures() {
+export function AiFeatures({ aiFeatures }: { aiFeatures?: AiFeature[] }) {
+  const data = aiFeatures?.length ? aiFeatures : defaultAiFeatures;
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
@@ -58,7 +60,7 @@ export function AiFeatures() {
             1100: { slidesPerView: 3 },
           }}
         >
-          {aiFeatures.map((feature) => (
+          {data.map((feature) => (
             <SwiperSlide key={feature.id} className="!h-auto">
               <motion.article
                 whileHover={{ y: -6, scale: 1.01 }}

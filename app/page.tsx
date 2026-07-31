@@ -10,21 +10,51 @@ import { ArchitectureImpact } from "@/components/home/ArchitectureImpact";
 import { Blog } from "@/components/home/Blog";
 import { Faq } from "@/components/home/Faq";
 import { Cta } from "@/components/home/Cta";
+import {
+  getHeroStats,
+  getProducts,
+  getSolutions,
+  getCaseStudies,
+  getAiFeatures,
+  getBlogPosts,
+  getFaqs,
+  getClientLogos,
+} from "@/lib/api";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [
+    heroStats,
+    products,
+    solutions,
+    caseStudies,
+    aiFeatures,
+    blogPosts,
+    faqs,
+    clientLogos,
+  ] = await Promise.all([
+    getHeroStats(),
+    getProducts(),
+    getSolutions(),
+    getCaseStudies(),
+    getAiFeatures(),
+    getBlogPosts(),
+    getFaqs(),
+    getClientLogos(),
+  ]);
+
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <LogosMarquee />
-        <Products />
-        <Solutions />
-        <CaseStudies />
-        <AiFeatures />
+        <Hero heroStats={heroStats} />
+        <LogosMarquee clientLogos={clientLogos} />
+        <Products products={products} />
+        <Solutions solutions={solutions} />
+        <CaseStudies caseStudies={caseStudies} />
+        <AiFeatures aiFeatures={aiFeatures} />
         <ArchitectureImpact />
-        <Blog />
-        <Faq />
+        <Blog blogPosts={blogPosts} />
+        <Faq faqs={faqs} />
         <Cta />
       </main>
       <Footer />

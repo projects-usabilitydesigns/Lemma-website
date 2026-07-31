@@ -11,13 +11,14 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { VideoModal } from "@/components/ui/VideoModal";
-import { caseStudies } from "@/lib/data";
+import { caseStudies as defaultCaseStudies } from "@/lib/data";
 import type { CaseStudy } from "@/types";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export function CaseStudies() {
+export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
+  const data = caseStudies?.length ? caseStudies : defaultCaseStudies;
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeVideo, setActiveVideo] = useState<CaseStudy | null>(null);
 
@@ -68,7 +69,7 @@ export function CaseStudies() {
           }}
           className="!overflow-visible"
         >
-          {caseStudies.map((study) => (
+          {data.map((study) => (
             <SwiperSlide key={study.id} className="!h-auto">
               <article className="case-card group relative h-[520px] overflow-hidden rounded-[30px] border border-[var(--color-border)] transition-transform duration-500 md:h-[700px]">
                 <Image

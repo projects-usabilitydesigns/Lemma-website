@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { advisors, leadershipTeam, type TeamMember } from "@/lib/about-data";
+import { advisors as defaultAdvisors, leadershipTeam as defaultTeam, type TeamMember } from "@/lib/about-data";
 
 function TeamCard({ member }: { member: TeamMember }) {
   return (
@@ -23,7 +23,15 @@ function TeamCard({ member }: { member: TeamMember }) {
   );
 }
 
-export function AboutTeam() {
+export function AboutTeam({
+  team,
+  advisors,
+}: {
+  team?: TeamMember[];
+  advisors?: TeamMember[];
+}) {
+  const teamData = team?.length ? team : defaultTeam;
+  const advisorData = advisors?.length ? advisors : defaultAdvisors;
   return (
     <section id="team" className="bg-white py-16 md:py-[100px]">
       <Container>
@@ -46,7 +54,7 @@ export function AboutTeam() {
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {leadershipTeam.map((member) => (
+          {teamData.map((member) => (
             <TeamCard key={member.id} member={member} />
           ))}
         </div>
@@ -67,7 +75,7 @@ export function AboutTeam() {
             advisers
           </h3>
           <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {advisors.map((member) => (
+            {advisorData.map((member) => (
               <TeamCard key={member.id} member={member} />
             ))}
           </div>

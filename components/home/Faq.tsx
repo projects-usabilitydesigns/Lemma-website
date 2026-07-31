@@ -7,11 +7,13 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { faqs } from "@/lib/data";
+import { faqs as defaultFaqs } from "@/lib/data";
+import type { FaqItem } from "@/types";
 import { cn } from "@/lib/utils";
 
-export function Faq() {
-  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
+export function Faq({ faqs }: { faqs?: FaqItem[] }) {
+  const data = faqs?.length ? faqs : defaultFaqs;
+  const [openId, setOpenId] = useState<string | null>(data[0]?.id ?? null);
 
   return (
     <section id="faq" className="bg-white pb-16 md:pb-[100px]">
@@ -26,7 +28,7 @@ export function Faq() {
         </FadeUp>
 
         <div className="mx-auto flex max-w-[1188px] flex-col gap-4">
-          {faqs.map((item) => {
+          {data.map((item) => {
             const open = openId === item.id;
             return (
               <div

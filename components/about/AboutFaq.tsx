@@ -6,11 +6,12 @@ import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { aboutFaqs } from "@/lib/about-data";
+import { aboutFaqs as defaultFaqs } from "@/lib/about-data";
 import { cn } from "@/lib/utils";
 
-export function AboutFaq() {
-  const [openId, setOpenId] = useState<string | null>(aboutFaqs[0]?.id ?? null);
+export function AboutFaq({ faqs }: { faqs?: { id: string; question: string; answer: string }[] }) {
+  const data = faqs?.length ? faqs : [...defaultFaqs];
+  const [openId, setOpenId] = useState<string | null>(data[0]?.id ?? null);
 
   return (
     <section id="faq" className="bg-[var(--color-cream-soft)] pb-16 md:pb-[100px] pt-16 md:pt-[100px]">
@@ -25,7 +26,7 @@ export function AboutFaq() {
         </div>
 
         <div className="mx-auto flex max-w-[1188px] flex-col gap-4">
-          {aboutFaqs.map((item) => {
+          {data.map((item) => {
             const open = openId === item.id;
             return (
               <div

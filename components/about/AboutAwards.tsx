@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { aboutAwards } from "@/lib/about-data";
+import { aboutAwards as defaultAwards } from "@/lib/about-data";
+import type { Award } from "@/lib/about-data";
 
-export function AboutAwards() {
+export function AboutAwards({ awards }: { awards?: Award[] }) {
+  const data = awards?.length ? awards : defaultAwards;
+
   return (
     <section className="bg-[var(--color-cream-soft)] py-16 md:py-[100px]">
       <Container>
@@ -22,7 +25,7 @@ export function AboutAwards() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {aboutAwards.map((award) => (
+          {data.map((award) => (
             <article
               key={award.id}
               className="group flex flex-col items-center rounded-[16px] border border-[var(--color-border)] bg-white p-4 text-center transition-shadow hover:shadow-[0px_8px_24px_rgba(9,19,26,0.08)]"

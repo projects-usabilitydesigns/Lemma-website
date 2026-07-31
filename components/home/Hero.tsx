@@ -8,7 +8,8 @@ import { BlurReveal, FadeRight, FadeUp, Stagger, staggerItem } from "@/component
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { useCountUp } from "@/hooks/useCountUp";
-import { heroStats } from "@/lib/data";
+import { heroStats as defaultHeroStats } from "@/lib/data";
+import type { Stat } from "@/types";
 import { cn } from "@/lib/utils";
 
 function StatItem({
@@ -41,7 +42,8 @@ function StatItem({
   );
 }
 
-export function Hero() {
+export function Hero({ heroStats }: { heroStats?: Stat[] }) {
+  const stats = heroStats?.length ? heroStats : defaultHeroStats;
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -94,7 +96,7 @@ export function Hero() {
             </div>
 
             <Stagger className="grid grid-cols-3 gap-3 md:gap-6" delay={0.2}>
-              {heroStats.map((stat) => (
+              {stats.map((stat) => (
                 <motion.div key={stat.label} variants={staggerItem}>
                   <StatItem
                     end={stat.numericValue}
