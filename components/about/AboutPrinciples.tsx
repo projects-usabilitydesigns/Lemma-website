@@ -1,63 +1,94 @@
+"use client";
+
 import Image from "next/image";
+import { Eye, Flag } from "lucide-react";
+import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { aboutAssets } from "@/lib/about-data";
+import { aboutPrinciples } from "@/lib/about-data";
+
+function PrincipleCard({
+  title,
+  description,
+  image,
+  icon,
+}: {
+  title: string;
+  description: string;
+  image: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <article className="group grid h-full overflow-hidden rounded-[20px] border border-[var(--color-border)] bg-[#f7f8f9] sm:grid-cols-2 sm:grid-rows-1">
+      <div className="flex flex-col justify-center gap-4 p-6 md:p-8">
+        <div className="flex size-11 items-center justify-center rounded-[10px] bg-[#e8f4fb] text-[var(--color-blue)]">
+          {icon}
+        </div>
+        <h3 className="text-[22px] font-semibold tracking-[-0.3px] text-[var(--color-ink)] md:text-[24px]">
+          {title}
+        </h3>
+        <p className="text-[14px] leading-[1.65] text-[var(--color-slate)] md:text-[15px]">
+          {description}
+        </p>
+      </div>
+      <div className="relative min-h-[220px] grayscale transition-[filter] duration-500 group-hover:grayscale-0 sm:min-h-full">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover object-center"
+          sizes="(max-width: 768px) 100vw, 25vw"
+        />
+      </div>
+    </article>
+  );
+}
 
 export function AboutPrinciples() {
   return (
-    <section className="bg-white pb-6 pt-16 md:pb-10 md:pt-[100px]">
+    <section id="principles" className="bg-white pb-8 pt-10 md:pb-12 md:pt-16">
       <Container>
-        <div className="mb-12 grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-16">
-          <div className="space-y-5">
+        <div className="mb-10 grid gap-6 lg:mb-12 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-16">
+          <FadeUp className="space-y-5">
             <SectionLabel label="Strategic mission" accent="blue" />
-            <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-              Our guiding{" "}
-              <span
-                style={{
-                  backgroundImage: "var(--gradient-brand)",
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  color: "transparent",
-                }}
-              >
-                principles
-              </span>
+            <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+              Our guiding principles
             </h2>
-          </div>
-          <p className="text-[16px] leading-[1.65] text-[var(--color-slate)] lg:pt-10">
-            Empowering businesses with innovative, transparent, and technology-driven advertising
-            solutions, building a smarter digital future through adaptability, collaboration, and
-            sustainable growth.
-          </p>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="font-[family-name:var(--font-inter)] text-[16px] font-medium leading-[1.65] text-[var(--color-slate)] lg:pt-10">
+              Empowering businesses with innovative, transparent, and technology-driven advertising
+              solutions. Building a smarter digital future through adaptability, collaboration, and
+              sustainable growth.
+            </p>
+          </FadeUp>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="relative aspect-[673/357] w-full overflow-hidden rounded-[20px]">
-            <Image
-              src={aboutAssets.vision}
-              alt="Our Vision"
-              fill
-              className="object-contain object-center"
-              sizes="(max-width: 768px) 100vw, 50vw"
+        <div className="grid items-stretch gap-6 md:grid-cols-2">
+          <FadeUp delay={0.05} className="h-full">
+            <PrincipleCard
+              title={aboutPrinciples.vision.title}
+              description={aboutPrinciples.vision.description}
+              image={aboutPrinciples.vision.image}
+              icon={<Eye className="size-5" strokeWidth={1.75} />}
             />
-          </div>
-          <div className="relative aspect-[673/357] w-full overflow-hidden rounded-[20px]">
-            <Image
-              src={aboutAssets.mission}
-              alt="Our Mission"
-              fill
-              className="object-contain object-center"
-              sizes="(max-width: 768px) 100vw, 50vw"
+          </FadeUp>
+          <FadeUp delay={0.1} className="h-full">
+            <PrincipleCard
+              title={aboutPrinciples.mission.title}
+              description={aboutPrinciples.mission.description}
+              image={aboutPrinciples.mission.image}
+              icon={<Flag className="size-5" strokeWidth={1.75} />}
             />
-          </div>
+          </FadeUp>
         </div>
 
-        <div className="mt-8 flex justify-center">
+        <FadeUp delay={0.12} className="mt-8 flex justify-center md:mt-10">
           <Button href="#values" variant="primary" arrow="right">
-            learn more
+            Learn more
           </Button>
-        </div>
+        </FadeUp>
       </Container>
     </section>
   );

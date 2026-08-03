@@ -15,10 +15,9 @@ export type Award = {
 export type ValueTab = {
   id: string;
   label: string;
-  titlePrefix: string;
-  titleAccent: string;
+  title: string;
   description: string;
-  highlights: readonly string[];
+  image: string;
 };
 
 /** Encode image filenames that contain spaces for use in src URLs */
@@ -26,116 +25,118 @@ export function aboutImage(filename: string) {
   return `/images/${encodeURIComponent(filename)}`;
 }
 
-export const aboutValues = [
+export const aboutValues: ValueTab[] = [
   {
     id: "transparency",
     label: "Transparency",
-    titlePrefix: "Building Trust Through",
-    titleAccent: "Transparency",
+    title: "Building Trust Through Transparency",
     description:
-      "Transparency in communication and clear decision-making builds lasting partnerships. We believe in open reporting and full visibility into campaign performance, inventory yield, and outcome measurement across every channel.",
-    highlights: ["Transparency", "communication", "clear decision-making"],
+      "Transparency is the foundation of everything we do. We believe that open communication, honest practices, and clear decision-making create stronger relationships and lasting trust. By fostering an environment where information flows freely and expectations are clearly defined, we empower our teams, partners, and clients to collaborate with confidence.",
+    image: aboutImage("Component 14.png"),
   },
   {
     id: "innovation",
     label: "Innovation",
-    titlePrefix: "Driving Change Through",
-    titleAccent: "Innovation",
+    title: "Driving Change Through Innovation",
     description:
-      "Innovation powers everything we build — from AI-first attribution to programmatic DOOH. We push boundaries so outdoor and omnichannel media get the same measurement rigor as digital.",
-    highlights: ["Innovation", "AI-first", "programmatic DOOH"],
+      "Innovation powers everything we build — from AI-first attribution to programmatic DOOH. We push boundaries so outdoor and omnichannel media get the same measurement rigor as digital, unlocking new possibilities for brands and media owners alike.",
+    image: aboutImage("Component 14.png"),
   },
   {
     id: "agility",
     label: "Agility",
-    titlePrefix: "Moving Faster With",
-    titleAccent: "Agility",
+    title: "Moving Faster With Agility",
     description:
-      "Agility lets us adapt campaigns in real time — optimizing bids, creatives, and delivery as markets shift. Speed without sacrificing precision keeps brands ahead.",
-    highlights: ["Agility", "real time", "optimizing"],
+      "Agility lets us adapt campaigns in real time — optimizing bids, creatives, and delivery as markets shift. Speed without sacrificing precision keeps brands ahead and ensures every impression works harder toward measurable outcomes.",
+    image: aboutImage("Component 14.png"),
   },
   {
     id: "energetic",
     label: "Energetic",
-    titlePrefix: "Staying Bold And",
-    titleAccent: "Energetic",
+    title: "Staying Bold And Energetic",
     description:
-      "An energetic culture fuels curiosity and collaboration. We bring that energy to every partnership — helping brands and media owners turn impressions into outcomes.",
-    highlights: ["energetic", "curiosity", "collaboration"],
+      "An energetic culture fuels curiosity and collaboration. We bring that energy to every partnership — helping brands and media owners turn impressions into outcomes with passion, purpose, and relentless forward momentum.",
+    image: aboutImage("Component 14.png"),
   },
-] as const;
+];
 
 export const aboutAwards: Award[] = [
   {
     id: "a1",
     year: "2025",
-    title: "Best AdTech Innovation — Industry Awards",
+    title: "Best Omni-Channel Campaign | Kasturi Cotton",
     image: aboutImage("2025_u-277x400 1.png"),
   },
   {
     id: "a2",
     year: "2024",
-    title: "Top Programmatic Platform — Exchange4media",
+    title: "Front Benchers 2024 | ASUS - Gold",
     image: aboutImage("2024_1_u-277x400 1.png"),
   },
   {
     id: "a3",
     year: "2024",
-    title: "Best DOOH Technology — Digiday",
+    title: "Front Benchers 2024 | Hyundai - Silver",
     image: aboutImage("2024_2_u-277x400 1.png"),
   },
   {
     id: "a4",
     year: "2024",
-    title: "Innovation in Attribution — MMA Global",
+    title: "Front Benchers 2024 | Raymond - Bronze",
     image: aboutImage("2024_3_u-277x400 1.png"),
   },
   {
     id: "a5",
     year: "2024",
-    title: "Omnichannel Leader — AdWeek",
+    title: "Front Benchers 2024 | Britannia - Bronze",
     image: aboutImage("2024_4_u-277x400 1.png"),
   },
   {
     id: "a6",
     year: "2023",
-    title: "Best Startup Firm — IAMAI",
+    title: "Programmatic Agency of the Year - Runners Up",
     image: aboutImage("2023_u-277x400 1.png"),
   },
   {
     id: "a7",
     year: "2023",
-    title: "AdTech Platform of the Year",
+    title: "Best Programmatic Out-Of-Home Activation | OnePlus - Gold (E4M)",
     image: aboutImage("2023_1_u-277x400 1.png"),
   },
   {
     id: "a8",
     year: "2022",
-    title: "Best Innovative Marketing Campaign — Silver Award",
+    title: "Best Programmatic Out-Of-Home Activation | HSBC - Bronze (E4M)",
     image: aboutImage("2022_u-277x400 1.png"),
   },
   {
     id: "a9",
     year: "2022",
-    title: "Top 10 AdTech Startups in APAC — APAC Business News",
-    image: aboutImage("2022_2_u-277x400 1.png"),
+    title: "Best Innovative Marketing Campaign | Amazon Prime Video - Silver (E4M)",
+    image: aboutImage("2022_1_u-277x400 1.png"),
   },
   {
     id: "a10",
-    year: "2021",
-    title: "Best Startup Firm — IAMAI",
-    image: aboutImage("2021_u-277x400 1.png"),
+    year: "2022",
+    title: "Best Programmatic Out-Of-Home Activation | NEXA, Maruti - Gold (E4M)",
+    image: aboutImage("2022_2_u-277x400 1.png"),
   },
   {
     id: "a11",
     year: "2021",
-    title: "Emerging AdTech Platform",
-    image: aboutImage("2021_2_u-277x400 1.png"),
+    title: "Best Regional Non-Traditional Outdoor Campaign – Frogfever",
+    image: aboutImage("2021_u-277x400 1.png"),
   },
   {
     id: "a12",
+    year: "2021",
+    title: "Best Outdoor Plan - Gold",
+    image: aboutImage("2021_2_u-277x400 1.png"),
+  },
+  {
+    id: "a13",
     year: "2019",
-    title: "Best Technology Platform — Exchange4media IDMA",
+    title: "Best Technology Provider for Programmatic Ads - Inkspell",
     image: aboutImage("2019_u-277x400 1.png"),
   },
 ];
@@ -144,7 +145,7 @@ export const leadershipTeam: TeamMember[] = [
   {
     id: "t1",
     name: "Gulab Patil",
-    role: "Co-founder & CEO",
+    role: "Founder & CEO",
     image: aboutImage("gulab_patil.png"),
   },
   {
@@ -156,85 +157,85 @@ export const leadershipTeam: TeamMember[] = [
   {
     id: "t3",
     name: "Siddharth Dabhade",
-    role: "Co-founder & CTO",
+    role: "Chief Business Officer",
     image: aboutImage("Siddharth Dabhade.png"),
   },
   {
     id: "t4",
     name: "Vaibhav Lonkar",
-    role: "Co-founder",
+    role: "Chief HRD",
     image: aboutImage("Vaibhav Lonkar.png"),
   },
   {
     id: "t5",
     name: "Merlin Coutinho",
-    role: "Head of Marketing",
+    role: "President, Marketing",
     image: aboutImage("Merlin Coutinho.png"),
   },
   {
     id: "t6",
     name: "Bill Nolte",
-    role: "VP — Sales & Partnerships",
+    role: "VP - Sales & Partnerships",
     image: aboutImage("Bill Nolte.png"),
   },
   {
     id: "t7",
-    name: "Nikhil Vikhe",
-    role: "Head of Product",
-    image: aboutImage("Nikhil Vikhe.png"),
+    name: "Valentine Ding",
+    role: "Senior Director, Demand - US",
+    image: aboutImage("Valentine Ding.png"),
   },
   {
     id: "t8",
     name: "Brendon Duffy",
-    role: "Director — Content & PR",
+    role: "Director, Demand - US",
     image: aboutImage("Brendon Duffy.png"),
   },
   {
     id: "t9",
     name: "Nikhil Chandaliya",
-    role: "President — Customer Success",
+    role: "President, Customer Success",
     image: aboutImage("Nikhil Chandaliya.png"),
   },
   {
     id: "t10",
     name: "Paresh Pathak",
-    role: "VP Engineering",
+    role: "VP, Engineering",
     image: aboutImage("Paresh Pathak.png"),
   },
   {
     id: "t11",
     name: "Jagdish Narigara",
-    role: "VP Finance",
+    role: "VP, Product",
     image: aboutImage("Jagdish Narigara.png"),
   },
   {
     id: "t12",
     name: "Vaibhav Prabhune",
-    role: "VP HR, Admin and Facilities",
+    role: "VP, Performance Business",
     image: aboutImage("Vaibhav Prabhune.png"),
   },
   {
     id: "t13",
-    name: "Valentine Ding",
-    role: "AVP Global Operations",
-    image: aboutImage("Valentine Ding.png"),
+    name: "Nikhil Vikhe",
+    role: "AVP, Strategic Alliances",
+    image: aboutImage("Nikhil Vikhe.png"),
   },
   {
     id: "t14",
     name: "Vishal Shirke",
-    role: "Head of Delivery",
+    role: "Head, Ad Operations",
     image: aboutImage("Vishal Shirke.png"),
   },
   {
     id: "t15",
     name: "Pramod Jadhav",
-    role: "Finance Head",
+    role: "Chief Architect",
     image: aboutImage("Pramod Jadhav.png"),
   },
   {
     id: "t16",
     name: "Shashikant Patil",
-    role: "Sr. Lead — Integration",
+    role: "Director, Integration",
     image: aboutImage("Shashikant Patil.png"),
   },
 ];
@@ -243,25 +244,25 @@ export const advisors: TeamMember[] = [
   {
     id: "ad1",
     name: "Sam Balsara",
-    role: "Advisor",
+    role: "",
     image: aboutImage("Sam Balsara.png"),
   },
   {
     id: "ad2",
     name: "Anand Das",
-    role: "Advisor",
+    role: "",
     image: aboutImage("Anand Das.png"),
   },
   {
     id: "ad3",
     name: "Aditya Kulkarni",
-    role: "Advisor",
+    role: "",
     image: aboutImage("Aditiya Kulkarni.png"),
   },
   {
     id: "ad4",
     name: "Sharad Gadsing",
-    role: "Advisor",
+    role: "",
     image: aboutImage("Sharad Gadsing.png"),
   },
 ];
@@ -271,11 +272,11 @@ export const aboutFaqs = [
     id: "about-1",
     question: "What is Lemma Technologies?",
     answer:
-      "Lemma is an AI-first omnichannel AdTech platform that helps brands, agencies, and media owners plan, activate, optimize, and measure campaigns across DOOH, CTV, OTT, Mobile, and Audio channels.",
+      "Lemma is an AI-first omnichannel Adtech platform that helps brands, agencies, and media owners plan, activate, optimize, and measure campaigns across DOOH, CTV, OTT, Mobile, and Audio channels.",
   },
   {
     id: "about-2",
-    question: "Who can use Lemma's platform?",
+    question: "Who can use Lemma’s platform?",
     answer:
       "Brands, agencies, and media owners use Lemma to run and monetize omnichannel campaigns—from global advertisers activating DOOH and CTV to publishers unlocking premium demand.",
   },
@@ -305,10 +306,23 @@ export const aboutFaqs = [
   },
 ] as const;
 
+export const aboutPrinciples = {
+  vision: {
+    title: "Our Vision",
+    description:
+      "To revolutionize advertising through innovation, transparency, and technology—creating meaningful connections between brands and audiences while driving sustainable growth.",
+    image: aboutImage("Component 12.png"),
+  },
+  mission: {
+    title: "Our Mission",
+    description:
+      "Is to be the driving force behind business success in the digital world, offering a platform that is transparent, cost-effective, and highly adaptable, supported with the right tools to navigate the dynamic digital ecosystem.",
+    image: aboutImage("Component 13.png"),
+  },
+} as const;
+
 export const aboutAssets = {
-  hero: aboutImage("hero_bannerimage.png"),
-  community: aboutImage("creative minds.png"),
-  mission: aboutImage("mission.png"),
-  vision: aboutImage("vision.png"),
-  values: aboutImage("our values.png"),
+  hero: aboutImage("about-hero.png"),
+  community: aboutImage("Component 11.png"),
+  values: aboutImage("Component 14.png"),
 } as const;
