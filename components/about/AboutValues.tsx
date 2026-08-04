@@ -69,7 +69,7 @@ export function AboutValues() {
             </div>
 
             <div className="group relative flex min-h-[300px] items-center justify-center bg-[#eef1f4] p-8 md:min-h-[400px] md:p-10">
-              <div className="relative aspect-square w-full max-w-[380px] grayscale transition-[filter] duration-500 group-hover:grayscale-0">
+              <div className="relative aspect-square w-full max-w-[380px]">
                 <Image
                   src={active.image}
                   alt={`${active.label} — Lemma values`}

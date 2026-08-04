@@ -7,7 +7,7 @@ export function productAsset(filename: string) {
 }
 
 export const integralAssets = {
-  heroFunnel: productImage("Frame 1597890042.png"),
+  heroFunnel: productImage("Frame 1597890042-nobg.png"),
   keyword: productImage("ChatGPT Image Aug 3, 2026, 06_53_07 PM 1.png"),
   reinforce: productImage("ChatGPT Image Aug 3, 2026, 07_25_30 PM 1.png"),
   results: productImage("ChatGPT Image Aug 3, 2026, 07_21_05 PM 1.png"),

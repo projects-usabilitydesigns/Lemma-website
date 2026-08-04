@@ -12,7 +12,7 @@ export function AboutCommunity() {
       <Container>
         {/* Desktop — Figma: frame 1421×751, text cutout 746×298 @ x:675 */}
         <FadeUp className="group relative mx-auto hidden w-full max-w-[1421px] overflow-hidden rounded-[40px] lg:block">
-          <div className="relative aspect-[1421/751] w-full grayscale transition-[filter] duration-700 group-hover:grayscale-0">
+          <div className="relative aspect-[1421/751] w-full">
             <Image
               src={aboutAssets.community}
               alt="Lemma team — Lemmagicians at work"
@@ -58,7 +58,7 @@ export function AboutCommunity() {
           </FadeUp>
           <FadeUp
             delay={0.08}
-            className="group relative mx-auto aspect-[1421/751] w-full max-w-[1421px] overflow-hidden rounded-[28px] grayscale transition-[filter] duration-700 group-hover:grayscale-0"
+            className="group relative mx-auto aspect-[1421/751] w-full max-w-[1421px] overflow-hidden rounded-[28px]"
           >
             <Image
               src={aboutAssets.community}

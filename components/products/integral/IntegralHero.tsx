@@ -50,16 +50,16 @@ export function IntegralHero() {
             initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.15 }}
-            className="relative mx-auto w-full max-w-[560px]"
+            className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center pt-4 md:pt-6 lg:max-w-[680px] lg:translate-y-4"
           >
             <div className="relative aspect-[781/820] w-full">
               <Image
                 src={integralAssets.heroFunnel}
                 alt="Lemma Integral full funnel — Reach, Reinforce, Results, Outcome"
                 fill
-                className="object-contain object-center mix-blend-multiply"
+                className="object-contain object-center"
                 priority
-                sizes="(max-width: 1024px) 100vw, 560px"
+                sizes="(max-width: 1024px) 100vw, 680px"
               />
             </div>
           </motion.div>

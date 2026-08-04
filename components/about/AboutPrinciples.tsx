@@ -32,7 +32,7 @@ function PrincipleCard({
           {description}
         </p>
       </div>
-      <div className="relative min-h-[220px] grayscale transition-[filter] duration-500 group-hover:grayscale-0 sm:min-h-full">
+      <div className="relative min-h-[220px] sm:min-h-full">
         <Image
           src={image}
           alt={title}
