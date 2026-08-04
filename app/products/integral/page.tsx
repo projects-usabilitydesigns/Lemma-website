@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { AboutCta } from "@/components/about/AboutCta";
+import {
+  IntegralHero,
+  IntegralDeliver,
+  IntegralFeatures,
+  IntegralAudienceGraph,
+  IntegralFaq,
+} from "@/components/products/integral";
+
+export const metadata: Metadata = {
+  title: "Lemma Integral",
+  description:
+    "Lemma Integral is a full-funnel platform that transforms OOH impressions into impactful results — reach, reinforce, and convert with measurable outcomes.",
+};
+
+export default function IntegralProductPage() {
+  return (
+    <>
+      <Header />
+      <main>
+        <IntegralHero />
+        <IntegralDeliver />
+        <IntegralFeatures />
+        <IntegralAudienceGraph />
+        <IntegralFaq />
+        <AboutCta />
+      </main>
+      <Footer />
+    </>
+  );
+}

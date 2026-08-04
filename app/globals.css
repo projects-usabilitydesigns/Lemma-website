@@ -34,6 +34,7 @@
     #f05a27 100%
   );
   --gradient-blue: linear-gradient(90deg, #008fdb 0%, #005481 100%);
+  --gradient-cta: linear-gradient(90deg, #008fdb 0%, #f82d89 100%);
   --gradient-hero: linear-gradient(
     148.69deg,
     #fdf2f8 0%,
