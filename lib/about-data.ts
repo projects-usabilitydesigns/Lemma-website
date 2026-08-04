@@ -3,6 +3,7 @@ export type TeamMember = {
   name: string;
   role: string;
   image: string;
+  linkedin?: string;
 };
 
 export type Award = {
@@ -147,96 +148,112 @@ export const leadershipTeam: TeamMember[] = [
     name: "Gulab Patil",
     role: "Founder & CEO",
     image: aboutImage("gulab_patil.png"),
+    linkedin: "https://www.linkedin.com/in/gulab-patil-24aaa420",
   },
   {
     id: "t2",
     name: "Mayuresh Phadke",
     role: "Co-founder & COO",
     image: aboutImage("Mayuresh Phadke.png"),
+    linkedin: "https://www.linkedin.com/in/mayureshphadke",
   },
   {
     id: "t3",
     name: "Siddharth Dabhade",
     role: "Chief Business Officer",
     image: aboutImage("Siddharth Dabhade.png"),
+    linkedin: "https://www.linkedin.com/in/siddharthdabhade",
   },
   {
     id: "t4",
     name: "Vaibhav Lonkar",
     role: "Chief HRD",
     image: aboutImage("Vaibhav Lonkar.png"),
+    linkedin: "https://www.linkedin.com/in/vaibhavl",
   },
   {
     id: "t5",
     name: "Merlin Coutinho",
     role: "President, Marketing",
     image: aboutImage("Merlin Coutinho.png"),
+    linkedin: "https://www.linkedin.com/in/merlin-coutinho-72076030",
   },
   {
     id: "t6",
     name: "Bill Nolte",
     role: "VP - Sales & Partnerships",
     image: aboutImage("Bill Nolte.png"),
+    linkedin: "https://www.linkedin.com/in/billnolte28",
   },
   {
     id: "t7",
     name: "Valentine Ding",
     role: "Senior Director, Demand - US",
     image: aboutImage("Valentine Ding.png"),
+    linkedin: "https://www.linkedin.com/in/val-d-1682301ba",
   },
   {
     id: "t8",
     name: "Brendon Duffy",
     role: "Director, Demand - US",
     image: aboutImage("Brendon Duffy.png"),
+    linkedin: "https://www.linkedin.com/company/lemma-technologies",
   },
   {
     id: "t9",
     name: "Nikhil Chandaliya",
     role: "President, Customer Success",
     image: aboutImage("Nikhil Chandaliya.png"),
+    linkedin: "https://www.linkedin.com/in/nikhil-chandalia-a57a61217",
   },
   {
     id: "t10",
     name: "Paresh Pathak",
     role: "VP, Engineering",
     image: aboutImage("Paresh Pathak.png"),
+    linkedin: "https://www.linkedin.com/in/paresh-pathak-70770158",
   },
   {
     id: "t11",
     name: "Jagdish Narigara",
     role: "VP, Product",
     image: aboutImage("Jagdish Narigara.png"),
+    linkedin: "https://www.linkedin.com/in/jagdish-narigara-73660115",
   },
   {
     id: "t12",
     name: "Vaibhav Prabhune",
     role: "VP, Performance Business",
     image: aboutImage("Vaibhav Prabhune.png"),
+    linkedin: "https://www.linkedin.com/in/vaibhav-prabhune-90733139",
   },
   {
     id: "t13",
     name: "Nikhil Vikhe",
     role: "AVP, Strategic Alliances",
     image: aboutImage("Nikhil Vikhe.png"),
+    linkedin: "https://www.linkedin.com/in/nikhilvikhe",
   },
   {
     id: "t14",
     name: "Vishal Shirke",
     role: "Head, Ad Operations",
     image: aboutImage("Vishal Shirke.png"),
+    linkedin: "https://www.linkedin.com/in/vshirkeonlinemedia",
   },
   {
     id: "t15",
     name: "Pramod Jadhav",
     role: "Chief Architect",
     image: aboutImage("Pramod Jadhav.png"),
+    linkedin: "https://www.linkedin.com/in/jadhavpramod",
   },
   {
     id: "t16",
     name: "Shashikant Patil",
     role: "Director, Integration",
     image: aboutImage("Shashikant Patil.png"),
+    linkedin: "https://www.linkedin.com/in/shashikant-patil-bab79a18",
   },
 ];
 
@@ -246,24 +263,28 @@ export const advisors: TeamMember[] = [
     name: "Sam Balsara",
     role: "",
     image: aboutImage("Sam Balsara.png"),
+    linkedin: "https://www.linkedin.com/in/sambalsara",
   },
   {
     id: "ad2",
     name: "Anand Das",
     role: "",
     image: aboutImage("Anand Das.png"),
+    linkedin: "https://www.linkedin.com/in/ananddas",
   },
   {
     id: "ad3",
     name: "Aditya Kulkarni",
     role: "",
     image: aboutImage("Aditiya Kulkarni.png"),
+    linkedin: "https://www.linkedin.com/in/adityapkulkarni",
   },
   {
     id: "ad4",
     name: "Sharad Gadsing",
     role: "",
     image: aboutImage("Sharad Gadsing.png"),
+    linkedin: "https://www.linkedin.com/in/sharad-gadsing-97981b81",
   },
 ];
 
