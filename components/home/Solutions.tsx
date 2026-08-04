@@ -57,7 +57,7 @@ export function Solutions() {
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover object-bottom grayscale transition-transform duration-700 hover:scale-105"
+                  className="object-cover object-bottom transition-transform duration-700 hover:scale-105"
                 />
                 <p className="absolute left-4 top-4 text-[60px] font-extralight tracking-[-1.2px] text-[rgba(3,10,17,0.85)]">
                   {item.number}

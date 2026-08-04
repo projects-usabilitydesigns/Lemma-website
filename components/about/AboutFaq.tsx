@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Minus, Plus } from "lucide-react";
+import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -13,16 +14,16 @@ export function AboutFaq() {
   const [openId, setOpenId] = useState<string | null>(aboutFaqs[0]?.id ?? null);
 
   return (
-    <section id="faq" className="bg-[var(--color-cream-soft)] pb-16 md:pb-[100px] pt-16 md:pt-[100px]">
+    <section id="faq" className="bg-white pb-16 pt-8 md:pb-[100px] md:pt-10">
       <Container>
-        <div className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
+        <FadeUp className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
           <SectionLabel label="FAQ" align="center" dual />
-          <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Helpful resources before
+          <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+            Helpful Answers Before
             <br />
-            you get started
+            You Get Started
           </h2>
-        </div>
+        </FadeUp>
 
         <div className="mx-auto flex max-w-[1188px] flex-col gap-4">
           {aboutFaqs.map((item) => {
@@ -42,19 +43,17 @@ export function AboutFaq() {
                   )}
                   onClick={() => setOpenId(open ? null : item.id)}
                 >
-                  <span
-                    className={cn(
-                      "font-medium text-[var(--color-ink-deep)]",
-                      open ? "text-[22px] leading-6" : "py-2 text-[20px] leading-[26px]",
-                    )}
-                  >
+                  <span className="font-heading py-2 text-[22px] font-medium leading-[1.3] text-[var(--color-ink-deep)]">
                     {item.question}
                   </span>
-                  <span
-                    className="mt-0.5 flex size-[30px] shrink-0 items-center justify-center rounded-full bg-[var(--color-pink)] text-white"
-                    aria-hidden
-                  >
-                    {open ? <Minus className="size-4" /> : <Plus className="size-4" />}
+                  <span className="relative mt-0.5 size-[30px] shrink-0" aria-hidden>
+                    <Image
+                      src={open ? "/icons/faq-minus.svg" : "/icons/faq-plus.svg"}
+                      alt=""
+                      width={30}
+                      height={30}
+                      className="size-[30px]"
+                    />
                   </span>
                 </button>
                 <AnimatePresence initial={false}>
@@ -67,7 +66,7 @@ export function AboutFaq() {
                       transition={{ duration: 0.35, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-5 text-[14px] leading-5 text-[#424242]">
+                      <p className="px-5 pb-5 font-[family-name:var(--font-inter)] text-[18px] font-normal leading-[1.55] text-[#424242]">
                         {item.answer}
                       </p>
                     </motion.div>
@@ -78,11 +77,17 @@ export function AboutFaq() {
           })}
         </div>
 
-        <div className="mt-12 flex justify-center">
-          <Button href="/#faq" variant="primary">
+        <FadeUp className="mt-12 flex justify-center">
+          <Button
+            href="/#faq"
+            variant="primary"
+            arrow="right"
+            className="border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(248,45,137,0.28)]"
+            style={{ backgroundImage: "var(--gradient-cta)" }}
+          >
             VIEW ALL
           </Button>
-        </div>
+        </FadeUp>
       </Container>
     </section>
   );

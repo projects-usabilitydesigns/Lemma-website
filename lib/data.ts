@@ -85,7 +85,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "integral",
             title: "Integral",
             description: "Full-funnel platform",
-            href: "#products",
+            href: "/products/integral",
             iconColor: "#009352",
             iconSymbol: "∫",
           },
@@ -184,7 +184,7 @@ export const products: Product[] = [
     description:
       "Activate, retarget, and measure every OOH impression with precision—backed by deep audience analytics and attribution.",
     logo: "/images/products/integral.svg",
-    href: "#products",
+    href: "/products/integral",
   },
   {
     id: "delta",

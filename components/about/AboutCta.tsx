@@ -1,46 +1,98 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRef } from "react";
+import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { aboutImage } from "@/lib/about-data";
+
+function MagneticButton({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 200, damping: 20 });
+  const springY = useSpring(y, { stiffness: 200, damping: 20 });
+
+  const onMove = (e: React.MouseEvent) => {
+    const node = ref.current;
+    if (!node) return;
+    const rect = node.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    x.set(dx * 0.2);
+    y.set(dy * 0.2);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x: springX, y: springY }}
+      onMouseMove={onMove}
+      onMouseLeave={() => {
+        x.set(0);
+        y.set(0);
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+const lemmaximizeGradient = {
+  backgroundImage: "var(--gradient-cta)",
+  backgroundClip: "text",
+  WebkitBackgroundClip: "text",
+  color: "transparent",
+} as const;
 
 export function AboutCta() {
   return (
-    <section id="cta" className="relative overflow-hidden py-24 md:py-32">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 15% 0%, rgba(244,114,182,0.28), transparent 55%), radial-gradient(circle at 85% 20%, rgba(129,140,248,0.24), transparent 50%), radial-gradient(circle at 50% 100%, rgba(94,234,212,0.22), transparent 55%), linear-gradient(135.27deg, #fdf2f8 0%, #ede9fe 50%, #ecfccb 100%)",
-        }}
-      />
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute -left-20 top-10 size-72 rounded-full bg-pink-300/30 blur-3xl"
-        animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+    <section
+      id="cta"
+      className="relative flex h-[589.59px] items-center overflow-hidden"
+    >
+      <Image
+        src={aboutImage("Frame 1597889838.png")}
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+        priority={false}
       />
 
       <Container className="relative text-center">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-7">
-          <SectionLabel label="Join us" align="center" dual />
-          <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Want to Lemmaximize your
+        <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-6 md:gap-7">
+          <SectionLabel label="Let's talk" align="center" />
+          <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+            Want to <span style={lemmaximizeGradient}>Lemmaximize</span> your
             <br />
-            campaigns/inventory?
+            campaigns/ inventory?
           </h2>
-          <p className="max-w-xl text-[18px] leading-7 text-[var(--color-slate)]">
-            Partner with Lemma to turn outdoor and omnichannel impressions into measurable outcomes.
-          </p>          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Button href="mailto:contactus@lemmamedia.com" variant="primary" arrow="up-right">
-              Get in touch
-            </Button>
-            <Button href="/#products" variant="secondary" arrow="none">
-              See products
-            </Button>
+          <p className="max-w-xl text-[16px] leading-7 text-[var(--color-slate)] md:text-[18px]">
+            Tell us how to reach you and you&apos;ll hear from us in 24 hours.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <MagneticButton>
+              <Button
+                href="mailto:contactus@lemmamedia.com"
+                variant="primary"
+                arrow="up-right"
+                className="normal-case tracking-normal border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(248,45,137,0.28)]"
+                style={{ backgroundImage: "var(--gradient-cta)" }}
+              >
+                Get in touch
+              </Button>
+            </MagneticButton>
+            <MagneticButton>
+              <Button href="/#products" variant="secondary" arrow="none">
+                See products
+              </Button>
+            </MagneticButton>
           </div>
-        </div>
+        </FadeUp>
       </Container>
     </section>
   );

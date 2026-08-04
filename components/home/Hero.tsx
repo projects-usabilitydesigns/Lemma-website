@@ -56,7 +56,7 @@ export function Hero() {
       className="relative overflow-hidden pb-16 pt-[120px] md:pb-24 md:pt-[160px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
-      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-50">
+      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%]">
         <Image src="/images/hero-bg.png" alt="" fill className="object-cover object-left" priority />
       </motion.div>
       <div
@@ -70,25 +70,27 @@ export function Hero() {
       <Container className="relative">
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <div className="flex min-h-[360px] flex-col justify-between gap-10">
-            <div className="space-y-4">
+            <div className="space-y-6">
               <BlurReveal>
-                <h1 className="text-[40px] font-semibold leading-[1.05] text-[var(--color-ink)] md:text-[56px] md:leading-[51.84px]">
+                <h1 className="font-heading text-[40px] font-semibold leading-[1.05] tracking-[-0.72px] text-[var(--color-ink)] md:text-[56px] md:leading-[1.05]">
                   Outdoor to Outcome.
                 </h1>
               </BlurReveal>
               <FadeUp delay={0.1}>
-                <h2 className="text-[24px] font-semibold tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.2]">
-                  An AI-First Full-Funnel Attribution Platform
-                </h2>
-              </FadeUp>
-              <FadeUp delay={0.18}>
-                <p className="max-w-xl text-[18px] leading-[1.4] text-[var(--color-ink)] md:text-[22px]">
-                  AI Powered platform. Full-funnel performance across DOOH, CTV, mobile, and digital
+                <p className="font-heading max-w-xl text-[24px] font-medium leading-[1.35] tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.3]">
+                  AI Powered platform. Full-funnel
+                  <br />
+                  performance across DOOH, CTV, mobile, and digital
                 </p>
               </FadeUp>
-              <FadeUp delay={0.26}>
-                <Button href="#products" variant="ghost" arrow="up-right">
-                  learn more
+              <FadeUp delay={0.2} className="pt-1">
+                <Button
+                  href="#products"
+                  variant="outline"
+                  arrow="none"
+                  className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                >
+                  Learn More
                 </Button>
               </FadeUp>
             </div>
@@ -118,6 +120,19 @@ export function Hero() {
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] to-black/65" />
+
+                {/* Pink LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
+                <div className="absolute left-[12%] top-[8%] z-10 w-[55%] max-w-[382px] md:left-[143px] md:top-[38px] md:w-[382px]">
+                  <Image
+                    src="/images/products/integral.svg"
+                    alt="Lemma Integral"
+                    width={382}
+                    height={35}
+                    className="h-[22px] w-auto object-contain object-left md:h-[35px] md:w-[382px]"
+                    priority
+                  />
+                </div>
+
                 <button
                   type="button"
                   aria-label="Play demo video"
