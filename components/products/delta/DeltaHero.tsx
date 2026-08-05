@@ -12,7 +12,7 @@ export function DeltaHero() {
     <section className="relative mx-auto w-full max-w-[1920px] overflow-hidden md:h-[664px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
 
-      <Container className="relative flex h-full items-center py-10 md:py-0">
+      <Container className="relative flex h-full items-center pt-[100px] pb-12 md:pt-[88px] md:pb-0">
         <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,580px)] lg:gap-10 xl:gap-14">
           <div className="max-w-[560px] space-y-6">
             <motion.h1

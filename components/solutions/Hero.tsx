@@ -55,7 +55,7 @@ export function BrandsHero({
   stats?: BrandsStat[];
 }) {
   return (
-    <section className="relative overflow-hidden pb-10 pt-10 md:pb-12 md:pt-14">
+    <section className="relative overflow-hidden pb-[44px] pt-[121px] md:pb-[53px] md:pt-[135px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div
         className="pointer-events-none absolute inset-0"

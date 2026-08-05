@@ -9,7 +9,7 @@ import { careersHero } from "@/lib/careers-data";
 
 export function CareersHero() {
   return (
-    <section className="relative overflow-hidden pb-14 pt-10 md:pb-20 md:pt-14">
+    <section className="relative overflow-hidden pb-14 pt-[100px] md:pb-20 md:pt-[112px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div
         className="pointer-events-none absolute inset-0"
