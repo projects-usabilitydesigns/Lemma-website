@@ -43,30 +43,44 @@ function FeatureCard({ feature }: { feature: BrandsFeature }) {
       <h3 className="font-heading text-[18px] font-semibold text-[var(--color-ink)] md:text-[20px]">
         {feature.title}
       </h3>
-      <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-slate)]">
+      <p className="mt-2 text-[16px] leading-relaxed text-[var(--color-slate)]">
         {feature.description}
       </p>
     </motion.article>
   );
 }
 
-export function WhyLemma() {
+const brandsDefaults = {
+  title: "Outcomes, not just reach.",
+  description:
+    "Lemma helps brands activate outdoor attention across every screen and measure what actually moves the business.",
+  features: brandsWhyFeatures,
+};
+
+export function WhyLemma({
+  title = brandsDefaults.title,
+  description = brandsDefaults.description,
+  features = brandsDefaults.features,
+}: {
+  title?: string;
+  description?: string;
+  features?: BrandsFeature[];
+}) {
   return (
     <section className="bg-white py-16 md:py-[90px]">
       <Container>
         <FadeUp className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Why Lemma" align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Outcomes, not just reach.
+            {title}
           </h2>
-          <p className="text-[16px] leading-relaxed text-[var(--color-slate)] md:text-[18px]">
-            Lemma helps brands activate outdoor attention across every screen and measure what
-            actually moves the business.
+          <p className="text-[18px] leading-relaxed text-[var(--color-slate)] md:text-[20px]">
+            {description}
           </p>
         </FadeUp>
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5" delay={0.08}>
-          {brandsWhyFeatures.map((feature) => (
+          {features.map((feature) => (
             <FeatureCard key={feature.id} feature={feature} />
           ))}
         </Stagger>

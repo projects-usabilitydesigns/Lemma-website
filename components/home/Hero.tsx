@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { Play } from "lucide-react";
 import { BlurReveal, FadeRight, FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { VideoModal } from "@/components/ui/VideoModal";
 import { useCountUp } from "@/hooks/useCountUp";
 import { heroStats } from "@/lib/data";
 import { cn } from "@/lib/utils";
+
+const HERO_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
 
 function StatItem({
   end,
@@ -43,6 +46,7 @@ function StatItem({
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -53,7 +57,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pb-16 pt-[120px] md:pb-24 md:pt-[160px]"
+      className="relative overflow-hidden pb-16 pt-[138px] md:pb-24 md:pt-[184px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%]">
@@ -88,6 +92,7 @@ export function Hero() {
                   href="#products"
                   variant="outline"
                   arrow="none"
+                  lift={false}
                   className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
                 >
                   Learn More
@@ -136,9 +141,10 @@ export function Hero() {
                 <button
                   type="button"
                   aria-label="Play demo video"
-                  className="absolute left-1/2 top-[42%] flex size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-pink-alt)] shadow-[0px_10px_40px_-5px_#ed2e80] transition-transform duration-300 group-hover:scale-110"
+                  onClick={() => setVideoOpen(true)}
+                  className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-pink-alt)] shadow-[0px_10px_40px_-5px_#ed2e80] transition-transform duration-300 group-hover:scale-110"
                 >
-                  <Play className="ml-1 size-8 fill-white text-white" />
+                  <Play className="ml-0.5 size-[27px] fill-white text-white" />
                 </button>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-[30px]">
                   <p className="mb-2.5 text-[14px] font-semibold uppercase tracking-[2px] text-white/70 md:text-[16px]">
@@ -153,6 +159,13 @@ export function Hero() {
           </FadeRight>
         </div>
       </Container>
+
+      <VideoModal
+        open={videoOpen}
+        title="Lemma platform demo"
+        videoUrl={HERO_DEMO_VIDEO}
+        onClose={() => setVideoOpen(false)}
+      />
     </section>
   );
 }

@@ -70,7 +70,7 @@ export const brandsHero = {
   gradientTitle: "Lemmaximize your impact!",
   description:
     "When you team up with the world’s largest omnichannel platform, you gain access to audience-centric advertising solutions. Today’s tech? Nailed it. Tomorrow’s trends? We’re already on it.",
-  primaryCta: { label: "Advertise with us", href: "#cta" },
+  primaryCta: { label: "Advertise With Us", href: "#cta" },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
   image: "/images/solutions/brands-hero-billboard.png",
 } as const;

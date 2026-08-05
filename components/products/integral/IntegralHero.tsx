@@ -1,14 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { VideoModal } from "@/components/ui/VideoModal";
 import { integralAssets } from "@/lib/integral-data";
 import { animation } from "@/lib/design-system";
 
+const INTEGRAL_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
+
 export function IntegralHero() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <section className="relative mx-auto w-full max-w-[1920px] overflow-hidden md:h-[664px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
@@ -39,9 +45,26 @@ export function IntegralHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.2 }}
+              className="flex flex-wrap items-center gap-3"
             >
-              <Button href="#cta" variant="primary" arrow="right">
-                Advertise with us
+              <Button
+                type="button"
+                variant="primary"
+                arrow="none"
+                lift={false}
+                onClick={() => setVideoOpen(true)}
+                ariaLabel="Watch Integral in action"
+                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+              >
+                Watch In Action
+              </Button>
+              <Button
+                href="#cta"
+                variant="outline"
+                arrow="right"
+                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+              >
+                Advertise With Us
               </Button>
             </motion.div>
           </div>
@@ -65,6 +88,13 @@ export function IntegralHero() {
           </motion.div>
         </div>
       </Container>
+
+      <VideoModal
+        open={videoOpen}
+        title="Lemma Integral in action"
+        videoUrl={INTEGRAL_DEMO_VIDEO}
+        onClose={() => setVideoOpen(false)}
+      />
     </section>
   );
 }
