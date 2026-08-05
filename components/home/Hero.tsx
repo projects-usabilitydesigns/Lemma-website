@@ -60,7 +60,7 @@ export function Hero() {
       className="relative overflow-hidden pb-16 pt-[138px] md:pb-24 md:pt-[184px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
-      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%]">
+      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-80">
         <Image src="/images/hero-bg.png" alt="" fill className="object-cover object-left" priority />
       </motion.div>
       <div
