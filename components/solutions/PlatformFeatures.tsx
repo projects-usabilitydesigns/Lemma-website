@@ -40,26 +40,37 @@ function CapabilityCard({ item }: { item: BrandsCapability }) {
       <h3 className="font-heading text-[17px] font-semibold text-[var(--color-ink)]">
         {item.title}
       </h3>
-      <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-slate)]">
+      <p className="mt-2 text-[16px] leading-relaxed text-[var(--color-slate)]">
         {item.description}
       </p>
     </motion.article>
   );
 }
 
-export function PlatformFeatures() {
+const brandsDefaults = {
+  title: "Everything brands need to activate with confidence",
+  items: brandsCapabilities,
+};
+
+export function PlatformFeatures({
+  title = brandsDefaults.title,
+  items = brandsDefaults.items,
+}: {
+  title?: string;
+  items?: BrandsCapability[];
+}) {
   return (
-    <section className="bg-[var(--color-cream-soft)] py-16 md:py-[90px]">
+    <section className="bg-[#ECF1F4] py-16 md:py-[90px]">
       <Container>
         <FadeUp className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Platform capabilities" align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Everything brands need to activate with confidence
+            {title}
           </h2>
         </FadeUp>
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" delay={0.06}>
-          {brandsCapabilities.map((item) => (
+          {items.map((item) => (
             <CapabilityCard key={item.id} item={item} />
           ))}
         </Stagger>

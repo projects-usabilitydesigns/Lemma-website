@@ -12,6 +12,18 @@ import { useCountUp } from "@/hooks/useCountUp";
 import { brandsHero, brandsStats, type BrandsStat } from "@/lib/solutions-brands-data";
 import { animation } from "@/lib/design-system";
 
+type HeroData = {
+  breadcrumb: readonly { label: string; href: string }[];
+  label: string;
+  title: string;
+  gradientTitle: string;
+  description: string;
+  primaryCta: { label: string; href: string };
+  secondaryCta: { label: string; href: string };
+  image: string;
+  imageAlt?: string;
+};
+
 function StatItem({
   end,
   decimals = 0,
@@ -35,9 +47,15 @@ function StatItem({
   );
 }
 
-export function BrandsHero() {
+export function BrandsHero({
+  data = brandsHero,
+  stats = brandsStats,
+}: {
+  data?: HeroData;
+  stats?: BrandsStat[];
+}) {
   return (
-    <section className="relative overflow-hidden pb-10 pt-[100px] md:pb-12 md:pt-[112px]">
+    <section className="relative overflow-hidden pb-[44px] pt-[121px] md:pb-[53px] md:pt-[135px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div
         className="pointer-events-none absolute inset-0"
@@ -55,10 +73,10 @@ export function BrandsHero() {
                 aria-label="Breadcrumb"
                 className="flex flex-wrap items-center gap-1.5 text-[13px] text-[var(--color-slate)]"
               >
-                {brandsHero.breadcrumb.map((crumb, index) => (
+                {data.breadcrumb.map((crumb, index) => (
                   <span key={crumb.href} className="inline-flex items-center gap-1.5">
                     {index > 0 ? <ChevronRight className="size-3.5 opacity-60" aria-hidden /> : null}
-                    {index === brandsHero.breadcrumb.length - 1 ? (
+                    {index === data.breadcrumb.length - 1 ? (
                       <span className="font-medium text-[var(--color-ink-muted)]">{crumb.label}</span>
                     ) : (
                       <Link href={crumb.href} className="transition hover:text-[var(--color-ink)]">
@@ -71,7 +89,7 @@ export function BrandsHero() {
             </FadeUp>
 
             <FadeUp delay={0.05}>
-              <SectionLabel label={brandsHero.label} />
+              <SectionLabel label={data.label} />
             </FadeUp>
 
             <div className="space-y-3">
@@ -81,7 +99,7 @@ export function BrandsHero() {
                 transition={{ duration: animation.duration.slow, ease: animation.easeOut }}
                 className="font-heading text-[34px] font-semibold leading-[1.08] text-[var(--color-ink)] md:text-[48px]"
               >
-                {brandsHero.title}
+                {data.title}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, scale: 0.96 }}
@@ -92,30 +110,34 @@ export function BrandsHero() {
                   backgroundImage: "linear-gradient(90deg, #f82d89 0%, #6b5cff 50%, #008fdb 100%)",
                 }}
               >
-                {brandsHero.gradientTitle}
+                {data.gradientTitle}
               </motion.p>
               <FadeUp delay={0.18}>
-                <p className="max-w-xl text-[15px] leading-relaxed text-[var(--color-ink-muted)] md:text-[17px]">
-                  {brandsHero.description}
+                <p className="max-w-xl text-[17px] leading-relaxed text-[var(--color-ink-muted)] md:text-[19px]">
+                  {data.description}
                 </p>
               </FadeUp>
             </div>
 
             <Stagger className="flex flex-wrap items-center gap-3" delay={0.22}>
               <motion.div variants={staggerItem}>
-                <a
-                  href={brandsHero.primaryCta.href}
-                  className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[var(--color-pink)] px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[2px] text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(248,45,137,0.35)]"
+                <Button
+                  href={data.primaryCta.href}
+                  variant="primary"
+                  arrow="none"
+                  className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
                 >
-                  {brandsHero.primaryCta.label}
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                    ↗
-                  </span>
-                </a>
+                  {data.primaryCta.label}
+                </Button>
               </motion.div>
               <motion.div variants={staggerItem}>
-                <Button href={brandsHero.secondaryCta.href} variant="outline" arrow="none">
-                  {brandsHero.secondaryCta.label}
+                <Button
+                  href={data.secondaryCta.href}
+                  variant="outline"
+                  arrow="right"
+                  className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                >
+                  {data.secondaryCta.label}
                 </Button>
               </motion.div>
             </Stagger>
@@ -124,7 +146,7 @@ export function BrandsHero() {
               className="grid grid-cols-2 gap-5 border-t border-[var(--color-border)] pt-5 sm:grid-cols-4"
               delay={0.28}
             >
-              {brandsStats.map((stat) => (
+              {stats.map((stat) => (
                 <motion.div key={stat.id} variants={staggerItem}>
                   <StatItem {...stat} end={stat.value} />
                 </motion.div>
@@ -135,8 +157,8 @@ export function BrandsHero() {
           <FadeLeft delay={0.12}>
             <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] shadow-[0_20px_50px_rgba(9,19,26,0.14)] md:aspect-[4/3]">
               <Image
-                src={brandsHero.image}
-                alt="Cityscape with outdoor billboard advertising"
+                src={data.image}
+                alt={data.imageAlt ?? data.title}
                 fill
                 priority
                 className="object-cover object-center"

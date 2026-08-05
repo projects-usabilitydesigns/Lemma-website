@@ -35,29 +35,43 @@ function ChannelCard({ channel }: { channel: BrandsChannel }) {
       <h3 className="font-heading text-[18px] font-semibold text-[var(--color-ink)]">
         {channel.title}
       </h3>
-      <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-slate)]">
+      <p className="mt-2 text-[16px] leading-relaxed text-[var(--color-slate)]">
         {channel.description}
       </p>
     </motion.article>
   );
 }
 
-export function ChannelGrid() {
+const brandsDefaults = {
+  title: "Activate across every screen and environment",
+  description:
+    "If there’s a new platform, we’ll help you gain value from it—with precise targeting and measurable engagement.",
+  channels: brandsChannels,
+};
+
+export function ChannelGrid({
+  title = brandsDefaults.title,
+  description = brandsDefaults.description,
+  channels = brandsDefaults.channels,
+}: {
+  title?: string;
+  description?: string;
+  channels?: BrandsChannel[];
+}) {
   return (
-    <section className="bg-[var(--color-cream-soft)] py-16 md:py-[90px]">
+    <section className="bg-[#ECF1F4] py-16 md:py-[90px]">
       <Container>
         <FadeUp className="mx-auto mb-12 max-w-3xl space-y-4 text-center">
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Activate across every screen and environment
+            {title}
           </h2>
-          <p className="text-[16px] leading-relaxed text-[var(--color-slate)] md:text-[18px]">
-            If there’s a new platform, we’ll help you gain value from it—with precise targeting and
-            measurable engagement.
+          <p className="text-[18px] leading-relaxed text-[var(--color-slate)] md:text-[20px]">
+            {description}
           </p>
         </FadeUp>
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" delay={0.08}>
-          {brandsChannels.map((channel) => (
+          {channels.map((channel) => (
             <ChannelCard key={channel.id} channel={channel} />
           ))}
         </Stagger>
