@@ -57,7 +57,7 @@ export function Header() {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 bg-white/95 shadow-[0px_4px_10px_rgba(0,0,0,0.08)] backdrop-blur-[10px] transition-all duration-300"
+      className="relative z-50 bg-white shadow-[0px_4px_10px_rgba(0,0,0,0.08)]"
       onMouseLeave={scheduleCloseMega}
     >
       <Container className="relative flex h-[90px] items-center justify-between">

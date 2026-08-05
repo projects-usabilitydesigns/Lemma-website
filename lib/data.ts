@@ -93,7 +93,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "delta",
             title: "Delta",
             description: "Demand-side platform",
-            href: "#products",
+            href: "/products/delta",
             iconColor: "#f82d89",
             iconSymbol: "Δ",
           },
@@ -192,7 +192,7 @@ export const products: Product[] = [
     description:
       "Scale DOOH and CTV campaigns with automated bidding, real-time optimization, and maximum reach.",
     logo: "/images/products/delta.svg",
-    href: "#products",
+    href: "/products/delta",
   },
   {
     id: "sigma",
