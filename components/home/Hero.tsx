@@ -82,9 +82,8 @@ export function Hero() {
               </BlurReveal>
               <FadeUp delay={0.1}>
                 <p className="font-heading max-w-xl text-[24px] font-medium leading-[1.35] tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.3]">
-                  AI Powered platform. Full-funnel
-                  <br />
-                  performance across DOOH, CTV, mobile, and digital
+                  Full-funnel AI-powered platform driving performance across DOOH, CTV, mobile &amp;
+                  digital
                 </p>
               </FadeUp>
               <FadeUp delay={0.2} className="pt-1">
