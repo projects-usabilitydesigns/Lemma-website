@@ -24,7 +24,7 @@ export const careersHero = {
   title: "Celebrating the heart & soul of LEMMA",
   description:
     "Join a workplace where ideas are valued and people thrive. Together, we build technology that creates lasting impact.",
-  primaryCta: { label: "Discover our story", href: "#gallery" },
+  primaryCta: { label: "Discover Our Story", href: "#gallery" },
   image: "/images/careers/hero-puzzle.png",
 } as const;
 
@@ -175,5 +175,5 @@ export const careersCta = {
   titleAfter: "your campaigns/ inventory?",
   description: "Get in touch with us and start your journey with us today.",
   primaryCta: { label: "Contact Us", href: "mailto:contactus@lemmamedia.com" },
-  secondaryCta: { label: "Request Demo", href: "/#cta" },
+  secondaryCta: { label: "Request Demo", href: "/request-demo" },
 } as const;

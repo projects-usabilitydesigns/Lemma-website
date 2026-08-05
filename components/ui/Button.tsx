@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { useDemoCta } from "@/components/request-demo/DemoModalProvider";
 import { cn } from "@/lib/utils";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "link";
@@ -46,6 +47,7 @@ export function Button({
   lift = true,
 }: ButtonProps) {
   const ArrowIcon = arrow === "up-right" ? ArrowUpRight : ArrowRight;
+  const demoCta = useDemoCta(href ?? "", typeof children === "string" ? children : ariaLabel);
 
   const inner = (
     <>
@@ -75,7 +77,13 @@ export function Button({
   if (href) {
     return (
       <motion.div whileHover={hoverMotion} whileTap={tapMotion}>
-        <Link href={href} aria-label={ariaLabel} className={classes} style={resolvedStyle}>
+        <Link
+          href={demoCta.href}
+          onClick={demoCta.onClick}
+          aria-label={ariaLabel}
+          className={classes}
+          style={resolvedStyle}
+        >
           {inner}
         </Link>
       </motion.div>

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { registerSmoothScroll } from "@/lib/smooth-scroll";
 
 export function SmoothScrollProvider({
   children,
@@ -19,6 +20,8 @@ export function SmoothScrollProvider({
       smoothWheel: true,
     });
 
+    registerSmoothScroll(lenis);
+
     let frame = 0;
     const raf = (time: number) => {
       lenis.raf(time);
@@ -28,6 +31,7 @@ export function SmoothScrollProvider({
 
     return () => {
       cancelAnimationFrame(frame);
+      registerSmoothScroll(null);
       lenis.destroy();
     };
   }, [reduced]);

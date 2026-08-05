@@ -6,6 +6,7 @@ import type {
   BrandsKpi,
   BrandsStat,
 } from "@/lib/solutions-brands-data";
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
 
 export const mediaOwnersHero = {
   breadcrumb: [
@@ -18,7 +19,7 @@ export const mediaOwnersHero = {
   gradientTitle: "Lemmaster your inventory!",
   description:
     "Your Screens. Your Rules. Our Global Network. Partner with us to monetize, manage, and meticulously measure every aspect of your inventory.",
-  primaryCta: { label: "Partner With Us", href: "#cta" },
+  primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
   image: "/images/solutions/media-owners-hero.png",
   imageAlt: "Media operations control room with multi-screen analytics and city skyline",
@@ -141,7 +142,7 @@ export const mediaOwnersJourney = {
     "Creative controls that enforce quality and brand safety standards",
     "Global demand access that keeps your screens working harder",
   ],
-  cta: { label: "Partner With Us", href: "#cta" },
+  cta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
 } as const;
 
 export const mediaOwnersKpis: BrandsKpi[] = [
@@ -258,7 +259,7 @@ export const mediaOwnersCta = {
   title: "Want to Lemmaximize your inventory?",
   description:
     "Tell us how to reach you and you’ll hear from us in 24 hours. Let’s unlock more value from every screen.",
-  primaryCta: { label: "Partner With Us", href: "mailto:contactus@lemmamedia.com" },
-  secondaryCta: { label: "Get In Touch", href: "#cta" },
+  primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
+  secondaryCta: { label: "Get In Touch", href: "/contact-us" },
   image: "/images/solutions/owners.jpg",
 } as const;

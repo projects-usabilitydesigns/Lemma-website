@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { FadeLeft, FadeRight } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { useDemoCta } from "@/components/request-demo/DemoModalProvider";
 import { brandsJourney, brandsKpis, type BrandsKpi } from "@/lib/solutions-brands-data";
 
 type JourneyData = {
@@ -25,6 +26,8 @@ export function JourneySection({
   chartTitle?: string;
   chartLegend?: { primary: string; secondary: string };
 }) {
+  const cta = useDemoCta(data.cta.href, data.cta.label);
+
   return (
     <section className="bg-white py-16 md:py-[90px]">
       <Container>
@@ -49,7 +52,8 @@ export function JourneySection({
                 ))}
               </ul>
               <a
-                href={data.cta.href}
+                href={cta.href}
+                onClick={cta.onClick}
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--color-pink)] px-6 py-3 text-[14px] font-semibold uppercase tracking-[2px] text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(248,45,137,0.35)]"
               >
                 {data.cta.label}

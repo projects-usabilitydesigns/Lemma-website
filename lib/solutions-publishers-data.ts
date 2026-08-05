@@ -6,6 +6,7 @@ import type {
   BrandsKpi,
   BrandsStat,
 } from "@/lib/solutions-brands-data";
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
 
 export const publishersHero = {
   breadcrumb: [
@@ -18,7 +19,7 @@ export const publishersHero = {
   gradientTitle: "Programmatic monetization, maximized",
   description:
     "Unlock premium demand, protect brand safety, and grow yield across digital, CTV, and emerging formats—without giving up control of your inventory.",
-  primaryCta: { label: "Partner With Us", href: "#cta" },
+  primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
   image: "/images/solutions/publishers-hero.png",
   imageAlt: "LEMMA digital billboard over a city highway at sunset",
@@ -141,7 +142,7 @@ export const publishersJourney = {
     "Optimize floors, packages, and priorities with live insights",
     "Expand into CTV and omnichannel formats as audiences shift",
   ],
-  cta: { label: "Partner With Us", href: "#cta" },
+  cta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
 } as const;
 
 export const publishersKpis: BrandsKpi[] = [
@@ -258,7 +259,7 @@ export const publishersCta = {
   title: "Want to Lemmaximize your publisher revenue?",
   description:
     "Tell us how to reach you and you’ll hear from us in 24 hours. Let’s turn premium inventory into predictable, brand-safe growth.",
-  primaryCta: { label: "Partner With Us", href: "mailto:contactus@lemmamedia.com" },
-  secondaryCta: { label: "Talk To An Expert", href: "#cta" },
+  primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
+  secondaryCta: { label: "Talk To An Expert", href: "/contact-us" },
   image: "/images/solutions/brands.jpg",
 } as const;

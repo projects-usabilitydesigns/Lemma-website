@@ -15,6 +15,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<"who-we-are" | "what-we-do" | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<"who-we-are" | "what-we-do" | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const megaRegionId = useId();
 
@@ -55,9 +56,23 @@ export function Header() {
 
   useEffect(() => () => clearCloseTimer(), []);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const solid = scrolled || activeMega !== null;
+
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 bg-white/95 shadow-[0px_4px_10px_rgba(0,0,0,0.08)] backdrop-blur-[10px] transition-all duration-300"
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        solid
+          ? "bg-white/95 shadow-[0px_4px_10px_rgba(0,0,0,0.08)] backdrop-blur-[10px]"
+          : "bg-transparent shadow-none backdrop-blur-0",
+      )}
       onMouseLeave={scheduleCloseMega}
     >
       <Container className="relative flex h-[90px] items-center justify-between">
@@ -133,7 +148,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block" onMouseEnter={scheduleCloseMega}>
-          <Button href="#cta" variant="outline" arrow="none">
+          <Button href="/request-demo" variant="outline" arrow="none">
             Request Demo
           </Button>
         </div>
@@ -256,7 +271,7 @@ export function Header() {
               </div>
 
               <div className="border-t border-[var(--color-border)] p-5" onClick={() => setMobileOpen(false)}>
-                <Button href="#cta" variant="primary" className="w-full" arrow="none">
+                <Button href="/request-demo" variant="primary" className="w-full" arrow="none">
                   Request Demo
                 </Button>
               </div>

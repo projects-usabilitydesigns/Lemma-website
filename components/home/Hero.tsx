@@ -60,7 +60,7 @@ export function Hero() {
       className="relative overflow-hidden pb-16 pt-[138px] md:pb-24 md:pt-[184px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
-      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%]">
+      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-80">
         <Image src="/images/hero-bg.png" alt="" fill className="object-cover object-left" priority />
       </motion.div>
       <div
@@ -82,9 +82,8 @@ export function Hero() {
               </BlurReveal>
               <FadeUp delay={0.1}>
                 <p className="font-heading max-w-xl text-[24px] font-medium leading-[1.35] tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.3]">
-                  AI Powered platform. Full-funnel
-                  <br />
-                  performance across DOOH, CTV, mobile, and digital
+                  Full-funnel AI-powered platform driving performance across DOOH, CTV, mobile &amp;
+                  digital
                 </p>
               </FadeUp>
               <FadeUp delay={0.2} className="pt-1">

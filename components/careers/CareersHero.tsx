@@ -34,7 +34,12 @@ export function CareersHero() {
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <Button href={careersHero.primaryCta.href} variant="primary" arrow="right">
+              <Button
+                href={careersHero.primaryCta.href}
+                variant="primary"
+                arrow="none"
+                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+              >
                 {careersHero.primaryCta.label}
               </Button>
             </FadeUp>
