@@ -17,6 +17,8 @@ type ButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   ariaLabel?: string;
+  /** When false, disables hover lift/scale so the button stays in place */
+  lift?: boolean;
 };
 
 const variants: Record<ButtonVariant, string> = {
@@ -41,6 +43,7 @@ export function Button({
   onClick,
   type = "button",
   ariaLabel,
+  lift = true,
 }: ButtonProps) {
   const ArrowIcon = arrow === "up-right" ? ArrowUpRight : ArrowRight;
 
@@ -66,9 +69,12 @@ export function Button({
       ? { backgroundImage: "var(--gradient-blue)", ...style }
       : style;
 
+  const hoverMotion = lift ? { y: -2, scale: 1.03 } : undefined;
+  const tapMotion = lift ? { scale: 0.98 } : undefined;
+
   if (href) {
     return (
-      <motion.div whileHover={{ y: -2, scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+      <motion.div whileHover={hoverMotion} whileTap={tapMotion}>
         <Link href={href} aria-label={ariaLabel} className={classes} style={resolvedStyle}>
           {inner}
         </Link>
@@ -83,8 +89,8 @@ export function Button({
       aria-label={ariaLabel}
       className={classes}
       style={resolvedStyle}
-      whileHover={{ y: -2, scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={hoverMotion}
+      whileTap={tapMotion}
     >
       {inner}
     </motion.button>

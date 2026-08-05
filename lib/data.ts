@@ -137,25 +137,25 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "owners",
             title: "For Media Owners",
             description: "Yield optimization",
-            href: "#solutions",
+            href: "/solutions/media-owners",
           },
           {
             id: "agencies",
             title: "For Agencies",
             description: "Cross-screen buying",
-            href: "#solutions",
+            href: "/solutions/agencies",
           },
           {
             id: "publishers",
             title: "For Publishers",
             description: "Programmatic monetization",
-            href: "#solutions",
+            href: "/solutions/publishers",
           },
           {
             id: "operators",
             title: "For Network Operators",
             description: "DOOH control plane",
-            href: "#solutions",
+            href: "/solutions/network-operators",
           },
         ],
       },
@@ -230,7 +230,7 @@ export const solutions: Solution[] = [
       "Run campaigns that don't end at the impression. Retarget high-intent audiences across personal devices and close the loop with attribution.",
     features: ["Omnichannel activation", "Cross-screen retargeting", "Outcome attribution"],
     image: "/images/solutions/brands.jpg",
-    href: "#cta",
+    href: "/solutions/brands-advertisers",
   },
   {
     id: "owners",
@@ -241,7 +241,7 @@ export const solutions: Solution[] = [
       "Open your inventory to global demand without losing control. Programmatic transparency, premium yield, and direct relationships at your fingertips.",
     features: ["Yield optimization", "Global demand access", "Inventory control"],
     image: "/images/solutions/owners.jpg",
-    href: "#cta",
+    href: "/solutions/media-owners",
   },
 ];
 

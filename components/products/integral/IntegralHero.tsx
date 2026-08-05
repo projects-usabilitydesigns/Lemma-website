@@ -1,17 +1,21 @@
 "use client";
 
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { BlurReveal, FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { VideoModal } from "@/components/ui/VideoModal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { integralAssets } from "@/lib/integral-data";
 import { animation } from "@/lib/design-system";
 
+const INTEGRAL_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
+
 export function IntegralHero() {
+  const [videoOpen, setVideoOpen] = useState(false);
   const reduced = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -46,9 +50,25 @@ export function IntegralHero() {
                 full-funnel success with improved visibility, recall, and digital conversions.
               </p>
             </FadeUp>
-            <FadeUp delay={0.22}>
-              <Button href="#cta" variant="primary" arrow="right">
-                Advertise with us
+            <FadeUp delay={0.22} className="flex flex-wrap items-center gap-3">
+              <Button
+                type="button"
+                variant="primary"
+                arrow="none"
+                lift={false}
+                onClick={() => setVideoOpen(true)}
+                ariaLabel="Watch Integral in action"
+                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+              >
+                Watch In Action
+              </Button>
+              <Button
+                href="#cta"
+                variant="outline"
+                arrow="right"
+                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+              >
+                Advertise With Us
               </Button>
             </FadeUp>
           </div>
@@ -96,6 +116,13 @@ export function IntegralHero() {
           </motion.div>
         </div>
       </Container>
+
+      <VideoModal
+        open={videoOpen}
+        title="Lemma Integral in action"
+        videoUrl={INTEGRAL_DEMO_VIDEO}
+        onClose={() => setVideoOpen(false)}
+      />
     </section>
   );
 }
