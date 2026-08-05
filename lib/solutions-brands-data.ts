@@ -1,3 +1,5 @@
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
+
 export type BrandsStat = {
   id: string;
   value: number;
@@ -70,7 +72,7 @@ export const brandsHero = {
   gradientTitle: "Lemmaximize your impact!",
   description:
     "When you team up with the world’s largest omnichannel platform, you gain access to audience-centric advertising solutions. Today’s tech? Nailed it. Tomorrow’s trends? We’re already on it.",
-  primaryCta: { label: "Advertise With Us", href: "#cta" },
+  primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
   image: "/images/solutions/brands-hero-billboard.png",
 } as const;
@@ -348,7 +350,7 @@ export const brandsCta = {
   title: "Ready to Lemmaximize your impact?",
   description:
     "Tell us how to reach you and you’ll hear from us in 24 hours. Let’s turn outdoor attention into measurable growth.",
-  primaryCta: { label: "Advertise with us", href: "mailto:contactus@lemmamedia.com" },
-  secondaryCta: { label: "Talk to an Expert", href: "#cta" },
+  primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
+  secondaryCta: { label: "Talk To An Expert", href: "/contact-us" },
   image: "/images/solutions/brands.jpg",
 } as const;

@@ -15,7 +15,7 @@ export const navItems: NavItem[] = [
   { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
   { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
   { label: "Resources", href: "#blog", hasDropdown: true },
-  { label: "Contact Us", href: "#cta" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
@@ -60,7 +60,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "contact",
             title: "Contact Us",
             description: "Get in touch",
-            href: "#cta",
+            href: "/contact-us",
           },
         ],
       },
@@ -70,7 +70,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
       title: "Meet the team behind Lemma.",
       description: "A global crew shaping the future of omnichannel ad-tech.",
       ctaLabel: "Request a Demo",
-      ctaHref: "#cta",
+      ctaHref: "/request-demo",
       image: "/images/banner_homepage.png",
     },
   },
@@ -165,7 +165,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
       title: "Turn impressions into outcomes.",
       description: "Get a tailored walkthrough of the Lemma stack with our team.",
       ctaLabel: "Request a Demo",
-      ctaHref: "#cta",
+      ctaHref: "/request-demo",
       image: "/images/solutions/brands.jpg",
     },
   },
@@ -463,8 +463,28 @@ export const clientLogos: ClientLogo[] = [
 ];
 
 export const footerLinks = {
-  products: ["Integral", "Delta", "Sigma", "Phi", "Infibid"],
-  solutions: ["For Brands", "For Media Owners", "Case Studies"],
-  company: ["About", "Careers", "Press", "Contact"],
-  legal: ["Privacy", "Cookies", "Terms"],
+  products: [
+    { label: "Integral", href: "/products/integral" },
+    { label: "Delta", href: "/products/delta" },
+    { label: "Sigma", href: "/#products" },
+    { label: "Phi", href: "/#products" },
+    { label: "Infibid", href: "/#products" },
+  ],
+  solutions: [
+    { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },
+    { label: "For Media Owners", href: "/solutions/media-owners" },
+    { label: "For Agencies", href: "/solutions/agencies" },
+    { label: "For Publishers", href: "/solutions/publishers" },
+    { label: "For Network Operators", href: "/solutions/network-operators" },
+  ],
+  company: [
+    { label: "About", href: "/about" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact-us" },
+  ],
+  legal: [
+    { label: "Privacy", href: "#" },
+    { label: "Cookies", href: "#" },
+    { label: "Terms", href: "#" },
+  ],
 } as const;

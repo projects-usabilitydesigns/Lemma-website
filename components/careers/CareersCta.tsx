@@ -42,10 +42,20 @@ export function CareersCta() {
             {careersCta.description}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Button href={careersCta.primaryCta.href} variant="primary" arrow="up-right">
+            <Button
+              href={careersCta.primaryCta.href}
+              variant="primary"
+              arrow="up-right"
+              className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+            >
               {careersCta.primaryCta.label}
             </Button>
-            <Button href={careersCta.secondaryCta.href} variant="outline" arrow="none">
+            <Button
+              href={careersCta.secondaryCta.href}
+              variant="outline"
+              arrow="none"
+              className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+            >
               {careersCta.secondaryCta.label}
             </Button>
           </div>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { deltaAssets } from "@/lib/delta-data";
 import { animation } from "@/lib/design-system";
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
 
 export function DeltaHero() {
   return (
@@ -40,8 +41,13 @@ export function DeltaHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.2 }}
             >
-              <Button href="#cta" variant="primary" arrow="right">
-                Partner with us
+              <Button
+                href={DEMO_MODAL_HREF}
+                variant="primary"
+                arrow="none"
+                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+              >
+                Partner With Us
               </Button>
             </motion.div>
           </div>

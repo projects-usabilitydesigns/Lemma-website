@@ -148,7 +148,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block" onMouseEnter={scheduleCloseMega}>
-          <Button href="#cta" variant="outline" arrow="none">
+          <Button href="/request-demo" variant="outline" arrow="none">
             Request Demo
           </Button>
         </div>
@@ -271,7 +271,7 @@ export function Header() {
               </div>
 
               <div className="border-t border-[var(--color-border)] p-5" onClick={() => setMobileOpen(false)}>
-                <Button href="#cta" variant="primary" className="w-full" arrow="none">
+                <Button href="/request-demo" variant="primary" className="w-full" arrow="none">
                   Request Demo
                 </Button>
               </div>

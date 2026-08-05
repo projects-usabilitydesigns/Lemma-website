@@ -6,6 +6,7 @@ import type {
   BrandsKpi,
   BrandsStat,
 } from "@/lib/solutions-brands-data";
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
 
 export const agenciesHero = {
   breadcrumb: [
@@ -18,8 +19,8 @@ export const agenciesHero = {
   gradientTitle: "LEMMA CTV Solutions",
   description:
     "Reach and connect unique audiences at scale across premium streaming TV content in the Open Web—including OTTs and CTV networks—with one powerful platform.",
-  primaryCta: { label: "Advertise With Us", href: "#cta" },
-  secondaryCta: { label: "Partner With Us", href: "#cta" },
+  primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
+  secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/agencies-hero.png",
   imageAlt: "Lemma agency workspace with campaign analytics dashboards and city skyline",
 } as const;
@@ -259,6 +260,6 @@ export const agenciesCta = {
   description:
     "Tell us how to reach you and you’ll hear from us in 24 hours. Let’s turn premium streaming attention into measurable results.",
   primaryCta: { label: "Get In Touch", href: "mailto:contactus@lemmamedia.com" },
-  secondaryCta: { label: "Advertise With Us", href: "#cta" },
+  secondaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/brands.jpg",
 } as const;

@@ -10,6 +10,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { integralAssets } from "@/lib/integral-data";
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
 import { animation } from "@/lib/design-system";
 
 const INTEGRAL_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
@@ -63,7 +64,7 @@ export function IntegralHero() {
                 Watch In Action
               </Button>
               <Button
-                href="#cta"
+                href={DEMO_MODAL_HREF}
                 variant="outline"
                 arrow="right"
                 className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"

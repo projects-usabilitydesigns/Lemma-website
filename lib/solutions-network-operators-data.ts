@@ -6,6 +6,7 @@ import type {
   BrandsKpi,
   BrandsStat,
 } from "@/lib/solutions-brands-data";
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
 
 export const networkOperatorsHero = {
   breadcrumb: [
@@ -18,8 +19,8 @@ export const networkOperatorsHero = {
   gradientTitle: "LEMMA DOOH Solutions",
   description:
     "Bridging brands and global audiences across a large, unmatched network of premium digital out-of-home screens—powered by location-based AdTech.",
-  primaryCta: { label: "Advertise With Us", href: "#cta" },
-  secondaryCta: { label: "Partner With Us", href: "#cta" },
+  primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
+  secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/network-operators-hero.png",
   imageAlt: "Network operations command center with global screen dashboard and live feeds",
 } as const;
@@ -141,7 +142,7 @@ export const networkOperatorsJourney = {
     "Activation of location-based ads across platforms",
     "Seamless storytelling across large-format DOOH journeys",
   ],
-  cta: { label: "Partner With Us", href: "#cta" },
+  cta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
 } as const;
 
 export const networkOperatorsKpis: BrandsKpi[] = [
@@ -259,6 +260,6 @@ export const networkOperatorsCta = {
   description:
     "Tell us how to reach you and you’ll hear from us in 24 hours. Let’s unlock more value across every screen in your network.",
   primaryCta: { label: "Get In Touch", href: "mailto:contactus@lemmamedia.com" },
-  secondaryCta: { label: "Partner With Us", href: "#cta" },
+  secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/owners.jpg",
 } as const;

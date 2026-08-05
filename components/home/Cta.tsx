@@ -45,7 +45,7 @@ function MagneticButton({
 
 export function Cta() {
   return (
-    <section id="cta" className="relative overflow-hidden py-24 md:py-40">
+    <section id="cta" className="relative overflow-hidden py-16 md:py-24">
       <div
         className="absolute inset-0"
         style={{
@@ -79,12 +79,22 @@ export function Cta() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <MagneticButton>
-              <Button href="mailto:contactus@lemmamedia.com" variant="primary" arrow="up-right">
+              <Button
+                href="mailto:contactus@lemmamedia.com"
+                variant="primary"
+                arrow="up-right"
+                className="normal-case tracking-normal text-[16px] font-semibold"
+              >
                 Get in touch
               </Button>
             </MagneticButton>
             <MagneticButton>
-              <Button href="#products" variant="secondary" arrow="none">
+              <Button
+                href="#products"
+                variant="secondary"
+                arrow="none"
+                className="normal-case tracking-normal text-[16px] font-semibold"
+              >
                 See products
               </Button>
             </MagneticButton>
