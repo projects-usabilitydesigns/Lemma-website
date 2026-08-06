@@ -76,7 +76,7 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
                   src={study.image}
                   alt={study.brand}
                   fill
-                  className="object-cover object-center grayscale transition-[transform,filter] duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
                   <span

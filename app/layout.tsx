@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { DemoModalProvider } from "@/components/request-demo/DemoModalProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -95,7 +96,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <DemoModalProvider>{children}</DemoModalProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

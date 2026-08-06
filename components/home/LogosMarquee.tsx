@@ -29,7 +29,7 @@ export function LogosMarquee({
           {logos.map((logo) => (
             <div
               key={logo.id}
-              className="mx-8 flex h-9 items-center opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 md:mx-12"
+              className="mx-8 flex h-9 items-center opacity-80 transition hover:opacity-100 md:mx-12"
             >
               <Image
                 src={logo.src}

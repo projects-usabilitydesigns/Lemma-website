@@ -4,25 +4,46 @@ import { Check } from "lucide-react";
 import { FadeLeft, FadeRight } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { brandsJourney, brandsKpis } from "@/lib/solutions-brands-data";
+import { useDemoCta } from "@/components/request-demo/DemoModalProvider";
+import { brandsJourney, brandsKpis, type BrandsKpi } from "@/lib/solutions-brands-data";
 
-export function JourneySection() {
+type JourneyData = {
+  label: string;
+  title: string;
+  description: string;
+  bullets: readonly string[];
+  cta: { label: string; href: string };
+};
+
+export function JourneySection({
+  data = brandsJourney,
+  kpis = brandsKpis,
+  chartTitle = "Performance Over Time",
+  chartLegend = { primary: "Impressions", secondary: "Conversions" },
+}: {
+  data?: JourneyData;
+  kpis?: BrandsKpi[];
+  chartTitle?: string;
+  chartLegend?: { primary: string; secondary: string };
+}) {
+  const cta = useDemoCta(data.cta.href, data.cta.label);
+
   return (
     <section className="bg-white py-16 md:py-[90px]">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <FadeRight>
             <div className="space-y-6">
-              <SectionLabel label={brandsJourney.label} />
+              <SectionLabel label={data.label} />
               <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[42px] md:leading-[1.15]">
-                {brandsJourney.title}
+                {data.title}
               </h2>
-              <p className="text-[16px] leading-relaxed text-[var(--color-slate)] md:text-[18px]">
-                {brandsJourney.description}
+              <p className="text-[18px] leading-relaxed text-[var(--color-slate)] md:text-[20px]">
+                {data.description}
               </p>
               <ul className="space-y-3.5">
-                {brandsJourney.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3 text-[15px] text-[var(--color-ink-muted)]">
+                {data.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3 text-[17px] text-[var(--color-ink-muted)]">
                     <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[rgba(248,45,137,0.12)] text-[var(--color-pink)]">
                       <Check className="size-3.5" strokeWidth={2.5} />
                     </span>
@@ -31,10 +52,11 @@ export function JourneySection() {
                 ))}
               </ul>
               <a
-                href={brandsJourney.cta.href}
+                href={cta.href}
+                onClick={cta.onClick}
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--color-pink)] px-6 py-3 text-[14px] font-semibold uppercase tracking-[2px] text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(248,45,137,0.35)]"
               >
-                {brandsJourney.cta.label}
+                {data.cta.label}
                 <span aria-hidden>→</span>
               </a>
             </div>
@@ -43,7 +65,7 @@ export function JourneySection() {
           <FadeLeft delay={0.1}>
             <div className="rounded-[24px] border border-[var(--color-border)] bg-[var(--color-cream-soft)] p-5 shadow-[0_20px_50px_rgba(9,19,26,0.08)] md:p-6">
               <div className="mb-5 grid grid-cols-2 gap-3">
-                {brandsKpis.map((kpi) => (
+                {kpis.map((kpi) => (
                   <div
                     key={kpi.id}
                     className="rounded-2xl border border-[var(--color-border)] bg-white p-4"
@@ -64,14 +86,14 @@ export function JourneySection() {
               <div className="rounded-2xl border border-[var(--color-border)] bg-white p-5">
                 <div className="mb-4 flex items-center justify-between">
                   <h3 className="font-heading text-[16px] font-semibold text-[var(--color-ink)]">
-                    Performance Over Time
+                    {chartTitle}
                   </h3>
                   <div className="flex items-center gap-3 text-[12px] text-[var(--color-slate)]">
                     <span className="inline-flex items-center gap-1.5">
-                      <span className="size-2 rounded-full bg-[var(--color-blue)]" /> Impressions
+                      <span className="size-2 rounded-full bg-[var(--color-blue)]" /> {chartLegend.primary}
                     </span>
                     <span className="inline-flex items-center gap-1.5">
-                      <span className="size-2 rounded-full bg-[var(--color-pink)]" /> Conversions
+                      <span className="size-2 rounded-full bg-[var(--color-pink)]" /> {chartLegend.secondary}
                     </span>
                   </div>
                 </div>

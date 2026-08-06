@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { useDemoCta } from "@/components/request-demo/DemoModalProvider";
 import { cn } from "@/lib/utils";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "link";
@@ -12,10 +13,13 @@ type ButtonProps = {
   href?: string;
   variant?: ButtonVariant;
   className?: string;
+  style?: React.CSSProperties;
   arrow?: "right" | "up-right" | "none";
   onClick?: () => void;
   type?: "button" | "submit";
   ariaLabel?: string;
+  /** When false, disables hover lift/scale so the button stays in place */
+  lift?: boolean;
 };
 
 const variants: Record<ButtonVariant, string> = {
@@ -35,12 +39,15 @@ export function Button({
   href,
   variant = "primary",
   className,
+  style,
   arrow = "right",
   onClick,
   type = "button",
   ariaLabel,
+  lift = true,
 }: ButtonProps) {
   const ArrowIcon = arrow === "up-right" ? ArrowUpRight : ArrowRight;
+  const demoCta = useDemoCta(href ?? "", typeof children === "string" ? children : ariaLabel);
 
   const inner = (
     <>
@@ -59,15 +66,24 @@ export function Button({
     className,
   );
 
-  const style =
+  const resolvedStyle =
     variant === "primary"
-      ? { backgroundImage: "var(--gradient-blue)" }
-      : undefined;
+      ? { backgroundImage: "var(--gradient-blue)", ...style }
+      : style;
+
+  const hoverMotion = lift ? { y: -2, scale: 1.03 } : undefined;
+  const tapMotion = lift ? { scale: 0.98 } : undefined;
 
   if (href) {
     return (
-      <motion.div whileHover={{ y: -2, scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-        <Link href={href} aria-label={ariaLabel} className={classes} style={style}>
+      <motion.div whileHover={hoverMotion} whileTap={tapMotion}>
+        <Link
+          href={demoCta.href}
+          onClick={demoCta.onClick}
+          aria-label={ariaLabel}
+          className={classes}
+          style={resolvedStyle}
+        >
           {inner}
         </Link>
       </motion.div>
@@ -80,9 +96,9 @@ export function Button({
       onClick={onClick}
       aria-label={ariaLabel}
       className={classes}
-      style={style}
-      whileHover={{ y: -2, scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
+      style={resolvedStyle}
+      whileHover={hoverMotion}
+      whileTap={tapMotion}
     >
       {inner}
     </motion.button>

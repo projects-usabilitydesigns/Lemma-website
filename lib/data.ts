@@ -15,7 +15,7 @@ export const navItems: NavItem[] = [
   { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
   { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
   { label: "Resources", href: "#blog", hasDropdown: true },
-  { label: "Contact Us", href: "#cta" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
@@ -42,7 +42,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "careers",
             title: "Careers",
             description: "Join the team",
-            href: "/about#team",
+            href: "/careers",
           },
         ],
       },
@@ -60,7 +60,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "contact",
             title: "Contact Us",
             description: "Get in touch",
-            href: "#cta",
+            href: "/contact-us",
           },
         ],
       },
@@ -70,7 +70,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
       title: "Meet the team behind Lemma.",
       description: "A global crew shaping the future of omnichannel ad-tech.",
       ctaLabel: "Request a Demo",
-      ctaHref: "#cta",
+      ctaHref: "/request-demo",
       image: "/images/banner_homepage.png",
     },
   },
@@ -85,7 +85,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "integral",
             title: "Integral",
             description: "Full-funnel platform",
-            href: "#products",
+            href: "/products/integral",
             iconColor: "#009352",
             iconSymbol: "∫",
           },
@@ -93,7 +93,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "delta",
             title: "Delta",
             description: "Demand-side platform",
-            href: "#products",
+            href: "/products/delta",
             iconColor: "#f82d89",
             iconSymbol: "Δ",
           },
@@ -137,25 +137,25 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "owners",
             title: "For Media Owners",
             description: "Yield optimization",
-            href: "#solutions",
+            href: "/solutions/media-owners",
           },
           {
             id: "agencies",
             title: "For Agencies",
             description: "Cross-screen buying",
-            href: "#solutions",
+            href: "/solutions/agencies",
           },
           {
             id: "publishers",
             title: "For Publishers",
             description: "Programmatic monetization",
-            href: "#solutions",
+            href: "/solutions/publishers",
           },
           {
             id: "operators",
             title: "For Network Operators",
             description: "DOOH control plane",
-            href: "#solutions",
+            href: "/solutions/network-operators",
           },
         ],
       },
@@ -165,7 +165,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
       title: "Turn impressions into outcomes.",
       description: "Get a tailored walkthrough of the Lemma stack with our team.",
       ctaLabel: "Request a Demo",
-      ctaHref: "#cta",
+      ctaHref: "/request-demo",
       image: "/images/solutions/brands.jpg",
     },
   },
@@ -184,7 +184,7 @@ export const products: Product[] = [
     description:
       "Activate, retarget, and measure every OOH impression with precision—backed by deep audience analytics and attribution.",
     logo: "/images/products/integral.svg",
-    href: "#products",
+    href: "/products/integral",
   },
   {
     id: "delta",
@@ -192,7 +192,7 @@ export const products: Product[] = [
     description:
       "Scale DOOH and CTV campaigns with automated bidding, real-time optimization, and maximum reach.",
     logo: "/images/products/delta.svg",
-    href: "#products",
+    href: "/products/delta",
   },
   {
     id: "sigma",
@@ -230,7 +230,7 @@ export const solutions: Solution[] = [
       "Run campaigns that don't end at the impression. Retarget high-intent audiences across personal devices and close the loop with attribution.",
     features: ["Omnichannel activation", "Cross-screen retargeting", "Outcome attribution"],
     image: "/images/solutions/brands.jpg",
-    href: "#cta",
+    href: "/solutions/brands-advertisers",
   },
   {
     id: "owners",
@@ -241,7 +241,7 @@ export const solutions: Solution[] = [
       "Open your inventory to global demand without losing control. Programmatic transparency, premium yield, and direct relationships at your fingertips.",
     features: ["Yield optimization", "Global demand access", "Inventory control"],
     image: "/images/solutions/owners.jpg",
-    href: "#cta",
+    href: "/solutions/media-owners",
   },
 ];
 
@@ -463,8 +463,28 @@ export const clientLogos: ClientLogo[] = [
 ];
 
 export const footerLinks = {
-  products: ["Integral", "Delta", "Sigma", "Phi", "Infibid"],
-  solutions: ["For Brands", "For Media Owners", "Case Studies"],
-  company: ["About", "Careers", "Press", "Contact"],
-  legal: ["Privacy", "Cookies", "Terms"],
+  products: [
+    { label: "Integral", href: "/products/integral" },
+    { label: "Delta", href: "/products/delta" },
+    { label: "Sigma", href: "/#products" },
+    { label: "Phi", href: "/#products" },
+    { label: "Infibid", href: "/#products" },
+  ],
+  solutions: [
+    { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },
+    { label: "For Media Owners", href: "/solutions/media-owners" },
+    { label: "For Agencies", href: "/solutions/agencies" },
+    { label: "For Publishers", href: "/solutions/publishers" },
+    { label: "For Network Operators", href: "/solutions/network-operators" },
+  ],
+  company: [
+    { label: "About", href: "/about" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact-us" },
+  ],
+  legal: [
+    { label: "Privacy", href: "#" },
+    { label: "Cookies", href: "#" },
+    { label: "Terms", href: "#" },
+  ],
 } as const;

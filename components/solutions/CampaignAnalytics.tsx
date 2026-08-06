@@ -33,23 +33,37 @@ function Metric({
   );
 }
 
-export function CampaignAnalytics() {
+const brandsDefaults = {
+  title: "Scale that compounds into outcomes",
+  description:
+    "Tap into global audiences with inventory, intelligence, and measurement built for modern brand growth.",
+  metrics: brandsSuccessMetrics,
+};
+
+export function CampaignAnalytics({
+  title = brandsDefaults.title,
+  description = brandsDefaults.description,
+  metrics = brandsDefaults.metrics,
+}: {
+  title?: string;
+  description?: string;
+  metrics?: BrandsStat[];
+}) {
   return (
     <section className="bg-white py-16 md:py-[90px]">
       <Container>
         <FadeUp className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Success metrics" align="center" dual accent="blue" />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Scale that compounds into outcomes
+            {title}
           </h2>
-          <p className="text-[16px] leading-relaxed text-[var(--color-slate)]">
-            Tap into global audiences with inventory, intelligence, and measurement built for
-            modern brand growth.
+          <p className="text-[18px] leading-relaxed text-[var(--color-slate)]">
+            {description}
           </p>
         </FadeUp>
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5" delay={0.08}>
-          {brandsSuccessMetrics.map((metric) => (
+          {metrics.map((metric) => (
             <Metric key={metric.id} {...metric} end={metric.value} />
           ))}
         </Stagger>

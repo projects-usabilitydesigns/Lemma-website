@@ -37,7 +37,7 @@ export function Blog({ blogPosts }: { blogPosts?: BlogPost[] }) {
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover object-bottom grayscale transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover object-bottom transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
               <div className="p-6">

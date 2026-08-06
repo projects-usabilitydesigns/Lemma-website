@@ -5,33 +5,102 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FadeUp } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
-import { footerLinks as defaultFooterLinks } from "@/lib/data";
+import { footerLinks } from "@/lib/data";
+
+const aiPrompt =
+  "What is Lemma Technologies, and how does its platform help advertisers, agencies, media owners, and network operators manage and monetize DOOH, CTV, OTT, and omnichannel advertising campaigns?";
+
+const encodedPrompt = encodeURIComponent(aiPrompt);
 
 const aiTools = [
-  { name: "ChatGPT", src: "/icons/ai-chatgpt.svg" },
-  { name: "Gemini", src: "/icons/ai-gemini.svg" },
-  { name: "Claude", src: "/icons/ai-claude.svg" },
-  { name: "Perplexity", src: "/icons/ai-perplexity.svg" },
+  {
+    name: "ChatGPT",
+    src: "/icons/ai-chatgpt.svg",
+    href: `https://chatgpt.com/?q=${encodedPrompt}&hints=search`,
+  },
+  {
+    name: "Gemini",
+    src: "/icons/ai-gemini.svg",
+    // Gemini has no prompt URL parameter; Google's AI Mode accepts one.
+    href: `https://www.google.com/search?udm=50&q=${encodedPrompt}`,
+  },
+  {
+    name: "Claude",
+    src: "/icons/ai-claude.svg",
+    href: `https://claude.ai/new?q=${encodedPrompt}`,
+  },
+  {
+    name: "Perplexity",
+    src: "/icons/ai-perplexity.svg",
+    href: `https://www.perplexity.ai/search?q=${encodedPrompt}`,
+  },
 ];
 
-export function Footer({
-  footerLinks,
-}: {
-  footerLinks?: {
-    products: readonly string[];
-    solutions: readonly string[];
-    company: readonly string[];
-    legal: readonly string[];
-  };
-}) {
-  const links = footerLinks ?? defaultFooterLinks;
+type SocialIconProps = { className?: string };
+
+function LinkedInIcon({ className }: SocialIconProps) {
   return (
-    <footer className="border-t border-[var(--color-border)] bg-white pb-12 pt-12">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
+function XIcon({ className }: SocialIconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.259 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className }: SocialIconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+    </svg>
+  );
+}
+
+function YouTubeIcon({ className }: SocialIconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/lemma-technologies",
+    icon: LinkedInIcon,
+  },
+  {
+    name: "X",
+    href: "https://twitter.com/Lemma_DOOH",
+    icon: XIcon,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/lemmamedia/",
+    icon: InstagramIcon,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/channel/UC108pxBPed1tAJ5Mn0TXiPA/featured",
+    icon: YouTubeIcon,
+  },
+];
+
+export function Footer() {
+  return (
+    <footer className="border-t border-[var(--color-border)] bg-white pb-8 pt-10">
       <Container>
         <FadeUp>
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-10">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
             <div className="lg:col-span-2">
-              <Link href="/" className="relative mb-6 block h-9 w-[152px]">
+              <Link href="/" className="relative mb-5 block h-9 w-[152px]">
                 <Image src="/images/logo-lemma.svg" alt="LEMMA" fill className="object-contain object-left" />
               </Link>
               <ul className="space-y-2 text-[14px] text-[var(--color-slate)]">
@@ -65,22 +134,22 @@ export function Footer({
             </div>
 
             {[
-              { title: "Products", items: links.products },
-              { title: "Solutions", items: links.solutions },
-              { title: "Company", items: links.company },
+              { title: "Products", items: footerLinks.products },
+              { title: "Solutions", items: footerLinks.solutions },
+              { title: "Company", items: footerLinks.company },
             ].map((col) => (
               <div key={col.title}>
-                <p className="mb-5 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate)]">
+                <p className="mb-4 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate)]">
                   {col.title}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-2.5">
                   {col.items.map((item) => (
-                    <li key={item}>
+                    <li key={item.label}>
                       <Link
-                        href="#"
+                        href={item.href}
                         className="group relative text-[16px] text-[var(--color-ink)]"
                       >
-                        <span>{item}</span>
+                        <span>{item.label}</span>
                         <span className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
                       </Link>
                     </li>
@@ -91,27 +160,64 @@ export function Footer({
           </div>
         </FadeUp>
 
-        <div className="my-8 h-px w-full bg-[var(--color-border)]" />
+        <div className="my-5 h-px w-full bg-[var(--color-border)]" />
 
-        <FadeUp delay={0.1} className="flex flex-col items-center gap-3 text-center">
-          <p className="text-[16px] uppercase text-[var(--color-slate-soft)]">
-            &quot;ASK AI FOR A SUMMARY OF CURATED MEDIA&quot;
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            {aiTools.map((tool) => (
-              <a
-                key={tool.name}
-                href="#"
-                aria-label={tool.name}
-                className="relative size-[55px] overflow-hidden rounded-full transition-transform duration-300 hover:scale-110"
-              >
-                <Image src={tool.src} alt={tool.name} fill className="object-contain" />
-              </a>
-            ))}
+        <FadeUp
+          delay={0.1}
+          className="flex flex-col items-center justify-center gap-6 md:flex-row md:items-center md:gap-10"
+        >
+          <div className="flex flex-col items-center gap-2.5 md:items-end">
+            <p className="text-[13px] font-semibold uppercase tracking-[1.6px] text-[var(--color-slate-soft)]">
+              Ask AI for a summary
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {aiTools.map((tool) => (
+                <a
+                  key={tool.name}
+                  href={tool.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ask ${tool.name} about Lemma Technologies`}
+                  title={`Ask ${tool.name} about Lemma Technologies`}
+                  className="relative size-[42px] overflow-hidden rounded-full transition-transform duration-300 hover:scale-110"
+                >
+                  <Image src={tool.src} alt={tool.name} fill className="object-contain" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="h-px w-24 bg-[var(--color-border)] md:h-16 md:w-px"
+            aria-hidden
+          />
+
+          <div className="flex flex-col items-center gap-2.5 md:items-start">
+            <p className="text-[13px] font-semibold uppercase tracking-[1.6px] text-[var(--color-slate-soft)]">
+              Follow us
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Lemma on ${social.name}`}
+                    title={`Lemma on ${social.name}`}
+                    className="flex size-[42px] items-center justify-center rounded-full bg-[var(--color-slate-soft)] text-white transition-transform duration-300 hover:scale-110 hover:bg-[var(--color-blue)]"
+                  >
+                    <Icon className="size-[18px]" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </FadeUp>
 
-        <div className="my-8 h-px w-full bg-[var(--color-border)]" />
+        <div className="my-5 h-px w-full bg-[var(--color-border)]" />
 
         <div className="flex flex-wrap items-center justify-center gap-3">
           <div className="relative h-[62px] w-[268px]">
@@ -122,12 +228,12 @@ export function Footer({
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-[var(--color-border)] pt-8 text-[12px] text-[var(--color-slate)] md:flex-row md:items-center">
+        <div className="mt-5 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-5 text-[12px] text-[var(--color-slate)] md:flex-row md:items-center">
           <p>© 2026 Lemma Technologies. All rights reserved.</p>
           <div className="flex gap-6">
-            {links.legal.map((item) => (
-              <Link key={item} href="#" className="hover:underline">
-                {item}
+            {footerLinks.legal.map((item) => (
+              <Link key={item.label} href={item.href} className="hover:underline">
+                {item.label}
               </Link>
             ))}
           </div>

@@ -9,7 +9,6 @@ import { AboutAwards } from "@/components/about/AboutAwards";
 import { AboutTeam } from "@/components/about/AboutTeam";
 import { AboutFaq } from "@/components/about/AboutFaq";
 import { AboutCta } from "@/components/about/AboutCta";
-import { getTeamMembers, getAwards } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -17,12 +16,7 @@ export const metadata: Metadata = {
     "Learn about Lemma Technologies — our mission, values, leadership team, and journey transforming advertising from outdoor to outcome.",
 };
 
-export default async function AboutPage() {
-  const [teamMembers, awards] = await Promise.all([
-    getTeamMembers(),
-    getAwards(),
-  ]);
-
+export default function AboutPage() {
   return (
     <>
       <Header />
@@ -31,8 +25,8 @@ export default async function AboutPage() {
         <AboutCommunity />
         <AboutPrinciples />
         <AboutValues />
-        <AboutAwards awards={awards} />
-        <AboutTeam team={teamMembers} advisors={teamMembers} />
+        <AboutAwards />
+        <AboutTeam />
         <AboutFaq />
         <AboutCta />
       </main>

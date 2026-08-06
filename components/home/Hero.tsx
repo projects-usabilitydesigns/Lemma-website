@@ -2,15 +2,18 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { Play } from "lucide-react";
 import { BlurReveal, FadeRight, FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { VideoModal } from "@/components/ui/VideoModal";
 import { useCountUp } from "@/hooks/useCountUp";
 import { heroStats as defaultHeroStats } from "@/lib/data";
 import type { Stat } from "@/types";
 import { cn } from "@/lib/utils";
+
+const HERO_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
 
 function StatItem({
   end,
@@ -45,6 +48,7 @@ function StatItem({
 export function Hero({ heroStats }: { heroStats?: Stat[] }) {
   const stats = heroStats?.length ? heroStats : defaultHeroStats;
   const sectionRef = useRef<HTMLElement>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -55,10 +59,10 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pb-16 pt-[120px] md:pb-24 md:pt-[160px]"
+      className="relative overflow-hidden pb-16 pt-[138px] md:pb-24 md:pt-[184px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
-      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-50">
+      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-80">
         <Image src="/images/hero-bg.png" alt="" fill className="object-cover object-left" priority />
       </motion.div>
       <div
@@ -72,25 +76,27 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
       <Container className="relative">
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <div className="flex min-h-[360px] flex-col justify-between gap-10">
-            <div className="space-y-4">
+            <div className="space-y-6">
               <BlurReveal>
-                <h1 className="text-[40px] font-semibold leading-[1.05] text-[var(--color-ink)] md:text-[56px] md:leading-[51.84px]">
+                <h1 className="font-heading text-[40px] font-semibold leading-[1.05] tracking-[-0.72px] text-[var(--color-ink)] md:text-[56px] md:leading-[1.05]">
                   Outdoor to Outcome.
                 </h1>
               </BlurReveal>
               <FadeUp delay={0.1}>
-                <h2 className="text-[24px] font-semibold tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.2]">
-                  An AI-First Full-Funnel Attribution Platform
-                </h2>
-              </FadeUp>
-              <FadeUp delay={0.18}>
-                <p className="max-w-xl text-[18px] leading-[1.4] text-[var(--color-ink)] md:text-[22px]">
-                  AI Powered platform. Full-funnel performance across DOOH, CTV, mobile, and digital
+                <p className="font-heading max-w-xl text-[24px] font-medium leading-[1.35] tracking-[0.7px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.3]">
+                  Full-funnel AI-powered platform driving performance across DOOH, CTV, mobile &amp;
+                  digital
                 </p>
               </FadeUp>
-              <FadeUp delay={0.26}>
-                <Button href="#products" variant="ghost" arrow="up-right">
-                  learn more
+              <FadeUp delay={0.2} className="pt-1">
+                <Button
+                  href="#products"
+                  variant="outline"
+                  arrow="none"
+                  lift={false}
+                  className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                >
+                  Learn More
                 </Button>
               </FadeUp>
             </div>
@@ -120,12 +126,26 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] to-black/65" />
+
+                {/* Pink LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
+                <div className="absolute left-[12%] top-[8%] z-10 w-[55%] max-w-[382px] md:left-[143px] md:top-[38px] md:w-[382px]">
+                  <Image
+                    src="/images/products/integral.svg"
+                    alt="Lemma Integral"
+                    width={382}
+                    height={35}
+                    className="h-[22px] w-auto object-contain object-left md:h-[35px] md:w-[382px]"
+                    priority
+                  />
+                </div>
+
                 <button
                   type="button"
                   aria-label="Play demo video"
-                  className="absolute left-1/2 top-[42%] flex size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-pink-alt)] shadow-[0px_10px_40px_-5px_#ed2e80] transition-transform duration-300 group-hover:scale-110"
+                  onClick={() => setVideoOpen(true)}
+                  className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-pink-alt)] shadow-[0px_10px_40px_-5px_#ed2e80] transition-transform duration-300 group-hover:scale-110"
                 >
-                  <Play className="ml-1 size-8 fill-white text-white" />
+                  <Play className="ml-0.5 size-[27px] fill-white text-white" />
                 </button>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-[30px]">
                   <p className="mb-2.5 text-[14px] font-semibold uppercase tracking-[2px] text-white/70 md:text-[16px]">
@@ -140,6 +160,13 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
           </FadeRight>
         </div>
       </Container>
+
+      <VideoModal
+        open={videoOpen}
+        title="Lemma platform demo"
+        videoUrl={HERO_DEMO_VIDEO}
+        onClose={() => setVideoOpen(false)}
+      />
     </section>
   );
 }
