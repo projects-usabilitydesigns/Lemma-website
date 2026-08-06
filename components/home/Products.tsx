@@ -6,9 +6,11 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { LinkArrow } from "@/components/ui/LinkArrow";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { products } from "@/lib/data";
+import { products as defaultProducts } from "@/lib/data";
+import type { Product } from "@/types";
 
-export function Products() {
+export function Products({ products }: { products?: Product[] }) {
+  const data = products?.length ? products : defaultProducts;
   return (
     <section id="products" className="bg-white py-16 md:py-[100px]">
       <Container>
@@ -20,7 +22,7 @@ export function Products() {
         </FadeUp>
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {products.map((product) => (
+          {data.map((product) => (
             <motion.article
               key={product.id}
               variants={staggerItem}

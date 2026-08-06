@@ -7,9 +7,11 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { blogPosts } from "@/lib/data";
+import { blogPosts as defaultBlogPosts } from "@/lib/data";
+import type { BlogPost } from "@/types";
 
-export function Blog() {
+export function Blog({ blogPosts }: { blogPosts?: BlogPost[] }) {
+  const data = blogPosts?.length ? blogPosts : defaultBlogPosts;
   return (
     <section id="blog" className="bg-white py-16 md:py-[100px]">
       <Container>
@@ -23,7 +25,7 @@ export function Blog() {
         </FadeUp>
 
         <Stagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.map((post) => (
+          {data.map((post) => (
             <motion.a
               key={post.id}
               href={post.href}

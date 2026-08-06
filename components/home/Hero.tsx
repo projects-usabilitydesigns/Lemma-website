@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useCountUp } from "@/hooks/useCountUp";
-import { heroStats } from "@/lib/data";
+import { heroStats as defaultHeroStats } from "@/lib/data";
+import type { Stat } from "@/types";
 import { cn } from "@/lib/utils";
 
 const HERO_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
@@ -44,7 +45,8 @@ function StatItem({
   );
 }
 
-export function Hero() {
+export function Hero({ heroStats }: { heroStats?: Stat[] }) {
+  const stats = heroStats?.length ? heroStats : defaultHeroStats;
   const sectionRef = useRef<HTMLElement>(null);
   const [videoOpen, setVideoOpen] = useState(false);
   const { scrollYProgress } = useScroll({
@@ -100,7 +102,7 @@ export function Hero() {
             </div>
 
             <Stagger className="grid grid-cols-3 gap-3 md:gap-6" delay={0.2}>
-              {heroStats.map((stat) => (
+              {stats.map((stat) => (
                 <motion.div key={stat.label} variants={staggerItem}>
                   <StatItem
                     end={stat.numericValue}
