@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AboutCta } from "@/components/about/AboutCta";
-import { DeltaHero, DeltaIntro, DeltaAdvantage, DeltaFaq } from "@/components/products/delta";
+import { Faq } from "@/components/Faq";
+import { DeltaHero, DeltaIntro, DeltaAdvantage } from "@/components/products/delta";
+import { deltaFaqs } from "@/lib/delta-data";
 
 export const metadata: Metadata = {
   title: "Lemma Delta",
@@ -18,7 +20,7 @@ export default function DeltaProductPage() {
         <DeltaHero />
         <DeltaIntro />
         <DeltaAdvantage />
-        <DeltaFaq />
+        <Faq items={deltaFaqs} />
         <AboutCta />
       </main>
       <Footer />

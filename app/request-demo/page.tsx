@@ -3,12 +3,13 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { LogosMarquee } from "@/components/home/LogosMarquee";
 import { CaseStudies } from "@/components/home/CaseStudies";
+import { Faq } from "@/components/Faq";
 import {
   RequestDemoHero,
   RequestDemoProducts,
   RequestDemoSteps,
-  RequestDemoFaq,
 } from "@/components/request-demo";
+import { demoFaqs } from "@/lib/request-demo-data";
 
 export const metadata: Metadata = {
   title: "Request a Demo",
@@ -26,7 +27,11 @@ export default function RequestDemoPage() {
         <RequestDemoProducts />
         <RequestDemoSteps />
         <CaseStudies />
-        <RequestDemoFaq />
+        <Faq
+          items={demoFaqs}
+          title="Everything to know before your demo"
+          showViewAll={false}
+        />
       </main>
       <Footer />
     </>
