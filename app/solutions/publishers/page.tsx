@@ -1,36 +1,22 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { AboutCta } from "@/components/about/AboutCta";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import {
-  BrandsHero,
-  WhyLemma,
-  ChannelGrid,
-  JourneySection,
-  PlatformFeatures,
-  CampaignAnalytics,
-  BrandsFAQ,
-  CTASection,
-} from "@/components/solutions";
-import {
-  publishersAnalytics,
-  publishersCapabilities,
-  publishersChannels,
-  publishersCta,
-  publishersFaqTitle,
-  publishersFaqs,
-  publishersHero,
-  publishersJourney,
-  publishersKpis,
-  publishersStats,
-  publishersSuccessMetrics,
-  publishersWhy,
-} from "@/lib/solutions-publishers-data";
+  PublishersHero,
+  PublishersWhy,
+  PublishersFormats,
+  PublishersGrowth,
+  PublishersCapabilities,
+  PublishersSuccess,
+  PublishersFaq,
+} from "@/components/solutions/publishers";
 
 export const metadata: Metadata = {
   title: "For Publishers",
   description:
-    "Programmatic monetization for publishers—grow yield, protect brand safety, and unlock premium demand across web, video, CTV, and more with Lemma.",
+    "Unlock premium demand, protect brand safety, and grow yield across digital, CTV, and emerging formats with Lemma's programmatic monetization platform.",
 };
 
 export default function PublishersPage() {
@@ -38,35 +24,15 @@ export default function PublishersPage() {
     <>
       <Header />
       <main>
-        <BrandsHero data={publishersHero} stats={publishersStats} />
-        <WhyLemma
-          title={publishersWhy.title}
-          description={publishersWhy.description}
-          features={publishersWhy.features}
-        />
-        <ChannelGrid
-          title={publishersChannels.title}
-          description={publishersChannels.description}
-          channels={publishersChannels.items}
-        />
-        <JourneySection
-          data={publishersJourney}
-          kpis={publishersKpis}
-          chartTitle="Revenue Performance"
-          chartLegend={{ primary: "eCPM", secondary: "Fill Rate" }}
-        />
-        <PlatformFeatures
-          title={publishersCapabilities.title}
-          items={publishersCapabilities.items}
-        />
-        <CampaignAnalytics
-          title={publishersAnalytics.title}
-          description={publishersAnalytics.description}
-          metrics={publishersSuccessMetrics}
-        />
+        <PublishersHero />
+        <PublishersWhy />
+        <PublishersFormats />
+        <PublishersGrowth />
+        <PublishersCapabilities />
+        <PublishersSuccess />
         <CaseStudies />
-        <BrandsFAQ title={publishersFaqTitle} items={publishersFaqs} />
-        <CTASection data={publishersCta} />
+        <PublishersFaq />
+        <AboutCta />
       </main>
       <Footer />
     </>
