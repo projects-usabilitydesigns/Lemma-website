@@ -6,5 +6,4 @@ export { PlatformFeatures } from "./PlatformFeatures";
 export { CampaignAnalytics } from "./CampaignAnalytics";
 export { SuccessStories } from "./SuccessStories";
 export { Testimonials } from "./Testimonials";
-export { BrandsFAQ } from "./FAQ";
 export { CTASection } from "./CTASection";

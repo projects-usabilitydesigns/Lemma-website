@@ -109,7 +109,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "phi",
             title: "Phi",
             description: "Content management",
-            href: "#products",
+            href: "/products/phi",
             iconColor: "#74be44",
             iconSymbol: "φ",
           },
@@ -208,7 +208,7 @@ export const products: Product[] = [
     description:
       "Plan, schedule, and deliver DOOH content seamlessly. Manage content distribution across screens, locations, and formats from a single streamlined platform.",
     logo: "/images/products/phi.svg",
-    href: "#products",
+    href: "/products/phi",
   },
   {
     id: "infibid",
@@ -467,7 +467,7 @@ export const footerLinks = {
     { label: "Integral", href: "/products/integral" },
     { label: "Delta", href: "/products/delta" },
     { label: "Sigma", href: "/#products" },
-    { label: "Phi", href: "/#products" },
+    { label: "Phi", href: "/products/phi" },
     { label: "Infibid", href: "/#products" },
   ],
   solutions: [
