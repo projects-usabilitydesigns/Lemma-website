@@ -7,8 +7,9 @@ import { AboutPrinciples } from "@/components/about/AboutPrinciples";
 import { AboutValues } from "@/components/about/AboutValues";
 import { AboutAwards } from "@/components/about/AboutAwards";
 import { AboutTeam } from "@/components/about/AboutTeam";
-import { AboutFaq } from "@/components/about/AboutFaq";
 import { AboutCta } from "@/components/about/AboutCta";
+import { Faq } from "@/components/Faq";
+import { aboutFaqs } from "@/lib/about-data";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -27,7 +28,7 @@ export default function AboutPage() {
         <AboutValues />
         <AboutAwards />
         <AboutTeam />
-        <AboutFaq />
+        <Faq items={aboutFaqs} />
         <AboutCta />
       </main>
       <Footer />

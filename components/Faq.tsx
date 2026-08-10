@@ -7,29 +7,68 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { faqs as defaultFaqs } from "@/lib/data";
-import type { FaqItem } from "@/types";
 import { cn } from "@/lib/utils";
 
-export function Faq({ faqs }: { faqs?: FaqItem[] }) {
-  const data = faqs?.length ? faqs : defaultFaqs;
-  const [openId, setOpenId] = useState<string | null>(data[0]?.id ?? null);
+export type FaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+export type FaqProps = {
+  /** Page-specific questions and answers */
+  items: readonly FaqItem[];
+  /** Override the default heading */
+  title?: string;
+  /** Section element id (default: "faq") */
+  sectionId?: string;
+  /** Prefix for accordion panel ids — defaults from sectionId */
+  idPrefix?: string;
+  /** Show the VIEW ALL CTA (default: true) */
+  showViewAll?: boolean;
+  /** VIEW ALL link target */
+  viewAllHref?: string;
+  className?: string;
+};
+
+/**
+ * Single shared FAQ accordion used across the site.
+ * Pass page-specific `items` (and optional `title`) — styling stays the same everywhere.
+ */
+export function Faq({
+  items,
+  title,
+  sectionId = "faq",
+  idPrefix,
+  showViewAll = true,
+  viewAllHref = "/#faq",
+  className,
+}: FaqProps) {
+  const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null);
+  const prefix = idPrefix ?? sectionId;
 
   return (
-    <section id="faq" className="bg-white pb-16 md:pb-[100px]">
+    <section id={sectionId} className={cn("bg-white pb-16 md:pb-[100px]", className)}>
       <Container>
         <FadeUp className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
           <SectionLabel label="FAQ" align="center" dual />
-          <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Helpful Answers Before
-            <br />
-            You Get Started
+          <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+            {title ? (
+              title
+            ) : (
+              <>
+                Helpful Answers Before
+                <br />
+                You Get Started
+              </>
+            )}
           </h2>
         </FadeUp>
 
         <div className="mx-auto flex max-w-[1188px] flex-col gap-4">
-          {data.map((item) => {
+          {items.map((item) => {
             const open = openId === item.id;
+            const panelId = `${prefix}-${item.id}`;
             return (
               <div
                 key={item.id}
@@ -38,7 +77,7 @@ export function Faq({ faqs }: { faqs?: FaqItem[] }) {
                 <button
                   type="button"
                   aria-expanded={open}
-                  aria-controls={`faq-${item.id}`}
+                  aria-controls={panelId}
                   className={cn(
                     "flex w-full items-start justify-between gap-4 px-5 text-left",
                     open ? "py-5" : "items-center py-2.5",
@@ -63,7 +102,7 @@ export function Faq({ faqs }: { faqs?: FaqItem[] }) {
                 <AnimatePresence initial={false}>
                   {open ? (
                     <motion.div
-                      id={`faq-${item.id}`}
+                      id={panelId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -81,11 +120,13 @@ export function Faq({ faqs }: { faqs?: FaqItem[] }) {
           })}
         </div>
 
-        <div className="mt-12 flex justify-center">
-          <Button href="#faq" variant="primary">
-            VIEW ALL
-          </Button>
-        </div>
+        {showViewAll ? (
+          <div className="mt-12 flex justify-center">
+            <Button href={viewAllHref} variant="primary">
+              VIEW ALL
+            </Button>
+          </div>
+        ) : null}
       </Container>
     </section>
   );
