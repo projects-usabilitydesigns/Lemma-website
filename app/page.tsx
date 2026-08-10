@@ -1,5 +1,4 @@
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
 import { LogosMarquee } from "@/components/home/LogosMarquee";
 import { Products } from "@/components/home/Products";
@@ -28,7 +27,6 @@ export default function HomePage() {
         <Faq items={faqs} viewAllHref="#faq" />
         <Cta />
       </main>
-      <Footer />
     </>
   );
 }

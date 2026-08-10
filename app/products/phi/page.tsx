@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { AboutCta } from "@/components/about/AboutCta";
 import { Faq } from "@/components/Faq";
 import { PhiHero, PhiIntro, PhiFeatures } from "@/components/products/phi";
@@ -23,7 +22,6 @@ export default function PhiProductPage() {
         <Faq items={phiFaqs} />
         <AboutCta />
       </main>
-      <Footer />
     </>
   );
 }

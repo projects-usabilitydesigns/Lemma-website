@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { LogosMarquee } from "@/components/home/LogosMarquee";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import { Faq } from "@/components/Faq";
@@ -33,7 +32,6 @@ export default function RequestDemoPage() {
           showViewAll={false}
         />
       </main>
-      <Footer />
     </>
   );
 }

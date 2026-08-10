@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { Footer } from "@/components/layout/Footer";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { DemoModalProvider } from "@/components/request-demo/DemoModalProvider";
 import "./globals.css";
@@ -97,7 +98,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <SmoothScrollProvider>
-          <DemoModalProvider>{children}</DemoModalProvider>
+          <DemoModalProvider>
+            {children}
+            <Footer />
+          </DemoModalProvider>
         </SmoothScrollProvider>
       </body>
     </html>

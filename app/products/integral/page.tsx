@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { AboutCta } from "@/components/about/AboutCta";
 import { Faq } from "@/components/Faq";
 import {
@@ -29,7 +28,6 @@ export default function IntegralProductPage() {
         <Faq items={integralFaqs} />
         <AboutCta />
       </main>
-      <Footer />
     </>
   );
 }

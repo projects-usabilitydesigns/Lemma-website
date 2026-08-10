@@ -10,10 +10,10 @@ import { solutions } from "@/lib/data";
 
 export function Solutions() {
   return (
-    <section id="solutions" className="relative overflow-hidden bg-white py-16 md:py-[100px]">
+    <section id="solutions" className="relative overflow-hidden bg-white py-12 md:py-[100px]">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-0 flex w-[min(640px,58%)] items-center justify-end md:w-[min(720px,52%)]"
+        className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[min(720px,52%)] items-center justify-end md:flex"
       >
         <Image
           src="/images/solutions/bg.png"
@@ -21,67 +21,77 @@ export function Solutions() {
           width={1024}
           height={935}
           className="h-[85%] w-auto max-w-none object-contain object-right opacity-45"
-          sizes="(max-width: 768px) 60vw, 45vw"
+          sizes="45vw"
           priority={false}
         />
       </div>
 
       <Container className="relative z-10">
-        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <FadeUp className="max-w-xl space-y-5">
+        <div className="mb-8 flex flex-col gap-4 md:mb-12 md:gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <FadeUp className="max-w-xl space-y-4 md:space-y-5">
             <SectionLabel label="Solutions" />
-            <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+            <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
               Built for the people
               <br />
               who move media.
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <p className="max-w-sm text-[16px] leading-[22px] text-[var(--color-slate)] lg:text-right">
+            <p className="max-w-sm text-[15px] leading-[22px] text-[var(--color-slate)] md:text-[16px] lg:text-right">
               One platform — two sides of the same outcome.
             </p>
           </FadeUp>
         </div>
 
-        <Stagger className="grid gap-6 lg:grid-cols-2">
+        <Stagger className="grid gap-5 md:gap-6 lg:grid-cols-2">
           {solutions.map((item) => (
             <motion.article
               key={item.id}
               variants={staggerItem}
               whileHover={{ y: -6 }}
-              className="grid overflow-hidden border border-[var(--color-border)] bg-[var(--color-cream)] transition-shadow duration-300 hover:shadow-[0px_12px_40px_rgba(9,19,26,0.12)] md:grid-cols-5"
+              className="grid overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-cream)] transition-shadow duration-300 hover:shadow-[0px_12px_40px_rgba(9,19,26,0.12)] md:rounded-none md:grid-cols-5"
             >
-              <div className="relative min-h-[220px] md:col-span-2 md:min-h-[376px]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden md:col-span-2 md:aspect-auto md:min-h-[376px]">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover object-bottom transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover object-[center_42%] transition-transform duration-700 hover:scale-105 md:object-center"
                 />
-                <p className="absolute left-4 top-4 text-[60px] font-extralight tracking-[-1.2px] text-[rgba(3,10,17,0.85)]">
+                <p className="absolute left-3 top-3 text-[40px] font-extralight leading-none tracking-[-1.2px] text-[rgba(3,10,17,0.85)] md:left-4 md:top-4 md:text-[60px]">
                   {item.number}
                 </p>
               </div>
-              <div className="flex flex-col p-7 md:col-span-3">
-                <p className="text-[12px] font-medium uppercase tracking-[2.16px] text-[var(--color-slate)]">
+              <div className="flex flex-col p-5 pb-6 md:col-span-3 md:p-7">
+                <p className="text-[11px] font-medium uppercase tracking-[2.16px] text-[var(--color-slate)] md:text-[12px]">
                   {item.eyebrow}
                 </p>
-                <h3 className="mt-2 text-[24px] font-bold tracking-[-0.44px] text-[var(--color-ink)]">
+                <h3 className="mt-2 text-[22px] font-bold tracking-[-0.44px] text-[var(--color-ink)] md:text-[24px]">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[16px] leading-[22px] text-[var(--color-slate)]">
+                <p className="mt-3 text-[15px] leading-[22px] text-[var(--color-slate)] md:text-[16px]">
                   {item.description}
                 </p>
-                <ul className="mt-5 space-y-2">
+                <ul className="mt-4 space-y-2.5 md:mt-5 md:space-y-2">
                   {item.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-[14px] text-[var(--color-ink)]">
-                      <span className="size-1.5 bg-[var(--color-pink)]" />
+                    <li
+                      key={feature}
+                      className="flex items-center gap-3 text-[14px] text-[var(--color-ink)]"
+                    >
+                      <span className="size-1.5 shrink-0 bg-[var(--color-pink)]" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6">
-                  <Button href={item.href} variant="secondary" arrow="up-right">
+                <div className="mt-5 md:mt-6">
+                  <Button
+                    href={item.href}
+                    variant="outline"
+                    arrow="none"
+                    lift={false}
+                    className="w-full normal-case tracking-normal px-6 py-3 text-[15px] font-semibold sm:w-auto sm:px-8 sm:text-[16px]"
+                  >
                     Talk to our team
                   </Button>
                 </div>
@@ -90,7 +100,7 @@ export function Solutions() {
           ))}
         </Stagger>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-8 flex justify-center md:mt-10">
           <Button href="#cta" variant="primary">
             learn more
           </Button>
