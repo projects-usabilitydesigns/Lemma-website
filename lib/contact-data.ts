@@ -2,6 +2,8 @@ export type Office = {
   id: string;
   city: string;
   region: string;
+  /** ISO 3166-1 alpha-2 country code for flag */
+  countryCode: string;
   address: string[];
   phone?: string;
 };
@@ -33,24 +35,28 @@ export const offices: Office[] = [
     id: "new-york",
     city: "New York",
     region: "United States",
+    countryCode: "us",
     address: ["530 Fifth Ave, 9th Floor", "New York, 10036, US"],
   },
   {
     id: "london",
     city: "London",
     region: "United Kingdom",
+    countryCode: "gb",
     address: ["The Curtain Club, Mondrian London Shoreditch", "45 Curtain Rd, London EC2A 3PT, GB"],
   },
   {
     id: "singapore",
     city: "Singapore",
     region: "Singapore",
+    countryCode: "sg",
     address: ["3 Shenton Way, #09-07", "Shenton House, Singapore 068805"],
   },
   {
     id: "australia",
     city: "Sydney",
     region: "Australia",
+    countryCode: "au",
     address: [
       "Insight Working Space, Level 6, Suite A",
       "140 William Street, Woolloomooloo NSW 2011",
@@ -60,6 +66,7 @@ export const offices: Office[] = [
     id: "indonesia",
     city: "Jakarta",
     region: "Indonesia",
+    countryCode: "id",
     address: [
       "Suite A, 11th Floor, Sahid Sudirman Center",
       "Jalan Jendral Sudirman 86, Jakarta Pusat 10220",
@@ -69,6 +76,7 @@ export const offices: Office[] = [
     id: "delhi",
     city: "Delhi",
     region: "India",
+    countryCode: "in",
     address: ["WeWork, 4th Floor, Galaxy Hotel", "32nd Milestone, Gurgaon – 122001"],
     phone: "+91 9325443396",
   },
@@ -76,6 +84,7 @@ export const offices: Office[] = [
     id: "mumbai",
     city: "Mumbai",
     region: "India",
+    countryCode: "in",
     address: [
       "WeWork, 6th Floor, Raheja Platinum, Sag Baug",
       "Marol, Andheri East, Mumbai 400059",
@@ -86,6 +95,7 @@ export const offices: Office[] = [
     id: "pune",
     city: "Pune",
     region: "India",
+    countryCode: "in",
     address: [
       "The Capital, Building B, 301, Baner–Pashan Link Road",
       "Baner, Pune, Maharashtra 411045",

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { formatNumber } from "@/lib/utils";
+
 function SliderField({
   label,
   valueLabel,
@@ -16,6 +17,8 @@ function SliderField({
   onChange,
   minLabel,
   maxLabel,
+  minLabelShort,
+  maxLabelShort,
 }: {
   label: string;
   valueLabel: string;
@@ -26,14 +29,16 @@ function SliderField({
   onChange: (v: number) => void;
   minLabel: string;
   maxLabel: string;
+  minLabelShort?: string;
+  maxLabelShort?: string;
 }) {
   const pct = ((value - min) / (max - min)) * 100;
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-baseline justify-between gap-4">
-        <p className="text-[14px] font-medium text-[var(--color-ink)]">{label}</p>
-        <p className="text-[20px] font-extrabold tracking-[-0.4px] text-[var(--color-blue)]">
+    <div className="min-w-0 space-y-2">
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+        <p className="text-[13px] font-medium text-[var(--color-ink)] sm:text-[14px]">{label}</p>
+        <p className="shrink-0 text-[18px] font-extrabold tracking-[-0.4px] text-[var(--color-blue)] sm:text-[20px]">
           {valueLabel}
         </p>
       </div>
@@ -52,9 +57,15 @@ function SliderField({
           className="absolute inset-x-0 top-0 h-5 w-full cursor-pointer appearance-none bg-transparent accent-[var(--color-pink)]"
         />
       </div>
-      <div className="flex justify-between text-[11px] uppercase tracking-[1.54px] text-[var(--color-slate)]">
-        <span>{minLabel}</span>
-        <span>{maxLabel}</span>
+      <div className="flex justify-between gap-2 text-[10px] uppercase tracking-[0.8px] text-[var(--color-slate)] sm:text-[11px] sm:tracking-[1.54px]">
+        <span className="max-w-[48%] text-left leading-snug">
+          <span className={minLabelShort ? "sm:hidden" : undefined}>{minLabelShort ?? minLabel}</span>
+          {minLabelShort ? <span className="hidden sm:inline">{minLabel}</span> : null}
+        </span>
+        <span className="max-w-[48%] text-right leading-snug">
+          <span className={maxLabelShort ? "sm:hidden" : undefined}>{maxLabelShort ?? maxLabel}</span>
+          {maxLabelShort ? <span className="hidden sm:inline">{maxLabel}</span> : null}
+        </span>
       </div>
     </div>
   );
@@ -88,21 +99,21 @@ export function ArchitectureImpact() {
       <Container className="relative">
         <FadeUp className="mx-auto mb-10 max-w-3xl space-y-5 text-center">
           <SectionLabel label="Interactive Assessment" accent="blue" align="center" dual />
-          <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+          <h2 className="text-[28px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] sm:text-[32px] md:text-[45px] md:leading-[50px]">
             Project Your Lemma
             <br />
             Architecture Impact
           </h2>
-          <p className="text-[16px] leading-7 text-[var(--color-slate)] md:text-[18px]">
+          <p className="px-1 text-[15px] leading-7 text-[var(--color-slate)] sm:text-[16px] md:text-[18px]">
             Adjust the parameters below to estimate cost-efficiency savings and total request volume
             capacity across your omnichannel stack.
           </p>
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <div className="border border-[var(--color-border)] bg-[rgba(249,248,245,0.6)] p-6 backdrop-blur-[4px] md:p-10">
-            <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
-              <div className="flex flex-col justify-center gap-10">
+          <div className="overflow-hidden border border-[var(--color-border)] bg-[rgba(249,248,245,0.6)] p-4 backdrop-blur-[4px] sm:p-6 md:p-10">
+            <div className="grid min-w-0 gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-10">
+              <div className="flex min-w-0 flex-col justify-center gap-8 sm:gap-10">
                 <SliderField
                   label="Monthly High Volume Impressions"
                   valueLabel={impressionLabel}
@@ -113,6 +124,8 @@ export function ArchitectureImpact() {
                   onChange={setImpressions}
                   minLabel="100 Million"
                   maxLabel="5 Billion"
+                  minLabelShort="100M"
+                  maxLabelShort="5B"
                 />
                 <SliderField
                   label="Average Uptime Dependency"
@@ -124,6 +137,8 @@ export function ArchitectureImpact() {
                   onChange={setUptime}
                   minLabel="Standard SLA (99.0%)"
                   maxLabel="Critical SLA (99.999%)"
+                  minLabelShort="99.0%"
+                  maxLabelShort="99.999%"
                 />
                 <SliderField
                   label="Target DOOH Screen Network"
@@ -135,39 +150,41 @@ export function ArchitectureImpact() {
                   onChange={setNodes}
                   minLabel="10 Screens"
                   maxLabel="500 Screens"
+                  minLabelShort="10"
+                  maxLabelShort="500"
                 />
               </div>
 
-              <div className="flex flex-col gap-3 border border-[var(--color-border)] bg-[rgba(252,252,249,0.8)] p-8">
-                <p className="text-[12px] uppercase tracking-[2.64px] text-[var(--color-slate)]">
+              <div className="flex min-w-0 flex-col gap-3 border border-[var(--color-border)] bg-[rgba(252,252,249,0.8)] p-5 sm:p-8">
+                <p className="text-[11px] uppercase tracking-[2px] text-[var(--color-slate)] sm:text-[12px] sm:tracking-[2.64px]">
                   Projected Annual Savings
                 </p>
-                <p className="text-[48px] font-extrabold tracking-[-1.44px] text-[var(--color-ink)] transition-all duration-300 md:text-[72px] md:leading-[72px]">
+                <p className="break-words text-[36px] font-extrabold tracking-[-1.44px] text-[var(--color-ink)] transition-all duration-300 sm:text-[48px] md:text-[72px] md:leading-[72px]">
                   ${formatNumber(savings)}+
                 </p>
-                <p className="pb-5 text-[14px] text-[var(--color-blue)]">
+                <p className="pb-4 text-[13px] text-[var(--color-blue)] sm:pb-5 sm:text-[14px]">
                   Estimated infrastructure & routing optimizations
                 </p>
                 <div className="h-px bg-[var(--color-divider)]" />
-                <div className="grid grid-cols-2 gap-6 py-5">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[2px] text-[var(--color-slate)]">
+                <div className="grid grid-cols-2 gap-4 py-4 sm:gap-6 sm:py-5">
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-[1.5px] text-[var(--color-slate)] sm:tracking-[2px]">
                       Est. Data Latency
                     </p>
-                    <p className="mt-2 text-[24px] font-extrabold tracking-[-0.48px] text-[var(--color-blue)]">
+                    <p className="mt-2 text-[20px] font-extrabold tracking-[-0.48px] text-[var(--color-blue)] sm:text-[24px]">
                       &lt; {latency}ms
                     </p>
                   </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[2px] text-[var(--color-slate)]">
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-[1.5px] text-[var(--color-slate)] sm:tracking-[2px]">
                       Max Load Safe
                     </p>
-                    <p className="mt-2 text-[24px] font-extrabold tracking-[-0.48px] text-[var(--color-ink)]">
+                    <p className="mt-2 text-[20px] font-extrabold tracking-[-0.48px] text-[var(--color-ink)] sm:text-[24px]">
                       {load}k req/s
                     </p>
                   </div>
                 </div>
-                <Button href="#cta" variant="primary" className="w-full justify-center">
+                <Button href="#cta" variant="primary" className="w-full justify-center px-4 text-center text-[12px] sm:text-[14px]">
                   Request Full TCO Breakdown
                 </Button>
               </div>

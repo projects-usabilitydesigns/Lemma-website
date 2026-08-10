@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
@@ -81,13 +80,11 @@ export function Solutions() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={item.href}
-                  className="mt-6 inline-flex w-fit items-center justify-between gap-6 border border-[var(--color-border)] px-[17px] py-[13px] text-[14px] font-medium text-[var(--color-ink-deep)] transition hover:-translate-y-0.5"
-                >
-                  Talk to our team
-                  <ArrowUpRight className="size-4" />
-                </a>
+                <div className="mt-6">
+                  <Button href={item.href} variant="secondary" arrow="up-right">
+                    Talk to our team
+                  </Button>
+                </div>
               </div>
             </motion.article>
           ))}

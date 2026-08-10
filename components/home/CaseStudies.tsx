@@ -28,7 +28,7 @@ export function CaseStudies() {
       <Container className="mb-12">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <FadeUp className="space-y-5">
-            <SectionLabel label="Selected work" />
+            <SectionLabel label="Case Studies" />
             <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
               Lemmagnified success stories.
             </h2>

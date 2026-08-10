@@ -208,8 +208,8 @@ export function Header() {
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto px-4 py-4">
-                <nav className="flex flex-col gap-1" aria-label="Mobile">
+              <div className="flex-1 overflow-hidden px-4 py-4">
+                <nav className="flex h-full flex-col gap-1 overflow-hidden" aria-label="Mobile">
                   {navItems.map((item) => {
                     if (!item.megaMenu) {
                       return (
