@@ -9,9 +9,10 @@ import {
   JourneySection,
   PlatformFeatures,
   CampaignAnalytics,
-  BrandsFAQ,
   CTASection,
 } from "@/components/solutions";
+import { Faq } from "@/components/Faq";
+import { brandsFaqs } from "@/lib/solutions-brands-data";
 
 export const metadata: Metadata = {
   title: "For Brands & Advertisers",
@@ -31,7 +32,11 @@ export default function BrandsAdvertisersPage() {
         <PlatformFeatures />
         <CampaignAnalytics />
         <CaseStudies />
-        <BrandsFAQ />
+        <Faq
+          items={brandsFaqs}
+          title="Answers for brands getting started"
+          showViewAll={false}
+        />
         <CTASection />
       </main>
       <Footer />

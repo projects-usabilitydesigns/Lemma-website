@@ -8,8 +8,9 @@ import { CaseStudies } from "@/components/home/CaseStudies";
 import { AiFeatures } from "@/components/home/AiFeatures";
 import { ArchitectureImpact } from "@/components/home/ArchitectureImpact";
 import { Blog } from "@/components/home/Blog";
-import { Faq } from "@/components/home/Faq";
+import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/home/Cta";
+import { faqs } from "@/lib/data";
 
 export default function HomePage() {
   return (
@@ -24,7 +25,7 @@ export default function HomePage() {
         <AiFeatures />
         <ArchitectureImpact />
         <Blog />
-        <Faq />
+        <Faq items={faqs} viewAllHref="#faq" />
         <Cta />
       </main>
       <Footer />

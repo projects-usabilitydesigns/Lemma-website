@@ -9,9 +9,9 @@ import {
   JourneySection,
   PlatformFeatures,
   CampaignAnalytics,
-  BrandsFAQ,
   CTASection,
 } from "@/components/solutions";
+import { Faq } from "@/components/Faq";
 import {
   agenciesAnalytics,
   agenciesCapabilities,
@@ -65,7 +65,7 @@ export default function AgenciesPage() {
           metrics={agenciesSuccessMetrics}
         />
         <CaseStudies />
-        <BrandsFAQ title={agenciesFaqTitle} items={agenciesFaqs} />
+        <Faq items={agenciesFaqs} title={agenciesFaqTitle} showViewAll={false} />
         <CTASection data={agenciesCta} />
       </main>
       <Footer />
