@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import {
   BrandsHero,
@@ -9,9 +8,9 @@ import {
   JourneySection,
   PlatformFeatures,
   CampaignAnalytics,
-  BrandsFAQ,
   CTASection,
 } from "@/components/solutions";
+import { Faq } from "@/components/Faq";
 import {
   mediaOwnersAnalytics,
   mediaOwnersCapabilities,
@@ -65,10 +64,9 @@ export default function MediaOwnersPage() {
           metrics={mediaOwnersSuccessMetrics}
         />
         <CaseStudies />
-        <BrandsFAQ title={mediaOwnersFaqTitle} items={mediaOwnersFaqs} />
+        <Faq items={mediaOwnersFaqs} title={mediaOwnersFaqTitle} showViewAll={false} />
         <CTASection data={mediaOwnersCta} />
       </main>
-      <Footer />
     </>
   );
 }

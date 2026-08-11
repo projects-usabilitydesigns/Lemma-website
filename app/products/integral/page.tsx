@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { AboutCta } from "@/components/about/AboutCta";
+import { Faq } from "@/components/Faq";
 import {
   IntegralHero,
   IntegralDeliver,
   IntegralFeatures,
   IntegralAudienceGraph,
-  IntegralFaq,
 } from "@/components/products/integral";
+import { integralFaqs } from "@/lib/integral-data";
 
 export const metadata: Metadata = {
   title: "Lemma Integral",
@@ -25,10 +25,9 @@ export default function IntegralProductPage() {
         <IntegralDeliver />
         <IntegralFeatures />
         <IntegralAudienceGraph />
-        <IntegralFaq />
+        <Faq items={integralFaqs} />
         <AboutCta />
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,12 +1,18 @@
 "use client";
 
 import {
+  BarChart3,
+  Boxes,
   Clapperboard,
+  Images,
   Monitor,
   Network,
   PlayCircle,
+  ShieldCheck,
   ThumbsUp,
+  TrendingUp,
   Tv,
+  Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
@@ -20,6 +26,12 @@ const icons = {
   thumbsUp: ThumbsUp,
   billboard: Clapperboard,
   network: Network,
+  boxes: Boxes,
+  images: Images,
+  zap: Zap,
+  trendingUp: TrendingUp,
+  shield: ShieldCheck,
+  barChart: BarChart3,
 } as const;
 
 function ChannelCard({ channel }: { channel: BrandsChannel }) {

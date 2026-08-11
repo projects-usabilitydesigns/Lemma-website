@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import {
-  CareersHero,
-  CareersGallery,
-  CareersJobs,
-  CareersFaq,
-  CareersCta,
-} from "@/components/careers";
+import { Faq } from "@/components/Faq";
+import { CareersHero, CareersGallery, CareersJobs, CareersCta } from "@/components/careers";
+import { careersFaqs } from "@/lib/careers-data";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -23,10 +18,9 @@ export default function CareersPage() {
         <CareersHero />
         <CareersGallery />
         <CareersJobs />
-        <CareersFaq />
+        <Faq items={careersFaqs} viewAllHref="/about#faq" />
         <CareersCta />
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,11 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { offices } from "@/lib/contact-data";
+
+function OfficeFlag({ countryCode, country }: { countryCode: string; country: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`https://flagcdn.com/w40/${countryCode}.png`}
+      srcSet={`https://flagcdn.com/w80/${countryCode}.png 2x`}
+      alt={`${country} flag`}
+      width={28}
+      height={21}
+      className="mb-4 !h-[22px] !w-[30px] shrink-0 self-start object-cover"
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
 
 export function ContactOffices() {
   return (
@@ -28,9 +44,7 @@ export function ContactOffices() {
               variants={staggerItem}
               className="flex h-full flex-col rounded-[20px] border border-[var(--color-border)] bg-[var(--color-cream-soft)] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_18px_40px_rgba(9,19,26,0.1)]"
             >
-              <span className="mb-4 flex size-11 items-center justify-center rounded-xl bg-[rgba(21,129,197,0.1)] text-[var(--color-blue-link)]">
-                <MapPin className="size-5" />
-              </span>
+              <OfficeFlag countryCode={office.countryCode} country={office.region} />
               <h3 className="font-heading text-[20px] font-semibold text-[var(--color-ink)]">
                 {office.city}
               </h3>

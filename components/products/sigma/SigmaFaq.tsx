@@ -7,36 +7,43 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { aboutFaqs } from "@/lib/about-data";
+import { sigmaFaqs } from "@/lib/sigma-data";
 import { cn } from "@/lib/utils";
 
-export function AboutFaq() {
-  const [openId, setOpenId] = useState<string | null>(aboutFaqs[0]?.id ?? null);
+const brandGradientText = {
+  backgroundImage: "var(--gradient-cta)",
+  backgroundClip: "text",
+  WebkitBackgroundClip: "text",
+  color: "transparent",
+} as const;
+
+export function SigmaFaq() {
+  const [openId, setOpenId] = useState<string | null>(sigmaFaqs[0]?.id ?? null);
 
   return (
-    <section id="faq" className="bg-white pb-16 pt-8 md:pb-[100px] md:pt-10">
+    <section id="faq" className="bg-white pb-14 pt-6 md:pb-16 md:pt-8">
       <Container>
         <FadeUp className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
           <SectionLabel label="FAQ" align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Helpful Answers Before
             <br />
-            You Get Started
+            <span style={brandGradientText}>You Get Started</span>
           </h2>
         </FadeUp>
 
         <div className="mx-auto flex max-w-[1188px] flex-col gap-4">
-          {aboutFaqs.map((item) => {
+          {sigmaFaqs.map((item) => {
             const open = openId === item.id;
             return (
               <div
                 key={item.id}
-                className="border border-[var(--color-border-faq)] bg-white shadow-[1px_1px_2px_rgba(0,0,0,0.09)]"
+                className="rounded-[8px] border border-[var(--color-border-faq)] bg-white shadow-[1px_1px_2px_rgba(0,0,0,0.09)]"
               >
                 <button
                   type="button"
                   aria-expanded={open}
-                  aria-controls={`about-faq-${item.id}`}
+                  aria-controls={`sigma-faq-${item.id}`}
                   className={cn(
                     "flex w-full items-start justify-between gap-4 px-5 text-left",
                     open ? "py-5" : "items-center py-2.5",
@@ -59,7 +66,7 @@ export function AboutFaq() {
                 <AnimatePresence initial={false}>
                   {open ? (
                     <motion.div
-                      id={`about-faq-${item.id}`}
+                      id={`sigma-faq-${item.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

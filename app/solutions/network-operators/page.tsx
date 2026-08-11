@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import {
   BrandsHero,
@@ -9,9 +8,9 @@ import {
   JourneySection,
   PlatformFeatures,
   CampaignAnalytics,
-  BrandsFAQ,
   CTASection,
 } from "@/components/solutions";
+import { Faq } from "@/components/Faq";
 import {
   networkOperatorsAnalytics,
   networkOperatorsCapabilities,
@@ -65,10 +64,13 @@ export default function NetworkOperatorsPage() {
           metrics={networkOperatorsSuccessMetrics}
         />
         <CaseStudies />
-        <BrandsFAQ title={networkOperatorsFaqTitle} items={networkOperatorsFaqs} />
+        <Faq
+          items={networkOperatorsFaqs}
+          title={networkOperatorsFaqTitle}
+          showViewAll={false}
+        />
         <CTASection data={networkOperatorsCta} />
       </main>
-      <Footer />
     </>
   );
 }
