@@ -101,7 +101,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "sigma",
             title: "Sigma",
             description: "Supply-side platform",
-            href: "#products",
+            href: "/products/sigma",
             iconColor: "#008fdb",
             iconSymbol: "Σ",
           },
@@ -200,7 +200,7 @@ export const products: Product[] = [
     description:
       "Transparent SSP designed to maximize inventory yield. Unlock greater revenue opportunities with real-time insights, demand access, and complete transparency.",
     logo: "/images/products/sigma.svg",
-    href: "#products",
+    href: "/products/sigma",
   },
   {
     id: "phi",
