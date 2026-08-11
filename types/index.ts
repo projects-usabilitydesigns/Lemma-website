@@ -63,11 +63,13 @@ export type FaqItem = {
   answer: string;
 };
 
+export type MegaMenuId = "who-we-are" | "what-we-do" | "resources";
+
 export type NavItem = {
   label: string;
   href: string;
   hasDropdown?: boolean;
-  megaMenu?: "who-we-are" | "what-we-do";
+  megaMenu?: MegaMenuId;
 };
 
 export type MegaMenuLink = {
@@ -96,7 +98,7 @@ export type MegaMenuFeatured = {
 };
 
 export type MegaMenuConfig = {
-  id: "who-we-are" | "what-we-do";
+  id: MegaMenuId;
   columns: MegaMenuColumn[];
   featured: MegaMenuFeatured;
 };
