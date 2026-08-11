@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { LogosMarquee } from "@/components/home/LogosMarquee";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactOffices } from "@/components/contact/ContactOffices";
@@ -22,7 +21,6 @@ export default function ContactPage() {
         <ContactOffices />
         <ContactCta />
       </main>
-      <Footer />
     </>
   );
 }

@@ -101,7 +101,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
             id: "sigma",
             title: "Sigma",
             description: "Supply-side platform",
-            href: "#products",
+            href: "/products/sigma",
             iconColor: "#008fdb",
             iconSymbol: "Σ",
           },
@@ -166,7 +166,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
       description: "Get a tailored walkthrough of the Lemma stack with our team.",
       ctaLabel: "Request a Demo",
       ctaHref: "/request-demo",
-      image: "/images/solutions/brands.jpg",
+      image: "/images/solutions/brands-color.png",
     },
   },
 };
@@ -200,7 +200,7 @@ export const products: Product[] = [
     description:
       "Transparent SSP designed to maximize inventory yield. Unlock greater revenue opportunities with real-time insights, demand access, and complete transparency.",
     logo: "/images/products/sigma.svg",
-    href: "#products",
+    href: "/products/sigma",
   },
   {
     id: "phi",
@@ -229,7 +229,7 @@ export const solutions: Solution[] = [
     description:
       "Run campaigns that don't end at the impression. Retarget high-intent audiences across personal devices and close the loop with attribution.",
     features: ["Omnichannel activation", "Cross-screen retargeting", "Outcome attribution"],
-    image: "/images/solutions/brands.jpg",
+    image: "/images/solutions/brands-color.png",
     href: "/solutions/brands-advertisers",
   },
   {
@@ -240,7 +240,7 @@ export const solutions: Solution[] = [
     description:
       "Open your inventory to global demand without losing control. Programmatic transparency, premium yield, and direct relationships at your fingertips.",
     features: ["Yield optimization", "Global demand access", "Inventory control"],
-    image: "/images/solutions/owners.jpg",
+    image: "/images/solutions/owners-color.png",
     href: "/solutions/media-owners",
   },
 ];

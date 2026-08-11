@@ -1,6 +1,5 @@
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
- import { faqs as defaultFaqs } from "@/lib/data";
+import { faqs as defaultFaqs } from "@/lib/data";
 import { Hero } from "@/components/home/Hero";
 import { LogosMarquee } from "@/components/home/LogosMarquee";
 import { Products } from "@/components/home/Products";
@@ -58,7 +57,6 @@ export default async function HomePage() {
         <Faq items={faqs.length ? faqs : defaultFaqs} />
         <Cta />
       </main>
-      <Footer />
     </>
   );
 }

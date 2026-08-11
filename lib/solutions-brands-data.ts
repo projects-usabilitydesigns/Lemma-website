@@ -20,7 +20,19 @@ export type BrandsChannel = {
   id: string;
   title: string;
   description: string;
-  icon: "monitor" | "tv" | "play" | "thumbsUp" | "billboard" | "network";
+  icon:
+    | "monitor"
+    | "tv"
+    | "play"
+    | "thumbsUp"
+    | "billboard"
+    | "network"
+    | "boxes"
+    | "images"
+    | "zap"
+    | "trendingUp"
+    | "shield"
+    | "barChart";
 };
 
 export type BrandsCapability = {

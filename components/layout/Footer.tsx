@@ -19,22 +19,21 @@ const aiTools = [
     href: `https://chatgpt.com/?q=${encodedPrompt}&hints=search`,
   },
   {
-    name: "Gemini",
-    src: "/icons/ai-gemini.svg",
-    // Gemini has no prompt URL parameter; Google's AI Mode accepts one.
-    href: `https://www.google.com/search?udm=50&q=${encodedPrompt}`,
-  },
-  {
     name: "Claude",
     src: "/icons/ai-claude.svg",
     href: `https://claude.ai/new?q=${encodedPrompt}`,
   },
   {
-    name: "Perplexity",
-    src: "/icons/ai-perplexity.svg",
-    href: `https://www.perplexity.ai/search?q=${encodedPrompt}`,
+    name: "Gemini",
+    src: "/icons/ai-gemini.svg",
+    href: `https://www.google.com/search?udm=50&q=${encodedPrompt}`,
   },
-];
+  {
+    name: "Mistral",
+    src: "/icons/ai-mistral.svg",
+    href: `https://chat.mistral.ai/chat?q=${encodedPrompt}`,
+  },
+] as const;
 
 type SocialIconProps = { className?: string };
 
@@ -93,43 +92,62 @@ const socialLinks = [
   },
 ];
 
+const contactItems = [
+  {
+    icon: MapPin,
+    content: (
+      <span>
+        NEW YORK 530 Fifth Ave, 9th Floor,
+        <br />
+        New York, 10036, US
+      </span>
+    ),
+  },
+  {
+    icon: Mail,
+    content: (
+      <a href="mailto:contactus@lemmamedia.com" className="hover:underline">
+        contactus@lemmamedia.com
+      </a>
+    ),
+  },
+  {
+    icon: Phone,
+    content: (
+      <a href="tel:+0012345678" className="hover:underline">
+        +00 12345678
+      </a>
+    ),
+  },
+] as const;
+
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] bg-white pb-8 pt-10">
+    <footer className="border-t border-[var(--color-border)] bg-white pb-8 pt-12 md:pt-14">
       <Container>
         <FadeUp>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
-            <div className="lg:col-span-2">
-              <Link href="/" className="relative mb-5 block h-9 w-[152px]">
-                <Image src="/images/logo-lemma.svg" alt="LEMMA" fill className="object-contain object-left" />
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)] lg:gap-12">
+            <div>
+              <Link href="/" className="relative mb-6 block h-8 w-[146px]">
+                <Image
+                  src="/images/logo-lemma.svg"
+                  alt="LEMMA"
+                  fill
+                  className="object-contain object-left"
+                />
               </Link>
-              <ul className="space-y-2 text-[14px] text-[var(--color-slate)]">
-                <li className="flex items-start gap-3">
-                  <span className="flex size-12 items-center justify-center bg-[rgba(21,129,197,0.1)]">
-                    <MapPin className="size-5 text-[var(--color-blue-link)]" />
-                  </span>
-                  <span>
-                    NEW YORK 530 Fifth Ave, 9th Floor,
-                    <br />
-                    New York, 10036, US
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex size-12 items-center justify-center bg-[rgba(21,129,197,0.1)]">
-                    <Mail className="size-5 text-[var(--color-blue-link)]" />
-                  </span>
-                  <a href="mailto:contactus@lemmamedia.com" className="hover:underline">
-                    contactus@lemmamedia.com
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex size-12 items-center justify-center bg-[rgba(21,129,197,0.1)]">
-                    <Phone className="size-5 text-[var(--color-blue-link)]" />
-                  </span>
-                  <a href="tel:+0012345678" className="hover:underline">
-                    +00 12345678
-                  </a>
-                </li>
+              <ul className="space-y-3 text-[14px] leading-relaxed text-[var(--color-slate)]">
+                {contactItems.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-[rgba(21,129,197,0.18)]">
+                        <Icon className="size-4 text-[var(--color-blue-link)]" strokeWidth={2} />
+                      </span>
+                      {item.content}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -139,15 +157,15 @@ export function Footer() {
               { title: "Company", items: footerLinks.company },
             ].map((col) => (
               <div key={col.title}>
-                <p className="mb-4 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate)]">
+                <p className="mb-4 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate-soft)]">
                   {col.title}
                 </p>
-                <ul className="space-y-2.5">
+                <ul className="space-y-3">
                   {col.items.map((item) => (
                     <li key={item.label}>
                       <Link
                         href={item.href}
-                        className="group relative text-[16px] text-[var(--color-ink)]"
+                        className="group relative inline-block text-[15px] text-[var(--color-ink)] md:text-[16px]"
                       >
                         <span>{item.label}</span>
                         <span className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
@@ -160,15 +178,15 @@ export function Footer() {
           </div>
         </FadeUp>
 
-        <div className="my-5 h-px w-full bg-[var(--color-border)]" />
+        <div className="my-8 h-px w-full bg-[var(--color-border)] md:my-10" />
 
         <FadeUp
           delay={0.1}
-          className="flex flex-col items-center justify-center gap-6 md:flex-row md:items-center md:gap-10"
+          className="flex flex-col items-center justify-center gap-8 sm:flex-row sm:items-start sm:gap-16 lg:gap-24"
         >
-          <div className="flex flex-col items-center gap-2.5 md:items-end">
-            <p className="text-[13px] font-semibold uppercase tracking-[1.6px] text-[var(--color-slate-soft)]">
-              Ask AI for a summary
+          <div className="flex flex-col items-center gap-3">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-[12px]">
+              Ask AI for a summary of curated media
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {aiTools.map((tool) => (
@@ -187,13 +205,8 @@ export function Footer() {
             </div>
           </div>
 
-          <div
-            className="h-px w-24 bg-[var(--color-border)] md:h-16 md:w-px"
-            aria-hidden
-          />
-
-          <div className="flex flex-col items-center gap-2.5 md:items-start">
-            <p className="text-[13px] font-semibold uppercase tracking-[1.6px] text-[var(--color-slate-soft)]">
+          <div className="flex flex-col items-center gap-3">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-[12px]">
               Follow us
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -217,18 +230,23 @@ export function Footer() {
           </div>
         </FadeUp>
 
-        <div className="my-5 h-px w-full bg-[var(--color-border)]" />
+        <div className="my-8 h-px w-full bg-[var(--color-border)] md:my-10" />
 
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <div className="relative h-[62px] w-[268px]">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <div className="relative h-[52px] w-[240px] max-w-full sm:h-[62px] sm:w-[268px]">
             <Image src="/images/iab-footer.png" alt="IAB partners" fill className="object-contain" />
           </div>
-          <div className="relative h-[62px] w-[350px] max-w-full">
-            <Image src="/images/partners-footer.png" alt="Industry partners" fill className="object-contain" />
+          <div className="relative h-[52px] w-[300px] max-w-full sm:h-[62px] sm:w-[350px]">
+            <Image
+              src="/images/partners-footer.png"
+              alt="Industry partners"
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
 
-        <div className="mt-5 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-5 text-[12px] text-[var(--color-slate)] md:flex-row md:items-center">
+        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-6 text-[12px] text-[var(--color-slate)] md:mt-10 md:flex-row md:items-center">
           <p>© 2026 Lemma Technologies. All rights reserved.</p>
           <div className="flex gap-6">
             {footerLinks.legal.map((item) => (
