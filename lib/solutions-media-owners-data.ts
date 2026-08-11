@@ -90,42 +90,42 @@ export const mediaOwnersChannels = {
       title: "Lemma Sigma",
       description:
         "Integrate with Lemma and gain complete control and transparency over your inventory with a transparent SSP.",
-      icon: "network",
+      icon: "boxes",
     },
     {
       id: "phi",
       title: "Lemma Phi",
       description:
         "Introducing Lemma Phi—our DCS that is completely free of cost, so you can manage content without friction.",
-      icon: "monitor",
+      icon: "images",
     },
     {
       id: "rtb",
       title: "Real-Time Bidding",
       description:
         "Capture optimal prices through automation and RTB workflows designed for fast-paced digital advertising.",
-      icon: "play",
+      icon: "zap",
     },
     {
       id: "yield",
       title: "Yield Optimization",
       description:
         "Prioritize premium placements and maximize fill while protecting the value of your inventory.",
-      icon: "thumbsUp",
+      icon: "trendingUp",
     },
     {
       id: "safety",
       title: "Brand Safety Controls",
       description:
         "Uphold quality standards and creative guidelines so every ad on your screens meets your rules.",
-      icon: "billboard",
+      icon: "shield",
     },
     {
       id: "insights",
       title: "Revenue Insights",
       description:
         "See clear monetization reporting so you always know what’s driving performance and where to improve.",
-      icon: "tv",
+      icon: "barChart",
     },
   ] satisfies BrandsChannel[],
 };

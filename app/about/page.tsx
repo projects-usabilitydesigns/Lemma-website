@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutCommunity } from "@/components/about/AboutCommunity";
 import { AboutPrinciples } from "@/components/about/AboutPrinciples";
@@ -31,7 +30,6 @@ export default function AboutPage() {
         <Faq items={aboutFaqs} />
         <AboutCta />
       </main>
-      <Footer />
     </>
   );
 }

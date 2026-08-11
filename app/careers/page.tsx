@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { Faq } from "@/components/Faq";
 import { CareersHero, CareersGallery, CareersJobs, CareersCta } from "@/components/careers";
 import { careersFaqs } from "@/lib/careers-data";
@@ -22,7 +21,6 @@ export default function CareersPage() {
         <Faq items={careersFaqs} viewAllHref="/about#faq" />
         <CareersCta />
       </main>
-      <Footer />
     </>
   );
 }

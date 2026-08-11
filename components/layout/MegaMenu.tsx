@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 function SectionLabel({ label, light = false }: { label: string; light?: boolean }) {
   return (
-    <div className="mb-5 flex items-center gap-2.5">
+    <div className="mb-3 flex items-center gap-2.5 lg:mb-5">
       <span className="h-px w-5 shrink-0 bg-[var(--color-pink)]" aria-hidden />
       <span
         className={cn(
@@ -34,7 +34,7 @@ function MenuLinkItem({
     <Link
       href={item.href}
       onClick={onNavigate}
-      className="group/item flex items-center gap-3 rounded-xl px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[rgba(248,45,137,0.06)] hover:shadow-[0_8px_20px_rgba(9,19,26,0.06)]"
+      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[rgba(248,45,137,0.06)] hover:shadow-[0_8px_20px_rgba(9,19,26,0.06)] lg:py-3"
     >
       {item.iconColor ? (
         <span
@@ -115,26 +115,26 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 6 }}
       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="overflow-hidden rounded-[20px] border border-[var(--color-border)] bg-white shadow-[0_20px_60px_rgba(9,19,26,0.12)]"
+      className="overflow-hidden rounded-[20px] border border-[var(--color-border)] bg-white shadow-none lg:shadow-[0_20px_60px_rgba(9,19,26,0.12)]"
     >
       <div className="grid lg:grid-cols-[1fr_1fr_0.95fr]">
         {menu.columns.map((column, index) => (
           <div
             key={column.id}
             className={cn(
-              "p-6 md:p-8",
+              "p-3 sm:p-6 md:p-8",
               index > 0 && "border-t border-[var(--color-border)] lg:border-t-0 lg:border-l",
             )}
           >
             <SectionLabel label={column.label} />
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-0.5 lg:gap-1">
               {column.items.map((item) => (
                 <MenuLinkItem key={item.id} item={item} onNavigate={onNavigate} />
               ))}
             </div>
           </div>
         ))}
-        <div className="border-t border-[var(--color-border)] p-3 lg:border-t-0 lg:border-l lg:p-3">
+        <div className="hidden border-t border-[var(--color-border)] p-3 lg:block lg:border-t-0 lg:border-l lg:p-3">
           <FeaturedPanel featured={menu.featured} onNavigate={onNavigate} />
         </div>
       </div>

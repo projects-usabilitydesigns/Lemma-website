@@ -1,36 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { BlurReveal, FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { VideoModal } from "@/components/ui/VideoModal";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { integralAssets } from "@/lib/integral-data";
 import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
-import { animation } from "@/lib/design-system";
 
 const INTEGRAL_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
 
 export function IntegralHero() {
   const [videoOpen, setVideoOpen] = useState(false);
-  const reduced = useReducedMotion();
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 48]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 0.96]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative mx-auto w-full max-w-[1920px] overflow-hidden md:h-[664px]"
-    >
+    <section className="relative mx-auto w-full max-w-[1920px] overflow-hidden md:h-[664px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
 
       <Container className="relative flex h-full items-center pt-[100px] pb-12 md:pt-[88px] md:pb-0">
@@ -74,37 +60,8 @@ export function IntegralHero() {
             </FadeUp>
           </div>
 
-          <motion.div
-            initial={reduced ? false : { opacity: 0, x: 40, scale: 0.94 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{
-              duration: animation.duration.slow,
-              ease: animation.ease,
-              delay: reduced ? 0 : 0.18,
-            }}
-            style={{ y: imageY, scale: imageScale }}
-            className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center pt-4 md:pt-6 lg:max-w-[680px] lg:translate-y-4"
-          >
-            <motion.div
-              animate={
-                reduced
-                  ? undefined
-                  : {
-                      y: [0, -12, 0],
-                      rotate: [-0.6, 0.6, -0.6],
-                    }
-              }
-              transition={
-                reduced
-                  ? undefined
-                  : {
-                      duration: 6,
-                      ease: "easeInOut",
-                      repeat: Infinity,
-                    }
-              }
-              className="relative aspect-[781/820] w-full"
-            >
+          <div className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center overflow-visible pt-4 md:pt-6 lg:max-w-[680px] lg:translate-y-4">
+            <div className="relative aspect-[781/820] w-full max-md:mb-8 max-md:origin-top max-md:scale-125">
               <Image
                 src={integralAssets.heroFunnel}
                 alt="Lemma Integral full funnel — Reach, Reinforce, Results, Outcome"
@@ -113,8 +70,8 @@ export function IntegralHero() {
                 priority
                 sizes="(max-width: 1024px) 100vw, 680px"
               />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </Container>
 
