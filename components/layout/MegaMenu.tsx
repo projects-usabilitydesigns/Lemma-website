@@ -117,7 +117,14 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
       className="overflow-hidden rounded-[20px] border border-[var(--color-border)] bg-white shadow-none lg:shadow-[0_20px_60px_rgba(9,19,26,0.12)]"
     >
-      <div className="grid lg:grid-cols-[1fr_1fr_0.95fr]">
+      <div
+        className={cn(
+          "grid",
+          menu.columns.length === 1
+            ? "lg:grid-cols-[1.15fr_0.95fr]"
+            : "lg:grid-cols-[1fr_1fr_0.95fr]",
+        )}
+      >
         {menu.columns.map((column, index) => (
           <div
             key={column.id}
