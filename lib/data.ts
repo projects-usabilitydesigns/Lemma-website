@@ -14,11 +14,11 @@ import type {
 export const navItems: NavItem[] = [
   { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
   { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
-  { label: "Resources", href: "/resources", hasDropdown: true },
+  { label: "Resources", href: "/case-studies", hasDropdown: true, megaMenu: "resources" },
   { label: "Contact Us", href: "/contact-us" },
 ];
 
-export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
+export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMenuConfig> = {
   "who-we-are": {
     id: "who-we-are",
     columns: [
@@ -167,6 +167,37 @@ export const megaMenus: Record<"who-we-are" | "what-we-do", MegaMenuConfig> = {
       ctaLabel: "Request a Demo",
       ctaHref: "/request-demo",
       image: "/images/solutions/brands-color.png",
+    },
+  },
+  resources: {
+    id: "resources",
+    columns: [
+      {
+        id: "explore",
+        label: "Explore",
+        items: [
+          {
+            id: "newsroom",
+            title: "Newsroom",
+            description: "News & announcements",
+            href: "/newsroom",
+          },
+          {
+            id: "case-studies",
+            title: "Case Studies",
+            description: "Campaigns that performed",
+            href: "/case-studies",
+          },
+        ],
+      },
+    ],
+    featured: {
+      eyebrow: "Selected work",
+      title: "Campaigns that turned outdoor into outcomes.",
+      description: "Explore how brands activate and measure across DOOH, CTV, and beyond with Lemma.",
+      ctaLabel: "View case studies",
+      ctaHref: "/case-studies",
+      image: "/images/case-studies/etihad-new-year-sale.jpg",
     },
   },
 };

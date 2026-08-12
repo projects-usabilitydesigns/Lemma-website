@@ -59,7 +59,16 @@ export function Faq({
               <>
                 Helpful Answers Before
                 <br />
-                You Get Started
+                <span
+                  style={{
+                    backgroundImage: "var(--gradient-cta)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  You Get Started
+                </span>
               </>
             )}
           </h2>

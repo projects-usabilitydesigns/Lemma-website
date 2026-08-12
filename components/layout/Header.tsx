@@ -1,23 +1,32 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { megaMenus, navItems } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { pauseSmoothScroll, resumeSmoothScroll } from "@/lib/smooth-scroll";
+import type { MegaMenuId } from "@/types";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { MegaMenuPanel } from "@/components/layout/MegaMenu";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeMega, setActiveMega] = useState<"who-we-are" | "what-we-do" | null>(null);
-  const [mobileExpanded, setMobileExpanded] = useState<"who-we-are" | "what-we-do" | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const [activeMega, setActiveMega] = useState<MegaMenuId | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<MegaMenuId | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const megaRegionId = useId();
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setMobileExpanded(null);
+  };
 
   const clearCloseTimer = () => {
     if (closeTimer.current) {
@@ -26,7 +35,7 @@ export function Header() {
     }
   };
 
-  const openMega = (id: "who-we-are" | "what-we-do") => {
+  const openMega = (id: MegaMenuId) => {
     clearCloseTimer();
     setActiveMega(id);
   };
@@ -37,9 +46,21 @@ export function Header() {
   };
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.style.overflow = mobileOpen ? "hidden" : "";
     document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (mobileOpen) {
+      pauseSmoothScroll();
+    } else {
+      resumeSmoothScroll();
+    }
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
+      resumeSmoothScroll();
     };
   }, [mobileOpen]);
 
@@ -47,7 +68,7 @@ export function Header() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveMega(null);
-        setMobileOpen(false);
+        closeMobileMenu();
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -158,7 +179,13 @@ export function Header() {
           className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--color-border)] lg:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((value) => !value)}
+          onClick={() => {
+            if (mobileOpen) {
+              closeMobileMenu();
+            } else {
+              setMobileOpen(true);
+            }
+          }}
         >
           {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
@@ -184,101 +211,103 @@ export function Header() {
         </Container>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen ? (
-          <>
-            <motion.div
-              className="fixed inset-0 z-40 bg-black/40 lg:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileOpen(false)}
-            />
-            <motion.aside
-              className="fixed right-0 top-0 z-50 flex h-dvh w-[min(100%,400px)] flex-col bg-white shadow-xl lg:hidden"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 28, stiffness: 280 }}
-            >
-              <div className="flex items-center justify-between border-b border-[var(--color-border)] px-5 py-5">
-                <span className="text-lg font-semibold">Menu</span>
-                <button type="button" aria-label="Close menu" onClick={() => setMobileOpen(false)}>
-                  <X className="size-5" />
-                </button>
-              </div>
+      {mounted
+        ? createPortal(
+            <AnimatePresence>
+              {mobileOpen ? (
+                <motion.div
+                  key="mobile-nav"
+                  className="fixed inset-0 z-[110] lg:hidden"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <button
+                    type="button"
+                    aria-label="Close menu"
+                    className="absolute inset-0 bg-black/40"
+                    onClick={closeMobileMenu}
+                  />
+                  <div
+                    data-lenis-prevent
+                    className="absolute inset-y-0 right-0 flex w-[min(100%,400px)] flex-col bg-white shadow-xl"
+                  >
+                    <div className="flex shrink-0 items-center justify-between border-b border-[var(--color-border)] px-5 py-5">
+                      <span className="text-lg font-semibold">Menu</span>
+                      <button type="button" aria-label="Close menu" onClick={closeMobileMenu}>
+                        <X className="size-5" />
+                      </button>
+                    </div>
 
-              <div className="flex-1 overflow-hidden px-4 py-4">
-                <nav className="flex h-full flex-col gap-1 overflow-hidden" aria-label="Mobile">
-                  {navItems.map((item) => {
-                    if (!item.megaMenu) {
-                      return (
-                        <Link
-                          key={item.label}
-                          href={item.href}
-                          className="rounded-xl px-3 py-3 text-lg font-medium text-[var(--color-ink)]"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
-                      );
-                    }
-
-                    const expanded = mobileExpanded === item.megaMenu;
-                    const menu = megaMenus[item.megaMenu];
-
-                    return (
-                      <div key={item.label} className="border-b border-[var(--color-border)] pb-2">
-                        <button
-                          type="button"
-                          className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-lg font-medium text-[var(--color-ink)]"
-                          aria-expanded={expanded}
-                          onClick={() =>
-                            setMobileExpanded((current) =>
-                              current === item.megaMenu ? null : item.megaMenu!,
-                            )
+                    <div
+                      data-lenis-prevent
+                      className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y [-webkit-overflow-scrolling:touch]"
+                    >
+                      <nav className="flex flex-col gap-1 pb-6" aria-label="Mobile">
+                        {navItems.map((item) => {
+                          if (!item.megaMenu) {
+                            return (
+                              <Link
+                                key={item.label}
+                                href={item.href}
+                                className="rounded-xl px-3 py-3 text-lg font-medium text-[var(--color-ink)]"
+                                onClick={closeMobileMenu}
+                              >
+                                {item.label}
+                              </Link>
+                            );
                           }
-                        >
-                          {item.label}
-                          <ChevronDown
-                            className={cn(
-                              "size-4 transition-transform",
-                              expanded && "rotate-180",
-                            )}
-                          />
-                        </button>
-                        <AnimatePresence initial={false}>
-                          {expanded ? (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              className="overflow-hidden"
-                            >
-                              <div className="pb-3 pl-2">
-                                <MegaMenuPanel
-                                  menu={menu}
-                                  onNavigate={() => setMobileOpen(false)}
-                                />
-                              </div>
-                            </motion.div>
-                          ) : null}
-                        </AnimatePresence>
-                      </div>
-                    );
-                  })}
-                </nav>
-              </div>
 
-              <div className="border-t border-[var(--color-border)] p-5" onClick={() => setMobileOpen(false)}>
-                <Button href="/request-demo" variant="primary" className="w-full" arrow="none">
-                  Request Demo
-                </Button>
-              </div>
-            </motion.aside>
-          </>
-        ) : null}
-      </AnimatePresence>
+                          const expanded = mobileExpanded === item.megaMenu;
+                          const menu = megaMenus[item.megaMenu];
+
+                          return (
+                            <div key={item.label} className="border-b border-[var(--color-border)] pb-2">
+                              <button
+                                type="button"
+                                className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-lg font-medium text-[var(--color-ink)]"
+                                aria-expanded={expanded}
+                                onClick={() =>
+                                  setMobileExpanded((current) =>
+                                    current === item.megaMenu ? null : item.megaMenu!,
+                                  )
+                                }
+                              >
+                                {item.label}
+                                <ChevronDown
+                                  className={cn(
+                                    "size-4 transition-transform",
+                                    expanded && "rotate-180",
+                                  )}
+                                />
+                              </button>
+                              {expanded ? (
+                                <div className="pb-3 pl-2">
+                                  <MegaMenuPanel menu={menu} onNavigate={closeMobileMenu} />
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })}
+                      </nav>
+                    </div>
+
+                    <div
+                      className="shrink-0 border-t border-[var(--color-border)] p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]"
+                      onClick={closeMobileMenu}
+                    >
+                      <Button href="/request-demo" variant="primary" className="w-full" arrow="none">
+                        Request Demo
+                      </Button>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>,
+            document.body,
+          )
+        : null}
     </header>
   );
 }
