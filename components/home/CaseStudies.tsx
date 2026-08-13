@@ -35,7 +35,7 @@ export function CaseStudies() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <a
-              href="#case-studies"
+              href="/case-studies"
               className="group inline-flex items-center gap-2 text-[16px] text-[var(--color-slate)]"
             >
               <span className="relative">
@@ -147,7 +147,7 @@ export function CaseStudies() {
           </div>
         </div>
         <div className="flex justify-center">
-          <Button href="#case-studies" variant="primary">
+          <Button href="/case-studies" variant="primary">
             View All Case Studies
           </Button>
         </div>

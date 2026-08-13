@@ -1,0 +1,26 @@
+<svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="54" height="54" rx="27" fill="#586C7B"/>
+  <rect x="0.5" y="0.5" width="54" height="54" rx="27" stroke="url(#paint0_linear_google_ai)"/>
+  <path
+    fill="white"
+    d="M38.2 27.75c0-.75-.07-1.47-.2-2.16H27.5v4.09h6.01c-.26 1.39-1.04 2.57-2.22 3.36v2.78h3.59c2.1-1.93 3.32-4.78 3.32-8.07z"
+  />
+  <path
+    fill="white"
+    d="M27.5 39c3.01 0 5.53-.99 7.37-2.69l-3.59-2.78c-1 .67-2.27 1.07-3.78 1.07-2.91 0-5.37-1.96-6.25-4.6h-3.71v2.87C19.4 36.7 23.16 39 27.5 39z"
+  />
+  <path
+    fill="white"
+    d="M21.25 30c-.22-.67-.35-1.38-.35-2.12s.13-1.45.35-2.12v-2.87h-3.71A11.48 11.48 0 0 0 16 27.88c0 1.85.44 3.6 1.23 5.15l4.02-3.03z"
+  />
+  <path
+    fill="white"
+    d="M27.5 19.4c1.64 0 3.11.56 4.27 1.66l3.2-3.2C32.99 16.02 30.48 15 27.5 15c-4.34 0-8.1 2.3-10.0 5.88l3.71 2.87c.88-2.64 3.34-4.35 6.25-4.35z"
+  />
+  <defs>
+    <linearGradient id="paint0_linear_google_ai" x1="27.5" y1="0" x2="27.5" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white"/>
+      <stop offset="1" stop-color="#E7E7E7"/>
+    </linearGradient>
+  </defs>
+</svg>

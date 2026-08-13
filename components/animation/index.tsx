@@ -186,9 +186,11 @@ export function Stagger({
   return (
     <motion.div
       className={cn(className)}
-      initial="hidden"
+      initial={reduced ? false : "hidden"}
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      // Tall grids (e.g. team cards on mobile) can exceed the viewport, so a
+      // high `amount` never fires and children stay opacity:0. Trigger early.
+      viewport={{ once: true, amount: 0.01, margin: "0px 0px -80px 0px" }}
       variants={{
         hidden: {},
         show: {

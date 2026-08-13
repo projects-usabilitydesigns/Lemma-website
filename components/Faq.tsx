@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
 import { FadeUp } from "@/components/animation";
@@ -19,7 +19,7 @@ export type FaqProps = {
   /** Page-specific questions and answers */
   items: readonly FaqItem[];
   /** Override the default heading */
-  title?: string;
+  title?: ReactNode;
   /** Section element id (default: "faq") */
   sectionId?: string;
   /** Prefix for accordion panel ids — defaults from sectionId */
@@ -59,7 +59,16 @@ export function Faq({
               <>
                 Helpful Answers Before
                 <br />
-                You Get Started
+                <span
+                  style={{
+                    backgroundImage: "var(--gradient-cta)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  You Get Started
+                </span>
               </>
             )}
           </h2>
