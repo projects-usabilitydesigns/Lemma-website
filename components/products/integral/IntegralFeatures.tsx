@@ -35,8 +35,6 @@ const badgeClass = {
     "absolute bottom-[4%] right-[2%] z-20 size-[84px] md:size-[96px] lg:size-[104px]",
   "bottom-center":
     "absolute bottom-[2%] left-1/2 z-20 size-[84px] -translate-x-1/2 md:size-[96px] lg:size-[104px]",
-  "bottom-center-overlap":
-    "absolute left-1/2 top-full z-20 w-[148px] -translate-x-1/2 -translate-y-[22%] md:w-[168px] lg:w-[184px]",
 } as const;
 
 type FeatureWithBadge = Extract<
@@ -93,7 +91,6 @@ export function IntegralFeatures() {
           const imageLeft = feature.layout === "image-left";
           const paragraphs = feature.body.split("\n\n");
           const showBadge = hasBadge(feature);
-          const isPillBadge = showBadge && feature.badgePosition === "bottom-center-overlap";
           const ImageReveal = imageLeft ? FadeLeft : FadeRight;
 
           return (
@@ -143,7 +140,6 @@ export function IntegralFeatures() {
                 <div
                   className={cn(
                     "relative mx-auto isolate w-full max-w-[520px] md:max-w-[580px] lg:max-w-[620px]",
-                    isPillBadge && "mb-10 md:mb-12",
                     imageLeft ? "lg:mx-0 lg:justify-self-start" : "lg:mx-0 lg:justify-self-end",
                   )}
                 >
@@ -191,12 +187,9 @@ export function IntegralFeatures() {
                         <Image
                           src={feature.badge}
                           alt={feature.badgeAlt}
-                          width={isPillBadge ? 282 : 104}
-                          height={isPillBadge ? 169 : 104}
-                          className={cn(
-                            "object-contain",
-                            isPillBadge ? "h-auto w-full" : "size-full",
-                          )}
+                          width={104}
+                          height={104}
+                          className="size-full object-contain"
                         />
                       </motion.div>
                     </motion.div>
