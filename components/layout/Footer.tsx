@@ -20,18 +20,18 @@ const aiTools = [
   },
   {
     name: "Claude",
-    src: "/icons/ai-claude.svg",
+    src: "/icons/ai-claude.png",
     href: `https://claude.ai/new?q=${encodedPrompt}`,
   },
   {
-    name: "Gemini",
-    src: "/icons/ai-gemini.svg",
+    name: "Google AI",
+    src: "/icons/ai-google.svg",
     href: `https://www.google.com/search?udm=50&q=${encodedPrompt}`,
   },
   {
-    name: "Mistral",
-    src: "/icons/ai-mistral.svg",
-    href: `https://chat.mistral.ai/chat?q=${encodedPrompt}`,
+    name: "Gemini",
+    src: "/icons/ai-gemini.png",
+    href: `https://gemini.google.com/app?q=${encodedPrompt}`,
   },
 ] as const;
 
@@ -182,13 +182,13 @@ export function Footer() {
 
         <FadeUp
           delay={0.1}
-          className="flex flex-col items-center justify-center gap-8 sm:flex-row sm:items-start sm:gap-16 lg:gap-24"
+          className="flex flex-col items-center justify-center gap-6 md:flex-row md:items-center md:gap-10"
         >
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-[12px]">
-              Ask AI for a summary of curated media
+          <div className="flex flex-col items-center gap-3 md:items-end">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-right md:text-[12px]">
+              Ask AI to summarize Lemma
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:justify-end">
               {aiTools.map((tool) => (
                 <a
                   key={tool.name}
@@ -199,17 +199,29 @@ export function Footer() {
                   title={`Ask ${tool.name} about Lemma Technologies`}
                   className="relative size-[42px] overflow-hidden rounded-full transition-transform duration-300 hover:scale-110"
                 >
-                  <Image src={tool.src} alt={tool.name} fill className="object-contain" />
+                  <Image
+                    src={tool.src}
+                    alt={tool.name}
+                    width={42}
+                    height={42}
+                    unoptimized
+                    className="size-full object-contain"
+                  />
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-[12px]">
+          <div
+            className="h-px w-24 bg-[var(--color-border)] md:h-[72px] md:w-px"
+            aria-hidden
+          />
+
+          <div className="flex flex-col items-center gap-3 md:items-start">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-left md:text-[12px]">
               Follow us
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
