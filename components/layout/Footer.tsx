@@ -123,12 +123,12 @@ const contactItems = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] bg-white pb-8 pt-12 md:pt-14">
+    <footer className="border-t border-[var(--color-border)] bg-white pb-6 pt-8 md:pt-10">
       <Container>
         <FadeUp>
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)] lg:gap-12">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)] lg:gap-10">
             <div>
-              <Link href="/" className="relative mb-6 block h-8 w-[146px]">
+              <Link href="/" className="relative mb-5 block h-8 w-[146px]">
                 <Image
                   src="/images/logo-lemma.svg"
                   alt="LEMMA"
@@ -157,10 +157,10 @@ export function Footer() {
               { title: "Company", items: footerLinks.company },
             ].map((col) => (
               <div key={col.title}>
-                <p className="mb-4 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate-soft)]">
+                <p className="mb-3 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate-soft)]">
                   {col.title}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-2.5">
                   {col.items.map((item) => (
                     <li key={item.label}>
                       <Link
@@ -178,13 +178,13 @@ export function Footer() {
           </div>
         </FadeUp>
 
-        <div className="my-8 h-px w-full bg-[var(--color-border)] md:my-10" />
+        <div className="my-5 h-px w-full bg-[var(--color-border)] md:my-6" />
 
         <FadeUp
           delay={0.1}
-          className="flex flex-col items-center justify-center gap-6 md:flex-row md:items-center md:gap-10"
+          className="flex flex-col items-center justify-center gap-5 md:flex-row md:items-center md:gap-8"
         >
-          <div className="flex flex-col items-center gap-3 md:items-end">
+          <div className="flex flex-col items-center gap-2.5 md:items-end">
             <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-right md:text-[12px]">
               Ask AI to summarize Lemma
             </p>
@@ -213,11 +213,11 @@ export function Footer() {
           </div>
 
           <div
-            className="h-px w-24 bg-[var(--color-border)] md:h-[72px] md:w-px"
+            className="h-px w-24 bg-[var(--color-border)] md:h-[56px] md:w-px"
             aria-hidden
           />
 
-          <div className="flex flex-col items-center gap-3 md:items-start">
+          <div className="flex flex-col items-center gap-2.5 md:items-start">
             <p className="text-center text-[11px] font-semibold uppercase tracking-[1.8px] text-[var(--color-slate-soft)] md:text-left md:text-[12px]">
               Follow us
             </p>
@@ -242,7 +242,7 @@ export function Footer() {
           </div>
         </FadeUp>
 
-        <div className="my-8 h-px w-full bg-[var(--color-border)] md:my-10" />
+        <div className="my-5 h-px w-full bg-[var(--color-border)] md:my-6" />
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
           <div className="relative h-[52px] w-[240px] max-w-full sm:h-[62px] sm:w-[268px]">
@@ -258,7 +258,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-6 text-[12px] text-[var(--color-slate)] md:mt-10 md:flex-row md:items-center">
+        <div className="mt-5 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-4 text-[12px] text-[var(--color-slate)] md:mt-6 md:flex-row md:items-center">
           <p>© 2026 Lemma Technologies. All rights reserved.</p>
           <div className="flex gap-6">
             {footerLinks.legal.map((item) => (
