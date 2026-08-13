@@ -30,14 +30,23 @@ function highlightText(text: string, highlights: readonly string[]) {
   });
 }
 
-const badgeClass: Record<(typeof integralFeatures)[number]["badgePosition"], string> = {
+const badgeClass = {
   "bottom-right":
     "absolute bottom-[4%] right-[2%] z-20 size-[84px] md:size-[96px] lg:size-[104px]",
   "bottom-center":
     "absolute bottom-[2%] left-1/2 z-20 size-[84px] -translate-x-1/2 md:size-[96px] lg:size-[104px]",
   "bottom-center-overlap":
     "absolute left-1/2 top-full z-20 w-[148px] -translate-x-1/2 -translate-y-[22%] md:w-[168px] lg:w-[184px]",
-};
+} as const;
+
+type FeatureWithBadge = Extract<
+  (typeof integralFeatures)[number],
+  { badge: string; badgeAlt: string; badgePosition: keyof typeof badgeClass }
+>;
+
+function hasBadge(feature: (typeof integralFeatures)[number]): feature is FeatureWithBadge {
+  return "badge" in feature && "badgePosition" in feature;
+}
 
 function FeatureImage({
   feature,
@@ -83,7 +92,8 @@ export function IntegralFeatures() {
         {integralFeatures.map((feature) => {
           const imageLeft = feature.layout === "image-left";
           const paragraphs = feature.body.split("\n\n");
-          const isPillBadge = feature.badgePosition === "bottom-center-overlap";
+          const showBadge = hasBadge(feature);
+          const isPillBadge = showBadge && feature.badgePosition === "bottom-center-overlap";
           const ImageReveal = imageLeft ? FadeLeft : FadeRight;
 
           return (
@@ -151,44 +161,46 @@ export function IntegralFeatures() {
                     <FeatureImage feature={feature} reduced={reduced} />
                   </div>
 
-                  <motion.div
-                    className={badgeClass[feature.badgePosition]}
-                    initial={reduced ? false : { scale: 0.7, opacity: 0, y: 12 }}
-                    whileInView={reduced ? undefined : { scale: 1, opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 18,
-                      delay: 0.22,
-                    }}
-                  >
+                  {showBadge ? (
                     <motion.div
-                      animate={reduced ? undefined : { y: [0, -5, 0] }}
-                      transition={
-                        reduced
-                          ? undefined
-                          : {
-                              duration: 3.8,
-                              ease: "easeInOut",
-                              repeat: Infinity,
-                              delay: 0.4,
-                            }
-                      }
-                      className="size-full"
+                      className={badgeClass[feature.badgePosition]}
+                      initial={reduced ? false : { scale: 0.7, opacity: 0, y: 12 }}
+                      whileInView={reduced ? undefined : { scale: 1, opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 18,
+                        delay: 0.22,
+                      }}
                     >
-                      <Image
-                        src={feature.badge}
-                        alt={feature.badgeAlt}
-                        width={isPillBadge ? 282 : 104}
-                        height={isPillBadge ? 169 : 104}
-                        className={cn(
-                          "object-contain",
-                          isPillBadge ? "h-auto w-full" : "size-full",
-                        )}
-                      />
+                      <motion.div
+                        animate={reduced ? undefined : { y: [0, -5, 0] }}
+                        transition={
+                          reduced
+                            ? undefined
+                            : {
+                                duration: 3.8,
+                                ease: "easeInOut",
+                                repeat: Infinity,
+                                delay: 0.4,
+                              }
+                        }
+                        className="size-full"
+                      >
+                        <Image
+                          src={feature.badge}
+                          alt={feature.badgeAlt}
+                          width={isPillBadge ? 282 : 104}
+                          height={isPillBadge ? 169 : 104}
+                          className={cn(
+                            "object-contain",
+                            isPillBadge ? "h-auto w-full" : "size-full",
+                          )}
+                        />
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
+                  ) : null}
                 </div>
               </ImageReveal>
             </div>
