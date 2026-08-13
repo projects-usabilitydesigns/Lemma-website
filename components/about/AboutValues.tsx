@@ -68,16 +68,14 @@ export function AboutValues() {
               </div>
             </div>
 
-            <div className="group relative flex min-h-[300px] items-center justify-center bg-[#eef1f4] p-8 md:min-h-[400px] md:p-10">
-              <div className="relative aspect-square w-full max-w-[380px]">
-                <Image
-                  src={active.image}
-                  alt={`${active.label} — Lemma values`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 1024px) 100vw, 380px"
-                />
-              </div>
+            <div className="relative min-h-[340px] overflow-hidden bg-[#eef1f4] md:min-h-[460px]">
+              <Image
+                src={active.image}
+                alt={`${active.label} — Lemma values`}
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </FadeUp>
