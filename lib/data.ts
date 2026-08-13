@@ -14,7 +14,7 @@ import type {
 export const navItems: NavItem[] = [
   { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
   { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
-  { label: "Resources", href: "/case-studies", hasDropdown: true, megaMenu: "resources" },
+  { label: "Resources", href: "/resources", hasDropdown: true, megaMenu: "resources" },
   { label: "Contact Us", href: "/contact-us" },
 ];
 

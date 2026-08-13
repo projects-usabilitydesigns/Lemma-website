@@ -135,19 +135,15 @@ export function Header() {
                 onMouseEnter={() => openMega(item.megaMenu!)}
                 onFocus={() => openMega(item.megaMenu!)}
               >
-                <button
-                  type="button"
+                <Link
+                  href={item.href}
                   className={cn(
                     "group relative inline-flex items-center gap-1 text-[18px] font-medium text-[var(--color-ink-muted)]",
                     isOpen && "text-[var(--color-ink)]",
                   )}
                   aria-expanded={isOpen}
-                  aria-controls={megaRegionId}
-                  onClick={() =>
-                    setActiveMega((current) =>
-                      current === item.megaMenu ? null : item.megaMenu!,
-                    )
-                  }
+                  aria-haspopup="true"
+                  onClick={() => setActiveMega(null)}
                 >
                   <span>{item.label}</span>
                   <ChevronDown
@@ -162,7 +158,7 @@ export function Header() {
                       isOpen ? "w-full" : "w-0 group-hover:w-full",
                     )}
                   />
-                </button>
+                </Link>
               </div>
             );
           })}
