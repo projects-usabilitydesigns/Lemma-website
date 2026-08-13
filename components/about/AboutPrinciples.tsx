@@ -37,7 +37,7 @@ function PrincipleCard({
           src={image}
           alt={title}
           fill
-          className="object-cover object-center"
+          className="object-cover object-right"
           sizes="(max-width: 768px) 100vw, 25vw"
         />
       </div>

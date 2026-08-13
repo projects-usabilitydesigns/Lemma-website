@@ -7,10 +7,11 @@ export function productAsset(filename: string) {
 }
 
 export const sigmaAssets = {
-  heroPuzzle: "/images/products/sigma/hero-puzzle.png",
+  heroPuzzle: "/images/products/sigma/sigma-control.png",
   accessDsp: "/images/products/sigma/access-dsp.png",
   firstPartyData: "/images/products/sigma/first-party-data.png",
   unifiedAction: "/images/products/sigma/unified-action.png",
+  supplyPathTop: "/images/products/sigma/supply-path1.png",
   supplyPath: "/images/products/sigma/supply-path.png",
   logo: productAsset("sigma.svg"),
 } as const;
@@ -91,8 +92,9 @@ export const sigmaFeatures = [
     title: "Supply Path Optimization",
     body: "Lemma offers direct activation of guaranteed deals and integrations with leading 3rd party demand-side platforms for preferred deals. This empowers publishers to optimize their long-term revenue potential.",
     highlights: ["direct activation of guaranteed deals", "leading 3rd party demand-side platforms", "optimize their long-term revenue potential"],
-    image: sigmaAssets.supplyPath,
-    imageAlt: "Supply Path Optimization — Guaranteed Deals and 3rd Party DSPs leading to optimized revenue potential",
+    image: sigmaAssets.supplyPathTop,
+    imageSecondary: sigmaAssets.supplyPath,
+    imageAlt: "Supply Path Optimization — devices, guaranteed deals, third-party demand, and optimized revenue",
     layout: "image-left" as const,
   },
 ] as const;
