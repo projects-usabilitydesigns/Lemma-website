@@ -10,7 +10,7 @@ export const deltaAssets = {
   heroGraphic: productImage("Group 1597883475-nobg.png"),
   heroLogo: productImage("Frame 1597890331-nobg.png"),
   logo: productAsset("delta.svg"),
-  advantage: productImage("ChatGPT Image Aug 4, 2026, 05_01_44 PM 1.png"),
+  advantage: productImage("lemmaadvantage.png"),
 } as const;
 
 export const deltaFaqs = [

@@ -8,14 +8,13 @@ export function productAsset(filename: string) {
 
 export const integralAssets = {
   heroFunnel: productImage("Frame 1597890042-nobg.png"),
-  keyword: productImage("ChatGPT Image Aug 3, 2026, 06_53_07 PM 1.png"),
-  reinforce: productImage("ChatGPT Image Aug 3, 2026, 07_25_30 PM 1.png"),
-  results: productImage("ChatGPT Image Aug 3, 2026, 07_21_05 PM 1.png"),
+  keyword: productImage("keyword based.png"),
+  reinforce: productImage("seamless.png"),
+  results: productImage("integral image.png"),
   dashboard: productImage("ChatGPT Image Aug 3, 2026, 07_47_03 PM 1.png"),
   badgeReach: productImage("Frame 1597889835.png"),
   badgeReinforce: productImage("Frame 1597890298.png"),
   badgeResults: productImage("Frame 1597890299.png"),
-  badgeUnified: productImage("Frame 1597890301.png"),
   audienceGraph: productImage("ChatGPT Image Aug 3, 2026, 08_05_43 PM 1.png"),
   logo: productAsset("integral.svg"),
 } as const;
@@ -112,8 +111,5 @@ export const integralFeatures = [
     highlight: [],
     titleSize: 40 as const,
     bodySize: 18 as const,
-    badge: integralAssets.badgeUnified,
-    badgeAlt: "Unified Campaign Control",
-    badgePosition: "bottom-center-overlap" as const,
   },
 ] as const;
