@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { AboutCta } from "@/components/about/AboutCta";
 import { Faq } from "@/components/Faq";
 import { CaseStudiesGrid, CaseStudiesHero } from "@/components/case-studies";
@@ -22,7 +21,6 @@ export default function CaseStudiesPage() {
         <Faq items={caseStudyFaqs} viewAllHref="/#faq" />
         <AboutCta />
       </main>
-      <Footer />
     </>
   );
 }

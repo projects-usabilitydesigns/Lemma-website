@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { AboutCta } from "@/components/about/AboutCta";
 import { Faq } from "@/components/Faq";
 import { NewsroomGrid, NewsroomHero } from "@/components/newsroom";
@@ -22,7 +21,6 @@ export default function NewsroomPage() {
         <Faq items={newsroomFaqs} viewAllHref="/#faq" />
         <AboutCta />
       </main>
-      <Footer />
     </>
   );
 }
