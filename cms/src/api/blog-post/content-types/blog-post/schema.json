@@ -14,6 +14,25 @@
     "title": {
       "type": "text"
     },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "category": {
+      "type": "string",
+      "default": "Blogs"
+    },
+    "author": {
+      "type": "string"
+    },
+    "authorRole": {
+      "type": "string"
+    },
+    "accent": {
+      "type": "string",
+      "default": "#008fdb"
+    },
     "date": {
       "type": "string"
     },
@@ -33,8 +52,11 @@
         "audios"
       ]
     },
-    "href": {
+    "tags": {
       "type": "string"
+    },
+    "body": {
+      "type": "text"
     }
   }
 }

@@ -7,11 +7,10 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { blogPosts as defaultBlogPosts } from "@/lib/data";
-import type { BlogPost } from "@/types";
+import type { ResourceArticle } from "@/lib/resources-page-data";
 
-export function Blog({ blogPosts }: { blogPosts?: BlogPost[] }) {
-  const data = blogPosts?.length ? blogPosts : defaultBlogPosts;
+export function Blog({ blogPosts }: { blogPosts?: ResourceArticle[] }) {
+  const data = (blogPosts ?? []).slice(0, 3);
   return (
     <section id="blog" className="bg-white py-16 md:py-[100px]">
       <Container>

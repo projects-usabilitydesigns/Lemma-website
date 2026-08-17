@@ -454,11 +454,15 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    accent: Schema.Attribute.String & Schema.Attribute.DefaultTo<'#008fdb'>;
+    author: Schema.Attribute.String;
+    authorRole: Schema.Attribute.String;
+    body: Schema.Attribute.Text;
+    category: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Blogs'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.String;
-    href: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -468,6 +472,10 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     readTime: Schema.Attribute.String;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    tags: Schema.Attribute.String;
     title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

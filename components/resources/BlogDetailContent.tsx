@@ -8,10 +8,15 @@ import { FadeUp } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { ResourceCard } from "@/components/resources/ResourceCard";
 import { animation } from "@/lib/design-system";
-import { allBlogs, type BlogPostDetail } from "@/lib/resources-page-data";
+import type { BlogPostDetail, ResourceArticle } from "@/lib/resources-page-data";
 
-export function BlogDetailContent({ article }: { article: BlogPostDetail }) {
-  const related = allBlogs.filter((blog) => blog.slug !== article.slug).slice(0, 3);
+export function BlogDetailContent({
+  article,
+  related = [],
+}: {
+  article: BlogPostDetail;
+  related?: ResourceArticle[];
+}) {
 
   return (
     <>
@@ -74,7 +79,7 @@ export function BlogDetailContent({ article }: { article: BlogPostDetail }) {
       {/* Hero image */}
       <section className="bg-white pb-12 pt-0 md:pb-16">
         <Container>
-          <FadeUp className="relative aspect-[16/8] overflow-hidden rounded-[20px] md:aspect-[16/7]">
+          <FadeUp className="relative aspect-video overflow-hidden rounded-[20px]">
             <Image
               src={article.image}
               alt={article.title}
