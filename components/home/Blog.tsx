@@ -62,7 +62,7 @@ export function Blog() {
         </Stagger>
 
         <div className="mt-12 flex justify-center">
-          <Button href="#blog" variant="primary">
+          <Button href="/resources/blogs" variant="primary">
             VIEW ALL
           </Button>
         </div>

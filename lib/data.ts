@@ -14,7 +14,7 @@ import type {
 export const navItems: NavItem[] = [
   { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
   { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
-  { label: "Resources", href: "/case-studies", hasDropdown: true, megaMenu: "resources" },
+  { label: "Resources", href: "/resources", hasDropdown: true, megaMenu: "resources" },
   { label: "Contact Us", href: "/contact-us" },
 ];
 
@@ -187,6 +187,12 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             title: "Case Studies",
             description: "Campaigns that performed",
             href: "/case-studies",
+          },
+          {
+            id: "blogs",
+            title: "Blogs",
+            description: "Expert insights & analysis",
+            href: "/resources/blogs",
           },
         ],
       },
@@ -416,7 +422,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 Min read",
     views: "72 Views",
     image: "/images/blog/iab.png",
-    href: "#blog",
+    href: "/resources/blogs/iab-tech-lab-summit-2026",
   },
   {
     id: "performance",
@@ -425,7 +431,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 Min read",
     views: "124 Views",
     image: "/images/blog/performance.png",
-    href: "#blog",
+    href: "/resources/blogs/why-performance-campaigns-fail-to-scale",
   },
   {
     id: "ooh",
@@ -434,7 +440,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 Min read",
     views: "204 Views",
     image: "/images/blog/ooh.png",
-    href: "#blog",
+    href: "/resources/blogs/ooh-media-conference-2026",
   },
 ];
 
