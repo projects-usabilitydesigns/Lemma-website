@@ -6,9 +6,11 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { solutions } from "@/lib/data";
+import { solutions as defaultSolutions } from "@/lib/data";
+import type { Solution } from "@/types";
 
-export function Solutions() {
+export function Solutions({ solutions }: { solutions?: Solution[] }) {
+  const data = solutions?.length ? solutions : defaultSolutions;
   return (
     <section id="solutions" className="relative overflow-hidden bg-white py-12 md:py-[100px]">
       <div
@@ -43,8 +45,8 @@ export function Solutions() {
           </FadeUp>
         </div>
 
-        <Stagger className="grid gap-5 md:gap-6 lg:grid-cols-2">
-          {solutions.map((item) => (
+        <Stagger className="grid gap-6 lg:grid-cols-2">
+          {data.map((item) => (
             <motion.article
               key={item.id}
               variants={staggerItem}

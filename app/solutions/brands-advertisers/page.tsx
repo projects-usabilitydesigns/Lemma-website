@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Lemmaximize your impact with Lemma’s omnichannel advertising solutions for brands and advertisers across DOOH, CTV, OTT, and digital.",
 };
 
-export default function BrandsAdvertisersPage() {
+export default async function BrandsAdvertisersPage() {
   return (
     <>
       <Header />
