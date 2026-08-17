@@ -64,7 +64,7 @@ export const topTrending: ResourceArticle[] = [
     image: "/images/resources/lemma-continuum-partnership.png",
     accent: "#f82d89",
     tone: "light",
-    href: "#",
+    href: "/newsroom/continuum",
   },
   {
     id: "tt-3",
@@ -217,7 +217,7 @@ export const newsroom: ResourceArticle[] = [
     image: "/images/resources/doceree-lemma-partnership.png",
     accent: "#f82d89",
     tone: "light",
-    href: "#",
+    href: "/newsroom/doceree",
   },
   {
     id: "nr-2",
@@ -230,7 +230,7 @@ export const newsroom: ResourceArticle[] = [
     image: "/images/resources/mixi-programmatic-dooh.png",
     accent: "#008fdb",
     tone: "dark",
-    href: "#",
+    href: "/newsroom/mixi",
   },
   {
     id: "nr-3",
@@ -243,7 +243,7 @@ export const newsroom: ResourceArticle[] = [
     image: "/images/resources/lemma-continuum-expand.png",
     accent: "#009352",
     tone: "light",
-    href: "#",
+    href: "/newsroom/continuum",
   },
 ];
 
@@ -259,7 +259,7 @@ export const caseStudiesList: ResourceArticle[] = [
     image: "/images/resources/etihad-new-year-sale.png",
     accent: "#f05a27",
     tone: "dark",
-    href: "#",
+    href: "/case-studies/etihad-new-year-sale",
   },
   {
     id: "cs-2",
@@ -272,7 +272,7 @@ export const caseStudiesList: ResourceArticle[] = [
     image: "/images/resources/mg-motors-ev.png",
     accent: "#008fdb",
     tone: "light",
-    href: "#",
+    href: "/case-studies/mg-motors",
   },
   {
     id: "cs-3",
@@ -285,14 +285,15 @@ export const caseStudiesList: ResourceArticle[] = [
     image: "/images/resources/lenovo-smarter-ai.png",
     accent: "#a684ff",
     tone: "dark",
-    href: "#",
+    href: "/case-studies/lenovo-smarter-ai",
   },
 ];
 
 export type BlogBodySection =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
-  | { type: "blockquote"; text: string };
+  | { type: "blockquote"; text: string }
+  | { type: "list"; items: string[] };
 
 export type BlogPostDetail = {
   slug: string;
@@ -348,8 +349,18 @@ export const blogDetails: Record<string, BlogPostDetail> = {
         text: "The Top 5 Festive Touchpoint Clusters",
       },
       {
+        type: "list",
+        items: [
+          "High-street retail corridors built for impact and size",
+          "Premium malls and entertainment centres for dwell time",
+          "Metro and airport transit hubs for frequency and guidance",
+          "QSR and food courts for impulse and gifting moments",
+          "Residential gateway screens for evening relevance",
+        ],
+      },
+      {
         type: "paragraph",
-        text: "Our analysis across earlier festive campaigns points to five recurring clusters: high-street retail corridors, premium malls and entertainment centers, metro and airport transit hubs, QSR and food courts, and residential gateway screens near large communities. Each cluster needs a distinct creative strategy and flight plan.",
+        text: "Our analysis across earlier festive campaigns points to five recurring clusters. Each cluster needs a distinct creative strategy and flight plan.",
       },
       {
         type: "paragraph",
@@ -399,8 +410,17 @@ export const blogDetails: Record<string, BlogPostDetail> = {
         text: "The Metrics Now in Focus",
       },
       {
+        type: "list",
+        items: [
+          "Footfall uplift versus a clean baseline",
+          "Exposure-to-visit lift by screen and daypart",
+          "Search and social conversation spikes after flights",
+          "Incremental store visits inside a defined window",
+        ],
+      },
+      {
         type: "paragraph",
-        text: "Footfall uplift studies, exposure-to-visit lifts, search and social conversation spikes, and incremental store visits are the new lingua franca of OOH reporting. Progressive measurement partners now offer continuous validation against brand-lift baselines rather than one-off studies.",
+        text: "Progressive measurement partners now offer continuous validation against brand-lift baselines rather than one-off studies.",
       },
       {
         type: "paragraph",
@@ -514,6 +534,15 @@ export const blogDetails: Record<string, BlogPostDetail> = {
       {
         type: "heading",
         text: "The 3-Second Rule",
+      },
+      {
+        type: "list",
+        items: [
+          "One idea per screen — no slow build",
+          "Headlines under ten words",
+          "Brand marks in a corner, not the centre",
+          "Contrast that survives glare, rain, and bright sunlight",
+        ],
       },
       {
         type: "paragraph",

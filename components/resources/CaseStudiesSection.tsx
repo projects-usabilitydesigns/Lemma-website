@@ -24,7 +24,7 @@ export function CaseStudiesSection() {
 
         <FadeUp delay={0.1} className="mt-10 flex justify-center">
           <Button
-            href="#case-studies"
+            href="/case-studies"
             variant="primary"
             arrow="right"
             className="normal-case tracking-normal border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(0,143,219,0.28)]"

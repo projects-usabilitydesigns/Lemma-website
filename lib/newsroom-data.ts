@@ -19,7 +19,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "7 Min read",
     views: "165 Views",
     image: "/images/newsroom/doceree.jpg",
-    href: "/newsroom#doceree",
+    href: "/newsroom/doceree",
   },
   {
     id: "mixi",
@@ -28,7 +28,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "6 Min read",
     views: "1675 Views",
     image: "/images/newsroom/mixi-strike-world.jpg",
-    href: "/newsroom#mixi",
+    href: "/newsroom/mixi",
   },
   {
     id: "continuum",
@@ -37,7 +37,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "6 Min read",
     views: "1088 Views",
     image: "/images/newsroom/continuum.jpg",
-    href: "/newsroom#continuum",
+    href: "/newsroom/continuum",
   },
   {
     id: "social-beat",
@@ -46,7 +46,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "8 Min read",
     views: "752 Views",
     image: "/images/newsroom/social-beat.jpg",
-    href: "/newsroom#social-beat",
+    href: "/newsroom/social-beat",
   },
   {
     id: "integral-launch",
@@ -55,7 +55,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "7 Min read",
     views: "888 Views",
     image: "/images/newsroom/integral-launch.jpg",
-    href: "/newsroom#integral-launch",
+    href: "/newsroom/integral-launch",
   },
   {
     id: "bill-nolte",
@@ -64,7 +64,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "8 Min read",
     views: "633 Views",
     image: "/images/newsroom/bill-nolte.jpg",
-    href: "/newsroom#bill-nolte",
+    href: "/newsroom/bill-nolte",
   },
   {
     id: "cannes",
@@ -73,7 +73,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "5 Min read",
     views: "421 Views",
     image: "/images/newsroom/cannes.jpg",
-    href: "/newsroom#cannes",
+    href: "/newsroom/cannes",
   },
   {
     id: "outdoor-to-outcomes",
@@ -82,7 +82,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "4 Min read",
     views: "912 Views",
     image: "/images/newsroom/outdoor-to-outcomes.jpg",
-    href: "/newsroom#outdoor-to-outcomes",
+    href: "/newsroom/outdoor-to-outcomes",
   },
   {
     id: "key-hires",
@@ -91,7 +91,7 @@ export const newsroomArticles: NewsroomArticle[] = [
     readTime: "3 Min read",
     views: "540 Views",
     image: "/images/newsroom/key-hires.jpg",
-    href: "/newsroom#key-hires",
+    href: "/newsroom/key-hires",
   },
 ];
 
