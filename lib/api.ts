@@ -1,6 +1,5 @@
 import type {
   AiFeature,
-  BlogPost,
   CaseStudy,
   ClientLogo,
   FaqItem,
@@ -8,6 +7,7 @@ import type {
   Solution,
   Stat,
 } from "@/types";
+import type { BlogPostDetail, ResourceArticle } from "./resources-page-data";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
 
 const REVALIDATE = 60;
@@ -155,27 +155,88 @@ export async function getAiFeatures(): Promise<AiFeature[]> {
   }
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
+export async function getBlogPosts(): Promise<ResourceArticle[]> {
   try {
     const res = await fetchCollection<W<{
       title: string;
+      slug: string;
+      category: string;
+      accent: string;
       date: string;
       readTime: string;
       views: string;
       image: unknown;
-      href: string;
-    }>>("blog-posts", { revalidate: REVALIDATE, sort: "date:desc" });
+    }>>("blog-posts", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
+      slug: item.slug,
+      category: item.category ?? "Blogs",
       title: item.title,
       date: item.date,
       readTime: item.readTime,
       views: item.views,
       image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
-      href: item.href,
+      accent: item.accent ?? "#008fdb",
+      tone: "dark",
+      href: `/resources/blogs/${item.slug}`,
     }));
   } catch {
     return [];
+  }
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | null> {
+  try {
+    const res = await fetchCollection<W<{
+      title: string;
+      slug: string;
+      category: string;
+      author: string;
+      authorRole: string;
+      accent: string;
+      date: string;
+      readTime: string;
+      views: string;
+      image: unknown;
+      tags: unknown;
+      body: unknown;
+    }>>("blog-posts", {
+      revalidate: REVALIDATE,
+      filters: { slug: { $eq: slug } },
+    });
+    const item = res.data[0];
+    if (!item) return null;
+
+    const tags =
+      typeof item.tags === "string"
+        ? item.tags.split(",").map((t) => t.trim()).filter(Boolean)
+        : [];
+
+    const body =
+      typeof item.body === "string"
+        ? item.body
+            .split(/\n\s*\n/)
+            .map((block) => block.trim())
+            .filter(Boolean)
+            .map((text) => ({ type: "paragraph" as const, text }))
+        : [];
+
+    return {
+      slug: item.slug,
+      category: item.category ?? "Blogs",
+      title: item.title,
+      author: item.author ?? "",
+      authorRole: item.authorRole ?? "",
+      date: item.date,
+      readTime: item.readTime,
+      views: item.views,
+      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      accent: item.accent ?? "#008fdb",
+      tags,
+      body,
+    };
+  } catch {
+    return null;
   }
 }
 

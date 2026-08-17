@@ -6,7 +6,7 @@ import {
   type ArticleBodySection,
   type ArticleDetail,
 } from "@/lib/article-detail";
-import { allBlogs, type BlogPostDetail } from "@/lib/resources-page-data";
+import type { BlogPostDetail, ResourceArticle } from "@/lib/resources-page-data";
 
 function toArticleDetail(article: BlogPostDetail): ArticleDetail {
   const firstParagraph = article.body.find((section) => section.type === "paragraph");
@@ -45,15 +45,18 @@ function toArticleDetail(article: BlogPostDetail): ArticleDetail {
   };
 }
 
-export function BlogDetailContent({ article }: { article: BlogPostDetail }) {
-  const related = allBlogs
-    .filter((blog) => blog.slug !== article.slug)
-    .slice(0, 3)
-    .map((blog) => ({
-      title: blog.title,
-      href: blog.href,
-      image: blog.image,
-    }));
+export function BlogDetailContent({
+  article,
+  related = [],
+}: {
+  article: BlogPostDetail;
+  related?: ResourceArticle[];
+}) {
+  const relatedItems = related.map((blog) => ({
+    title: blog.title,
+    href: blog.href,
+    image: blog.image,
+  }));
 
-  return <ArticleDetailContent article={toArticleDetail(article)} related={related} />;
+  return <ArticleDetailContent article={toArticleDetail(article)} related={relatedItems} />;
 }
