@@ -51,11 +51,17 @@ export function PhiFeatures() {
                   aria-hidden
                 />
                 <div className="relative z-10 w-full">
-                  <div className="relative aspect-[2/1] w-full md:aspect-[5/3]">
+                  <div
+                    className="relative w-full"
+                    style={{
+                      aspectRatio: `${feature.imageWidth} / ${feature.imageHeight}`,
+                    }}
+                  >
                     <Image
                       src={feature.image}
                       alt={feature.imageAlt}
                       fill
+                      unoptimized
                       className="object-contain object-center mix-blend-screen"
                       sizes="(max-width: 1024px) 100vw, 620px"
                     />
