@@ -8,6 +8,7 @@ import type {
   Stat,
 } from "@/types";
 import type { BlogPostDetail, ResourceArticle } from "./resources-page-data";
+import { defaultArticleCtas, type ArticleDetail } from "./article-detail";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
 
 const REVALIDATE = 60;
@@ -103,7 +104,7 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
       image: unknown;
       href: string;
       videoUrl: string;
-    }>>("case-studies", { revalidate: REVALIDATE });
+    }>>("video-case-studies", { revalidate: REVALIDATE });
     return res.data.map((item) => ({
       id: String(item.id),
       brand: item.brand,
@@ -234,6 +235,156 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
       accent: item.accent ?? "#008fdb",
       tags,
       body,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function parseCsv(raw: unknown): string[] {
+  if (typeof raw !== "string") return [];
+  return raw.split(",").map((t) => t.trim()).filter(Boolean);
+}
+
+function parseParagraphs(raw: unknown): ArticleDetail["body"] {
+  if (typeof raw !== "string") return [];
+  return raw
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .map((text) => ({ type: "paragraph" as const, text }));
+}
+
+export async function getNewsroomPosts(): Promise<ResourceArticle[]> {
+  try {
+    const res = await fetchCollection<W<{
+      title: string;
+      slug: string;
+      date: string;
+      readTime: string;
+      views: string;
+      image: unknown;
+    }>>("newsrooms", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
+    return res.data.map((item) => ({
+      id: String(item.id),
+      slug: item.slug,
+      category: "Newsroom",
+      title: item.title,
+      date: item.date,
+      readTime: item.readTime,
+      views: item.views,
+      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      accent: "#f82d89",
+      tone: "dark",
+      href: `/newsroom/${item.slug}`,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export async function getCaseStudyArticles(): Promise<ResourceArticle[]> {
+  try {
+    const res = await fetchCollection<W<{
+      title: string;
+      slug: string;
+      date: string;
+      readTime: string;
+      views: string;
+      image: unknown;
+    }>>("case-studies", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
+    return res.data.map((item) => ({
+      id: String(item.id),
+      slug: item.slug,
+      category: "Case Studies",
+      title: item.title,
+      date: item.date,
+      readTime: item.readTime,
+      views: item.views,
+      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      accent: "#009352",
+      tone: "dark",
+      href: `/case-studies/${item.slug}`,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export async function getNewsroomBySlug(slug: string): Promise<ArticleDetail | null> {
+  try {
+    const res = await fetchCollection<W<{
+      title: string;
+      slug: string;
+      excerpt: string;
+      author: string;
+      date: string;
+      readTime: string;
+      image: unknown;
+      tags: unknown;
+      categories: unknown;
+      body: unknown;
+    }>>("newsrooms", {
+      revalidate: REVALIDATE,
+      filters: { slug: { $eq: slug } },
+    });
+    const item = res.data[0];
+    if (!item) return null;
+
+    return {
+      slug: item.slug,
+      kind: "newsroom",
+      category: "Newsroom",
+      categories: ["Newsroom", ...parseCsv(item.categories)],
+      title: item.title,
+      excerpt: item.excerpt ?? "",
+      author: item.author ?? "",
+      date: item.date,
+      readTime: item.readTime,
+      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      tags: parseCsv(item.tags),
+      body: parseParagraphs(item.body),
+      cta: defaultArticleCtas.newsroom,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | null> {
+  try {
+    const res = await fetchCollection<W<{
+      title: string;
+      slug: string;
+      excerpt: string;
+      author: string;
+      date: string;
+      readTime: string;
+      image: unknown;
+      tags: unknown;
+      categories: unknown;
+      body: unknown;
+    }>>("case-studies", {
+      revalidate: REVALIDATE,
+      filters: { slug: { $eq: slug } },
+    });
+    const item = res.data[0];
+    if (!item) return null;
+
+    return {
+      slug: item.slug,
+      kind: "case-study",
+      category: "Case Studies",
+      categories: ["Case Studies", ...parseCsv(item.categories)],
+      title: item.title,
+      excerpt: item.excerpt ?? "",
+      author: item.author ?? "",
+      date: item.date,
+      readTime: item.readTime,
+      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      tags: parseCsv(item.tags),
+      body: parseParagraphs(item.body),
+      cta: defaultArticleCtas["case-study"],
     };
   } catch {
     return null;

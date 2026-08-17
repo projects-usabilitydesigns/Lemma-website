@@ -1,24 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpLeft, Calendar, Clock, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { caseStudyArticles } from "@/lib/case-studies-data";
+import type { ResourceArticle } from "@/lib/resources-page-data";
 
-const INITIAL_COUNT = 9;
-
-export function CaseStudiesGrid() {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const articles = useMemo(
-    () => caseStudyArticles.slice(0, visibleCount),
-    [visibleCount],
-  );
-
+export function CaseStudiesGrid({ articles }: { articles: ResourceArticle[] }) {
   return (
     <section className="bg-white pb-16 pt-8 md:pb-[100px] md:pt-10">
       <Container>
@@ -72,22 +62,6 @@ export function CaseStudiesGrid() {
             </motion.a>
           ))}
         </Stagger>
-
-        <div className="mt-10 flex justify-center md:mt-12">
-          <Button
-            type="button"
-            variant="primary"
-            arrow="right"
-            onClick={() =>
-              setVisibleCount((count) =>
-                Math.min(count + 6, Math.max(caseStudyArticles.length, count)),
-              )
-            }
-            className="uppercase tracking-[2px]"
-          >
-            Load More
-          </Button>
-        </div>
       </Container>
     </section>
   );

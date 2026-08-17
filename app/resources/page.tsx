@@ -12,7 +12,7 @@ import {
 import {
   resourcesFaqs,
 } from "@/lib/resources-page-data";
-import { getBlogPosts } from "@/lib/api";
+import { getBlogPosts, getCaseStudyArticles, getNewsroomPosts } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -21,7 +21,11 @@ export const metadata: Metadata = {
 };
 
 export default async function ResourcesPage() {
-  const blogs = await getBlogPosts();
+  const [blogs, newsroom, caseStudies] = await Promise.all([
+    getBlogPosts(),
+    getNewsroomPosts(),
+    getCaseStudyArticles(),
+  ]);
 
   return (
     <>
@@ -30,8 +34,8 @@ export default async function ResourcesPage() {
         <ResourcesHero />
         <TopTrending />
         <BlogsSection blogs={blogs} />
-        <NewsroomSection />
-        <CaseStudiesSection />
+        <NewsroomSection articles={newsroom} />
+        <CaseStudiesSection articles={caseStudies} />
         <Faq
           items={resourcesFaqs}
           title={

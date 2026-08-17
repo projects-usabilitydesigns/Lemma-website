@@ -4,6 +4,7 @@ import { AboutCta } from "@/components/about/AboutCta";
 import { Faq } from "@/components/Faq";
 import { NewsroomGrid, NewsroomHero } from "@/components/newsroom";
 import { newsroomFaqs } from "@/lib/newsroom-data";
+import { getNewsroomPosts } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Newsroom",
@@ -11,13 +12,15 @@ export const metadata: Metadata = {
     "Press releases, partnerships, product launches, and company news from Lemma Technologies.",
 };
 
-export default function NewsroomPage() {
+export default async function NewsroomPage() {
+  const articles = await getNewsroomPosts();
+
   return (
     <>
       <Header />
       <main>
         <NewsroomHero />
-        <NewsroomGrid />
+        <NewsroomGrid articles={articles} />
         <Faq items={newsroomFaqs} viewAllHref="/#faq" />
         <AboutCta />
       </main>

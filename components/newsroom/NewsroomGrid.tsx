@@ -1,16 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpLeft, Calendar, Clock, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { newsroomArticles } from "@/lib/newsroom-data";
-
-const INITIAL_COUNT = 9;
+import type { ResourceArticle } from "@/lib/resources-page-data";
 
 function PlayOverlay() {
   return (
@@ -25,13 +21,7 @@ function PlayOverlay() {
   );
 }
 
-export function NewsroomGrid() {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const articles = useMemo(
-    () => newsroomArticles.slice(0, visibleCount),
-    [visibleCount],
-  );
-
+export function NewsroomGrid({ articles }: { articles: ResourceArticle[] }) {
   return (
     <section className="bg-white pb-16 pt-8 md:pb-[100px] md:pt-10">
       <Container>
@@ -86,21 +76,6 @@ export function NewsroomGrid() {
             </motion.a>
           ))}
         </Stagger>
-
-        <div className="mt-10 flex justify-center md:mt-12">
-          <Button
-            type="button"
-            variant="primary"
-            arrow="right"
-            onClick={() =>
-              setVisibleCount((count) =>
-                Math.min(count + 6, Math.max(newsroomArticles.length, count)),
-              )
-            }
-          >
-            Load More
-          </Button>
-        </div>
       </Container>
     </section>
   );
