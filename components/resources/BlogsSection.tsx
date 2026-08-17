@@ -4,9 +4,9 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ResourceCard } from "@/components/resources/ResourceCard";
-import { blogs } from "@/lib/resources-page-data";
+import type { ResourceArticle } from "@/lib/resources-page-data";
 
-export function BlogsSection() {
+export function BlogsSection({ blogs }: { blogs: ResourceArticle[] }) {
   return (
     <section id="blogs" className="bg-[#f8f9fb] pb-12 pt-12 md:pb-16 md:pt-16">
       <Container>
@@ -20,7 +20,7 @@ export function BlogsSection() {
         </FadeUp>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((article) => (
+          {blogs.slice(0, 3).map((article) => (
             <ResourceCard key={article.id} article={article} />
           ))}
         </div>

@@ -4,6 +4,7 @@ import { Faq } from "@/components/Faq";
 import { AboutCta } from "@/components/about/AboutCta";
 import { BlogsPageContent } from "@/components/resources/BlogsPageContent";
 import { resourcesFaqs } from "@/lib/resources-page-data";
+import { getBlogPosts } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Blogs | Lemma",
@@ -11,12 +12,14 @@ export const metadata: Metadata = {
     "Read expert insights, industry analysis, and thought leadership on DOOH, CTV, programmatic advertising, and omnichannel marketing from the Lemma team.",
 };
 
-export default function BlogsPage() {
+export default async function BlogsPage() {
+  const blogs = await getBlogPosts();
+
   return (
     <>
       <Header />
       <main>
-        <BlogsPageContent />
+        <BlogsPageContent blogs={blogs} />
         <Faq
           items={resourcesFaqs}
           title={

@@ -12,6 +12,7 @@ import {
 import {
   resourcesFaqs,
 } from "@/lib/resources-page-data";
+import { getBlogPosts } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -19,14 +20,16 @@ export const metadata: Metadata = {
     "Stay informed with the latest from Lemma Tech. Explore newsroom updates, case studies, and expert insights shaping the future of digital advertising across DOOH, CTV, and omnichannel.",
 };
 
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const blogs = await getBlogPosts();
+
   return (
     <>
       <Header />
       <main>
         <ResourcesHero />
         <TopTrending />
-        <BlogsSection />
+        <BlogsSection blogs={blogs} />
         <NewsroomSection />
         <CaseStudiesSection />
         <Faq
