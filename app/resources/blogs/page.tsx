@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Faq } from "@/components/Faq";
 import { AboutCta } from "@/components/about/AboutCta";
 import { BlogsPageContent } from "@/components/resources/BlogsPageContent";
-import { resourcesFaqs } from "@/lib/resources-page-data";
+import { faqs } from "@/lib/data";
 import { getBlogPosts } from "@/lib/api";
 
 export const metadata: Metadata = {
@@ -20,19 +20,7 @@ export default async function BlogsPage() {
       <Header />
       <main>
         <BlogsPageContent blogs={blogs} />
-        <Faq
-          items={resourcesFaqs}
-          title={
-            <>
-              Helpful Answers Before
-              <br />
-              <span className="italic text-[var(--color-pink)]">You Get Started</span>
-            </>
-          }
-          showViewAll={false}
-          sectionId="faq"
-          idPrefix="blogs-faq"
-        />
+        <Faq items={faqs} viewAllHref="/#faq" />
         <AboutCta />
       </main>
     </>

@@ -8,7 +8,9 @@ import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { readingTimeFromArticle } from "@/lib/article-detail";
 import { caseStudyArticles } from "@/lib/case-studies-data";
+import { caseStudyDetails } from "@/lib/case-study-details";
 
 const INITIAL_COUNT = 9;
 
@@ -61,7 +63,9 @@ export function CaseStudiesGrid() {
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="size-3.5 shrink-0" />
-                    {article.readTime}
+                    {caseStudyDetails[article.id]
+                      ? readingTimeFromArticle(caseStudyDetails[article.id])
+                      : article.readTime}
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <Eye className="size-3.5 shrink-0" />

@@ -4,7 +4,9 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ResourceCard } from "@/components/resources/ResourceCard";
+import { readingTimeFromArticle } from "@/lib/article-detail";
 import { caseStudiesList } from "@/lib/resources-page-data";
+import { caseStudyDetails } from "@/lib/case-study-details";
 
 export function CaseStudiesSection() {
   return (
@@ -17,9 +19,19 @@ export function CaseStudiesSection() {
         </FadeUp>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {caseStudiesList.map((article) => (
-            <ResourceCard key={article.id} article={article} />
-          ))}
+          {caseStudiesList.map((article) => {
+            const slug = article.href.split("/").filter(Boolean).pop() ?? "";
+            const detail = caseStudyDetails[slug];
+            return (
+              <ResourceCard
+                key={article.id}
+                article={{
+                  ...article,
+                  readTime: detail ? readingTimeFromArticle(detail) : article.readTime,
+                }}
+              />
+            );
+          })}
         </div>
 
         <FadeUp delay={0.1} className="mt-10 flex justify-center">

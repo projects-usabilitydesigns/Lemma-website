@@ -8,7 +8,9 @@ import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { readingTimeFromArticle } from "@/lib/article-detail";
 import { newsroomArticles } from "@/lib/newsroom-data";
+import { newsroomDetails } from "@/lib/newsroom-details";
 
 const INITIAL_COUNT = 9;
 
@@ -75,7 +77,9 @@ export function NewsroomGrid() {
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="size-3.5 shrink-0" />
-                    {article.readTime}
+                    {newsroomDetails[article.id]
+                      ? readingTimeFromArticle(newsroomDetails[article.id])
+                      : article.readTime}
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <Eye className="size-3.5 shrink-0" />
