@@ -95,7 +95,14 @@ async function strapiFetch<T>(
     throw new Error(`Strapi fetch failed: ${res.status} ${res.statusText} — ${errorText}`);
   }
 
-  return res.json() as Promise<T>;
+  const text = await res.text();
+  if (!text) throw new Error("Strapi returned an empty body");
+
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    throw new Error("Strapi returned invalid JSON");
+  }
 }
 
 function buildQuery(params: Record<string, unknown>): string {

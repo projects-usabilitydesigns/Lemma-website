@@ -11,47 +11,37 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "text"
-    },
-    "slug": {
+    "Title": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
-    "excerpt": {
-      "type": "text"
+    "Slug": {
+      "type": "uid",
+      "required": true
     },
-    "author": {
-      "type": "string"
+    "Author": {
+      "type": "enumeration",
+      "enum": [
+        "Lemma Editorial Team",
+        "Lemma Team"
+      ]
     },
-    "date": {
-      "type": "string"
+    "Content": {
+      "type": "blocks",
+      "required": true
     },
-    "readTime": {
-      "type": "string"
+    "Datetime": {
+      "type": "datetime"
     },
-    "views": {
-      "type": "string"
-    },
-    "image": {
+    "Thumbnail": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
-    },
-    "tags": {
-      "type": "string"
-    },
-    "categories": {
-      "type": "string"
-    },
-    "body": {
-      "type": "text"
     }
   }
 }

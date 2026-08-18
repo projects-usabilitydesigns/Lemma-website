@@ -45,13 +45,15 @@ export function NewsroomGrid({ articles }: { articles: ResourceArticle[] }) {
               className="group flex flex-col overflow-hidden border border-[var(--color-border)] bg-white shadow-[0_4px_18px_rgba(9,19,26,0.06)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(9,19,26,0.1)]"
             >
               <div className="relative aspect-[418/260] overflow-hidden bg-[var(--color-cream-soft)]">
-                <Image
-                  src={article.image}
-                  alt={article.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                {article.image ? (
+                  <Image
+                    src={article.image}
+                    alt={article.title ?? ""}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : null}
                 <PlayOverlay />
               </div>
               <div className="flex flex-1 flex-col p-5 md:p-6">

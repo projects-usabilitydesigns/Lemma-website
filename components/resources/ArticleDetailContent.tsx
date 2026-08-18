@@ -138,6 +138,17 @@ export function ArticleDetailContent({
     [article.body],
   );
   const headings = useMemo(() => articleHeadings(body), [body]);
+  const headingIdBySectionIndex = useMemo(() => {
+    const ids = new Map<number, string>();
+    let i = 0;
+    body.forEach((section, index) => {
+      if (section.type === "heading") {
+        ids.set(index, headings[i]?.id ?? slugifyHeading(section.text));
+        i += 1;
+      }
+    });
+    return ids;
+  }, [body, headings]);
   const excerpt = cleanArticleText(article.excerpt);
   const sharePath =
     article.kind === "blog"
@@ -238,13 +249,15 @@ export function ArticleDetailContent({
               <li key={item.href}>
                 <Link href={item.href} className="group flex items-center gap-3">
                   <span className="relative size-12 shrink-0 overflow-hidden rounded-[8px] bg-[var(--color-cream-soft)]">
-                    <Image
-                      src={item.image}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="48px"
-                    />
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
+                    ) : null}
                   </span>
                   <span className="min-w-0 flex-1 text-[14px] font-medium leading-[1.4] text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-blue)]">
                     {item.title}
@@ -448,7 +461,7 @@ export function ArticleDetailContent({
                   return (
                     <h2
                       key={`${section.text}-${index}`}
-                      id={slugifyHeading(section.text)}
+                      id={headingIdBySectionIndex.get(index) ?? slugifyHeading(section.text)}
                       className="scroll-mt-[120px] pt-2 font-heading text-[22px] font-semibold tracking-[-0.4px] text-[var(--color-ink)] md:text-[28px]"
                     >
                       {section.text}

@@ -32,13 +32,15 @@ export function CaseStudiesGrid({ articles }: { articles: ResourceArticle[] }) {
               className="group flex flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-cream-soft)] shadow-[0_4px_18px_rgba(9,19,26,0.06)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(9,19,26,0.1)]"
             >
               <div className="relative aspect-[418/260] overflow-hidden bg-white">
-                <Image
-                  src={article.image}
-                  alt={article.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
+                {article.image ? (
+                  <Image
+                    src={article.image}
+                    alt={article.title ?? ""}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : null}
               </div>
               <div className="flex flex-1 flex-col p-5 md:p-6">
                 <h2 className="mb-4 line-clamp-2 min-h-[52px] text-[18px] font-extrabold tracking-[-0.4px] text-[var(--color-ink)] transition-transform duration-300 group-hover:-translate-y-0.5 md:min-h-[55px] md:text-[20px] md:leading-[27.5px]">

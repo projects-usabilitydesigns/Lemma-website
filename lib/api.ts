@@ -284,37 +284,29 @@ function parseCsv(raw: unknown): string[] {
   return raw.split(",").map((t) => t.trim()).filter(Boolean);
 }
 
-function parseParagraphs(raw: unknown): ArticleDetail["body"] {
-  if (typeof raw !== "string") return [];
-  return raw
-    .split(/\n\s*\n/)
-    .map((block) => block.trim())
-    .filter(Boolean)
-    .map((text) => ({ type: "paragraph" as const, text }));
-}
-
 export async function getNewsroomPosts(): Promise<ResourceArticle[]> {
   try {
     const res = await fetchCollection<W<{
-      title: string;
-      slug: string;
-      date: string;
-      readTime: string;
-      views: string;
-      image: unknown;
-    }>>("newsrooms", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
+      Title: string;
+      Slug: string;
+      Datetime: string;
+      Content: unknown;
+      Thumbnail: unknown;
+    }>>("newsrooms", { revalidate: REVALIDATE, sort: "Datetime:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
-      slug: item.slug,
+      slug: item.Slug,
       category: "Newsroom",
-      title: item.title,
-      date: item.date,
-      readTime: item.readTime,
-      views: item.views,
-      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      title: item.Title,
+      date: formatStrapiDate(item.Datetime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
+      ),
       accent: "#f82d89",
       tone: "dark",
-      href: `/newsroom/${item.slug}`,
+      href: `/newsroom/${item.Slug}`,
     }));
   } catch {
     return [];
@@ -352,36 +344,39 @@ export async function getCaseStudyArticles(): Promise<ResourceArticle[]> {
 export async function getNewsroomBySlug(slug: string): Promise<ArticleDetail | null> {
   try {
     const res = await fetchCollection<W<{
-      title: string;
-      slug: string;
-      excerpt: string;
-      author: string;
-      date: string;
-      readTime: string;
-      image: unknown;
-      tags: unknown;
-      categories: unknown;
-      body: unknown;
+      Title: string;
+      Slug: string;
+      Author: string;
+      Datetime: string;
+      Content: unknown;
+      Thumbnail: unknown;
     }>>("newsrooms", {
       revalidate: REVALIDATE,
-      filters: { slug: { $eq: slug } },
+      filters: { Slug: { $eq: slug } },
     });
     const item = res.data[0];
     if (!item) return null;
 
     return {
-      slug: item.slug,
+      slug: item.Slug,
       kind: "newsroom",
       category: "Newsroom",
-      categories: [...new Set(["Newsroom", ...parseCsv(item.categories)])],
-      title: item.title,
-      excerpt: item.excerpt ?? "",
-      author: item.author ?? "",
-      date: item.date,
-      readTime: item.readTime,
-      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
-      tags: parseCsv(item.tags),
-      body: parseParagraphs(item.body),
+      categories: ["Newsroom"],
+      title: item.Title,
+      excerpt: "",
+      author: item.Author ?? "",
+      date: formatStrapiDate(item.Datetime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
+      ),
+      tags: [],
+      body: blocksToSections(item.Content).map((section) =>
+        section.type === "blockquote"
+          ? { type: "paragraph" as const, text: section.text }
+          : section,
+      ),
       cta: defaultArticleCtas.newsroom,
     };
   } catch {

@@ -25,9 +25,6 @@
     "Categories": {
       "type": "string"
     },
-    "Author": {
-      "type": "string"
-    },
     "Content": {
       "type": "blocks",
       "required": true
@@ -43,6 +40,13 @@
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "Author": {
+      "type": "enumeration",
+      "enum": [
+        " Lemma Editorial Team",
+        "Lemma Team"
       ]
     }
   }
