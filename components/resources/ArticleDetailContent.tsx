@@ -22,6 +22,9 @@ import {
   articleCtaHref,
   articleHeadings,
   articleListing,
+  cleanArticleText,
+  isDashSeparator,
+  readingTimeFromArticle,
   slugifyHeading,
   type ArticleDetail,
   type RelatedArticle,
@@ -123,7 +126,19 @@ export function ArticleDetailContent({
   related: RelatedArticle[];
 }) {
   const listing = articleListing[article.kind];
-  const headings = useMemo(() => articleHeadings(article.body), [article.body]);
+  const body = useMemo(
+    () =>
+      article.body
+        .filter((section) => section.type === "list" || !isDashSeparator(section.text))
+        .map((section) =>
+          section.type === "list"
+            ? { ...section, items: section.items.map(cleanArticleText) }
+            : { ...section, text: cleanArticleText(section.text) },
+        ),
+    [article.body],
+  );
+  const headings = useMemo(() => articleHeadings(body), [body]);
+  const excerpt = cleanArticleText(article.excerpt);
   const sharePath =
     article.kind === "blog"
       ? `/resources/blogs/${article.slug}`
@@ -368,58 +383,56 @@ export function ArticleDetailContent({
 
           <article className="order-1 lg:order-2">
             <FadeUp>
-              <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
-                <div className="min-w-0 flex-1">
-                  <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    {article.categories.map((category, index) => (
-                      <span
-                        key={`${category}-${index}`}
-                        className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]"
-                      >
-                        <span className="size-1.5 rounded-full bg-[var(--color-orange)]" />
-                        {category}
-                      </span>
-                    ))}
-                  </div>
-
-                  <h1 className="font-heading text-[32px] font-semibold leading-[1.15] tracking-[-0.64px] text-[var(--color-ink)] md:text-[42px] md:leading-[1.12]">
-                    {article.title}
-                  </h1>
-
-                  <p className="mt-4 text-[16px] leading-[1.7] text-[var(--color-slate)] md:text-[18px] md:leading-[1.65]">
-                    {article.excerpt}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-[var(--color-slate)]">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Calendar className="size-3.5" strokeWidth={1.8} />
-                      {article.date}
+              <header>
+                <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  {article.categories.map((category, index) => (
+                    <span
+                      key={`${category}-${index}`}
+                      className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]"
+                    >
+                      <span className="size-1.5 rounded-full bg-[var(--color-orange)]" />
+                      {category}
                     </span>
-                    {article.readTime ? (
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock className="size-3.5" strokeWidth={1.8} />
-                      {article.readTime}
-                    </span>
-                  ) : null}
-                    <span className="inline-flex items-center gap-2">
-                      <span className="flex size-7 items-center justify-center rounded-full bg-[var(--color-blue)] text-[11px] font-semibold text-white">
-                        {article.author.charAt(0)}
-                      </span>
-                      {article.author}
-                    </span>
-                  </div>
+                  ))}
                 </div>
 
-                <div className="relative aspect-square w-full shrink-0 overflow-hidden rounded-[12px] bg-[var(--color-cream-soft)] lg:w-[320px] xl:w-[380px]">
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 380px"
-                  />
+                <h1 className="font-heading text-[32px] font-semibold leading-[1.15] tracking-[-0.64px] text-[var(--color-ink)] md:text-[42px] md:leading-[1.12]">
+                  {article.title}
+                </h1>
+
+                <p className="mt-4 text-[16px] leading-[1.7] text-[var(--color-slate)] md:text-[18px] md:leading-[1.65]">
+                  {excerpt}
+                </p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-[var(--color-slate)]">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Calendar className="size-3.5" strokeWidth={1.8} />
+                    {article.date}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <Clock className="size-3.5" strokeWidth={1.8} />
+                    {readingTimeFromArticle(article)}
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <span className="flex size-7 items-center justify-center rounded-full bg-[var(--color-blue)] text-[11px] font-semibold text-white">
+                      {article.author.charAt(0)}
+                    </span>
+                    {article.author}
+                  </span>
                 </div>
+              </header>
+            </FadeUp>
+
+            <FadeUp className="mt-8 md:mt-10">
+              <div className="relative aspect-[2/1] w-full overflow-hidden rounded-[16px] bg-[var(--color-cream-soft)] md:aspect-[21/9]">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 70vw"
+                />
               </div>
             </FadeUp>
 
@@ -430,7 +443,7 @@ export function ArticleDetailContent({
             ) : null}
 
             <div className="mt-10 flex flex-col gap-6 md:mt-12 md:gap-7">
-              {article.body.map((section, index) => {
+              {body.map((section, index) => {
                 if (section.type === "heading") {
                   return (
                     <h2
@@ -493,11 +506,11 @@ export function ArticleDetailContent({
             </div>
 
             <div className="mt-12 flex flex-col gap-5 rounded-[12px] bg-[#ebf5ff] p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 md:mt-16 md:p-7">
-              <div className="flex items-start gap-4">
+              <div className="flex min-w-0 items-start gap-4">
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-[10px] bg-white text-[var(--color-blue)]">
                   <FileText className="size-5" strokeWidth={1.8} />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <p className="font-heading text-[18px] font-semibold tracking-[-0.3px] text-[var(--color-ink)] md:text-[20px]">
                     {article.cta.title}
                   </p>
@@ -506,16 +519,17 @@ export function ArticleDetailContent({
                   </p>
                 </div>
               </div>
-              <Button
-                href={articleCtaHref}
-                variant="primary"
-                arrow="none"
-                lift={false}
-                className="h-12 w-full shrink-0 rounded-[10px] px-6 py-0 text-[14px] font-semibold normal-case tracking-normal text-white shadow-none sm:w-auto hover:shadow-[0_10px_24px_rgba(240,90,39,0.28)]"
-                style={{ backgroundImage: "none", backgroundColor: "var(--color-orange)" }}
-              >
-                {article.cta.buttonLabel}
-              </Button>
+              <div className="w-full shrink-0 sm:w-auto [&>div]:w-full">
+                <Button
+                  href={articleCtaHref}
+                  variant="primary"
+                  arrow="right"
+                  className="w-full border-white/[0.08] text-white sm:w-auto hover:shadow-[0_10px_30px_rgba(248,45,137,0.28)]"
+                  style={{ backgroundImage: "var(--gradient-cta)" }}
+                >
+                  {article.cta.buttonLabel}
+                </Button>
+              </div>
             </div>
           </article>
         </div>

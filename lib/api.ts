@@ -8,7 +8,7 @@ import type {
   Stat,
 } from "@/types";
 import type { BlogBodySection, BlogPostDetail, ResourceArticle } from "./resources-page-data";
-import { defaultArticleCtas, type ArticleDetail } from "./article-detail";
+import { defaultArticleCtas, readingTimeFromText, type ArticleDetail } from "./article-detail";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
 
 const REVALIDATE = 60;
@@ -398,6 +398,7 @@ export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | 
       author: string;
       date: string;
       readTime: string;
+      views: string;
       image: unknown;
       tags: unknown;
       categories: unknown;
@@ -418,10 +419,19 @@ export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | 
       excerpt: item.excerpt ?? "",
       author: item.author ?? "",
       date: item.date,
-      readTime: item.readTime,
+      readTime: item.readTime || readingTimeFromText(
+        [item.title, typeof item.body === "string" ? item.body : ""].join(" "),
+      ),
+      views: item.views,
       image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
       tags: parseCsv(item.tags),
-      body: parseParagraphs(item.body),
+      body: typeof item.body === "string"
+        ? item.body
+            .split(/\n\s*\n/)
+            .map((block) => block.trim())
+            .filter((text) => text && !/^[-–—*_]{1,}$/.test(text))
+            .map((text) => ({ type: "paragraph" as const, text }))
+        : [],
       cta: defaultArticleCtas["case-study"],
     };
   } catch {
