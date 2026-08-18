@@ -32,12 +32,14 @@ export function Blog({ blogPosts }: { blogPosts?: ResourceArticle[] }) {
               className="group block overflow-hidden border border-[var(--color-border)] bg-[var(--color-cream-soft)] transition-shadow duration-300 hover:shadow-[0px_12px_40px_rgba(9,19,26,0.1)]"
             >
               <div className="relative aspect-[418/260] overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover object-bottom transition-transform duration-700 group-hover:scale-110"
-                />
+                {post.image ? (
+                  <Image
+                    src={post.image}
+                    alt={post.title ?? ""}
+                    fill
+                    className="object-cover object-bottom transition-transform duration-700 group-hover:scale-110"
+                  />
+                ) : null}
               </div>
               <div className="p-6">
                 <h3 className="mb-4 min-h-[55px] text-[20px] font-extrabold tracking-[-0.44px] text-[var(--color-ink)] transition-transform duration-300 group-hover:-translate-y-1 md:text-[22px] md:leading-[27.5px]">
@@ -48,14 +50,18 @@ export function Blog({ blogPosts }: { blogPosts?: ResourceArticle[] }) {
                     <Calendar className="size-3.5" />
                     {post.date}
                   </span>
+                  {post.readTime ? (
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="size-3.5" />
                     {post.readTime}
                   </span>
+                ) : null}
+                {post.views ? (
                   <span className="inline-flex items-center gap-1.5">
                     <Eye className="size-3.5" />
                     {post.views}
                   </span>
+                ) : null}
                 </div>
               </div>
             </motion.a>

@@ -7,8 +7,8 @@ import type {
   Solution,
   Stat,
 } from "@/types";
-import { readingTimeFromText } from "./article-detail";
-import type { BlogPostDetail, ResourceArticle } from "./resources-page-data";
+import type { BlogBodySection, BlogPostDetail, ResourceArticle } from "./resources-page-data";
+import { defaultArticleCtas, readingTimeFromText, type ArticleDetail } from "./article-detail";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
 
 const REVALIDATE = 60;
@@ -104,7 +104,7 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
       image: unknown;
       href: string;
       videoUrl: string;
-    }>>("case-studies", { revalidate: REVALIDATE });
+    }>>("video-case-studies", { revalidate: REVALIDATE });
     return res.data.map((item) => ({
       id: String(item.id),
       brand: item.brand,
@@ -156,33 +156,79 @@ export async function getAiFeatures(): Promise<AiFeature[]> {
   }
 }
 
+function blocksToSections(raw: unknown): BlogBodySection[] {
+  if (!Array.isArray(raw)) return [];
+  const sections: BlogBodySection[] = [];
+  for (const block of raw) {
+    if (!block || typeof block !== "object") continue;
+    const b = block as {
+      type?: string;
+      children?: { type?: string; text?: string }[];
+    };
+    const text = (b.children ?? []).map((child) => child.text ?? "").join("");
+    if (b.type === "heading") {
+      sections.push({ type: "heading", text });
+    } else if (b.type === "paragraph") {
+      sections.push({ type: "paragraph", text });
+    } else if (b.type === "quote") {
+      sections.push({ type: "blockquote", text });
+    } else if (b.type === "list") {
+      const items = (b.children ?? [])
+        .filter((child) => child.type === "list-item")
+        .map(
+          (child) =>
+            (child as { children?: { text?: string }[] }).children
+              ?.map((c) => c.text ?? "")
+              .join("") ?? "",
+        )
+        .filter(Boolean);
+      if (items.length > 0) sections.push({ type: "list", items });
+    } else if (b.type === "code" && text.trim()) {
+      sections.push({ type: "paragraph", text });
+    }
+  }
+  return sections;
+}
+
+function formatStrapiDate(raw: unknown): string {
+  if (typeof raw !== "string" || !raw) return "";
+  const date = new Date(raw);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function getFirstMedia(media: unknown) {
+  return Array.isArray(media) ? media[0] : media;
+}
+
 export async function getBlogPosts(): Promise<ResourceArticle[]> {
   try {
     const res = await fetchCollection<W<{
-      title: string;
-      slug: string;
-      category: string;
-      accent: string;
-      date: string;
-      readTime: string;
-      views: string;
-      image: unknown;
-      body: unknown;
-    }>>("blog-posts", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
+      Title: string;
+      Slug: string;
+      Categories: string;
+      DateTime: string;
+      Content: unknown;
+      Thumbnail: unknown;
+    }>>("blogs", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
-      slug: item.slug,
-      category: item.category ?? "Blogs",
-      title: item.title,
-      date: item.date,
-      readTime: readingTimeFromText(
-        [item.title, typeof item.body === "string" ? item.body : ""].join(" "),
+      slug: item.Slug,
+      category: item.Categories ?? "Blogs",
+      title: item.Title,
+      date: formatStrapiDate(item.DateTime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
       ),
-      views: item.views,
-      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
-      accent: item.accent ?? "#008fdb",
+      accent: "#008fdb",
       tone: "dark",
-      href: `/resources/blogs/${item.slug}`,
+      href: `/resources/blogs/${item.Slug}`,
     }));
   } catch {
     return [];
@@ -192,54 +238,196 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
 export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | null> {
   try {
     const res = await fetchCollection<W<{
+      Title: string;
+      Slug: string;
+      Categories: string;
+      Author: string;
+      DateTime: string;
+      Content: unknown;
+      Thumbnail: unknown;
+    }>>("blogs", {
+      revalidate: REVALIDATE,
+      filters: { Slug: { $eq: slug } },
+    });
+    const item = res.data[0];
+    if (!item) return null;
+
+    const body = blocksToSections(item.Content);
+    const tags =
+      typeof item.Categories === "string"
+        ? item.Categories.split(",").map((t) => t.trim()).filter(Boolean)
+        : [];
+
+    return {
+      slug: item.Slug,
+      category: item.Categories ?? "Blogs",
+      title: item.Title,
+      author: item.Author ?? "",
+      authorRole: "",
+      date: formatStrapiDate(item.DateTime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
+      ),
+      accent: "#008fdb",
+      tags,
+      body,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function parseCsv(raw: unknown): string[] {
+  if (typeof raw !== "string") return [];
+  return raw.split(",").map((t) => t.trim()).filter(Boolean);
+}
+
+export async function getNewsroomPosts(): Promise<ResourceArticle[]> {
+  try {
+    const res = await fetchCollection<W<{
+      Title: string;
+      Slug: string;
+      Datetime: string;
+      Content: unknown;
+      Thumbnail: unknown;
+    }>>("newsrooms", { revalidate: REVALIDATE, sort: "Datetime:desc" });
+    return res.data.map((item) => ({
+      id: String(item.id),
+      slug: item.Slug,
+      category: "Newsroom",
+      title: item.Title,
+      date: formatStrapiDate(item.Datetime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
+      ),
+      accent: "#f82d89",
+      tone: "dark",
+      href: `/newsroom/${item.Slug}`,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export async function getCaseStudyArticles(): Promise<ResourceArticle[]> {
+  try {
+    const res = await fetchCollection<W<{
       title: string;
       slug: string;
-      category: string;
+      date: string;
+      readTime: string;
+      views: string;
+      image: unknown;
+    }>>("case-studies", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
+    return res.data.map((item) => ({
+      id: String(item.id),
+      slug: item.slug,
+      category: "Case Studies",
+      title: item.title,
+      date: item.date,
+      readTime: item.readTime,
+      views: item.views,
+      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      accent: "#009352",
+      tone: "dark",
+      href: `/case-studies/${item.slug}`,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export async function getNewsroomBySlug(slug: string): Promise<ArticleDetail | null> {
+  try {
+    const res = await fetchCollection<W<{
+      Title: string;
+      Slug: string;
+      Author: string;
+      Datetime: string;
+      Content: unknown;
+      Thumbnail: unknown;
+    }>>("newsrooms", {
+      revalidate: REVALIDATE,
+      filters: { Slug: { $eq: slug } },
+    });
+    const item = res.data[0];
+    if (!item) return null;
+
+    return {
+      slug: item.Slug,
+      kind: "newsroom",
+      category: "Newsroom",
+      categories: ["Newsroom"],
+      title: item.Title,
+      excerpt: "",
+      author: item.Author ?? "",
+      date: formatStrapiDate(item.Datetime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
+      ),
+      tags: [],
+      body: blocksToSections(item.Content).map((section) =>
+        section.type === "blockquote"
+          ? { type: "paragraph" as const, text: section.text }
+          : section,
+      ),
+      cta: defaultArticleCtas.newsroom,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | null> {
+  try {
+    const res = await fetchCollection<W<{
+      title: string;
+      slug: string;
+      excerpt: string;
       author: string;
-      authorRole: string;
-      accent: string;
       date: string;
       readTime: string;
       views: string;
       image: unknown;
       tags: unknown;
+      categories: unknown;
       body: unknown;
-    }>>("blog-posts", {
+    }>>("case-studies", {
       revalidate: REVALIDATE,
       filters: { slug: { $eq: slug } },
     });
     const item = res.data[0];
     if (!item) return null;
 
-    const tags =
-      typeof item.tags === "string"
-        ? item.tags.split(",").map((t) => t.trim()).filter(Boolean)
-        : [];
-
-    const body =
-      typeof item.body === "string"
+    return {
+      slug: item.slug,
+      kind: "case-study",
+      category: "Case Studies",
+      categories: [...new Set(["Case Studies", ...parseCsv(item.categories)])],
+      title: item.title,
+      excerpt: item.excerpt ?? "",
+      author: item.author ?? "",
+      date: item.date,
+      readTime: item.readTime || readingTimeFromText(
+        [item.title, typeof item.body === "string" ? item.body : ""].join(" "),
+      ),
+      views: item.views,
+      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      tags: parseCsv(item.tags),
+      body: typeof item.body === "string"
         ? item.body
             .split(/\n\s*\n/)
             .map((block) => block.trim())
             .filter((text) => text && !/^[-–—*_]{1,}$/.test(text))
             .map((text) => ({ type: "paragraph" as const, text }))
-        : [];
-
-    return {
-      slug: item.slug,
-      category: item.category ?? "Blogs",
-      title: item.title,
-      author: item.author ?? "",
-      authorRole: item.authorRole ?? "",
-      date: item.date,
-      readTime: readingTimeFromText(
-        [item.title, typeof item.body === "string" ? item.body : ""].join(" "),
-      ),
-      views: item.views,
-      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
-      accent: item.accent ?? "#008fdb",
-      tags,
-      body,
+        : [],
+      cta: defaultArticleCtas["case-study"],
     };
   } catch {
     return null;

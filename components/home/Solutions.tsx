@@ -54,13 +54,15 @@ export function Solutions({ solutions }: { solutions?: Solution[] }) {
               className="grid overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-cream)] transition-shadow duration-300 hover:shadow-[0px_12px_40px_rgba(9,19,26,0.12)] md:rounded-none md:grid-cols-5"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden md:col-span-2 md:aspect-auto md:min-h-[376px]">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover object-[center_42%] transition-transform duration-700 hover:scale-105 md:object-center"
-                />
+                {item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.title ?? ""}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover object-[center_42%] transition-transform duration-700 hover:scale-105 md:object-center"
+                  />
+                ) : null}
                 <p className="absolute left-3 top-3 text-[40px] font-extralight leading-none tracking-[-1.2px] text-[rgba(3,10,17,0.85)] md:left-4 md:top-4 md:text-[60px]">
                   {item.number}
                 </p>

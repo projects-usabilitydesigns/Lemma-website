@@ -30,6 +30,7 @@ export type ArticleDetail = {
   author: string;
   date: string;
   readTime: string;
+  views?: string;
   image: string;
   tags: string[];
   body: ArticleBodySection[];
@@ -73,18 +74,24 @@ export function slugifyHeading(text: string) {
 }
 
 export function articleHeadings(body: ArticleBodySection[]) {
+  const seen = new Map<string, number>();
   return body
     .filter((section): section is { type: "heading"; text: string } => section.type === "heading")
-    .map((section) => ({
-      id: slugifyHeading(section.text),
-      text: section.text,
-    }));
+    .map((section) => {
+      const base = slugifyHeading(section.text);
+      const count = seen.get(base) ?? 0;
+      seen.set(base, count + 1);
+      return {
+        id: count === 0 ? base : `${base}-${count + 1}`,
+        text: section.text,
+      };
+    });
 }
 
 const WORDS_PER_MINUTE = 200;
 
 type ReadableSection =
-  | { type: "list"; items: readonly string[] }
+  | { type: "list"; items?: readonly string[]; text?: string }
   | { type: string; text?: string; items?: readonly string[] };
 
 function wordCount(text: string) {

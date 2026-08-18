@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "newsrooms",
+  "info": {
+    "singularName": "newsroom",
+    "pluralName": "newsrooms",
+    "displayName": "Newsroom"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "required": true
+    },
+    "Author": {
+      "type": "enumeration",
+      "enum": [
+        "Lemma Editorial Team",
+        "Lemma Team"
+      ]
+    },
+    "Content": {
+      "type": "blocks",
+      "required": true
+    },
+    "Datetime": {
+      "type": "datetime"
+    },
+    "Thumbnail": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
