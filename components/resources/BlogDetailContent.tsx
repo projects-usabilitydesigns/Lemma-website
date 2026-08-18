@@ -32,7 +32,7 @@ function toArticleDetail(article: BlogPostDetail): ArticleDetail {
     slug: article.slug,
     kind: "blog",
     category: article.category,
-    categories: ["Blogs", article.tags[0] ?? article.category],
+    categories: [...new Set(["Blogs", article.tags[0] ?? article.category])],
     title: article.title,
     excerpt,
     author: article.author,

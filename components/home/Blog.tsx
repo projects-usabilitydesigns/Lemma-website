@@ -48,14 +48,18 @@ export function Blog({ blogPosts }: { blogPosts?: ResourceArticle[] }) {
                     <Calendar className="size-3.5" />
                     {post.date}
                   </span>
+                  {post.readTime ? (
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="size-3.5" />
                     {post.readTime}
                   </span>
+                ) : null}
+                {post.views ? (
                   <span className="inline-flex items-center gap-1.5">
                     <Eye className="size-3.5" />
                     {post.views}
                   </span>
+                ) : null}
                 </div>
               </div>
             </motion.a>

@@ -45,14 +45,18 @@ export function ResourceCard({
               <Calendar className="size-3.5" strokeWidth={1.8} aria-hidden />
               {article.date}
             </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="size-3.5" strokeWidth={1.8} aria-hidden />
-              {article.readTime}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Eye className="size-3.5" strokeWidth={1.8} aria-hidden />
-              {article.views}
-            </span>
+            {article.readTime ? (
+              <span className="flex items-center gap-1.5">
+                <Clock className="size-3.5" strokeWidth={1.8} aria-hidden />
+                {article.readTime}
+              </span>
+            ) : null}
+            {article.views ? (
+              <span className="flex items-center gap-1.5">
+                <Eye className="size-3.5" strokeWidth={1.8} aria-hidden />
+                {article.views}
+              </span>
+            ) : null}
           </div>
         </div>
       </a>

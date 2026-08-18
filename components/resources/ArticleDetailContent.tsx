@@ -371,9 +371,9 @@ export function ArticleDetailContent({
               <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
                 <div className="min-w-0 flex-1">
                   <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    {article.categories.map((category) => (
+                    {article.categories.map((category, index) => (
                       <span
-                        key={category}
+                        key={`${category}-${index}`}
                         className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]"
                       >
                         <span className="size-1.5 rounded-full bg-[var(--color-orange)]" />
@@ -395,10 +395,12 @@ export function ArticleDetailContent({
                       <Calendar className="size-3.5" strokeWidth={1.8} />
                       {article.date}
                     </span>
+                    {article.readTime ? (
                     <span className="inline-flex items-center gap-1.5">
                       <Clock className="size-3.5" strokeWidth={1.8} />
                       {article.readTime}
                     </span>
+                  ) : null}
                     <span className="inline-flex items-center gap-2">
                       <span className="flex size-7 items-center justify-center rounded-full bg-[var(--color-blue)] text-[11px] font-semibold text-white">
                         {article.author.charAt(0)}
