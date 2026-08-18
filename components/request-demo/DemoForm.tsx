@@ -3,7 +3,9 @@
 import { useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Check, Loader2, ShieldCheck } from "lucide-react";
+import { getEmailError, getPhoneError } from "@/lib/form-validation";
 import { demoInterests, demoRegions, demoRoles } from "@/lib/request-demo-data";
+import { sendDemoRequest } from "@/lib/send-demo-request";
 import { fieldClass, labelClass } from "@/lib/form-styles";
 import { cn } from "@/lib/utils";
 
@@ -37,22 +39,17 @@ const initialValues: FormValues = {
   consent: false,
 };
 
-const freeEmailDomains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com"];
-
 function validate(values: FormValues): FormErrors {
   const errors: FormErrors = {};
 
   if (!values.firstName.trim()) errors.firstName = "Enter your first name";
   if (!values.lastName.trim()) errors.lastName = "Enter your last name";
 
-  const email = values.email.trim().toLowerCase();
-  if (!email) {
-    errors.email = "Enter your work email";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-    errors.email = "Enter a valid email address";
-  } else if (freeEmailDomains.includes(email.split("@")[1] ?? "")) {
-    errors.email = "Please use your work email";
-  }
+  const emailError = getEmailError(values.email, { requireWorkEmail: true });
+  if (emailError) errors.email = emailError;
+
+  const phoneError = getPhoneError(values.phone, { required: true });
+  if (phoneError) errors.phone = phoneError;
 
   if (!values.company.trim()) errors.company = "Enter your company name";
   if (!values.role) errors.role = "Select what best describes you";
@@ -82,6 +79,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
   const [values, setValues] = useState<FormValues>({ ...initialValues, role: defaultRole });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [submitError, setSubmitError] = useState("");
 
   const setField = <K extends keyof FormValues>(key: K, value: FormValues[K]) => {
     setValues((current) => ({ ...current, [key]: value }));
@@ -108,9 +106,18 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
       return;
     }
 
+    setSubmitError("");
     setStatus("submitting");
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    setStatus("success");
+
+    try {
+      await sendDemoRequest(values);
+      setStatus("success");
+    } catch (error) {
+      setStatus("idle");
+      setSubmitError(
+        error instanceof Error ? error.message : "Could not send your request. Please try again.",
+      );
+    }
   };
 
   return (
@@ -231,18 +238,22 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
 
               <div>
                 <label className={labelClass} htmlFor={`${formId}-phone`}>
-                  Phone (optional)
+                  Phone*
                 </label>
                 <input
                   id={`${formId}-phone`}
                   name="phone"
                   type="tel"
+                  inputMode="tel"
                   autoComplete="tel"
-                  className={fieldClass}
+                  className={cn(fieldClass, errors.phone && "border-[var(--color-pink)]")}
                   placeholder="+1 555 000 1234"
                   value={values.phone}
                   onChange={(event) => setField("phone", event.target.value)}
+                  aria-invalid={Boolean(errors.phone)}
+                  aria-describedby={errors.phone ? `${formId}-phone-error` : undefined}
                 />
+                <FieldError id={`${formId}-phone-error`} message={errors.phone} />
               </div>
             </div>
 
@@ -385,6 +396,10 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
               </label>
               <FieldError id={`${formId}-consent-error`} message={errors.consent} />
             </div>
+
+            {submitError ? (
+              <p className="text-center text-[12px] font-medium text-[var(--color-pink)]">{submitError}</p>
+            ) : null}
 
             <button
               type="submit"
