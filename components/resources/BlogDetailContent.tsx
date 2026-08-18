@@ -3,6 +3,7 @@
 import { ArticleDetailContent } from "@/components/resources/ArticleDetailContent";
 import {
   defaultArticleCtas,
+  readingTimeFromArticle,
   type ArticleBodySection,
   type ArticleDetail,
 } from "@/lib/article-detail";
@@ -37,7 +38,11 @@ function toArticleDetail(article: BlogPostDetail): ArticleDetail {
     excerpt,
     author: article.author,
     date: article.date,
-    readTime: article.readTime,
+    readTime: readingTimeFromArticle({
+      title: article.title,
+      excerpt,
+      body,
+    }),
     image: article.image,
     tags: article.tags,
     body,

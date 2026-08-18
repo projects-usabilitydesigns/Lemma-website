@@ -7,6 +7,7 @@ import type {
   Solution,
   Stat,
 } from "@/types";
+import { readingTimeFromText } from "./article-detail";
 import type { BlogPostDetail, ResourceArticle } from "./resources-page-data";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
 
@@ -166,6 +167,7 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
       readTime: string;
       views: string;
       image: unknown;
+      body: unknown;
     }>>("blog-posts", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
@@ -173,7 +175,9 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
       category: item.category ?? "Blogs",
       title: item.title,
       date: item.date,
-      readTime: item.readTime,
+      readTime: readingTimeFromText(
+        [item.title, typeof item.body === "string" ? item.body : ""].join(" "),
+      ),
       views: item.views,
       image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
       accent: item.accent ?? "#008fdb",
@@ -217,7 +221,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
         ? item.body
             .split(/\n\s*\n/)
             .map((block) => block.trim())
-            .filter(Boolean)
+            .filter((text) => text && !/^[-–—*_]{1,}$/.test(text))
             .map((text) => ({ type: "paragraph" as const, text }))
         : [];
 
@@ -228,7 +232,9 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
       author: item.author ?? "",
       authorRole: item.authorRole ?? "",
       date: item.date,
-      readTime: item.readTime,
+      readTime: readingTimeFromText(
+        [item.title, typeof item.body === "string" ? item.body : ""].join(" "),
+      ),
       views: item.views,
       image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
       accent: item.accent ?? "#008fdb",
