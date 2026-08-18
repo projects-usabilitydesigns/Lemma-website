@@ -159,11 +159,11 @@ export async function getAiFeatures(): Promise<AiFeature[]> {
 export async function getBlogPosts(): Promise<ResourceArticle[]> {
   try {
     const res = await fetchCollection<W<{
-      title: string;
+      Title: string;
       slug: string;
       category: string;
       accent: string;
-      date: string;
+      Date: string;
       readTime: string;
       views: string;
       image: unknown;
@@ -172,8 +172,8 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
       id: String(item.id),
       slug: item.slug,
       category: item.category ?? "Blogs",
-      title: item.title,
-      date: item.date,
+      title: item.Title,
+      date: item.Date,
       readTime: item.readTime,
       views: item.views,
       image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
@@ -189,13 +189,13 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
 export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | null> {
   try {
     const res = await fetchCollection<W<{
-      title: string;
+      Title: string;
       slug: string;
       category: string;
       author: string;
       authorRole: string;
       accent: string;
-      date: string;
+      Date: string;
       readTime: string;
       views: string;
       image: unknown;
@@ -225,10 +225,10 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
     return {
       slug: item.slug,
       category: item.category ?? "Blogs",
-      title: item.title,
+      title: item.Title,
       author: item.author ?? "",
       authorRole: item.authorRole ?? "",
-      date: item.date,
+      date: item.Date,
       readTime: item.readTime,
       views: item.views,
       image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),

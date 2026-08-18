@@ -20,7 +20,7 @@ export function ResourceCard({
         <div className="relative h-[200px] overflow-hidden md:h-[220px]">
           <Image
             src={article.image}
-            alt={article.title}
+            alt={article.title ?? ""}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
