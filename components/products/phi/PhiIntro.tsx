@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 
 export function PhiIntro() {
   return (
-    <section className="bg-white pb-3 pt-10 md:pb-4 md:pt-12">
+    <section className="bg-white pb-10 pt-10 md:pb-16 md:pt-12">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16">
           <FadeUp className="space-y-5">
