@@ -21,7 +21,7 @@ export default async function NewsroomPage() {
       <main>
         <NewsroomHero />
         <NewsroomGrid articles={articles} />
-        <Faq items={newsroomFaqs} viewAllHref="/#faq" />
+        <Faq items={newsroomFaqs} />
         <AboutCta />
       </main>
     </>

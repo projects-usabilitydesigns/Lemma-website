@@ -11,13 +11,19 @@ export type DemoRequestPayload = {
   region: string;
   interests: string[];
   message: string;
+  pageUrl: string;
 };
 
-export async function sendDemoRequest(values: DemoRequestPayload & { consent: boolean }) {
+export async function sendDemoRequest(
+  values: Omit<DemoRequestPayload, "pageUrl"> & { consent: boolean; pageUrl?: string },
+) {
   const response = await fetch("/api/request-demo", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(values),
+    body: JSON.stringify({
+      ...values,
+      pageUrl: typeof window !== "undefined" ? window.location.href : values.pageUrl ?? "",
+    }),
   });
 
   const result = (await response.json().catch(() => null)) as { error?: string } | null;

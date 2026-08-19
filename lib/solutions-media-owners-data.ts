@@ -253,8 +253,6 @@ export const mediaOwnersFaqs: BrandsFaq[] = [
   },
 ];
 
-export const mediaOwnersFaqTitle = "Answers for media owners getting started";
-
 export const mediaOwnersCta = {
   title: "Want to Lemmaximize your inventory?",
   description:

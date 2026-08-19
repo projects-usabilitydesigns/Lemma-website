@@ -31,11 +31,7 @@ export default async function BrandsAdvertisersPage() {
         <PlatformFeatures />
         <CampaignAnalytics />
         <CaseStudies />
-        <Faq
-          items={brandsFaqs}
-          title="Answers for brands getting started"
-          showViewAll={false}
-        />
+        <Faq items={brandsFaqs} />
         <CTASection />
       </main>
     </>

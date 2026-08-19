@@ -40,6 +40,16 @@ function interestPills(interests: string[]) {
     .join("");
 }
 
+function sanitizePageUrl(value: string) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return "";
+    return url.toString();
+  } catch {
+    return "";
+  }
+}
+
 export function buildDemoRequestEmail(values: DemoRequestPayload) {
   const firstName = values.firstName.trim();
   const lastName = values.lastName.trim();
@@ -48,10 +58,15 @@ export function buildDemoRequestEmail(values: DemoRequestPayload) {
   const company = values.company.trim();
   const phone = values.phone.trim();
   const message = values.message.trim();
+  const pageUrl = sanitizePageUrl(values.pageUrl);
   const subject = `New demo request from ${fullName} (${company})`;
 
   const messageHtml = message
     ? escapeHtml(message).replaceAll("\n", "<br>")
+    : "—";
+
+  const pageUrlHtml = pageUrl
+    ? `<a href="${escapeHtml(pageUrl)}" style="color:#008fdb;text-decoration:none;word-break:break-all;">${escapeHtml(pageUrl)}</a>`
     : "—";
 
   const html = `
@@ -112,6 +127,7 @@ export function buildDemoRequestEmail(values: DemoRequestPayload) {
                     <td colspan="2" style="padding:20px 0 8px;color:#09131a;font-size:13px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;border-bottom:1px solid #eef2f4;">Request</td>
                   </tr>
                   ${row("Interested in", interestPills(values.interests))}
+                  ${row("Page URL", pageUrlHtml)}
                   <tr>
                     <td style="padding:10px 0;width:140px;color:#586c7b;font-size:13px;line-height:20px;vertical-align:top;">Message</td>
                     <td style="padding:10px 0;color:#09131a;font-size:14px;line-height:22px;vertical-align:top;">${messageHtml}</td>
@@ -151,6 +167,7 @@ export function buildDemoRequestEmail(values: DemoRequestPayload) {
     `I am a: ${values.role.trim() || "—"}`,
     `Region: ${values.region.trim() || "—"}`,
     `Interested in: ${values.interests.length ? values.interests.join(", ") : "—"}`,
+    `Page URL: ${pageUrl || "—"}`,
     `Message: ${message || "—"}`,
   ].join("\n");
 

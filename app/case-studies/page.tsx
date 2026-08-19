@@ -21,7 +21,7 @@ export default async function CaseStudiesPage() {
       <main>
         <CaseStudiesHero />
         <CaseStudiesGrid articles={articles} />
-        <Faq items={caseStudyFaqs} viewAllHref="/#faq" />
+        <Faq items={caseStudyFaqs} />
         <AboutCta />
       </main>
     </>

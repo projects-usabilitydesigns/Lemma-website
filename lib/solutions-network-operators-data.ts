@@ -253,8 +253,6 @@ export const networkOperatorsFaqs: BrandsFaq[] = [
   },
 ];
 
-export const networkOperatorsFaqTitle = "Answers for network operators getting started";
-
 export const networkOperatorsCta = {
   title: "Want to Lemmaximize your inventory?",
   description:

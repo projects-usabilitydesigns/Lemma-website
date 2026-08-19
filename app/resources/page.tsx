@@ -9,9 +9,7 @@ import {
   NewsroomSection,
   CaseStudiesSection,
 } from "@/components/resources";
-import {
-  resourcesFaqs,
-} from "@/lib/resources-page-data";
+import { faqs } from "@/lib/data";
 import { getBlogPosts, getCaseStudyArticles, getNewsroomPosts } from "@/lib/api";
 
 export const metadata: Metadata = {
@@ -36,19 +34,7 @@ export default async function ResourcesPage() {
         <BlogsSection blogs={blogs} />
         <NewsroomSection articles={newsroom} />
         <CaseStudiesSection articles={caseStudies} />
-        <Faq
-          items={resourcesFaqs}
-          title={
-            <>
-              Helpful Answers Before
-              <br />
-              <span className="italic text-[var(--color-pink)]">You Get Started</span>
-            </>
-          }
-          showViewAll={false}
-          sectionId="faq"
-          idPrefix="resources-faq"
-        />
+        <Faq items={faqs} />
         <AboutCta />
       </main>
     </>

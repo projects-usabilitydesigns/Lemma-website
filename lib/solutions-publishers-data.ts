@@ -253,8 +253,6 @@ export const publishersFaqs: BrandsFaq[] = [
   },
 ];
 
-export const publishersFaqTitle = "Answers for publishers getting started";
-
 export const publishersCta = {
   title: "Want to Lemmaximize your publisher revenue?",
   description:
