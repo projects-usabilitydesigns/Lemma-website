@@ -6,7 +6,6 @@ import { Products } from "@/components/home/Products";
 import { Solutions } from "@/components/home/Solutions";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import { AiFeatures } from "@/components/home/AiFeatures";
-import { ArchitectureImpact } from "@/components/home/ArchitectureImpact";
 import { Blog } from "@/components/home/Blog";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/home/Cta";
@@ -52,7 +51,6 @@ export default async function HomePage() {
         <Solutions solutions={solutions} />
         <CaseStudies caseStudies={caseStudies} />
         <AiFeatures aiFeatures={aiFeatures} />
-        <ArchitectureImpact />
         <Blog blogPosts={blogPosts} />
         <Faq items={faqs.length ? faqs : defaultFaqs} />
         <Cta />

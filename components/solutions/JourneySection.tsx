@@ -44,7 +44,7 @@ export function JourneySection({
               <ul className="space-y-3.5">
                 {data.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-3 text-[17px] text-[var(--color-ink-muted)]">
-                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[rgba(248,45,137,0.12)] text-[var(--color-pink)]">
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[rgba(0,143,219,0.12)] text-[var(--color-pink)]">
                       <Check className="size-3.5" strokeWidth={2.5} />
                     </span>
                     {bullet}
@@ -54,7 +54,8 @@ export function JourneySection({
               <a
                 href={cta.href}
                 onClick={cta.onClick}
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--color-pink)] px-6 py-3 text-[14px] font-semibold uppercase tracking-[2px] text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(248,45,137,0.35)]"
+                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-semibold uppercase tracking-[2px] text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
+                style={{ backgroundImage: "var(--gradient-cta)" }}
               >
                 {data.cta.label}
                 <span aria-hidden>→</span>
@@ -93,7 +94,7 @@ export function JourneySection({
                       <span className="size-2 rounded-full bg-[var(--color-blue)]" /> {chartLegend.primary}
                     </span>
                     <span className="inline-flex items-center gap-1.5">
-                      <span className="size-2 rounded-full bg-[var(--color-pink)]" /> {chartLegend.secondary}
+                      <span className="size-2 rounded-full bg-[var(--color-green)]" /> {chartLegend.secondary}
                     </span>
                   </div>
                 </div>
@@ -111,13 +112,7 @@ export function JourneySection({
                   <path
                     d="M0 120 C40 110, 70 90, 110 95 S180 130, 220 100 S300 40, 340 55 S380 80, 400 70"
                     fill="none"
-                    stroke="#008fdb"
-                    strokeWidth="3"
-                  />
-                  <path
-                    d="M0 140 C50 135, 90 125, 130 120 S200 110, 250 90 S330 70, 400 50"
-                    fill="none"
-                    stroke="#f82d89"
+                    stroke="#009352"
                     strokeWidth="3"
                   />
                 </svg>

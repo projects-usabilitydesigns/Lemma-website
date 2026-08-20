@@ -77,7 +77,10 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <div className="flex min-h-[360px] flex-col justify-between gap-10">
             <div className="space-y-6">
-              <BlurReveal>
+              <BlurReveal className="space-y-2">
+                <p className="font-heading text-[24px] font-medium leading-[1.3] tracking-[0.7px] text-[var(--color-ink)]">
+                  Leading performance platform, globally
+                </p>
                 <h1 className="font-heading text-[40px] font-semibold leading-[1.05] tracking-[-0.72px] text-[var(--color-ink)] md:text-[56px] md:leading-[1.05]">
                   Outdoor to Outcome.
                 </h1>
@@ -143,7 +146,8 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
                   type="button"
                   aria-label="Play demo video"
                   onClick={() => setVideoOpen(true)}
-                  className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-pink-alt)] shadow-[0px_10px_40px_-5px_#ed2e80] transition-transform duration-300 group-hover:scale-110"
+                  className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-[0px_10px_40px_-5px_rgba(0,143,219,0.55)] transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundImage: "linear-gradient(135deg, #008fdb 0%, #009352 100%)" }}
                 >
                   <Play className="ml-0.5 size-[27px] fill-white text-white" />
                 </button>

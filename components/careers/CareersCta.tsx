@@ -13,12 +13,12 @@ export function CareersCta() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 15% 0%, rgba(244,114,182,0.28), transparent 55%), radial-gradient(circle at 85% 20%, rgba(129,140,248,0.24), transparent 50%), radial-gradient(circle at 50% 100%, rgba(94,234,212,0.22), transparent 55%), linear-gradient(135.27deg, #fdf2f8 0%, #ede9fe 50%, #ecfccb 100%)",
+            "radial-gradient(circle at 15% 0%, rgba(0,143,219,0.22), transparent 55%), radial-gradient(circle at 85% 20%, rgba(0,147,82,0.18), transparent 50%), radial-gradient(circle at 50% 100%, rgba(116,190,68,0.20), transparent 55%), linear-gradient(135.27deg, #e8f6ff 0%, #ecfdf5 50%, #ecfccb 100%)",
         }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -left-20 top-10 size-72 rounded-full bg-pink-300/30 blur-3xl"
+        className="pointer-events-none absolute -left-20 top-10 size-72 rounded-full bg-sky-300/30 blur-3xl"
         animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -31,7 +31,7 @@ export function CareersCta() {
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: "linear-gradient(90deg, #1581c5 0%, #a684ff 55%, #f82d89 100%)",
+                backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
               }}
             >
               {careersCta.titleAccent}

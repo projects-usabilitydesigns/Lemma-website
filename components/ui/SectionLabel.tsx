@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 type SectionLabelProps = {
   label: string;
   align?: "left" | "center";
-  accent?: "pink" | "blue";
+  accent?: "blue" | "green";
   dual?: boolean;
   className?: string;
 };
@@ -11,12 +11,14 @@ type SectionLabelProps = {
 export function SectionLabel({
   label,
   align = "left",
-  accent = "pink",
+  accent = "blue",
   dual = false,
   className,
 }: SectionLabelProps) {
   const line =
-    accent === "pink" ? "bg-[var(--color-pink)]" : "bg-[var(--color-blue)]";
+    accent === "green"
+      ? "bg-[var(--color-green)]"
+      : "bg-[var(--color-blue)]";
 
   return (
     <div
@@ -30,7 +32,9 @@ export function SectionLabel({
       <span className="text-[14px] font-semibold uppercase tracking-[2px] text-[var(--color-slate)]">
         {label}
       </span>
-      {dual ? <span className={cn("h-px w-8 shrink-0", line)} aria-hidden /> : null}
+      {dual ? (
+        <span className="h-px w-8 shrink-0 bg-[var(--color-green)]" aria-hidden />
+      ) : null}
     </div>
   );
 }

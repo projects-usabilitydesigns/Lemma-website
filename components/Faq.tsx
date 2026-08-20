@@ -90,7 +90,8 @@ export function Faq({
                     {item.question}
                   </span>
                   <span
-                    className="mt-0.5 flex size-[30px] shrink-0 items-center justify-center rounded-full bg-[var(--color-pink)] text-white"
+                    className="mt-0.5 flex size-[30px] shrink-0 items-center justify-center rounded-full text-white"
+                    style={{ backgroundImage: "var(--gradient-cta)" }}
                     aria-hidden
                   >
                     {open ? <Minus className="size-4" /> : <Plus className="size-4" />}
@@ -106,7 +107,7 @@ export function Faq({
                       transition={{ duration: 0.35, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-5 text-[14px] leading-5 text-[#424242]">
+                      <p className="px-5 pb-5 text-[16px] leading-[22px] text-[#424242]">
                         {item.answer}
                       </p>
                     </motion.div>

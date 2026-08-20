@@ -42,7 +42,7 @@ export const publishersWhy = {
       title: "Higher Yield",
       description:
         "Compete for stronger CPMs with transparent auctions, intelligent floor strategies, and access to global brand demand.",
-      accent: "#f82d89",
+      accent: "#008fdb",
       icon: "chart",
     },
     {
@@ -66,7 +66,7 @@ export const publishersWhy = {
       title: "Multi-Format Monetization",
       description:
         "Activate display, video, CTV, and DOOH-adjacent opportunities from one connected monetization workflow.",
-      accent: "#a684ff",
+      accent: "#74be44",
       icon: "sparkles",
     },
     {

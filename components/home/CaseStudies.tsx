@@ -25,7 +25,7 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
   const closeVideo = useCallback(() => setActiveVideo(null), []);
 
   return (
-    <section id="case-studies" className="overflow-hidden bg-white py-16 md:py-[90px]">
+    <section id="case-studies" className="overflow-hidden bg-white pb-16 pt-8 md:pb-[90px] md:pt-10">
       <Container className="mb-12">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <FadeUp className="space-y-5">

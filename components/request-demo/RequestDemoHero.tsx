@@ -41,7 +41,7 @@ export function RequestDemoHero() {
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 12% 10%, rgba(248,45,137,0.18), transparent 45%), radial-gradient(circle at 88% 20%, rgba(0,143,219,0.16), transparent 48%)",
+            "radial-gradient(circle at 12% 10%, rgba(0,143,219,0.18), transparent 45%), radial-gradient(circle at 88% 20%, rgba(0,143,219,0.16), transparent 48%)",
         }}
       />
 
@@ -71,7 +71,7 @@ export function RequestDemoHero() {
                     key={item}
                     className="flex items-start gap-3 text-[16px] text-[var(--color-ink-muted)] md:text-[17px]"
                   >
-                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[rgba(248,45,137,0.12)] text-[var(--color-pink)]">
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[rgba(0,143,219,0.12)] text-[var(--color-pink)]">
                       <Check className="size-3.5" strokeWidth={2.5} />
                     </span>
                     {item}

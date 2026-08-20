@@ -24,7 +24,7 @@ export const resourcesHero = {
     newsroom: {
       label: "Newsroom",
       description: "Breaking stories from our world to yours.",
-      accent: "#f82d89",
+      accent: "#008fdb",
     },
     blogs: {
       label: "Blogs",
@@ -62,7 +62,7 @@ export const topTrending: ResourceArticle[] = [
     readTime: "6 Min read",
     views: "1059 Views",
     image: "/images/resources/lemma-continuum-partnership.png",
-    accent: "#f82d89",
+    accent: "#008fdb",
     tone: "light",
     href: "/newsroom/continuum",
   },
@@ -117,7 +117,7 @@ export const blogs: ResourceArticle[] = [
     readTime: "5 Min read",
     views: "440 Views",
     image: "/images/resources/investing-in-context.png",
-    accent: "#a684ff",
+    accent: "#74be44",
     tone: "dark",
     href: "/resources/blogs/investing-in-context",
   },
@@ -147,7 +147,7 @@ export const allBlogs: ResourceArticle[] = [
     readTime: "5 Min read",
     views: "189 Views",
     image: "/images/resources/ctv-beyond-screen.png",
-    accent: "#f82d89",
+    accent: "#008fdb",
     tone: "dark",
     href: "/resources/blogs/dooh-creative-rules",
   },
@@ -199,7 +199,7 @@ export const allBlogs: ResourceArticle[] = [
     readTime: "8 Min read",
     views: "124 Views",
     image: "/images/blog/performance.png",
-    accent: "#a684ff",
+    accent: "#74be44",
     tone: "dark",
     href: "/resources/blogs/why-performance-campaigns-fail-to-scale",
   },
@@ -215,7 +215,7 @@ export const newsroom: ResourceArticle[] = [
     readTime: "1 Min read",
     views: "63 Views",
     image: "/images/resources/doceree-lemma-partnership.png",
-    accent: "#f82d89",
+    accent: "#008fdb",
     tone: "light",
     href: "/newsroom/doceree",
   },
@@ -283,7 +283,7 @@ export const caseStudiesList: ResourceArticle[] = [
     readTime: "2 Min read",
     views: "3100 Views",
     image: "/images/resources/lenovo-smarter-ai.png",
-    accent: "#a684ff",
+    accent: "#74be44",
     tone: "dark",
     href: "/case-studies/lenovo-smarter-ai",
   },
@@ -438,7 +438,7 @@ export const blogDetails: Record<string, BlogPostDetail> = {
     readTime: "5 Min read",
     views: "440 Views",
     image: "/images/resources/investing-in-context.png",
-    accent: "#a684ff",
+    accent: "#74be44",
     tags: ["Contextual Advertising", "DOOH", "Strategy"],
     body: [
       {
@@ -524,7 +524,7 @@ export const blogDetails: Record<string, BlogPostDetail> = {
     readTime: "5 Min read",
     views: "189 Views",
     image: "/images/resources/ctv-beyond-screen.png",
-    accent: "#f82d89",
+    accent: "#008fdb",
     tags: ["DOOH", "Creative", "Best Practices"],
     body: [
       {
@@ -752,7 +752,7 @@ export const blogDetails: Record<string, BlogPostDetail> = {
     readTime: "8 Min read",
     views: "124 Views",
     image: "/images/blog/performance.png",
-    accent: "#a684ff",
+    accent: "#74be44",
     tags: ["Performance Marketing", "Scale", "Attribution"],
     body: [
       {

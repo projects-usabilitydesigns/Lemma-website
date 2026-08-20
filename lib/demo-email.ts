@@ -89,8 +89,8 @@ export function buildDemoRequestEmail(values: DemoRequestPayload) {
                     <td height="5" width="20%" style="background:#009352;font-size:0;line-height:0;">&nbsp;</td>
                     <td height="5" width="20%" style="background:#74be44;font-size:0;line-height:0;">&nbsp;</td>
                     <td height="5" width="20%" style="background:#1581c5;font-size:0;line-height:0;">&nbsp;</td>
-                    <td height="5" width="20%" style="background:#ed2e80;font-size:0;line-height:0;">&nbsp;</td>
-                    <td height="5" width="20%" style="background:#f05a27;font-size:0;line-height:0;">&nbsp;</td>
+                    <td height="5" width="20%" style="background:#008fdb;font-size:0;line-height:0;">&nbsp;</td>
+                    <td height="5" width="20%" style="background:#005481;font-size:0;line-height:0;">&nbsp;</td>
                   </tr>
                 </table>
               </td>
