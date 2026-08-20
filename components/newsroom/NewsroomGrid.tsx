@@ -8,19 +8,6 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import type { ResourceArticle } from "@/lib/resources-page-data";
 
-function PlayOverlay() {
-  return (
-    <span
-      className="absolute inset-0 z-10 flex items-center justify-center bg-black/15 transition-opacity duration-300 group-hover:bg-black/25"
-      aria-hidden
-    >
-      <span className="flex size-14 items-center justify-center rounded-full bg-white/90 shadow-[0_8px_24px_rgba(9,19,26,0.2)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 md:size-16">
-        <Image src="/icons/play-pink.svg" alt="" width={22} height={22} className="ml-0.5" />
-      </span>
-    </span>
-  );
-}
-
 export function NewsroomGrid({ articles }: { articles: ResourceArticle[] }) {
   return (
     <section className="bg-white pb-16 pt-8 md:pb-[100px] md:pt-10">
@@ -54,7 +41,6 @@ export function NewsroomGrid({ articles }: { articles: ResourceArticle[] }) {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : null}
-                <PlayOverlay />
               </div>
               <div className="flex flex-1 flex-col p-5 md:p-6">
                 <h2 className="mb-4 line-clamp-2 min-h-[52px] text-[18px] font-extrabold tracking-[-0.4px] text-[var(--color-ink)] transition-transform duration-300 group-hover:-translate-y-0.5 md:min-h-[55px] md:text-[20px] md:leading-[27.5px]">

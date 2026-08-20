@@ -316,25 +316,25 @@ export async function getNewsroomPosts(): Promise<ResourceArticle[]> {
 export async function getCaseStudyArticles(): Promise<ResourceArticle[]> {
   try {
     const res = await fetchCollection<W<{
-      title: string;
-      slug: string;
-      date: string;
-      readTime: string;
-      views: string;
-      image: unknown;
-    }>>("case-studies", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
+      Title: string;
+      Slug: string;
+      Datetime: string;
+      Thumbnail: unknown;
+    }>>("case-studies", { revalidate: REVALIDATE, sort: "Datetime:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
-      slug: item.slug,
+      slug: item.Slug,
       category: "Case Studies",
-      title: item.title,
-      date: item.date,
-      readTime: item.readTime,
-      views: item.views,
-      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
+      title: item.Title,
+      date: formatStrapiDate(item.Datetime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
+      ),
       accent: "#009352",
       tone: "dark",
-      href: `/case-studies/${item.slug}`,
+      href: `/case-studies/${item.Slug}`,
     }));
   } catch {
     return [];
@@ -387,46 +387,38 @@ export async function getNewsroomBySlug(slug: string): Promise<ArticleDetail | n
 export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | null> {
   try {
     const res = await fetchCollection<W<{
-      title: string;
-      slug: string;
-      excerpt: string;
-      author: string;
-      date: string;
-      readTime: string;
-      views: string;
-      image: unknown;
-      tags: unknown;
-      categories: unknown;
-      body: unknown;
+      Title: string;
+      Slug: string;
+      Datetime: string;
+      Content: unknown;
+      Thumbnail: unknown;
     }>>("case-studies", {
       revalidate: REVALIDATE,
-      filters: { slug: { $eq: slug } },
+      filters: { Slug: { $eq: slug } },
     });
     const item = res.data[0];
     if (!item) return null;
 
     return {
-      slug: item.slug,
+      slug: item.Slug,
       kind: "case-study",
       category: "Case Studies",
-      categories: [...new Set(["Case Studies", ...parseCsv(item.categories)])],
-      title: item.title,
-      excerpt: item.excerpt ?? "",
-      author: item.author ?? "",
-      date: item.date,
-      readTime: item.readTime || readingTimeFromText(
-        [item.title, typeof item.body === "string" ? item.body : ""].join(" "),
+      categories: ["Case Studies"],
+      title: item.Title,
+      excerpt: "",
+      author: "",
+      date: formatStrapiDate(item.Datetime),
+      readTime: "",
+      views: "",
+      image: getStrapiMediaUrl(
+        getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
       ),
-      views: item.views,
-      image: getStrapiMediaUrl(item.image as Parameters<typeof getStrapiMediaUrl>[0]),
-      tags: parseCsv(item.tags),
-      body: typeof item.body === "string"
-        ? item.body
-            .split(/\n\s*\n/)
-            .map((block) => block.trim())
-            .filter((text) => text && !/^[-–—*_]{1,}$/.test(text))
-            .map((text) => ({ type: "paragraph" as const, text }))
-        : [],
+      tags: [],
+      body: blocksToSections(item.Content).map((section) =>
+        section.type === "blockquote"
+          ? { type: "paragraph" as const, text: section.text }
+          : section,
+      ),
       cta: defaultArticleCtas["case-study"],
     };
   } catch {
