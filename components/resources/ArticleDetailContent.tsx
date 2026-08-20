@@ -426,12 +426,14 @@ export function ArticleDetailContent({
                     <Clock className="size-3.5" strokeWidth={1.8} />
                     {readingTimeFromArticle(article)}
                   </span>
-                  <span className="inline-flex items-center gap-2">
-                    <span className="flex size-7 items-center justify-center rounded-full bg-[var(--color-blue)] text-[11px] font-semibold text-white">
-                      {article.author.charAt(0)}
+                  {article.author ? (
+                    <span className="inline-flex items-center gap-2">
+                      <span className="flex size-7 items-center justify-center rounded-full bg-[var(--color-blue)] text-[11px] font-semibold text-white">
+                        {article.author.charAt(0)}
+                      </span>
+                      {article.author}
                     </span>
-                    {article.author}
-                  </span>
+                  ) : null}
                 </div>
               </header>
             </FadeUp>
