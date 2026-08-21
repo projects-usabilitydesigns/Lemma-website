@@ -16,7 +16,6 @@ import {
   publishersCapabilities,
   publishersChannels,
   publishersCta,
-  publishersFaqTitle,
   publishersFaqs,
   publishersHero,
   publishersJourney,
@@ -64,7 +63,7 @@ export default function PublishersPage() {
           metrics={publishersSuccessMetrics}
         />
         <CaseStudies />
-        <Faq items={publishersFaqs} title={publishersFaqTitle} showViewAll={false} />
+        <Faq items={publishersFaqs} />
         <CTASection data={publishersCta} />
       </main>
     </>

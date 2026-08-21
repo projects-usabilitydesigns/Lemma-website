@@ -18,7 +18,7 @@ export default function CareersPage() {
         <CareersHero />
         <CareersGallery />
         <CareersJobs />
-        <Faq items={careersFaqs} viewAllHref="/about#faq" />
+        <Faq items={careersFaqs} />
         <CareersCta />
       </main>
     </>

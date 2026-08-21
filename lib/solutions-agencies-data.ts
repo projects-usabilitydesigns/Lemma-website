@@ -253,8 +253,6 @@ export const agenciesFaqs: BrandsFaq[] = [
   },
 ];
 
-export const agenciesFaqTitle = "Answers for agencies getting started with CTV";
-
 export const agenciesCta = {
   title: "Want to Lemmaximize your CTV campaigns?",
   description:

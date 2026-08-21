@@ -16,7 +16,6 @@ import {
   networkOperatorsCapabilities,
   networkOperatorsChannels,
   networkOperatorsCta,
-  networkOperatorsFaqTitle,
   networkOperatorsFaqs,
   networkOperatorsHero,
   networkOperatorsJourney,
@@ -64,11 +63,7 @@ export default function NetworkOperatorsPage() {
           metrics={networkOperatorsSuccessMetrics}
         />
         <CaseStudies />
-        <Faq
-          items={networkOperatorsFaqs}
-          title={networkOperatorsFaqTitle}
-          showViewAll={false}
-        />
+        <Faq items={networkOperatorsFaqs} />
         <CTASection data={networkOperatorsCta} />
       </main>
     </>

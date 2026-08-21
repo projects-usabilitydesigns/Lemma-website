@@ -62,6 +62,7 @@ export async function POST(request: Request) {
     region: asTrimmedString(body.region),
     interests: asStringList(body.interests),
     message: asTrimmedString(body.message),
+    pageUrl: asTrimmedString(body.pageUrl),
   };
 
   if (!values.firstName || !values.lastName || !values.email || !values.company || !values.role || body.consent !== true) {

@@ -20,7 +20,7 @@ export default async function BlogsPage() {
       <Header />
       <main>
         <BlogsPageContent blogs={blogs} />
-        <Faq items={faqs} viewAllHref="/#faq" />
+        <Faq items={faqs} />
         <AboutCta />
       </main>
     </>

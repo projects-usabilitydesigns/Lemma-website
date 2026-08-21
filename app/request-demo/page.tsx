@@ -26,11 +26,7 @@ export default function RequestDemoPage() {
         <RequestDemoProducts />
         <RequestDemoSteps />
         <CaseStudies />
-        <Faq
-          items={demoFaqs}
-          title="Everything to know before your demo"
-          showViewAll={false}
-        />
+        <Faq items={demoFaqs} />
       </main>
     </>
   );
