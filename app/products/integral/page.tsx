@@ -25,7 +25,7 @@ export default function IntegralProductPage() {
         <IntegralDeliver />
         <IntegralFeatures />
         <IntegralAudienceGraph />
-        <Faq items={integralFaqs} />
+        <Faq items={integralFaqs} className="pt-10 md:pt-16" />
         <AboutCta />
       </main>
     </>
