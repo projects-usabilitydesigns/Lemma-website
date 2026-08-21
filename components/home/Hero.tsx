@@ -68,8 +68,7 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "radial-gradient(circle at 15% 0%, rgba(244,114,182,0.22), transparent 55%), radial-gradient(circle at 85% 20%, rgba(129,140,248,0.22), transparent 50%), radial-gradient(circle at 50% 100%, rgba(94,234,212,0.2), transparent 55%)",
+          backgroundImage: "var(--gradient-home-mesh)",
         }}
       />
 
@@ -130,15 +129,16 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] to-black/65" />
 
-                {/* Pink LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
+                {/* LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
                 <div className="absolute left-[12%] top-[8%] z-10 w-[55%] max-w-[382px] md:left-[143px] md:top-[38px] md:w-[382px]">
                   <Image
-                    src="/images/products/integral.svg"
+                    src="/images/products/integral-white.svg"
                     alt="Lemma Integral"
                     width={382}
                     height={35}
                     className="h-[22px] w-auto object-contain object-left md:h-[35px] md:w-[382px]"
                     priority
+                    unoptimized
                   />
                 </div>
 

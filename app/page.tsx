@@ -6,15 +6,14 @@ import { Products } from "@/components/home/Products";
 import { Solutions } from "@/components/home/Solutions";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import { AiFeatures } from "@/components/home/AiFeatures";
+import { NextFrontier } from "@/components/home/NextFrontier";
 import { Blog } from "@/components/home/Blog";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/home/Cta";
 import {
   getHeroStats,
-  getProducts,
   getSolutions,
   getCaseStudies,
-  getAiFeatures,
   getBlogPosts,
   getFaqs,
   getClientLogos,
@@ -23,19 +22,15 @@ import {
 export default async function HomePage() {
   const [
     heroStats,
-    products,
     solutions,
     caseStudies,
-    aiFeatures,
     blogPosts,
     faqs,
     clientLogos,
   ] = await Promise.all([
     getHeroStats(),
-    getProducts(),
     getSolutions(),
     getCaseStudies(),
-    getAiFeatures(),
     getBlogPosts(),
     getFaqs(),
     getClientLogos(),
@@ -47,10 +42,11 @@ export default async function HomePage() {
       <main>
         <Hero heroStats={heroStats} />
         <LogosMarquee clientLogos={clientLogos} />
-        <Products products={products} />
+        <Products />
         <Solutions solutions={solutions} />
         <CaseStudies caseStudies={caseStudies} />
-        <AiFeatures aiFeatures={aiFeatures} />
+        <AiFeatures />
+        <NextFrontier />
         <Blog blogPosts={blogPosts} />
         <Faq items={faqs.length ? faqs : defaultFaqs} />
         <Cta />
