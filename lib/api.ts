@@ -304,7 +304,7 @@ export async function getNewsroomPosts(): Promise<ResourceArticle[]> {
       image: getStrapiMediaUrl(
         getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
       ),
-      accent: "#f82d89",
+      accent: "#008fdb",
       tone: "dark",
       href: `/newsroom/${item.Slug}`,
     }));

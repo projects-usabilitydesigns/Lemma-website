@@ -94,7 +94,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             title: "Delta",
             description: "Demand-side platform",
             href: "/products/delta",
-            iconColor: "#f82d89",
+            iconColor: "#008fdb",
             iconSymbol: "Δ",
           },
           {
@@ -369,7 +369,7 @@ export const aiFeatures: AiFeature[] = [
       "On-the-fly creative variants tuned to context, weather, time-of-day and inventory — at campaign scale.",
     bullets: ["Dynamic Copy Generation", "Context-Aware Visual Assembly"],
     icon: "/icons/ai-creative.svg",
-    accent: "#ed2e80",
+    accent: "#009352",
     accentSoft: "rgba(237, 46, 128, 0.1)",
   },
   {
@@ -399,7 +399,7 @@ export const aiFeatures: AiFeature[] = [
       "Automated brand suitability scoring across DOOH environments, CTV inventory and adjacent contexts.",
     bullets: ["Context Classification", "Suitability Guardrails"],
     icon: "/icons/ai-creative.svg",
-    accent: "#a684ff",
+    accent: "#74be44",
     accentSoft: "rgba(142, 81, 255, 0.1)",
   },
   {
@@ -447,7 +447,7 @@ export const blogPosts: BlogPost[] = [
 export const faqs: FaqItem[] = [
   {
     id: "what-is-lemma",
-    question: "What is Lemma Technologies?",
+    question: "What is Lemma?",
     answer:
       "Lemma is an AI-first omnichannel AdTech platform that helps brands, agencies, and media owners plan, activate, optimize, and measure campaigns across DOOH, CTV, OTT, Mobile, and Audio channels.",
   },
@@ -481,9 +481,23 @@ export const faqs: FaqItem[] = [
     answer:
       "Phi centralizes DOOH content planning, scheduling, and delivery so operators can manage screens, locations, and formats from one platform.",
   },
+  {
+    id: "lemma-cms",
+    question: "How Lemma CMS helps screen owners?",
+    answer:
+      "Lemma CMS (Phi) gives screen owners a free content management system to plan, schedule, and deliver creatives across screens, locations, and formats from one platform—with full control over what goes live.",
+  },
 ];
 
-export const channels = ["CTV", "Mobile", "Web", "Audio", "In-Game", "Programmatic"] as const;
+export const channels = [
+  "Programmatic Digital OOH",
+  "CTV",
+  "Mobile",
+  "Audio",
+  "In game",
+  "Web",
+  "Retail",
+] as const;
 
 export const clientLogos: ClientLogo[] = [
   { id: "burger-king", name: "Burger King", src: "/images/logos/burger-king.svg", width: 120, height: 36 },

@@ -39,7 +39,7 @@
 <use xlink:href="#image0_3076_1615" transform="matrix(0.0010134 0 0 0.00158986 -0.0508083 -0.101449)"/>
 </pattern>
 <radialGradient id="paint0_radial_3076_1615" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(49.5 340) rotate(90) scale(25)">
-<stop stop-color="#F82D89"/>
+<stop stop-color="#008FDB"/>
 <stop offset="1" stop-color="#F24392"/>
 </radialGradient>
 <radialGradient id="paint1_radial_3076_1615" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(210 340) rotate(90) scale(25)">

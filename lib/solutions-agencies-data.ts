@@ -42,7 +42,7 @@ export const agenciesWhy = {
       title: "Scale",
       description:
         "Access a large choice of video publishers for unique CTV needs—direct supply on Lemma Exchange plus curated publishers via leading SSP partners.",
-      accent: "#f82d89",
+      accent: "#008fdb",
       icon: "layers",
     },
     {
@@ -66,7 +66,7 @@ export const agenciesWhy = {
       title: "TV Supply",
       description:
         "Buy premium CTV with transparent access to quality supply across OTTs, CTV networks, and high-intent streaming environments.",
-      accent: "#a684ff",
+      accent: "#74be44",
       icon: "sparkles",
     },
     {

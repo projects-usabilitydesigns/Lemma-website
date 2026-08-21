@@ -39,9 +39,9 @@ function ChannelCard({ channel }: { channel: BrandsChannel }) {
   return (
     <motion.article
       variants={staggerItem}
-      className="group rounded-[20px] border border-[var(--color-border)] bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(248,45,137,0.35)] hover:shadow-[0_16px_36px_rgba(9,19,26,0.08)]"
+      className="group rounded-[20px] border border-[var(--color-border)] bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(0,143,219,0.35)] hover:shadow-[0_16px_36px_rgba(9,19,26,0.08)]"
     >
-      <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-[rgba(248,45,137,0.08)] text-[var(--color-pink)] transition-transform duration-300 group-hover:scale-110">
+      <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-[rgba(0,143,219,0.08)] text-[var(--color-pink)] transition-transform duration-300 group-hover:scale-110">
         <Icon className="size-6" strokeWidth={1.75} />
       </div>
       <h3 className="font-heading text-[18px] font-semibold text-[var(--color-ink)]">

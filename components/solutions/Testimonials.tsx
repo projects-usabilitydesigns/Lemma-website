@@ -31,7 +31,7 @@ export function Testimonials() {
           <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[28px] border border-white/50 bg-white/70 p-8 shadow-[0_20px_60px_rgba(9,19,26,0.08)] backdrop-blur-md md:p-12"
             style={{
               backgroundImage:
-                "linear-gradient(135deg, rgba(248,45,137,0.06), rgba(0,143,219,0.06))",
+                "linear-gradient(135deg, rgba(0,143,219,0.06), rgba(0,143,219,0.06))",
             }}
           >
             <Quote className="mb-6 size-10 text-[var(--color-pink)] opacity-80" />

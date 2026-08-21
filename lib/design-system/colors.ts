@@ -12,8 +12,9 @@ export const colors = {
   creamSoft: "#f9f8f5",
   creamMuted: "rgba(249, 248, 245, 0.4)",
   white: "#ffffff",
-  pink: "#f82d89",
-  pinkAlt: "#ed2e80",
+  pink: "#008fdb",
+  pinkAlt: "#009352",
+  error: "#d92d20",
   blue: "#008fdb",
   blueDeep: "#005481",
   blueLink: "#1581c5",
@@ -27,12 +28,12 @@ export const colors = {
   btnTextAlt: "#fdfcf8",
   logoMuted: "#9da6ad",
   brandGradient:
-    "linear-gradient(90deg, #009352 0%, #74be44 25%, #1581c5 50%, #ed2e80 75%, #f05a27 100%)",
+    "linear-gradient(90deg, #009352 0%, #74be44 35%, #1581c5 70%, #008fdb 100%)",
   blueGradient: "linear-gradient(90deg, #008fdb 0%, #005481 100%)",
   heroGradient:
-    "linear-gradient(148.69deg, #fdf2f8 0%, #ede9fe 35%, #e0f2fe 70%, #ecfccb 100%)",
+    "linear-gradient(148.69deg, #e8f6ff 0%, #ecfdf5 40%, #e0f2fe 70%, #ecfccb 100%)",
   ctaGradient:
-    "linear-gradient(135.27deg, #fdf2f8 0%, #ede9fe 50%, #ecfccb 100%)",
+    "linear-gradient(135.27deg, #e8f6ff 0%, #ecfdf5 50%, #ecfccb 100%)",
 } as const;
 
 export type ColorToken = keyof typeof colors;

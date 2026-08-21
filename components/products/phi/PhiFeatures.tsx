@@ -46,7 +46,7 @@ export function PhiFeatures() {
                 <div
                   className="pointer-events-none absolute left-1/2 top-1/2 z-0 aspect-square w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full"
                   style={{
-                    backgroundImage: "linear-gradient(135deg, #E8F6FF 0%, #FFE4F0 100%)",
+                    backgroundImage: "linear-gradient(135deg, #E8F6FF 0%, #ECFDF5 100%)",
                   }}
                   aria-hidden
                 />

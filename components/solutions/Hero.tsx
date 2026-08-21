@@ -61,7 +61,7 @@ export function BrandsHero({
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 12% 10%, rgba(248,45,137,0.18), transparent 45%), radial-gradient(circle at 88% 20%, rgba(0,143,219,0.16), transparent 48%)",
+            "radial-gradient(circle at 12% 10%, rgba(0,143,219,0.18), transparent 45%), radial-gradient(circle at 88% 20%, rgba(0,143,219,0.16), transparent 48%)",
         }}
       />
 
@@ -107,7 +107,7 @@ export function BrandsHero({
                 transition={{ duration: animation.duration.base, delay: 0.12, ease: animation.easeOut }}
                 className="font-heading bg-clip-text text-[24px] font-semibold leading-[1.2] text-transparent md:text-[34px]"
                 style={{
-                  backgroundImage: "linear-gradient(90deg, #f82d89 0%, #6b5cff 50%, #008fdb 100%)",
+                  backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
                 }}
               >
                 {data.gradientTitle}

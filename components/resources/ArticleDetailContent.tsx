@@ -539,7 +539,7 @@ export function ArticleDetailContent({
                   href={articleCtaHref}
                   variant="primary"
                   arrow="right"
-                  className="w-full border-white/[0.08] text-white sm:w-auto hover:shadow-[0_10px_30px_rgba(248,45,137,0.28)]"
+                  className="w-full border-white/[0.08] text-white sm:w-auto hover:shadow-[0_10px_30px_rgba(0,143,219,0.28)]"
                   style={{ backgroundImage: "var(--gradient-cta)" }}
                 >
                   {article.cta.buttonLabel}

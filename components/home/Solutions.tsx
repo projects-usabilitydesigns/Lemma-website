@@ -29,7 +29,7 @@ export function Solutions({ solutions }: { solutions?: Solution[] }) {
       </div>
 
       <Container className="relative z-10">
-        <div className="mb-8 flex flex-col gap-4 md:mb-12 md:gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-8 md:mb-12">
           <FadeUp className="max-w-xl space-y-4 md:space-y-5">
             <SectionLabel label="Solutions" />
             <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
@@ -37,11 +37,6 @@ export function Solutions({ solutions }: { solutions?: Solution[] }) {
               <br />
               who move media.
             </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="max-w-sm text-[15px] leading-[22px] text-[var(--color-slate)] md:text-[16px] lg:text-right">
-              One platform — two sides of the same outcome.
-            </p>
           </FadeUp>
         </div>
 

@@ -61,7 +61,7 @@ function validate(values: FormValues): FormErrors {
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-1 text-[12px] font-medium text-[var(--color-pink)]">
+    <p id={id} className="mt-1 text-[12px] font-medium text-[var(--color-error)]">
       {message}
     </p>
   );
@@ -186,7 +186,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                   id={`${formId}-firstName`}
                   name="firstName"
                   autoComplete="given-name"
-                  className={cn(fieldClass, errors.firstName && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.firstName && "border-[var(--color-error)]")}
                   placeholder="Priya"
                   value={values.firstName}
                   onChange={(event) => setField("firstName", event.target.value)}
@@ -204,7 +204,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                   id={`${formId}-lastName`}
                   name="lastName"
                   autoComplete="family-name"
-                  className={cn(fieldClass, errors.lastName && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.lastName && "border-[var(--color-error)]")}
                   placeholder="Sharma"
                   value={values.lastName}
                   onChange={(event) => setField("lastName", event.target.value)}
@@ -226,7 +226,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                   type="email"
                   inputMode="email"
                   autoComplete="email"
-                  className={cn(fieldClass, errors.email && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.email && "border-[var(--color-error)]")}
                   placeholder="you@company.com"
                   value={values.email}
                   onChange={(event) => setField("email", event.target.value)}
@@ -246,7 +246,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                   type="tel"
                   inputMode="tel"
                   autoComplete="tel"
-                  className={cn(fieldClass, errors.phone && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.phone && "border-[var(--color-error)]")}
                   placeholder="+1 555 000 1234"
                   value={values.phone}
                   onChange={(event) => setField("phone", event.target.value)}
@@ -266,7 +266,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                   id={`${formId}-company`}
                   name="company"
                   autoComplete="organization"
-                  className={cn(fieldClass, errors.company && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.company && "border-[var(--color-error)]")}
                   placeholder="Company name"
                   value={values.company}
                   onChange={(event) => setField("company", event.target.value)}
@@ -300,7 +300,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                 <select
                   id={`${formId}-role`}
                   name="role"
-                  className={cn(fieldClass, errors.role && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.role && "border-[var(--color-error)]")}
                   value={values.role}
                   onChange={(event) => setField("role", event.target.value)}
                   aria-invalid={Boolean(errors.role)}
@@ -383,7 +383,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                   id={`${formId}-consent`}
                   name="consent"
                   type="checkbox"
-                  className="mt-0.5 size-4 shrink-0 accent-[var(--color-pink)]"
+                  className="mt-0.5 size-4 shrink-0 accent-[var(--color-blue)]"
                   checked={values.consent}
                   onChange={(event) => setField("consent", event.target.checked)}
                   aria-invalid={Boolean(errors.consent)}
@@ -398,7 +398,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
             </div>
 
             {submitError ? (
-              <p className="text-center text-[12px] font-medium text-[var(--color-pink)]">{submitError}</p>
+              <p className="text-center text-[12px] font-medium text-[var(--color-error)]">{submitError}</p>
             ) : null}
 
             <button

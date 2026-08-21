@@ -48,16 +48,16 @@ export function LogosMarquee({
       <div className="marquee-fade">
         <Marquee pauseOnHover speed={35} gradient={false} direction="right">
           {[...channels, ...channels].map((channel, index) => (
-            <div key={`${channel}-${index}`} className="ml-5 flex items-center gap-4 md:ml-8 md:gap-5">
-              <span className="text-[26px] font-light text-[var(--color-logo-muted,#9da6ad)] md:text-[36px]">
+            <div key={`${channel}-${index}`} className="ml-5 flex items-center gap-3 md:ml-7 md:gap-4">
+              <span className="text-[18px] font-light text-[var(--color-logo-muted,#9da6ad)] md:text-[24px]">
                 {channel}
               </span>
               <Image
                 src="/icons/star-sparkle.svg"
                 alt=""
-                width={18}
-                height={18}
-                className="size-4 shrink-0 md:size-5"
+                width={14}
+                height={14}
+                className="size-3.5 shrink-0 md:size-4"
                 aria-hidden
               />
             </div>
