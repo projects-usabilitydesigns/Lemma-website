@@ -8,16 +8,16 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ResourceCard } from "@/components/resources/ResourceCard";
-import { allBlogs } from "@/lib/resources-page-data";
+import type { ResourceArticle } from "@/lib/resources-page-data";
 import { animation } from "@/lib/design-system";
 
 const INITIAL_COUNT = 9;
 const LOAD_MORE_COUNT = 6;
 
-export function BlogsPageContent() {
+export function BlogsPageContent({ blogs }: { blogs: ResourceArticle[] }) {
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const visibleBlogs = allBlogs.slice(0, visibleCount);
-  const hasMore = visibleCount < allBlogs.length;
+  const visibleBlogs = blogs.slice(0, visibleCount);
+  const hasMore = visibleCount < blogs.length;
 
   return (
     <>
@@ -64,7 +64,7 @@ export function BlogsPageContent() {
                 className="normal-case tracking-normal border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(0,143,219,0.28)]"
                 style={{ backgroundImage: "var(--gradient-cta)" }}
                 onClick={() =>
-                  setVisibleCount((c) => Math.min(c + LOAD_MORE_COUNT, allBlogs.length))
+                  setVisibleCount((c) => Math.min(c + LOAD_MORE_COUNT, blogs.length))
                 }
               >
                 Load More

@@ -16,7 +16,6 @@ import {
   agenciesCapabilities,
   agenciesChannels,
   agenciesCta,
-  agenciesFaqTitle,
   agenciesFaqs,
   agenciesHero,
   agenciesJourney,
@@ -64,7 +63,7 @@ export default function AgenciesPage() {
           metrics={agenciesSuccessMetrics}
         />
         <CaseStudies />
-        <Faq items={agenciesFaqs} title={agenciesFaqTitle} showViewAll={false} />
+        <Faq items={agenciesFaqs} />
         <CTASection data={agenciesCta} />
       </main>
     </>

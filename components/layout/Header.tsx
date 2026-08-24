@@ -6,7 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { megaMenus, navItems } from "@/lib/data";
+import { megaMenus as defaultMegaMenus, navItems as defaultNavItems } from "@/lib/data";
+import type { NavItem, MegaMenuConfig } from "@/types";
 import { cn } from "@/lib/utils";
 import { pauseSmoothScroll, resumeSmoothScroll } from "@/lib/smooth-scroll";
 import type { MegaMenuId } from "@/types";
@@ -14,7 +15,15 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { MegaMenuPanel } from "@/components/layout/MegaMenu";
 
-export function Header() {
+export function Header({
+  navItems,
+  megaMenus,
+}: {
+  navItems?: NavItem[];
+  megaMenus?: Record<MegaMenuId, MegaMenuConfig>;
+}) {
+  const nav = navItems?.length ? navItems : defaultNavItems;
+  const menus = megaMenus ?? defaultMegaMenus;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [activeMega, setActiveMega] = useState<MegaMenuId | null>(null);
@@ -108,7 +117,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-[38px] lg:flex" aria-label="Primary">
-          {navItems.map((item) => {
+          {nav.map((item) => {
             const isMega = Boolean(item.megaMenu);
             const isOpen = item.megaMenu != null && activeMega === item.megaMenu;
 
@@ -135,19 +144,15 @@ export function Header() {
                 onMouseEnter={() => openMega(item.megaMenu!)}
                 onFocus={() => openMega(item.megaMenu!)}
               >
-                <button
-                  type="button"
+                <Link
+                  href={item.href}
                   className={cn(
                     "group relative inline-flex items-center gap-1 text-[18px] font-medium text-[var(--color-ink-muted)]",
                     isOpen && "text-[var(--color-ink)]",
                   )}
                   aria-expanded={isOpen}
-                  aria-controls={megaRegionId}
-                  onClick={() =>
-                    setActiveMega((current) =>
-                      current === item.megaMenu ? null : item.megaMenu!,
-                    )
-                  }
+                  aria-haspopup="true"
+                  onClick={() => setActiveMega(null)}
                 >
                   <span>{item.label}</span>
                   <ChevronDown
@@ -162,7 +167,7 @@ export function Header() {
                       isOpen ? "w-full" : "w-0 group-hover:w-full",
                     )}
                   />
-                </button>
+                </Link>
               </div>
             );
           })}
@@ -202,7 +207,7 @@ export function Header() {
               {activeMega ? (
                 <MegaMenuPanel
                   key={activeMega}
-                  menu={megaMenus[activeMega]}
+                  menu={menus[activeMega]}
                   onNavigate={() => setActiveMega(null)}
                 />
               ) : null}
@@ -245,7 +250,7 @@ export function Header() {
                       className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y [-webkit-overflow-scrolling:touch]"
                     >
                       <nav className="flex flex-col gap-1 pb-6" aria-label="Mobile">
-                        {navItems.map((item) => {
+                        {nav.map((item) => {
                           if (!item.megaMenu) {
                             return (
                               <Link
@@ -260,7 +265,7 @@ export function Header() {
                           }
 
                           const expanded = mobileExpanded === item.megaMenu;
-                          const menu = megaMenus[item.megaMenu];
+                          const menu = menus[item.megaMenu];
 
                           return (
                             <div key={item.label} className="border-b border-[var(--color-border)] pb-2">

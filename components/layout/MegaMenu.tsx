@@ -34,7 +34,7 @@ function MenuLinkItem({
     <Link
       href={item.href}
       onClick={onNavigate}
-      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[rgba(248,45,137,0.06)] hover:shadow-[0_8px_20px_rgba(9,19,26,0.06)] lg:py-3"
+      className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[rgba(0,143,219,0.06)] hover:shadow-[0_8px_20px_rgba(9,19,26,0.06)] lg:py-3"
     >
       {item.iconColor ? (
         <span
@@ -91,7 +91,8 @@ function FeaturedPanel({
         <Link
           href={featured.ctaHref}
           onClick={onNavigate}
-          className="inline-flex w-fit items-center gap-2 rounded-full bg-[var(--color-pink)] px-5 py-2.5 text-[14px] font-semibold text-white transition hover:brightness-110"
+          className="inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-[14px] font-semibold text-white transition hover:brightness-110"
+          style={{ backgroundImage: "var(--gradient-cta)" }}
         >
           {featured.ctaLabel}
           <ArrowUpRight className="size-4" strokeWidth={2.25} />

@@ -9,7 +9,8 @@ import { fieldClass, labelClass } from "@/lib/form-styles";
 import { cn } from "@/lib/utils";
 
 type FormValues = {
-  name: string;
+  firstName: string;
+  lastName: string;
   company: string;
   email: string;
   designation: string;
@@ -21,7 +22,8 @@ type FormValues = {
 type FormErrors = Partial<Record<keyof FormValues, string>>;
 
 const initialValues: FormValues = {
-  name: "",
+  firstName: "",
+  lastName: "",
   company: "",
   email: "",
   designation: "",
@@ -37,7 +39,8 @@ const countWords = (value: string) => value.trim().split(/\s+/).filter(Boolean).
 function validate(values: FormValues): FormErrors {
   const errors: FormErrors = {};
 
-  if (!values.name.trim()) errors.name = "Enter your name";
+  if (!values.firstName.trim()) errors.firstName = "Enter your first name";
+  if (!values.lastName.trim()) errors.lastName = "Enter your last name";
   if (!values.company.trim()) errors.company = "Enter your company name";
 
   const email = values.email.trim();
@@ -68,7 +71,7 @@ function validate(values: FormValues): FormErrors {
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-1 text-[12px] font-medium text-[var(--color-pink)]">
+    <p id={id} className="mt-1 text-[12px] font-medium text-[var(--color-error)]">
       {message}
     </p>
   );
@@ -122,7 +125,7 @@ export function ContactForm() {
               Message sent
             </h3>
             <p className="mt-3 max-w-sm text-[16px] leading-relaxed text-[var(--color-slate)]">
-              Thanks, {values.name || "there"}. Our {audience === "advertisers" ? "advertiser" : "media owner"}{" "}
+              Thanks, {values.firstName || "there"}. Our {audience === "advertisers" ? "advertiser" : "media owner"}{" "}
               team will get back to you within 24 hours.
             </p>
             <a
@@ -172,21 +175,39 @@ export function ContactForm() {
 
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label className={labelClass} htmlFor={`${formId}-name`}>
-                  Name*
+                <label className={labelClass} htmlFor={`${formId}-firstName`}>
+                  First name*
                 </label>
                 <input
-                  id={`${formId}-name`}
-                  name="name"
-                  autoComplete="name"
-                  className={cn(fieldClass, errors.name && "border-[var(--color-pink)]")}
-                  placeholder="Priya Sharma"
-                  value={values.name}
-                  onChange={(event) => setField("name", event.target.value)}
-                  aria-invalid={Boolean(errors.name)}
-                  aria-describedby={errors.name ? `${formId}-name-error` : undefined}
+                  id={`${formId}-firstName`}
+                  name="firstName"
+                  autoComplete="given-name"
+                  className={cn(fieldClass, errors.firstName && "border-[var(--color-error)]")}
+                  placeholder="Priya"
+                  value={values.firstName}
+                  onChange={(event) => setField("firstName", event.target.value)}
+                  aria-invalid={Boolean(errors.firstName)}
+                  aria-describedby={errors.firstName ? `${formId}-firstName-error` : undefined}
                 />
-                <FieldError id={`${formId}-name-error`} message={errors.name} />
+                <FieldError id={`${formId}-firstName-error`} message={errors.firstName} />
+              </div>
+
+              <div>
+                <label className={labelClass} htmlFor={`${formId}-lastName`}>
+                  Last name*
+                </label>
+                <input
+                  id={`${formId}-lastName`}
+                  name="lastName"
+                  autoComplete="family-name"
+                  className={cn(fieldClass, errors.lastName && "border-[var(--color-error)]")}
+                  placeholder="Sharma"
+                  value={values.lastName}
+                  onChange={(event) => setField("lastName", event.target.value)}
+                  aria-invalid={Boolean(errors.lastName)}
+                  aria-describedby={errors.lastName ? `${formId}-lastName-error` : undefined}
+                />
+                <FieldError id={`${formId}-lastName-error`} message={errors.lastName} />
               </div>
 
               <div>
@@ -197,7 +218,7 @@ export function ContactForm() {
                   id={`${formId}-company`}
                   name="company"
                   autoComplete="organization"
-                  className={cn(fieldClass, errors.company && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.company && "border-[var(--color-error)]")}
                   placeholder="Company name"
                   value={values.company}
                   onChange={(event) => setField("company", event.target.value)}
@@ -206,9 +227,7 @@ export function ContactForm() {
                 />
                 <FieldError id={`${formId}-company-error`} message={errors.company} />
               </div>
-            </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
               <div>
                 <label className={labelClass} htmlFor={`${formId}-email`}>
                   Company email ID*
@@ -219,7 +238,7 @@ export function ContactForm() {
                   type="email"
                   inputMode="email"
                   autoComplete="email"
-                  className={cn(fieldClass, errors.email && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.email && "border-[var(--color-error)]")}
                   placeholder="you@company.com"
                   value={values.email}
                   onChange={(event) => setField("email", event.target.value)}
@@ -230,30 +249,13 @@ export function ContactForm() {
               </div>
 
               <div>
-                <label className={labelClass} htmlFor={`${formId}-designation`}>
-                  Designation
-                </label>
-                <input
-                  id={`${formId}-designation`}
-                  name="designation"
-                  autoComplete="organization-title"
-                  className={fieldClass}
-                  placeholder="Head of Media"
-                  value={values.designation}
-                  onChange={(event) => setField("designation", event.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div>
                 <label className={labelClass} htmlFor={`${formId}-country`}>
                   Country*
                 </label>
                 <select
                   id={`${formId}-country`}
                   name="country"
-                  className={cn(fieldClass, errors.country && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.country && "border-[var(--color-error)]")}
                   value={values.country}
                   onChange={(event) => setField("country", event.target.value)}
                   aria-invalid={Boolean(errors.country)}
@@ -278,7 +280,7 @@ export function ContactForm() {
                   name="mobile"
                   type="tel"
                   autoComplete="tel"
-                  className={cn(fieldClass, errors.mobile && "border-[var(--color-pink)]")}
+                  className={cn(fieldClass, errors.mobile && "border-[var(--color-error)]")}
                   placeholder="+1 555 000 1234"
                   value={values.mobile}
                   onChange={(event) => setField("mobile", event.target.value)}
@@ -286,6 +288,21 @@ export function ContactForm() {
                   aria-describedby={errors.mobile ? `${formId}-mobile-error` : undefined}
                 />
                 <FieldError id={`${formId}-mobile-error`} message={errors.mobile} />
+              </div>
+
+              <div className="sm:col-span-2">
+                <label className={labelClass} htmlFor={`${formId}-designation`}>
+                  Designation
+                </label>
+                <input
+                  id={`${formId}-designation`}
+                  name="designation"
+                  autoComplete="organization-title"
+                  className={fieldClass}
+                  placeholder="Head of Media"
+                  value={values.designation}
+                  onChange={(event) => setField("designation", event.target.value)}
+                />
               </div>
             </div>
 
@@ -298,7 +315,7 @@ export function ContactForm() {
                   className={cn(
                     "text-[11px]",
                     wordCount > MAX_WORDS
-                      ? "font-semibold text-[var(--color-pink)]"
+                      ? "font-semibold text-[var(--color-error)]"
                       : "text-[var(--color-slate-soft)]",
                   )}
                 >
@@ -312,7 +329,7 @@ export function ContactForm() {
                 className={cn(
                   fieldClass,
                   "resize-none",
-                  errors.message && "border-[var(--color-pink)]",
+                  errors.message && "border-[var(--color-error)]",
                 )}
                 placeholder={
                   audience === "advertisers"

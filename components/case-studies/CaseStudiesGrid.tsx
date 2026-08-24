@@ -1,24 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpLeft, Calendar, Clock, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { caseStudyArticles } from "@/lib/case-studies-data";
+import type { ResourceArticle } from "@/lib/resources-page-data";
 
-const INITIAL_COUNT = 9;
-
-export function CaseStudiesGrid() {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const articles = useMemo(
-    () => caseStudyArticles.slice(0, visibleCount),
-    [visibleCount],
-  );
-
+export function CaseStudiesGrid({ articles }: { articles: ResourceArticle[] }) {
   return (
     <section className="bg-white pb-16 pt-8 md:pb-[100px] md:pt-10">
       <Container>
@@ -42,13 +32,15 @@ export function CaseStudiesGrid() {
               className="group flex flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-cream-soft)] shadow-[0_4px_18px_rgba(9,19,26,0.06)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(9,19,26,0.1)]"
             >
               <div className="relative aspect-[418/260] overflow-hidden bg-white">
-                <Image
-                  src={article.image}
-                  alt={article.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
+                {article.image ? (
+                  <Image
+                    src={article.image}
+                    alt={article.title ?? ""}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : null}
               </div>
               <div className="flex flex-1 flex-col p-5 md:p-6">
                 <h2 className="mb-4 line-clamp-2 min-h-[52px] text-[18px] font-extrabold tracking-[-0.4px] text-[var(--color-ink)] transition-transform duration-300 group-hover:-translate-y-0.5 md:min-h-[55px] md:text-[20px] md:leading-[27.5px]">
@@ -72,22 +64,6 @@ export function CaseStudiesGrid() {
             </motion.a>
           ))}
         </Stagger>
-
-        <div className="mt-10 flex justify-center md:mt-12">
-          <Button
-            type="button"
-            variant="primary"
-            arrow="right"
-            onClick={() =>
-              setVisibleCount((count) =>
-                Math.min(count + 6, Math.max(caseStudyArticles.length, count)),
-              )
-            }
-            className="uppercase tracking-[2px]"
-          >
-            Load More
-          </Button>
-        </div>
       </Container>
     </section>
   );

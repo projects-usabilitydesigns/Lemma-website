@@ -13,8 +13,9 @@
   --color-cream: #fcfcf9;
   --color-cream-soft: #f9f8f5;
   --color-white: #ffffff;
-  --color-pink: #f82d89;
-  --color-pink-alt: #ed2e80;
+  --color-pink: #008fdb;
+  --color-pink-alt: #009352;
+  --color-error: #d92d20;
   --color-blue: #008fdb;
   --color-blue-deep: #005481;
   --color-blue-link: #1581c5;
@@ -28,20 +29,23 @@
   --gradient-brand: linear-gradient(
     90deg,
     #009352 0%,
-    #74be44 25%,
-    #1581c5 50%,
-    #ed2e80 75%,
-    #f05a27 100%
+    #74be44 35%,
+    #1581c5 70%,
+    #008fdb 100%
   );
   --gradient-blue: linear-gradient(90deg, #008fdb 0%, #005481 100%);
-  --gradient-cta: linear-gradient(90deg, #008fdb 0%, #f82d89 100%);
+  --gradient-cta: linear-gradient(90deg, #008fdb 0%, #009352 100%);
   --gradient-hero: linear-gradient(
     148.69deg,
-    #fdf2f8 0%,
-    #ede9fe 35%,
+    #e8f6ff 0%,
+    #ecfdf5 40%,
     #e0f2fe 70%,
     #ecfccb 100%
   );
+  --gradient-home-mesh:
+    radial-gradient(circle at 15% 0%, rgba(244, 114, 182, 0.22), transparent 55%),
+    radial-gradient(circle at 85% 20%, rgba(129, 140, 248, 0.22), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(94, 234, 212, 0.2), transparent 55%);
   --background: #ffffff;
   --foreground: #09131a;
   --font-heading: var(--font-google-sans-flex), "Google Sans Flex", system-ui, sans-serif;

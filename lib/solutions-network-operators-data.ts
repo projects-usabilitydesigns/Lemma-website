@@ -42,7 +42,7 @@ export const networkOperatorsWhy = {
       title: "1Mn+ Global Screens",
       description:
         "Access more than one million DOOH screens across the globe to scale reach and inventory value.",
-      accent: "#f82d89",
+      accent: "#008fdb",
       icon: "layers",
     },
     {
@@ -66,7 +66,7 @@ export const networkOperatorsWhy = {
       title: "Tech-Powered Displays",
       description:
         "Transform top screen hubs globally with intelligent activation, operations, and performance tooling.",
-      accent: "#a684ff",
+      accent: "#74be44",
       icon: "sparkles",
     },
     {
@@ -252,8 +252,6 @@ export const networkOperatorsFaqs: BrandsFaq[] = [
       "Lemma partners with third-party creative tools so operators and brands can deliver highly interactive creatives on large formats like DOOH and CTV.",
   },
 ];
-
-export const networkOperatorsFaqTitle = "Answers for network operators getting started";
 
 export const networkOperatorsCta = {
   title: "Want to Lemmaximize your inventory?",

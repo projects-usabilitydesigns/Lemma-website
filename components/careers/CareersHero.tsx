@@ -15,7 +15,7 @@ export function CareersHero() {
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 12% 18%, rgba(248,45,137,0.16), transparent 42%), radial-gradient(circle at 88% 20%, rgba(0,143,219,0.14), transparent 46%), radial-gradient(circle at 50% 100%, rgba(255,214,102,0.12), transparent 40%)",
+            "radial-gradient(circle at 12% 18%, rgba(0,143,219,0.16), transparent 42%), radial-gradient(circle at 88% 20%, rgba(0,143,219,0.14), transparent 46%), radial-gradient(circle at 50% 100%, rgba(255,214,102,0.12), transparent 40%)",
         }}
       />
 

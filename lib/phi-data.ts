@@ -14,11 +14,9 @@ export const phiAssets = {
   phiSymbol: productImage("ChatGPT Image Aug 4, 2026, 08_12_34 PM 1.png"),
   screens: productImage("ChatGPT Image Aug 5, 2026, 04_41_19 PM 1.png"),
   dashboard: productImage("Frame 1597890339.png"),
-  easySetup: productImage(
-    "ChatGPT_Image_Aug_5__2026__04_52_16_PM-removebg-preview 1.png",
-  ),
-  creativeControl: productImage("ChatGPT Image Aug 5, 2026, 05_00_11 PM 1.png"),
-  automatedDemand: productImage("ChatGPT Image Aug 5, 2026, 05_10_32 PM 1.png"),
+  easySetup: "/Group%201597883515.svg",
+  creativeControl: productImage("ChatGPT Image Aug 5, 2026, 05_00_11 PM 1.svg"),
+  automatedDemand: "/Group%201597883516.svg",
   squarePink: productImage("Rectangle 3.png"),
   squareGreen: productImage("Rectangle 4.png"),
   squareOrange: productImage("Rectangle 5.png"),
@@ -71,6 +69,8 @@ export const phiFeatures = [
     image: phiAssets.easySetup,
     imageAlt: "Lemma Phi easy setup dashboard",
     layout: "text-left" as const,
+    imageWidth: 805,
+    imageHeight: 395,
   },
   {
     id: "creative-control",
@@ -79,6 +79,8 @@ export const phiFeatures = [
     image: phiAssets.creativeControl,
     imageAlt: "Lemma Phi creative control across screens and billboards",
     layout: "image-left" as const,
+    imageWidth: 738,
+    imageHeight: 410,
   },
   {
     id: "automated-demand",
@@ -87,5 +89,7 @@ export const phiFeatures = [
     image: phiAssets.automatedDemand,
     imageAlt: "Lemma Phi automated demand generation workflow",
     layout: "text-left" as const,
+    imageWidth: 540,
+    imageHeight: 555,
   },
 ] as const;

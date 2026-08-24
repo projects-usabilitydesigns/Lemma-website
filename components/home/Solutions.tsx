@@ -6,9 +6,11 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { solutions } from "@/lib/data";
+import { solutions as defaultSolutions } from "@/lib/data";
+import type { Solution } from "@/types";
 
-export function Solutions() {
+export function Solutions({ solutions }: { solutions?: Solution[] }) {
+  const data = solutions?.length ? solutions : defaultSolutions;
   return (
     <section id="solutions" className="relative overflow-hidden bg-white py-12 md:py-[100px]">
       <div
@@ -27,7 +29,7 @@ export function Solutions() {
       </div>
 
       <Container className="relative z-10">
-        <div className="mb-8 flex flex-col gap-4 md:mb-12 md:gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-8 md:mb-12">
           <FadeUp className="max-w-xl space-y-4 md:space-y-5">
             <SectionLabel label="Solutions" />
             <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
@@ -36,15 +38,10 @@ export function Solutions() {
               who move media.
             </h2>
           </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="max-w-sm text-[15px] leading-[22px] text-[var(--color-slate)] md:text-[16px] lg:text-right">
-              One platform — two sides of the same outcome.
-            </p>
-          </FadeUp>
         </div>
 
-        <Stagger className="grid gap-5 md:gap-6 lg:grid-cols-2">
-          {solutions.map((item) => (
+        <Stagger className="grid gap-6 lg:grid-cols-2">
+          {data.map((item) => (
             <motion.article
               key={item.id}
               variants={staggerItem}
@@ -52,13 +49,15 @@ export function Solutions() {
               className="grid overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-cream)] transition-shadow duration-300 hover:shadow-[0px_12px_40px_rgba(9,19,26,0.12)] md:rounded-none md:grid-cols-5"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden md:col-span-2 md:aspect-auto md:min-h-[376px]">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover object-[center_42%] transition-transform duration-700 hover:scale-105 md:object-center"
-                />
+                {item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.title ?? ""}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover object-[center_42%] transition-transform duration-700 hover:scale-105 md:object-center"
+                  />
+                ) : null}
                 <p className="absolute left-3 top-3 text-[40px] font-extralight leading-none tracking-[-1.2px] text-[rgba(3,10,17,0.85)] md:left-4 md:top-4 md:text-[60px]">
                   {item.number}
                 </p>

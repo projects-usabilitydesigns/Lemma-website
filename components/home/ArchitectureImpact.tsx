@@ -43,8 +43,8 @@ function SliderField({
         </p>
       </div>
       <div className="relative pt-2">
-        <div className="h-1.5 overflow-hidden rounded-full bg-[rgba(248,45,137,0.2)]">
-          <div className="h-full rounded-full bg-[var(--color-pink)]" style={{ width: `${pct}%` }} />
+        <div className="h-1.5 overflow-hidden rounded-full bg-[rgba(0,143,219,0.2)]">
+          <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundImage: "var(--gradient-cta)" }} />
         </div>
         <input
           type="range"

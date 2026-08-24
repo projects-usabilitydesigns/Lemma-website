@@ -11,20 +11,21 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { VideoModal } from "@/components/ui/VideoModal";
-import { caseStudies } from "@/lib/data";
+import { caseStudies as defaultCaseStudies } from "@/lib/data";
 import type { CaseStudy } from "@/types";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export function CaseStudies() {
+export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
+  const data = caseStudies?.length ? caseStudies : defaultCaseStudies;
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeVideo, setActiveVideo] = useState<CaseStudy | null>(null);
 
   const closeVideo = useCallback(() => setActiveVideo(null), []);
 
   return (
-    <section id="case-studies" className="overflow-hidden bg-white py-16 md:py-[90px]">
+    <section id="case-studies" className="overflow-hidden bg-white pb-16 pt-8 md:pb-[90px] md:pt-10">
       <Container className="mb-12">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <FadeUp className="space-y-5">
@@ -68,7 +69,7 @@ export function CaseStudies() {
           }}
           className="!overflow-visible"
         >
-          {caseStudies.map((study) => (
+          {data.map((study) => (
             <SwiperSlide key={study.id} className="!h-auto">
               <article className="case-card group relative h-[520px] overflow-hidden rounded-[30px] border border-[var(--color-border)] transition-transform duration-500 md:h-[700px]">
                 <Image

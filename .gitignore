@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/cms/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -40,4 +41,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/cms
+# cms (selective ignores; .env.example is tracked intentionally)
+/cms/dist/
+/cms/build/
+/cms/.strapi/
+/cms/.tmp/
+/cms/.env
+/cms/public/uploads/*

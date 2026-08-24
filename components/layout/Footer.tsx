@@ -244,18 +244,47 @@ export function Footer() {
 
         <div className="my-5 h-px w-full bg-[var(--color-border)] md:my-6" />
 
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-          <div className="relative h-[52px] w-[240px] max-w-full sm:h-[62px] sm:w-[268px]">
-            <Image src="/images/iab-footer.png" alt="IAB partners" fill className="object-contain" />
-          </div>
-          <div className="relative h-[52px] w-[300px] max-w-full sm:h-[62px] sm:w-[350px]">
-            <Image
-              src="/images/partners-footer.png"
-              alt="Industry partners"
-              fill
-              className="object-contain"
-            />
-          </div>
+        <div className="flex flex-wrap items-center justify-center gap-5 md:gap-8">
+          <Image
+            src="/Frame%201597890197.svg"
+            alt="IAB Europe Transparency and Consent Framework"
+            width={128}
+            height={49}
+            unoptimized
+            className="h-10 w-auto sm:h-12"
+          />
+          <Image
+            src="/Group%201597883459.svg"
+            alt="IAB"
+            width={56}
+            height={28}
+            unoptimized
+            className="h-6 w-auto sm:h-7"
+          />
+          <Image
+            src="/Group%201597883469.svg"
+            alt="IAB Tech Lab"
+            width={109}
+            height={69}
+            unoptimized
+            className="h-10 w-auto sm:h-12"
+          />
+          <Image
+            src="/Group%201597883461.svg"
+            alt="Unified ID Solution"
+            width={57}
+            height={41}
+            unoptimized
+            className="h-9 w-auto sm:h-10"
+          />
+          <Image
+            src="/Frame%201597890241.svg"
+            alt="HUMAN"
+            width={177}
+            height={37}
+            unoptimized
+            className="h-8 w-auto sm:h-9"
+          />
         </div>
 
         <div className="mt-5 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-4 text-[12px] text-[var(--color-slate)] md:mt-6 md:flex-row md:items-center">

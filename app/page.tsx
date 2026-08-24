@@ -1,30 +1,54 @@
 import { Header } from "@/components/layout/Header";
+import { faqs as defaultFaqs } from "@/lib/data";
 import { Hero } from "@/components/home/Hero";
 import { LogosMarquee } from "@/components/home/LogosMarquee";
 import { Products } from "@/components/home/Products";
 import { Solutions } from "@/components/home/Solutions";
 import { CaseStudies } from "@/components/home/CaseStudies";
 import { AiFeatures } from "@/components/home/AiFeatures";
-import { ArchitectureImpact } from "@/components/home/ArchitectureImpact";
+import { NextFrontier } from "@/components/home/NextFrontier";
 import { Blog } from "@/components/home/Blog";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/home/Cta";
-import { faqs } from "@/lib/data";
+import {
+  getHeroStats,
+  getSolutions,
+  getCaseStudies,
+  getBlogPosts,
+  getFaqs,
+  getClientLogos,
+} from "@/lib/api";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [
+    heroStats,
+    solutions,
+    caseStudies,
+    blogPosts,
+    faqs,
+    clientLogos,
+  ] = await Promise.all([
+    getHeroStats(),
+    getSolutions(),
+    getCaseStudies(),
+    getBlogPosts(),
+    getFaqs(),
+    getClientLogos(),
+  ]);
+
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <LogosMarquee />
+        <Hero heroStats={heroStats} />
+        <LogosMarquee clientLogos={clientLogos} />
         <Products />
-        <Solutions />
-        <CaseStudies />
+        <Solutions solutions={solutions} />
+        <CaseStudies caseStudies={caseStudies} />
         <AiFeatures />
-        <ArchitectureImpact />
-        <Blog />
-        <Faq items={faqs} viewAllHref="#faq" />
+        <NextFrontier />
+        <Blog blogPosts={blogPosts} />
+        <Faq items={faqs.length ? faqs : defaultFaqs} />
         <Cta />
       </main>
     </>

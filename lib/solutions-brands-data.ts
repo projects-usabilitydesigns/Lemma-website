@@ -102,7 +102,7 @@ export const brandsWhyFeatures: BrandsFeature[] = [
     title: "Outcome-First Approach",
     description:
       "Move beyond impressions. Activate, retarget, and attribute every outdoor moment to real business results.",
-    accent: "#f82d89",
+    accent: "#008fdb",
     icon: "target",
   },
   {
@@ -110,7 +110,7 @@ export const brandsWhyFeatures: BrandsFeature[] = [
     title: "AI-Powered Activation",
     description:
       "Let intelligent bidding, creative optimization, and audience models maximize performance in real time.",
-    accent: "#a684ff",
+    accent: "#74be44",
     icon: "sparkles",
   },
   {

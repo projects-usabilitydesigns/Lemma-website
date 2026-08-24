@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useCountUp } from "@/hooks/useCountUp";
-import { heroStats } from "@/lib/data";
+import { heroStats as defaultHeroStats } from "@/lib/data";
+import type { Stat } from "@/types";
 import { cn } from "@/lib/utils";
 
 const HERO_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
@@ -44,7 +45,8 @@ function StatItem({
   );
 }
 
-export function Hero() {
+export function Hero({ heroStats }: { heroStats?: Stat[] }) {
+  const stats = heroStats?.length ? heroStats : defaultHeroStats;
   const sectionRef = useRef<HTMLElement>(null);
   const [videoOpen, setVideoOpen] = useState(false);
   const { scrollYProgress } = useScroll({
@@ -66,8 +68,7 @@ export function Hero() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "radial-gradient(circle at 15% 0%, rgba(244,114,182,0.22), transparent 55%), radial-gradient(circle at 85% 20%, rgba(129,140,248,0.22), transparent 50%), radial-gradient(circle at 50% 100%, rgba(94,234,212,0.2), transparent 55%)",
+          backgroundImage: "var(--gradient-home-mesh)",
         }}
       />
 
@@ -75,7 +76,10 @@ export function Hero() {
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <div className="flex min-h-[360px] flex-col justify-between gap-10">
             <div className="space-y-6">
-              <BlurReveal>
+              <BlurReveal className="space-y-2">
+                <p className="font-heading text-[24px] font-medium leading-[1.3] tracking-[0.7px] text-[var(--color-ink)]">
+                  Leading performance platform, globally
+                </p>
                 <h1 className="font-heading text-[40px] font-semibold leading-[1.05] tracking-[-0.72px] text-[var(--color-ink)] md:text-[56px] md:leading-[1.05]">
                   Outdoor to Outcome.
                 </h1>
@@ -100,7 +104,7 @@ export function Hero() {
             </div>
 
             <Stagger className="grid grid-cols-3 gap-3 md:gap-6" delay={0.2}>
-              {heroStats.map((stat) => (
+              {stats.map((stat) => (
                 <motion.div key={stat.label} variants={staggerItem}>
                   <StatItem
                     end={stat.numericValue}
@@ -125,15 +129,16 @@ export function Hero() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] to-black/65" />
 
-                {/* Pink LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
+                {/* LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
                 <div className="absolute left-[12%] top-[8%] z-10 w-[55%] max-w-[382px] md:left-[143px] md:top-[38px] md:w-[382px]">
                   <Image
-                    src="/images/products/integral.svg"
+                    src="/images/products/integral-white.svg"
                     alt="Lemma Integral"
                     width={382}
                     height={35}
                     className="h-[22px] w-auto object-contain object-left md:h-[35px] md:w-[382px]"
                     priority
+                    unoptimized
                   />
                 </div>
 
@@ -141,7 +146,8 @@ export function Hero() {
                   type="button"
                   aria-label="Play demo video"
                   onClick={() => setVideoOpen(true)}
-                  className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-pink-alt)] shadow-[0px_10px_40px_-5px_#ed2e80] transition-transform duration-300 group-hover:scale-110"
+                  className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-[0px_10px_40px_-5px_rgba(0,143,219,0.55)] transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundImage: "linear-gradient(135deg, #008fdb 0%, #009352 100%)" }}
                 >
                   <Play className="ml-0.5 size-[27px] fill-white text-white" />
                 </button>

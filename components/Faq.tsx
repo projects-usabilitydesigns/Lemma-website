@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
 import { FadeUp } from "@/components/animation";
@@ -18,14 +18,10 @@ export type FaqItem = {
 export type FaqProps = {
   /** Page-specific questions and answers */
   items: readonly FaqItem[];
-  /** Override the default heading */
-  title?: ReactNode;
   /** Section element id (default: "faq") */
   sectionId?: string;
   /** Prefix for accordion panel ids — defaults from sectionId */
   idPrefix?: string;
-  /** Show the VIEW ALL CTA (default: true) */
-  showViewAll?: boolean;
   /** VIEW ALL link target */
   viewAllHref?: string;
   className?: string;
@@ -33,14 +29,12 @@ export type FaqProps = {
 
 /**
  * Single shared FAQ accordion used across the site.
- * Pass page-specific `items` (and optional `title`) — styling stays the same everywhere.
+ * Pass page-specific `items` — heading, accordion, and VIEW ALL stay the same everywhere.
  */
 export function Faq({
   items,
-  title,
   sectionId = "faq",
   idPrefix,
-  showViewAll = true,
   viewAllHref = "/#faq",
   className,
 }: FaqProps) {
@@ -53,24 +47,18 @@ export function Faq({
         <FadeUp className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
           <SectionLabel label="FAQ" align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            {title ? (
-              title
-            ) : (
-              <>
-                Helpful Answers Before
-                <br />
-                <span
-                  style={{
-                    backgroundImage: "var(--gradient-cta)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}
-                >
-                  You Get Started
-                </span>
-              </>
-            )}
+            Helpful Answers Before
+            <br />
+            <span
+              style={{
+                backgroundImage: "var(--gradient-cta)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              You Get Started
+            </span>
           </h2>
         </FadeUp>
 
@@ -102,7 +90,8 @@ export function Faq({
                     {item.question}
                   </span>
                   <span
-                    className="mt-0.5 flex size-[30px] shrink-0 items-center justify-center rounded-full bg-[var(--color-pink)] text-white"
+                    className="mt-0.5 flex size-[30px] shrink-0 items-center justify-center rounded-full text-white"
+                    style={{ backgroundImage: "var(--gradient-cta)" }}
                     aria-hidden
                   >
                     {open ? <Minus className="size-4" /> : <Plus className="size-4" />}
@@ -118,7 +107,7 @@ export function Faq({
                       transition={{ duration: 0.35, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-5 text-[14px] leading-5 text-[#424242]">
+                      <p className="px-5 pb-5 text-[16px] leading-[22px] text-[#424242]">
                         {item.answer}
                       </p>
                     </motion.div>
@@ -129,13 +118,11 @@ export function Faq({
           })}
         </div>
 
-        {showViewAll ? (
-          <div className="mt-12 flex justify-center">
-            <Button href={viewAllHref} variant="primary">
-              VIEW ALL
-            </Button>
-          </div>
-        ) : null}
+        <div className="mt-12 flex justify-center">
+          <Button href={viewAllHref} variant="primary">
+            VIEW ALL
+          </Button>
+        </div>
       </Container>
     </section>
   );

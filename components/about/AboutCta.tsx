@@ -80,7 +80,7 @@ export function AboutCta() {
                 href="mailto:contactus@lemmamedia.com"
                 variant="primary"
                 arrow="up-right"
-                className="normal-case tracking-normal border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(248,45,137,0.28)]"
+                className="normal-case tracking-normal border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(0,143,219,0.28)]"
                 style={{ backgroundImage: "var(--gradient-cta)" }}
               >
                 Get in touch

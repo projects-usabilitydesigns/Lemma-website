@@ -14,7 +14,7 @@ import type {
 export const navItems: NavItem[] = [
   { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
   { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
-  { label: "Resources", href: "/case-studies", hasDropdown: true, megaMenu: "resources" },
+  { label: "Resources", href: "/resources", hasDropdown: true, megaMenu: "resources" },
   { label: "Contact Us", href: "/contact-us" },
 ];
 
@@ -94,7 +94,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             title: "Delta",
             description: "Demand-side platform",
             href: "/products/delta",
-            iconColor: "#f82d89",
+            iconColor: "#008fdb",
             iconSymbol: "Δ",
           },
           {
@@ -187,6 +187,12 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             title: "Case Studies",
             description: "Campaigns that performed",
             href: "/case-studies",
+          },
+          {
+            id: "blogs",
+            title: "Blogs",
+            description: "Expert insights & analysis",
+            href: "/resources/blogs",
           },
         ],
       },
@@ -347,62 +353,54 @@ export const caseStudies: CaseStudy[] = [
 
 export const aiFeatures: AiFeature[] = [
   {
-    id: "audience",
-    title: "Predictive Audience AI",
-    description:
-      "Deep learning models that anticipate audience intent across DOOH, CTV, mobile and web for sharper targeting.",
-    bullets: ["Look-alike Audience Engines", "Intent Probability Scoring"],
+    id: "planning",
+    title: "AI-Powered Planning",
+    description: "Smarter planning with Adtech AI for maximum impact.",
+    bullets: [
+      "Audience & market intelligence",
+      "Budget allocation across channels",
+      "Scenario modeling & forecasting",
+    ],
     icon: "/icons/ai-audience.svg",
-    accent: "#1581c5",
-    accentSoft: "rgba(21, 129, 197, 0.1)",
+    accent: "#008fdb",
+    accentSoft: "rgba(0, 143, 219, 0.1)",
   },
   {
-    id: "creative",
-    title: "Generative Creative Studio",
-    description:
-      "On-the-fly creative variants tuned to context, weather, time-of-day and inventory — at campaign scale.",
-    bullets: ["Dynamic Copy Generation", "Context-Aware Visual Assembly"],
+    id: "activation",
+    title: "Intelligent Activation",
+    description: "Programmatic AI to deliver the right ads to the right audience.",
+    bullets: [
+      "AI in media buying",
+      "Real-time bidding & optimization",
+      "Omnichannel AI reach across DOOH, CTV, Web, Mobile & Social",
+    ],
     icon: "/icons/ai-creative.svg",
-    accent: "#ed2e80",
-    accentSoft: "rgba(237, 46, 128, 0.1)",
+    accent: "#008fdb",
+    accentSoft: "rgba(0, 143, 219, 0.1)",
   },
   {
-    id: "bidding",
-    title: "Bidding Intelligence",
-    description:
-      "Reinforcement-learning bidders that balance reach, frequency and outcome KPIs in real time.",
-    bullets: ["Real-time Bid Shading", "Outcome-Optimized Pacing"],
+    id: "optimization",
+    title: "AI-Driven Optimization",
+    description: "Continuous learning to improve ads with AI performance.",
+    bullets: [
+      "Predictive performance models",
+      "Creative & audience optimization",
+      "Automated bid & budget controls",
+    ],
     icon: "/icons/ai-bidding.svg",
-    accent: "#f05a27",
-    accentSoft: "rgba(240, 90, 39, 0.1)",
+    accent: "#008fdb",
+    accentSoft: "rgba(0, 143, 219, 0.1)",
   },
   {
-    id: "attribution",
-    title: "Attribution Intelligence",
-    description:
-      "Multi-touch attribution that connects outdoor exposure to digital actions and offline conversions.",
-    bullets: ["Cross-channel Pathing", "Incrementality Modeling"],
-    icon: "/icons/ai-audience.svg",
-    accent: "#74be44",
-    accentSoft: "rgba(116, 190, 68, 0.1)",
-  },
-  {
-    id: "safety",
-    title: "Brand Safety AI",
-    description:
-      "Automated brand suitability scoring across DOOH environments, CTV inventory and adjacent contexts.",
-    bullets: ["Context Classification", "Suitability Guardrails"],
-    icon: "/icons/ai-creative.svg",
-    accent: "#a684ff",
-    accentSoft: "rgba(142, 81, 255, 0.1)",
-  },
-  {
-    id: "yield",
-    title: "Yield Optimization",
-    description:
-      "Supply-side models that maximize fill rate and eCPM while protecting premium inventory floors.",
-    bullets: ["Dynamic Floor Pricing", "Demand Prioritization"],
-    icon: "/icons/ai-bidding.svg",
+    id: "measurement",
+    title: "Measurement & Growth",
+    description: "Full-funnel measurement to prove impact and drive growth.",
+    bullets: [
+      "Incrementality & attribution",
+      "Cross-channel insights",
+      "ROI & outcome optimization",
+    ],
+    icon: "/icons/ai-measurement.svg",
     accent: "#009352",
     accentSoft: "rgba(0, 147, 82, 0.1)",
   },
@@ -416,7 +414,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 Min read",
     views: "72 Views",
     image: "/images/blog/iab.png",
-    href: "#blog",
+    href: "/resources/blogs/iab-tech-lab-summit-2026",
   },
   {
     id: "performance",
@@ -425,7 +423,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 Min read",
     views: "124 Views",
     image: "/images/blog/performance.png",
-    href: "#blog",
+    href: "/resources/blogs/why-performance-campaigns-fail-to-scale",
   },
   {
     id: "ooh",
@@ -434,14 +432,14 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 Min read",
     views: "204 Views",
     image: "/images/blog/ooh.png",
-    href: "#blog",
+    href: "/resources/blogs/ooh-media-conference-2026",
   },
 ];
 
 export const faqs: FaqItem[] = [
   {
     id: "what-is-lemma",
-    question: "What is Lemma Technologies?",
+    question: "What is Lemma?",
     answer:
       "Lemma is an AI-first omnichannel AdTech platform that helps brands, agencies, and media owners plan, activate, optimize, and measure campaigns across DOOH, CTV, OTT, Mobile, and Audio channels.",
   },
@@ -475,9 +473,23 @@ export const faqs: FaqItem[] = [
     answer:
       "Phi centralizes DOOH content planning, scheduling, and delivery so operators can manage screens, locations, and formats from one platform.",
   },
+  {
+    id: "lemma-cms",
+    question: "How Lemma CMS helps screen owners?",
+    answer:
+      "Lemma CMS (Phi) gives screen owners a free content management system to plan, schedule, and deliver creatives across screens, locations, and formats from one platform—with full control over what goes live.",
+  },
 ];
 
-export const channels = ["CTV", "Mobile", "Web", "Audio", "In-Game", "Programmatic"] as const;
+export const channels = [
+  "Programmatic Digital OOH",
+  "CTV",
+  "Mobile",
+  "Audio",
+  "In game",
+  "Web",
+  "Retail",
+] as const;
 
 export const clientLogos: ClientLogo[] = [
   { id: "burger-king", name: "Burger King", src: "/images/logos/burger-king.svg", width: 120, height: 36 },

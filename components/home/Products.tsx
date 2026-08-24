@@ -6,9 +6,10 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { LinkArrow } from "@/components/ui/LinkArrow";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { products } from "@/lib/data";
+import { products as defaultProducts } from "@/lib/data";
 
 export function Products() {
+  const data = defaultProducts;
   return (
     <section id="products" className="bg-white py-16 md:py-[100px]">
       <Container>
@@ -20,15 +21,15 @@ export function Products() {
         </FadeUp>
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {products.map((product) => (
+          {data.map((product) => (
             <motion.article
               key={product.id}
               variants={staggerItem}
               whileHover={{ y: -8 }}
-              className="group flex h-full flex-col items-center rounded-[16px] border border-[var(--color-border-strong)] bg-white p-5 text-center shadow-[0px_4px_0px_#f82d89] transition-shadow duration-300 hover:shadow-[0px_8px_24px_rgba(248,45,137,0.25)]"
+              className="group flex h-full flex-col items-center rounded-[16px] border border-[var(--color-border-strong)] bg-white p-5 text-center shadow-[0px_4px_0px_#008fdb] transition-shadow duration-300 hover:shadow-[0px_8px_24px_rgba(0,143,219,0.25)]"
             >
               <div className="relative mb-5 h-6 w-full max-w-[210px]">
-                <Image src={product.logo} alt={`LEMMA ${product.name}`} fill className="object-contain" />
+                <Image src={product.logo} alt={`LEMMA ${product.name}`} fill unoptimized className="object-contain" />
               </div>
               <h3 className="mb-5 text-[24px] font-bold tracking-[-0.44px] text-[var(--color-ink)]">
                 {product.name}

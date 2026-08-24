@@ -19,7 +19,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "1 Min read",
     views: "3168 Views",
     image: "/images/case-studies/etihad-new-year-sale.jpg",
-    href: "/case-studies#etihad-new-year-sale",
+    href: "/case-studies/etihad-new-year-sale",
   },
   {
     id: "mg-motors",
@@ -28,7 +28,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "1 Min read",
     views: "3053 Views",
     image: "/images/case-studies/mg-motors.jpg",
-    href: "/case-studies#mg-motors",
+    href: "/case-studies/mg-motors",
   },
   {
     id: "lenovo-smarter-ai",
@@ -37,7 +37,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "2 Min read",
     views: "3100 Views",
     image: "/images/case-studies/lenovo-smarter-ai.jpg",
-    href: "/case-studies#lenovo-smarter-ai",
+    href: "/case-studies/lenovo-smarter-ai",
   },
   {
     id: "otrivin",
@@ -46,7 +46,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "1 Min read",
     views: "3168 Views",
     image: "/images/case-studies/otrivin.jpg",
-    href: "/case-studies#otrivin",
+    href: "/case-studies/otrivin",
   },
   {
     id: "amazon-fresh",
@@ -55,7 +55,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "1 Min read",
     views: "2946 Views",
     image: "/images/case-studies/amazon-fresh.jpg",
-    href: "/case-studies#amazon-fresh",
+    href: "/case-studies/amazon-fresh",
   },
   {
     id: "etihad-flight-deals",
@@ -64,7 +64,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "1 Min read",
     views: "2779 Views",
     image: "/images/case-studies/etihad-flight-deals.jpg",
-    href: "/case-studies#etihad-flight-deals",
+    href: "/case-studies/etihad-flight-deals",
   },
   {
     id: "etihad-contextual",
@@ -73,7 +73,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "3 Min read",
     views: "2723 Views",
     image: "/images/case-studies/etihad-contextual.jpg",
-    href: "/case-studies#etihad-contextual",
+    href: "/case-studies/etihad-contextual",
   },
   {
     id: "skp-bonacure",
@@ -82,7 +82,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "4 Min read",
     views: "1988 Views",
     image: "/images/case-studies/skp-bonacure.jpg",
-    href: "/case-studies#skp-bonacure",
+    href: "/case-studies/skp-bonacure",
   },
   {
     id: "myntra",
@@ -91,7 +91,7 @@ export const caseStudyArticles: CaseStudyArticle[] = [
     readTime: "2 Min read",
     views: "1842 Views",
     image: "/images/case-studies/myntra.jpg",
-    href: "/case-studies#myntra",
+    href: "/case-studies/myntra",
   },
 ];
 

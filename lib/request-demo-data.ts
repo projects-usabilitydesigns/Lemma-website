@@ -73,7 +73,7 @@ export const demoProducts: DemoProductBrief[] = [
     description:
       "Plan, launch, and scale DOOH and CTV campaigns with automated bidding and real-time optimization.",
     logo: "/images/products/delta.svg",
-    accent: "#f82d89",
+    accent: "#008fdb",
     highlights: ["Omnichannel planning", "Automated bidding", "Live optimization"],
     href: "/products/delta",
   },

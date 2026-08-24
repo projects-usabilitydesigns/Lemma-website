@@ -16,7 +16,6 @@ import {
   mediaOwnersCapabilities,
   mediaOwnersChannels,
   mediaOwnersCta,
-  mediaOwnersFaqTitle,
   mediaOwnersFaqs,
   mediaOwnersHero,
   mediaOwnersJourney,
@@ -64,7 +63,7 @@ export default function MediaOwnersPage() {
           metrics={mediaOwnersSuccessMetrics}
         />
         <CaseStudies />
-        <Faq items={mediaOwnersFaqs} title={mediaOwnersFaqTitle} showViewAll={false} />
+        <Faq items={mediaOwnersFaqs} />
         <CTASection data={mediaOwnersCta} />
       </main>
     </>

@@ -42,7 +42,7 @@ export const mediaOwnersWhy = {
       title: "Transparent Monetization",
       description:
         "Clear, detailed insights into every facet of ad monetization—so you understand revenue streams and performance metrics end to end.",
-      accent: "#f82d89",
+      accent: "#008fdb",
       icon: "chart",
     },
     {
@@ -66,7 +66,7 @@ export const mediaOwnersWhy = {
       title: "Creative Control",
       description:
         "Enforce quality standards, uphold brand safety, and tailor how ads display so every placement aligns with your guidelines.",
-      accent: "#a684ff",
+      accent: "#74be44",
       icon: "target",
     },
     {
@@ -252,8 +252,6 @@ export const mediaOwnersFaqs: BrandsFaq[] = [
       "Share your goals through Partner with us and our team will respond within 24 hours with a tailored monetization plan.",
   },
 ];
-
-export const mediaOwnersFaqTitle = "Answers for media owners getting started";
 
 export const mediaOwnersCta = {
   title: "Want to Lemmaximize your inventory?",

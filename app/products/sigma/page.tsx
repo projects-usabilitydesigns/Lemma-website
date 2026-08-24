@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { AboutCta } from "@/components/about/AboutCta";
+import { Faq } from "@/components/Faq";
 import {
   SigmaHero,
   SigmaFutureReady,
   SigmaFeatures,
-  SigmaFaq,
 } from "@/components/products/sigma";
+import { sigmaFaqs } from "@/lib/sigma-data";
 
 export const metadata: Metadata = {
   title: "Lemma Sigma",
@@ -22,7 +23,7 @@ export default function SigmaProductPage() {
         <SigmaHero />
         <SigmaFutureReady />
         <SigmaFeatures />
-        <SigmaFaq />
+        <Faq items={sigmaFaqs} />
         <AboutCta />
       </main>
     </>
