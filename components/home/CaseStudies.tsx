@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
@@ -35,7 +36,7 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <a
+            <Link
               href="/case-studies"
               className="group inline-flex items-center gap-2 text-[16px] text-[var(--color-slate)]"
             >
@@ -44,7 +45,7 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
                 <span className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all group-hover:w-full" />
               </span>
               <span aria-hidden>→</span>
-            </a>
+            </Link>
           </FadeUp>
         </div>
       </Container>
