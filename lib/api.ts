@@ -8,7 +8,7 @@ import type {
   Stat,
 } from "@/types";
 import type { BlogBodySection, BlogPostDetail, ResourceArticle } from "./resources-page-data";
-import { defaultArticleCtas, readingTimeFromText, type ArticleDetail } from "./article-detail";
+import { defaultArticleCtas, type ArticleDetail } from "./article-detail";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
 
 const REVALIDATE = 60;
@@ -277,11 +277,6 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
   } catch {
     return null;
   }
-}
-
-function parseCsv(raw: unknown): string[] {
-  if (typeof raw !== "string") return [];
-  return raw.split(",").map((t) => t.trim()).filter(Boolean);
 }
 
 export async function getNewsroomPosts(): Promise<ResourceArticle[]> {
