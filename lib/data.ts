@@ -33,12 +33,6 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             href: "/about",
           },
           {
-            id: "company",
-            title: "Company",
-            description: "Leadership & values",
-            href: "/about#values",
-          },
-          {
             id: "careers",
             title: "Careers",
             description: "Join the team",
@@ -50,12 +44,6 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
         id: "connect",
         label: "Connect",
         items: [
-          {
-            id: "events",
-            title: "Events",
-            description: "Where to meet us",
-            href: "/about#community",
-          },
           {
             id: "contact",
             title: "Contact Us",
@@ -519,11 +507,6 @@ export const footerLinks = {
     { label: "For Agencies", href: "/solutions/agencies" },
     { label: "For Publishers", href: "/solutions/publishers" },
     { label: "For Network Operators", href: "/solutions/network-operators" },
-  ],
-  company: [
-    { label: "About", href: "/about" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact-us" },
   ],
   legal: [
     { label: "Privacy", href: "#" },

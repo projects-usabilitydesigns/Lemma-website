@@ -126,7 +126,7 @@ export function Footer() {
     <footer className="border-t border-[var(--color-border)] bg-white pb-6 pt-8 md:pt-10">
       <Container>
         <FadeUp>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)] lg:gap-10">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(2,1fr)] lg:gap-10">
             <div>
               <Link href="/" className="relative mb-5 block h-8 w-[146px]">
                 <Image
@@ -154,7 +154,6 @@ export function Footer() {
             {[
               { title: "Products", items: footerLinks.products },
               { title: "Solutions", items: footerLinks.solutions },
-              { title: "Company", items: footerLinks.company },
             ].map((col) => (
               <div key={col.title}>
                 <p className="mb-3 text-[12px] uppercase tracking-[2.4px] text-[var(--color-slate-soft)]">
