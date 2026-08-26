@@ -1,3 +1,5 @@
+import type { ArticleKind } from "./article-detail";
+
 export type ResourceArticle = {
   id: string;
   slug: string;
@@ -11,6 +13,11 @@ export type ResourceArticle = {
   accent: string;
   tone: "dark" | "light" | "brand";
   href: string;
+  kind?: ArticleKind;
+  documentId?: string;
+  rawPublishedAt?: number;
+  viewCount?: number;
+  pinToTrending?: boolean;
 };
 
 export const resourcesHero = {
@@ -38,48 +45,6 @@ export const resourcesHero = {
     },
   },
 } as const;
-
-export const topTrending: ResourceArticle[] = [
-  {
-    id: "tt-1",
-    slug: "ai-ctv-advertising-2026",
-    category: "Blogs",
-    title: "How AI is Transforming CTV Advertising in 2026",
-    date: "January 28, 2025",
-    readTime: "5 Min read",
-    views: "2000 Views",
-    image: "/images/resources/ai-ctv-advertising.png",
-    accent: "#008fdb",
-    tone: "dark",
-    href: "#",
-  },
-  {
-    id: "tt-2",
-    slug: "lemma-continuum-partnership",
-    category: "Newsroom",
-    title: "Lemma and Continuum Media Expand Partnership",
-    date: "May 11, 2025",
-    readTime: "6 Min read",
-    views: "1059 Views",
-    image: "/images/resources/lemma-continuum-partnership.png",
-    accent: "#008fdb",
-    tone: "light",
-    href: "/newsroom/continuum",
-  },
-  {
-    id: "tt-3",
-    slug: "ctv-2025-beyond-the-screen",
-    category: "Blogs",
-    title: "CTV in 2025: What Awaits Beyond the Screen",
-    date: "November 25, 2024",
-    readTime: "7 Min read",
-    views: "278 Views",
-    image: "/images/resources/ctv-beyond-screen.png",
-    accent: "#009352",
-    tone: "dark",
-    href: "#",
-  },
-];
 
 export const blogs: ResourceArticle[] = [
   {
@@ -297,6 +262,7 @@ export type BlogBodySection =
 
 export type BlogPostDetail = {
   slug: string;
+  documentId?: string;
   category: string;
   title: string;
   author: string;

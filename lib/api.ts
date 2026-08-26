@@ -214,13 +214,20 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
       DateTime: string;
       Content: unknown;
       Thumbnail: unknown;
+      ViewCount?: number;
+      PinToTrending?: boolean;
     }>>("blogs", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
       slug: item.Slug,
+      kind: "blog",
+      documentId: item.documentId,
       category: item.Categories ?? "Blogs",
       title: item.Title,
       date: formatStrapiDate(item.DateTime),
+      rawPublishedAt: Date.parse(item.DateTime) || 0,
+      viewCount: item.ViewCount ?? 0,
+      pinToTrending: item.PinToTrending ?? false,
       readTime: "",
       views: "",
       image: getStrapiMediaUrl(
@@ -260,6 +267,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
 
     return {
       slug: item.Slug,
+      documentId: item.documentId,
       category: item.Categories ?? "Blogs",
       title: item.Title,
       author: item.Author ?? "",
@@ -292,13 +300,20 @@ export async function getNewsroomPosts(): Promise<ResourceArticle[]> {
       Datetime: string;
       Content: unknown;
       Thumbnail: unknown;
+      ViewCount?: number;
+      PinToTrending?: boolean;
     }>>("newsrooms", { revalidate: REVALIDATE, sort: "Datetime:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
       slug: item.Slug,
+      kind: "newsroom",
+      documentId: item.documentId,
       category: "Newsroom",
       title: item.Title,
       date: formatStrapiDate(item.Datetime),
+      rawPublishedAt: Date.parse(item.Datetime) || 0,
+      viewCount: item.ViewCount ?? 0,
+      pinToTrending: item.PinToTrending ?? false,
       readTime: "",
       views: "",
       image: getStrapiMediaUrl(
@@ -320,13 +335,20 @@ export async function getCaseStudyArticles(): Promise<ResourceArticle[]> {
       Slug: string;
       Datetime: string;
       Thumbnail: unknown;
+      ViewCount?: number;
+      PinToTrending?: boolean;
     }>>("case-studies", { revalidate: REVALIDATE, sort: "Datetime:desc" });
     return res.data.map((item) => ({
       id: String(item.id),
       slug: item.Slug,
+      kind: "case-study",
+      documentId: item.documentId,
       category: "Case Studies",
       title: item.Title,
       date: formatStrapiDate(item.Datetime),
+      rawPublishedAt: Date.parse(item.Datetime) || 0,
+      viewCount: item.ViewCount ?? 0,
+      pinToTrending: item.PinToTrending ?? false,
       readTime: "",
       views: "",
       image: getStrapiMediaUrl(
@@ -336,6 +358,38 @@ export async function getCaseStudyArticles(): Promise<ResourceArticle[]> {
       tone: "dark",
       href: `/case-studies/${item.Slug}`,
     }));
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Pins-only trending: the section is 100% editor-curated.
+ * Only articles with PinToTrending = true appear (up to `limit`, in CMS order).
+ * No pins -> empty array -> the section renders hidden.
+ */
+export function rankTrendingArticles(
+  articles: ResourceArticle[],
+  { limit = 3 }: { limit?: number; windowDays?: number } = {},
+): ResourceArticle[] {
+  const picked: ResourceArticle[] = [];
+  for (const article of articles) {
+    if (picked.length >= limit) break;
+    if (!article.pinToTrending) continue;
+    if (picked.some((p) => p.id === article.id)) continue;
+    picked.push(article);
+  }
+  return picked;
+}
+
+export async function getTopTrending(limit = 3): Promise<ResourceArticle[]> {
+  try {
+    const [blogs, newsroom, caseStudies] = await Promise.all([
+      getBlogPosts(),
+      getNewsroomPosts(),
+      getCaseStudyArticles(),
+    ]);
+    return rankTrendingArticles([...blogs, ...newsroom, ...caseStudies], { limit });
   } catch {
     return [];
   }
@@ -360,6 +414,7 @@ export async function getNewsroomBySlug(slug: string): Promise<ArticleDetail | n
     return {
       slug: item.Slug,
       kind: "newsroom",
+      documentId: item.documentId,
       category: "Newsroom",
       categories: ["Newsroom"],
       title: item.Title,
@@ -402,6 +457,7 @@ export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | 
     return {
       slug: item.Slug,
       kind: "case-study",
+      documentId: item.documentId,
       category: "Case Studies",
       categories: ["Case Studies"],
       title: item.Title,

@@ -466,6 +466,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
       Schema.Attribute.Private;
+    PinToTrending: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID & Schema.Attribute.Required;
     Subheading: Schema.Attribute.String;
@@ -502,6 +503,7 @@ export interface ApiCaseStudyCaseStudy extends Struct.CollectionTypeSchema {
       'api::case-study.case-study'
     > &
       Schema.Attribute.Private;
+    PinToTrending: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID;
     Thumbnail: Schema.Attribute.Media<
@@ -540,6 +542,7 @@ export interface ApiNewsroomNewsroom extends Struct.CollectionTypeSchema {
       'api::newsroom.newsroom'
     > &
       Schema.Attribute.Private;
+    PinToTrending: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID & Schema.Attribute.Required;
     Thumbnail: Schema.Attribute.Media<
