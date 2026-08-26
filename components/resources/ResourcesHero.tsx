@@ -111,7 +111,7 @@ export function ResourcesHero() {
               transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.2 }}
               className="absolute left-1/2 top-1/2 flex size-[155px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#ff7bb5]/40 bg-white shadow-[0_12px_32px_rgba(9,19,26,0.08)]"
             >
-              <div className="relative h-10 w-28">
+              <div className="relative h-8 w-[120px]">
                 <Image
                   src="/images/logo-lemma.svg"
                   alt="LEMMA"

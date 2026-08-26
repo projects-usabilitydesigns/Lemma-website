@@ -8,14 +8,14 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { VideoModal } from "@/components/ui/VideoModal";
 
-const CARD_IMAGE = "/Group%201597883517%20(2).svg";
+const CARD_IMAGE = "/images/next-frontier-thumbnail.png";
 const DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
 
 export function NextFrontier() {
   const [videoOpen, setVideoOpen] = useState(false);
 
   return (
-    <section className="relative overflow-hidden py-16 md:py-[90px]">
+    <section id="next-frontier" className="relative overflow-hidden py-16 md:py-[90px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-home-mesh)]" />
       <Container className="relative">
@@ -31,24 +31,32 @@ export function NextFrontier() {
               conversions while we unlock new streams of demand through high-impact Digital
               Out-of-Home advertising.
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Button href="/request-demo" variant="primary">
+            <div className="flex flex-wrap items-center gap-3 pt-2 sm:gap-4">
+              <Button
+                href="/request-demo"
+                variant="primary"
+                className="box-border h-11 min-w-[228px] px-6 py-2.5 text-[14px] leading-none tracking-[1.2px]"
+              >
                 Book a free audit
               </Button>
-              <Button href="/contact-us" variant="outline" arrow="none">
+              <Button
+                href="/contact-us"
+                variant="outline"
+                arrow="none"
+                className="box-border h-11 min-w-[228px] px-6 leading-none"
+              >
                 Talk To Sales
               </Button>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.08} className="justify-self-center lg:justify-self-end">
-            <div className="group relative w-full max-w-[676px]">
+            <div className="group relative w-full max-w-[676px] overflow-hidden rounded-[20px] border-2 border-[#009352]">
               <Image
                 src={CARD_IMAGE}
-                alt="Lemma Technologies — Innovate. Integrate. Elevate."
-                width={676}
-                height={392}
-                unoptimized
+                alt="Lemma — Innovate. Integrate. Elevate."
+                width={1672}
+                height={941}
                 className="h-auto w-full"
               />
               <button
