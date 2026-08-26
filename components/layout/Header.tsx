@@ -106,7 +106,7 @@ export function Header({
       onMouseLeave={scheduleCloseMega}
     >
       <Container className="relative flex h-[90px] items-center justify-between">
-        <Link href="/" aria-label="Lemma Technologies home" className="relative h-[35px] w-[170px]">
+        <Link href="/" aria-label="Lemma Technologies home" className="relative h-[35px] w-[163px]">
           <Image
             src="/images/logo-lemma.svg"
             alt="LEMMA"

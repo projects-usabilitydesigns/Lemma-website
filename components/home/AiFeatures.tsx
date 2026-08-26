@@ -1,24 +1,66 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Keyboard, Navigation } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  BrainCircuit,
+  PieChart,
+  Target,
+  TrendingUp,
+  type LucideIcon,
+} from "lucide-react";
 import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { aiFeatures as defaultAiFeatures } from "@/lib/data";
-import "swiper/css";
+import type { AiFeature } from "@/types";
 
 const FUNNEL_IMAGE = "/Group 1597883517.svg";
 
+const FEATURE_ICONS: Record<string, LucideIcon> = {
+  planning: BrainCircuit,
+  activation: Target,
+  optimization: TrendingUp,
+  measurement: PieChart,
+};
+
+function HighlightedText({
+  text,
+  highlight,
+  color,
+}: {
+  text: string;
+  highlight?: string;
+  color: string;
+}) {
+  if (!highlight) return text;
+  const index = text.indexOf(highlight);
+  if (index === -1) return text;
+  return (
+    <>
+      {text.slice(0, index)}
+      <span className="font-semibold" style={{ color }}>
+        {highlight}
+      </span>
+      {text.slice(index + highlight.length)}
+    </>
+  );
+}
+
+function FeatureIcon({ feature }: { feature: AiFeature }) {
+  const Icon = FEATURE_ICONS[feature.id];
+  if (Icon) {
+    return <Icon className="size-6" strokeWidth={1.75} style={{ color: feature.accent }} />;
+  }
+  return (
+    <div className="relative size-6">
+      <Image src={feature.icon} alt="" fill className="object-contain" />
+    </div>
+  );
+}
+
 export function AiFeatures() {
   const data = defaultAiFeatures;
-  const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <section id="ai" className="bg-white py-16 md:pb-[50px] md:pt-10">
@@ -48,78 +90,53 @@ export function AiFeatures() {
           </FadeUp>
         </div>
 
-        <Swiper
-          modules={[Autoplay, Keyboard, Navigation]}
-          onSwiper={(s) => {
-            swiperRef.current = s;
-          }}
-          loop
-          grabCursor
-          keyboard={{ enabled: true }}
-          autoplay={{ delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false }}
-          spaceBetween={40}
-          slidesPerView={1.1}
-          breakpoints={{
-            768: { slidesPerView: 2 },
-            1100: { slidesPerView: 3 },
-          }}
-        >
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {data.map((feature) => (
-            <SwiperSlide key={feature.id} className="!h-auto">
-              <motion.article
-                whileHover={{ y: -6, scale: 1.01 }}
-                className="flex h-full flex-col gap-6 border border-[var(--color-border)] bg-[rgba(249,248,245,0.4)] px-8 py-9 transition-shadow hover:shadow-[0px_12px_40px_rgba(9,19,26,0.08)]"
+            <article
+              key={feature.id}
+              className="flex h-full flex-col gap-4 rounded-2xl border border-[#E5E7EB] bg-white p-6"
+            >
+              <div
+                className="flex size-12 items-center justify-center rounded-xl"
+                style={{ backgroundColor: feature.accentSoft }}
               >
-                <div
-                  className="flex size-12 items-center justify-center"
-                  style={{ backgroundColor: feature.accentSoft }}
-                >
-                  <div className="relative size-6">
-                    <Image src={feature.icon} alt="" fill className="object-contain" />
-                  </div>
-                </div>
-                <h3 className="text-[22px] font-bold tracking-[-0.44px] text-[var(--color-ink)]">
-                  {feature.title}
-                </h3>
-                <p className="text-[16px] leading-[22px] text-[var(--color-slate)]">
-                  {feature.description}
-                </p>
-                <ul className="mt-auto space-y-2.5">
-                  {feature.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-center gap-3 text-[14px] text-[rgba(3,10,17,0.85)]">
-                      <span className="size-1.5 rounded-full" style={{ backgroundColor: feature.accent }} />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </motion.article>
-            </SwiperSlide>
+                <FeatureIcon feature={feature} />
+              </div>
+              <h3 className="text-[20px] font-bold tracking-[-0.4px] text-[var(--color-ink)]">
+                {feature.title}
+              </h3>
+              <p className="text-[15px] leading-[22px] text-[var(--color-slate)]">
+                <HighlightedText
+                  text={feature.description}
+                  highlight={feature.highlight}
+                  color={feature.accent}
+                />
+              </p>
+              <div
+                className="h-[2px] w-full"
+                style={{
+                  background: `linear-gradient(to right, ${feature.accent} 0%, transparent 100%)`,
+                }}
+              />
+              <ul className="mt-1 space-y-2.5">
+                {feature.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="flex items-start gap-3 text-[14px] leading-[20px] text-[rgba(3,10,17,0.85)]"
+                  >
+                    <span
+                      className="mt-[7px] size-1.5 shrink-0 rounded-full"
+                      style={{ backgroundColor: feature.accent }}
+                    />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            </article>
           ))}
-        </Swiper>
-
-        <div className="mt-8 flex items-center gap-3">
-          <div className="h-px flex-1 bg-[var(--color-divider)]" />
-          <div className="flex gap-3">
-            <button
-              type="button"
-              aria-label="Previous capabilities"
-              className="flex size-11 items-center justify-center rounded-full border border-[var(--color-border)]"
-              onClick={() => swiperRef.current?.slidePrev()}
-            >
-              <ChevronLeft className="size-4" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next capabilities"
-              className="flex size-11 items-center justify-center rounded-full border border-[var(--color-border)]"
-              onClick={() => swiperRef.current?.slideNext()}
-            >
-              <ChevronRight className="size-4" />
-            </button>
-          </div>
         </div>
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <Button href="#ai" variant="primary">
             learn more
           </Button>

@@ -97,7 +97,7 @@ export function buildDemoRequestEmail(values: DemoRequestPayload) {
             </tr>
             <tr>
               <td style="background:#09131a;padding:28px 32px;">
-                <img src="cid:${DEMO_LOGO_CID}" alt="Lemma" width="148" height="32" style="display:block;border:0;outline:none;height:32px;width:148px;" />
+                <img src="cid:${DEMO_LOGO_CID}" alt="Lemma" width="149" height="32" style="display:block;border:0;outline:none;height:32px;width:149px;" />
               </td>
             </tr>
             <tr>
