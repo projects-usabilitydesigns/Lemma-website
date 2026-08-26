@@ -41,6 +41,8 @@ export type AiFeature = {
   id: string;
   title: string;
   description: string;
+  /** Phrase inside `description` rendered in the card accent color. */
+  highlight?: string;
   bullets: string[];
   icon: string;
   accent: string;

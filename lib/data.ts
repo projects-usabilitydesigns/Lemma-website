@@ -33,12 +33,6 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             href: "/about",
           },
           {
-            id: "company",
-            title: "Company",
-            description: "Leadership & values",
-            href: "/about#values",
-          },
-          {
             id: "careers",
             title: "Careers",
             description: "Join the team",
@@ -50,12 +44,6 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
         id: "connect",
         label: "Connect",
         items: [
-          {
-            id: "events",
-            title: "Events",
-            description: "Where to meet us",
-            href: "/about#community",
-          },
           {
             id: "contact",
             title: "Contact Us",
@@ -219,7 +207,7 @@ export const products: Product[] = [
     id: "integral",
     name: "Integral",
     description:
-      "Activate, retarget, and measure every OOH impression with precision—backed by deep audience analytics and attribution.",
+      "Connect real-world visibility to measurable digital results (ROI) with full-funnel activation, retargeting, and attribution.",
     logo: "/images/products/integral.svg",
     href: "/products/integral",
   },
@@ -227,7 +215,7 @@ export const products: Product[] = [
     id: "delta",
     name: "Delta",
     description:
-      "Scale DOOH and CTV campaigns with automated bidding, real-time optimization, and maximum reach.",
+      "Scale programmatic advertising across DOOH and CTV with real-time bidding, automated performance controls, and maximum reach.",
     logo: "/images/products/delta.svg",
     href: "/products/delta",
   },
@@ -235,7 +223,7 @@ export const products: Product[] = [
     id: "sigma",
     name: "Sigma",
     description:
-      "Transparent SSP designed to maximize inventory yield. Unlock greater revenue opportunities with real-time insights, demand access, and complete transparency.",
+      "Connect outdoor and CTV inventory to global buyers and optimize monetization with transparent, real-time reporting.",
     logo: "/images/products/sigma.svg",
     href: "/products/sigma",
   },
@@ -243,7 +231,7 @@ export const products: Product[] = [
     id: "phi",
     name: "Phi",
     description:
-      "Plan, schedule, and deliver DOOH content seamlessly. Manage content distribution across screens, locations, and formats from a single streamlined platform.",
+      "Effortlessly plan, schedule, and deliver dynamic DOOH content across all screens, networks, and formats from one central platform.",
     logo: "/images/products/phi.svg",
     href: "/products/phi",
   },
@@ -251,7 +239,7 @@ export const products: Product[] = [
     id: "infibid",
     name: "Infibid",
     description:
-      "Maximize revenue through server-side header bidding. Increase fill rates and improve monetization performance with advanced auction management technology.",
+      "Maximize revenue and fill rates through server-side header bidding and advanced auction management technology.",
     logo: "/images/products/infibid.svg",
     href: "#products",
   },
@@ -356,53 +344,57 @@ export const aiFeatures: AiFeature[] = [
     id: "planning",
     title: "AI-Powered Planning",
     description: "Smarter planning with Adtech AI for maximum impact.",
+    highlight: "Adtech AI",
     bullets: [
       "Audience & market intelligence",
       "Budget allocation across channels",
       "Scenario modeling & forecasting",
     ],
     icon: "/icons/ai-audience.svg",
-    accent: "#008fdb",
-    accentSoft: "rgba(0, 143, 219, 0.1)",
+    accent: "#008FDB",
+    accentSoft: "#E8F4FC",
   },
   {
     id: "activation",
     title: "Intelligent Activation",
     description: "Programmatic AI to deliver the right ads to the right audience.",
+    highlight: "Programmatic AI",
     bullets: [
       "AI in media buying",
       "Real-time bidding & optimization",
       "Omnichannel AI reach across DOOH, CTV, Web, Mobile & Social",
     ],
     icon: "/icons/ai-creative.svg",
-    accent: "#008fdb",
-    accentSoft: "rgba(0, 143, 219, 0.1)",
+    accent: "#7C6FFF",
+    accentSoft: "#F0ECFF",
   },
   {
     id: "optimization",
     title: "AI-Driven Optimization",
     description: "Continuous learning to improve ads with AI performance.",
+    highlight: "ads with AI",
     bullets: [
       "Predictive performance models",
       "Creative & audience optimization",
       "Automated bid & budget controls",
     ],
     icon: "/icons/ai-bidding.svg",
-    accent: "#008fdb",
-    accentSoft: "rgba(0, 143, 219, 0.1)",
+    accent: "#E84A8C",
+    accentSoft: "#FDE8F2",
   },
   {
     id: "measurement",
     title: "Measurement & Growth",
     description: "Full-funnel measurement to prove impact and drive growth.",
+    highlight: "Full-funnel",
     bullets: [
       "Incrementality & attribution",
       "Cross-channel insights",
       "ROI & outcome optimization",
     ],
     icon: "/icons/ai-measurement.svg",
-    accent: "#009352",
-    accentSoft: "rgba(0, 147, 82, 0.1)",
+    accent: "#00B4C4",
+    accentSoft: "#E5F8FA",
   },
 ];
 
@@ -519,11 +511,6 @@ export const footerLinks = {
     { label: "For Agencies", href: "/solutions/agencies" },
     { label: "For Publishers", href: "/solutions/publishers" },
     { label: "For Network Operators", href: "/solutions/network-operators" },
-  ],
-  company: [
-    { label: "About", href: "/about" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact-us" },
   ],
   legal: [
     { label: "Privacy", href: "#" },
