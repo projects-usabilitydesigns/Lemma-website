@@ -23,6 +23,7 @@ export type RelatedArticle = {
 export type ArticleDetail = {
   slug: string;
   kind: ArticleKind;
+  documentId?: string;
   category: string;
   categories: string[];
   title: string;

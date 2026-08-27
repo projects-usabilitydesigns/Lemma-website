@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { VideoModal } from "@/components/ui/VideoModal";
 
-const CARD_IMAGE = "/images/next-frontier-thumbnail.png";
 const DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
 
 export function NextFrontier() {
@@ -51,12 +50,12 @@ export function NextFrontier() {
           </FadeUp>
 
           <FadeUp delay={0.08} className="justify-self-center lg:justify-self-end">
-            <div className="group relative w-full max-w-[676px] overflow-hidden rounded-[20px] border-2 border-[#009352]">
+            <div className="group relative w-full max-w-[676px]">
               <Image
-                src={CARD_IMAGE}
-                alt="Lemma — Innovate. Integrate. Elevate."
-                width={1672}
-                height={941}
+                src="/images/next-frontier.jpg"
+                alt="Lemma AI Discovery — screens, audience reach, and campaign planning"
+                width={676}
+                height={392}
                 className="h-auto w-full"
               />
               <button
