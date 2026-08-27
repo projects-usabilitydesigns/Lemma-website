@@ -2,13 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Play } from "lucide-react";
 import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { VideoModal } from "@/components/ui/VideoModal";
 
-const CARD_IMAGE = "/images/next-frontier-thumbnail.png";
 const DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
 
 export function NextFrontier() {
@@ -51,23 +49,20 @@ export function NextFrontier() {
           </FadeUp>
 
           <FadeUp delay={0.08} className="justify-self-center lg:justify-self-end">
-            <div className="group relative w-full max-w-[676px] overflow-hidden rounded-[20px] border-2 border-[#009352]">
+            <div className="group relative w-full max-w-[676px]">
               <Image
-                src={CARD_IMAGE}
-                alt="Lemma — Innovate. Integrate. Elevate."
-                width={1672}
-                height={941}
+                src="/images/next-frontier.png"
+                alt="Lemma AI Discovery — screens, audience reach, and campaign planning"
+                width={676}
+                height={392}
                 className="h-auto w-full"
               />
               <button
                 type="button"
                 aria-label="Play Lemma Technologies video"
                 onClick={() => setVideoOpen(true)}
-                className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-[0px_10px_40px_-5px_rgba(0,143,219,0.55)] transition-transform duration-300 group-hover:scale-110"
-                style={{ backgroundImage: "linear-gradient(135deg, #008fdb 0%, #009352 100%)" }}
-              >
-                <Play className="ml-0.5 size-[27px] fill-white text-white" />
-              </button>
+                className="absolute inset-0"
+              />
             </div>
           </FadeUp>
         </div>
