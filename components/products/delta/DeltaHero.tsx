@@ -57,34 +57,17 @@ export function DeltaHero() {
             initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.15 }}
-            className="relative mx-auto flex w-full max-w-[560px] flex-col items-center lg:mx-0 lg:justify-self-end"
+            className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:justify-self-end"
           >
             <Image
-              src={deltaAssets.heroLogo}
-              alt="LEMMA DELTA"
-              width={276}
-              height={35}
-              quality={100}
+              src={deltaAssets.heroGraphic}
+              alt="LEMMA DELTA — Plan, Activate, Measure"
+              width={709}
+              height={568}
               unoptimized
-              className="h-auto w-[224px] object-contain object-center md:w-[343px]"
+              className="h-auto w-full object-contain object-center"
               priority
             />
-            <p className="mt-1 text-center font-heading text-[18px] font-semibold leading-none text-black md:mt-1.5 md:text-[22px]">
-              Lemma Delta
-            </p>
-            <div className="relative mt-1 w-full">
-              <Image
-                src={deltaAssets.heroGraphic}
-                alt="Lemma Delta — Plan, Activate, Measure"
-                width={709}
-                height={495}
-                quality={100}
-                unoptimized
-                className="h-auto w-full object-contain object-center"
-                priority
-                sizes="(max-width: 1024px) 100vw, 560px"
-              />
-            </div>
           </motion.div>
         </div>
       </Container>

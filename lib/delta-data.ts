@@ -7,8 +7,8 @@ export function productAsset(filename: string) {
 }
 
 export const deltaAssets = {
-  heroGraphic: productImage("Group 1597883475-nobg.png"),
-  heroLogo: productImage("Frame 1597890331-nobg.png"),
+  heroGraphic: productAsset("delta-hero.svg"),
+  heroLogo: productAsset("delta-hero.svg"),
   logo: productAsset("delta.svg"),
   advantage: productImage("lemmaadvantage.png"),
 } as const;

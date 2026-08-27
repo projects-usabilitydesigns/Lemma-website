@@ -3,7 +3,10 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { CookieConsentProvider } from "@/components/cookies/CookieConsentProvider";
+import { ConsentScripts } from "@/components/cookies/ConsentScripts";
 import { DemoModalProvider } from "@/components/request-demo/DemoModalProvider";
+import { CONSENT_BOOT_SCRIPT } from "@/lib/cookie-consent";
 import "./globals.css";
 
 const inter = Inter({
@@ -108,11 +111,15 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOT_SCRIPT }} />
         <SmoothScrollProvider>
-          <DemoModalProvider>
-            {children}
-            <Footer />
-          </DemoModalProvider>
+          <CookieConsentProvider>
+            <ConsentScripts />
+            <DemoModalProvider>
+              {children}
+              <Footer />
+            </DemoModalProvider>
+          </CookieConsentProvider>
         </SmoothScrollProvider>
       </body>
     </html>

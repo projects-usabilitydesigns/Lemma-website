@@ -11,6 +11,8 @@ export type Product = {
   name: string;
   description: string;
   logo: string;
+  /** Original multi-color lockup, shown on logo hover. */
+  logoColor?: string;
   href: string;
 };
 

@@ -209,6 +209,7 @@ export const products: Product[] = [
     description:
       "Connect real-world visibility to measurable digital results (ROI) with full-funnel activation, retargeting, and attribution.",
     logo: "/images/products/integral.svg",
+    logoColor: "/images/products/integral-color.png",
     href: "/products/integral",
   },
   {
@@ -217,6 +218,7 @@ export const products: Product[] = [
     description:
       "Scale programmatic advertising across DOOH and CTV with real-time bidding, automated performance controls, and maximum reach.",
     logo: "/images/products/delta.svg",
+    logoColor: "/images/products/delta-color.png",
     href: "/products/delta",
   },
   {
@@ -225,6 +227,7 @@ export const products: Product[] = [
     description:
       "Connect outdoor and CTV inventory to global buyers and optimize monetization with transparent, real-time reporting.",
     logo: "/images/products/sigma.svg",
+    logoColor: "/images/products/sigma-color.png",
     href: "/products/sigma",
   },
   {
@@ -233,6 +236,7 @@ export const products: Product[] = [
     description:
       "Effortlessly plan, schedule, and deliver dynamic DOOH content across all screens, networks, and formats from one central platform.",
     logo: "/images/products/phi.svg",
+    logoColor: "/images/products/phi-color.png",
     href: "/products/phi",
   },
   {
@@ -241,6 +245,7 @@ export const products: Product[] = [
     description:
       "Maximize revenue and fill rates through server-side header bidding and advanced auction management technology.",
     logo: "/images/products/infibid.svg",
+    logoColor: "/images/products/infibid-color.png",
     href: "#products",
   },
 ];
@@ -513,8 +518,7 @@ export const footerLinks = {
     { label: "For Network Operators", href: "/solutions/network-operators" },
   ],
   legal: [
-    { label: "Privacy", href: "#" },
+    { label: "Privacy", href: "/privacy-policy" },
     { label: "Cookies", href: "#" },
-    { label: "Terms", href: "#" },
   ],
 } as const;

@@ -77,7 +77,7 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
           <div className="flex min-h-[360px] flex-col justify-between gap-10">
             <div className="space-y-6">
               <BlurReveal className="space-y-2">
-                <p className="font-heading text-[16px] font-medium leading-[1.3] tracking-[0.7px] text-[var(--color-slate)] md:text-[18px]">
+                <p className="font-heading text-[18px] font-medium leading-[1.3] tracking-[0.7px] text-[var(--color-slate)] md:text-[22px]">
                   Leading performance platform, globally
                 </p>
                 <h1 className="font-heading text-[40px] font-semibold leading-[1.05] tracking-[-0.72px] text-[var(--color-ink)] md:text-[56px] md:leading-[1.05]">

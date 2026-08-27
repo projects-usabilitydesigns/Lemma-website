@@ -6,6 +6,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { FadeUp } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { footerLinks } from "@/lib/data";
+import { useCookieConsent } from "@/components/cookies/CookieConsentProvider";
 
 const aiPrompt =
   "What is Lemma Technologies, and how does its platform help advertisers, agencies, media owners, and network operators manage and monetize DOOH, CTV, OTT, and omnichannel advertising campaigns?";
@@ -95,6 +96,7 @@ const socialLinks = [
 const contactItems = [
   {
     icon: MapPin,
+    href: undefined as string | undefined,
     content: (
       <span>
         NEW YORK 530 Fifth Ave, 9th Floor,
@@ -105,23 +107,18 @@ const contactItems = [
   },
   {
     icon: Mail,
-    content: (
-      <a href="mailto:contactus@lemmamedia.com" className="hover:underline">
-        contactus@lemmamedia.com
-      </a>
-    ),
+    href: "mailto:contactus@lemmamedia.com",
+    content: "contactus@lemmamedia.com",
   },
   {
     icon: Phone,
-    content: (
-      <a href="tel:+0012345678" className="hover:underline">
-        +00 12345678
-      </a>
-    ),
+    href: "tel:+0012345678",
+    content: "+00 12345678",
   },
 ] as const;
 
 export function Footer() {
+  const { openSettings } = useCookieConsent();
   return (
     <footer className="border-t border-[var(--color-border)] bg-white pb-6 pt-8 md:pt-10">
       <Container>
@@ -139,12 +136,21 @@ export function Footer() {
               <ul className="space-y-3 text-[14px] leading-relaxed text-[var(--color-slate)]">
                 {contactItems.map((item, index) => {
                   const Icon = item.icon;
+                  const textClass = item.href
+                    ? "transition-colors duration-200 group-hover/contact:text-[var(--color-blue-link)]"
+                    : undefined;
                   return (
-                    <li key={index} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-[rgba(21,129,197,0.18)]">
+                    <li key={index} className="flex items-center gap-3">
+                      <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[rgba(21,129,197,0.18)]">
                         <Icon className="size-4 text-[var(--color-blue-link)]" strokeWidth={2} />
                       </span>
-                      {item.content}
+                      {item.href ? (
+                        <a href={item.href} className="group/contact">
+                          <span className={textClass}>{item.content}</span>
+                        </a>
+                      ) : (
+                        <span>{item.content}</span>
+                      )}
                     </li>
                   );
                 })}
@@ -289,11 +295,22 @@ export function Footer() {
         <div className="mt-5 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-border)] pt-4 text-[12px] text-[var(--color-slate)] md:mt-6 md:flex-row md:items-center">
           <p>© 2026 Lemma Technologies. All rights reserved.</p>
           <div className="flex gap-6">
-            {footerLinks.legal.map((item) => (
-              <Link key={item.label} href={item.href} className="hover:underline">
-                {item.label}
-              </Link>
-            ))}
+            {footerLinks.legal.map((item) =>
+              item.label === "Cookies" ? (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={openSettings}
+                  className="hover:underline"
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link key={item.label} href={item.href} className="hover:underline">
+                  {item.label}
+                </Link>
+              ),
+            )}
           </div>
         </div>
       </Container>
