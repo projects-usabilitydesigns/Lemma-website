@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
+// Derive the allowed image host from STRAPI_URL so the same code works on
+// localhost (http://localhost:1337) and in production (https://cms.example.com).
+const strapi = new URL(process.env.STRAPI_URL ?? "http://localhost:1337");
+
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
@@ -7,9 +11,9 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
+        protocol: strapi.protocol.replace(":", "") as "http" | "https",
+        hostname: strapi.hostname,
+        ...(strapi.port ? { port: strapi.port } : {}),
         pathname: "/uploads/**",
       },
     ],

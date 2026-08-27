@@ -42,6 +42,10 @@
         "videos",
         "audios"
       ]
+    },
+    "PinToTrending": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

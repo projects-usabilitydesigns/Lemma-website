@@ -48,6 +48,10 @@
         " Lemma Editorial Team",
         "Lemma Team"
       ]
+    },
+    "PinToTrending": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
