@@ -391,7 +391,16 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
                 />
                 <span>
                   I agree to Lemma processing my details to contact me about this request, in line
-                  with the privacy policy.
+                  with the{" "}
+                  <a
+                    href="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[var(--color-blue-link)] hover:underline"
+                  >
+                    privacy policy
+                  </a>
+                  .
                 </span>
               </label>
               <FieldError id={`${formId}-consent-error`} message={errors.consent} />

@@ -50,7 +50,7 @@ export function NextFrontier() {
           </FadeUp>
 
           <FadeUp delay={0.08} className="justify-self-center lg:justify-self-end">
-            <div className="group relative w-full max-w-[676px]">
+            <div className="group relative w-full max-w-[676px] overflow-hidden rounded-[16px] border-2 border-[#037C7C]">
               <Image
                 src="/images/next-frontier.jpg"
                 alt="Lemma AI Discovery — screens, audience reach, and campaign planning"
