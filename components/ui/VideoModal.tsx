@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import { useCookieConsent } from "@/components/cookies/CookieConsentProvider";
 
 type VideoModalProps = {
   open: boolean;
@@ -12,7 +13,7 @@ type VideoModalProps = {
   onClose: () => void;
 };
 
-function toEmbedUrl(url: string) {
+function toEmbedUrl(url: string, allowMarketingCookies: boolean) {
   try {
     const parsed = new URL(url);
     let id = "";
@@ -24,13 +25,17 @@ function toEmbedUrl(url: string) {
     }
 
     if (!id) return url;
-    return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+    const host = allowMarketingCookies ? "www.youtube.com" : "www.youtube-nocookie.com";
+    return `https://${host}/embed/${id}?autoplay=1&rel=0`;
   } catch {
     return url;
   }
 }
 
 export function VideoModal({ open, title, videoUrl, onClose }: VideoModalProps) {
+  const { preferences } = useCookieConsent();
+  const allowMarketingCookies = preferences.marketing;
+
   useEffect(() => {
     if (!open) return;
 
@@ -86,7 +91,7 @@ export function VideoModal({ open, title, videoUrl, onClose }: VideoModalProps) 
             </button>
             <div className="aspect-video w-full">
               <iframe
-                src={toEmbedUrl(videoUrl)}
+                src={toEmbedUrl(videoUrl, allowMarketingCookies)}
                 title={title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen

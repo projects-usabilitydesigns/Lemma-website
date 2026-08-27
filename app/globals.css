@@ -119,6 +119,24 @@ img {
   transform: scale(1.02);
 }
 
+.cookie-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #009352 #e8ecee;
+}
+
+.cookie-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cookie-scroll::-webkit-scrollbar-thumb {
+  background: #009352;
+  border-radius: 8px;
+}
+
+.cookie-scroll::-webkit-scrollbar-track {
+  background: #e8ecee;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

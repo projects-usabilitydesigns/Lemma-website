@@ -28,8 +28,23 @@ export function Products() {
               whileHover={{ y: -8 }}
               className="group flex h-full flex-col items-center rounded-[16px] border border-[var(--color-border-strong)] bg-white p-5 text-center shadow-[0px_4px_0px_#037C7C] transition-shadow duration-300 hover:shadow-[0px_8px_24px_rgba(3,124,124,0.25)]"
             >
-              <div className="relative mb-5 h-7 w-full max-w-[230px]">
-                <Image src={product.logo} alt={`LEMMA ${product.name}`} fill unoptimized className="object-contain object-center" />
+              <div className="group/logo relative mb-5 h-8 w-full max-w-[230px]">
+                <Image
+                  src={product.logo}
+                  alt={`LEMMA ${product.name}`}
+                  fill
+                  unoptimized
+                  className="object-contain object-center transition-opacity duration-300 group-hover/logo:opacity-0"
+                />
+                {product.logoColor ? (
+                  <Image
+                    src={product.logoColor}
+                    alt=""
+                    fill
+                    unoptimized
+                    className="object-contain object-center opacity-0 transition-opacity duration-300 group-hover/logo:opacity-100"
+                  />
+                ) : null}
               </div>
               <h3 className="mb-5 text-[24px] font-bold tracking-[-0.44px] text-[var(--color-ink)]">
                 {product.name}
