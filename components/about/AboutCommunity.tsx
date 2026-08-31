@@ -6,6 +6,13 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { aboutAssets } from "@/lib/about-data";
 
+const wordPlay = {
+  backgroundImage: "var(--gradient-cta)",
+  backgroundClip: "text",
+  WebkitBackgroundClip: "text",
+  color: "transparent",
+} as const;
+
 export function AboutCommunity() {
   return (
     <section id="community" className="bg-white py-16 md:py-[90px]">
@@ -28,9 +35,9 @@ export function AboutCommunity() {
             style={{ padding: "70px 27px 71px" }}
           >
             <div className="flex flex-col gap-2.5">
-              <SectionLabel label="Creative Minds" />
+              <SectionLabel label="Curious Minds" />
               <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-                Lemmagicians at work!
+                <span style={wordPlay}>Lemmagicians</span> at work!
               </h2>
               <p className="font-[family-name:var(--font-inter)] text-[18px] font-medium leading-[1.55] text-[var(--color-slate)]">
                 From larger-than-life DOOH displays to captivating CTV and OTT experiences, our
@@ -45,9 +52,9 @@ export function AboutCommunity() {
         {/* Mobile / tablet */}
         <div className="space-y-8 lg:hidden">
           <FadeUp className="space-y-4">
-            <SectionLabel label="Creative Minds" />
+            <SectionLabel label="Curious Minds" />
             <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-              Lemmagicians at work!
+              <span style={wordPlay}>Lemmagicians</span> at work!
             </h2>
             <p className="font-[family-name:var(--font-inter)] text-[18px] font-medium leading-[1.55] text-[var(--color-slate)]">
               From larger-than-life DOOH displays to captivating CTV and OTT experiences, our

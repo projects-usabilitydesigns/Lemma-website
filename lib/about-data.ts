@@ -33,7 +33,7 @@ export const aboutValues: ValueTab[] = [
     title: "Building Trust Through Transparency",
     description:
       "Transparency is the foundation of everything we do. We believe that open communication, honest practices, and clear decision-making create stronger relationships and lasting trust. By fostering an environment where information flows freely and expectations are clearly defined, we empower our teams, partners, and clients to collaborate with confidence.",
-    image: aboutImage("Component 14.png"),
+    image: aboutImage("our-values.svg"),
   },
   {
     id: "innovation",
@@ -41,7 +41,7 @@ export const aboutValues: ValueTab[] = [
     title: "Driving Change Through Innovation",
     description:
       "Innovation powers everything we build — from AI-first attribution to programmatic DOOH. We push boundaries so outdoor and omnichannel media get the same measurement rigor as digital, unlocking new possibilities for brands and media owners alike.",
-    image: aboutImage("Component 14.png"),
+    image: aboutImage("our-values.svg"),
   },
   {
     id: "agility",
@@ -49,7 +49,7 @@ export const aboutValues: ValueTab[] = [
     title: "Moving Faster With Agility",
     description:
       "Agility lets us adapt campaigns in real time — optimizing bids, creatives, and delivery as markets shift. Speed without sacrificing precision keeps brands ahead and ensures every impression works harder toward measurable outcomes.",
-    image: aboutImage("Component 14.png"),
+    image: aboutImage("our-values.svg"),
   },
   {
     id: "energetic",
@@ -57,7 +57,7 @@ export const aboutValues: ValueTab[] = [
     title: "Staying Bold And Energetic",
     description:
       "An energetic culture fuels curiosity and collaboration. We bring that energy to every partnership — helping brands and media owners turn impressions into outcomes with passion, purpose, and relentless forward momentum.",
-    image: aboutImage("Component 14.png"),
+    image: aboutImage("our-values.svg"),
   },
 ];
 
@@ -191,13 +191,6 @@ export const leadershipTeam: TeamMember[] = [
     role: "Senior Director, Demand - US",
     image: aboutImage("Valentine Ding.png"),
     linkedin: "https://www.linkedin.com/in/val-d-1682301ba",
-  },
-  {
-    id: "t8",
-    name: "Brendon Duffy",
-    role: "Director, Demand - US",
-    image: aboutImage("Brendon Duffy.png"),
-    linkedin: "https://www.linkedin.com/company/lemma-technologies",
   },
   {
     id: "t9",
@@ -345,5 +338,5 @@ export const aboutPrinciples = {
 export const aboutAssets = {
   hero: aboutImage("about-hero.png"),
   community: aboutImage("Component 11.png"),
-  values: aboutImage("Component 14.png"),
+  values: aboutImage("our-values.svg"),
 } as const;

@@ -12,6 +12,7 @@ export function AboutHero() {
   return (
     <section className="relative mx-auto h-auto w-full max-w-[1920px] overflow-hidden md:h-[664px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-home-mesh)]" />
 
       <Container className="relative flex h-full items-center pt-[100px] pb-12 md:pt-[88px] md:pb-0">
         <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
@@ -25,16 +26,17 @@ export function AboutHero() {
             >
               Transforming
               <br />
-              Advertising Futures
+              Advertising&apos;s Future
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.1 }}
-              className="font-heading max-w-md text-[18px] font-normal leading-[140%] tracking-[0.7px] text-[#09131A] md:text-[22px]"
+              className="font-heading max-w-xl text-[18px] font-normal leading-[140%] tracking-[0.7px] text-[#09131A] md:text-[22px]"
             >
-              Innovative technology. Transparent solutions. Measurable impact across every digital
-              touchpoint.
+              Innovative Technology | Transparent Solutions |
+              <br />
+              Measurable Impact - Across every digital touchpoint
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

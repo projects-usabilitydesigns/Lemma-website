@@ -74,7 +74,7 @@ export function AiFeatures() {
               Platform.
             </h2>
             <p className="max-w-lg font-[family-name:var(--font-inter)] text-[16px] font-medium leading-[22px] tracking-normal text-[var(--color-slate)] md:text-[18px] md:leading-[26px]">
-              Lemma&apos;s AI stack powers the entire advertising journey — from intelligent
+              Lemma&apos;s AI stack powers the entire advertising journey from intelligent
               planning and precise targeting to dynamic optimization and real-time measurement.
             </p>
           </FadeUp>

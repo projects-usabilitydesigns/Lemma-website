@@ -49,19 +49,12 @@ export function AboutPrinciples() {
   return (
     <section id="principles" className="bg-white pb-8 pt-10 md:pb-12 md:pt-16">
       <Container>
-        <div className="mb-10 grid gap-6 lg:mb-12 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-16">
+        <div className="mb-10 lg:mb-12">
           <FadeUp className="space-y-5">
             <SectionLabel label="Strategic mission" accent="blue" />
             <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
               Our guiding principles
             </h2>
-          </FadeUp>
-          <FadeUp delay={0.08}>
-            <p className="font-[family-name:var(--font-inter)] text-[16px] font-medium leading-[1.65] text-[var(--color-slate)] lg:pt-10">
-              Empowering businesses with innovative, transparent, and technology-driven advertising
-              solutions. Building a smarter digital future through adaptability, collaboration, and
-              sustainable growth.
-            </p>
           </FadeUp>
         </div>
 
