@@ -43,10 +43,7 @@ export function SigmaFeatures() {
                 )}
               >
                 <div
-                  className="flex w-full max-w-[520px] flex-col justify-center gap-2 rounded-[20px] border border-[#e4eef3]/80 px-6 py-6 md:px-8 md:py-7 lg:px-10 lg:py-8"
-                  style={{
-                    backgroundImage: "linear-gradient(135deg, #E8F5FC 0%, #EAF8F0 100%)",
-                  }}
+                  className="flex w-full max-w-[520px] flex-col justify-center gap-2 rounded-[20px] bg-[var(--color-feature-box)] px-6 py-6 md:px-8 md:py-7 lg:px-10 lg:py-8"
                 >
                   <span className="text-[12px] font-semibold uppercase tracking-[2.4px] text-[var(--color-slate)]">
                     {feature.eyebrow}
@@ -72,7 +69,7 @@ export function SigmaFeatures() {
                   <div
                     className="pointer-events-none absolute left-1/2 top-1/2 z-0 aspect-square w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full"
                     style={{
-                      backgroundImage: "linear-gradient(135deg, #E8F6FF 0%, #EAF8F0 100%)",
+                      backgroundImage: "var(--gradient-feature-glow)",
                     }}
                     aria-hidden
                   />

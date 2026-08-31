@@ -21,7 +21,7 @@ export function CareersJobs() {
       />
 
       <Container className="relative">
-        <FadeUp className="mx-auto mb-10 max-w-4xl space-y-4 text-center">
+        <FadeUp className="mx-auto mb-10 max-w-4xl space-y-4 text-center md:mb-12">
           <SectionLabel label={careersJobs.label} align="center" />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             {careersJobs.title}
@@ -31,7 +31,7 @@ export function CareersJobs() {
           </p>
         </FadeUp>
 
-        <Stagger className="mb-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <Stagger className="mb-10 grid gap-5 md:mb-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {careersJobs.roles.map((role) => (
             <motion.article
               key={role.id}

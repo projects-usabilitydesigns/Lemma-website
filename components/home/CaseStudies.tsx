@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
@@ -28,26 +27,12 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
   return (
     <section id="case-studies" className="overflow-hidden bg-white pb-16 pt-8 md:pb-[90px] md:pt-10">
       <Container className="mb-12">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <FadeUp className="space-y-5">
-            <SectionLabel label="Case Studies" />
-            <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-              Lemmagnified success stories.
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <Link
-              href="/case-studies"
-              className="group inline-flex items-center gap-2 text-[16px] text-[var(--color-slate)]"
-            >
-              <span className="relative">
-                All case studies
-                <span className="absolute bottom-0 left-0 h-px w-0 bg-current transition-all group-hover:w-full" />
-              </span>
-              <span aria-hidden>→</span>
-            </Link>
-          </FadeUp>
-        </div>
+        <FadeUp className="space-y-5">
+          <SectionLabel label="Case Studies" />
+          <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
+            Lemmagnified success stories.
+          </h2>
+        </FadeUp>
       </Container>
 
       <div className="relative px-4 md:px-5">
@@ -150,7 +135,7 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
         </div>
         <div className="flex justify-center">
           <Button href="/case-studies" variant="primary">
-            View All Case Studies
+            All Case Studies
           </Button>
         </div>
       </Container>

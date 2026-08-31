@@ -35,6 +35,8 @@
   );
   --gradient-blue: linear-gradient(90deg, #008fdb 0%, #005481 100%);
   --gradient-cta: linear-gradient(90deg, #008fdb 0%, #009352 100%);
+  --color-feature-box: #f2f2f2;
+  --gradient-feature-glow: linear-gradient(135deg, #e8f6ff 0%, #ecfdf5 100%);
   --gradient-hero: linear-gradient(
     148.69deg,
     #e8f6ff 0%,

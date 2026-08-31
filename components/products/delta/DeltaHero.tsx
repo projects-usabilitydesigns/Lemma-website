@@ -61,7 +61,7 @@ export function DeltaHero() {
           >
             <Image
               src={deltaAssets.heroGraphic}
-              alt="LEMMA DELTA — Plan, Activate, Measure"
+              alt="LEMMA DELTA™ — Plan, Activate, Measure"
               width={709}
               height={568}
               unoptimized

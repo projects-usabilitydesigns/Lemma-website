@@ -101,7 +101,7 @@ export function IntegralFeatures() {
                 imageLeft && "lg:grid-cols-[1.1fr_0.9fr] lg:[&>*:first-child]:order-2",
               )}
             >
-              <div className="flex w-full max-w-[520px] flex-col justify-center gap-2 rounded-[20px] bg-[#F2F2F2] px-6 py-6 md:px-8 md:py-7 lg:px-10 lg:py-8">
+              <div className="flex w-full max-w-[520px] flex-col justify-center gap-2 rounded-[20px] bg-[var(--color-feature-box)] px-6 py-6 md:px-8 md:py-7 lg:px-10 lg:py-8">
                   <h3
                     className={cn(
                       "font-[family-name:var(--font-inter)] font-semibold tracking-[-0.4px] text-[#111]",
@@ -148,7 +148,7 @@ export function IntegralFeatures() {
                     scale={0.88}
                     className="pointer-events-none absolute left-1/2 top-1/2 z-0 aspect-square w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full"
                     style={{
-                      backgroundImage: "linear-gradient(135deg, #E8F6FF 0%, #ECFDF5 100%)",
+                      backgroundImage: "var(--gradient-feature-glow)",
                     }}
                     aria-hidden
                   />

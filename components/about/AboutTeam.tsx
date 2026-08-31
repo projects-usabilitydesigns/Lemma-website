@@ -7,6 +7,10 @@ import { FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { advisors, leadershipTeam, type TeamMember } from "@/lib/about-data";
+import { cn } from "@/lib/utils";
+
+const leaderCardWidth =
+  "w-full sm:w-[calc((100%-3rem)/2)] md:w-[calc((100%-6rem)/3)] lg:w-[calc((100%-12rem)/4)]";
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -21,9 +25,17 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
-function TeamCard({ member, showRole = true }: { member: TeamMember; showRole?: boolean }) {
+function TeamCard({
+  member,
+  showRole = true,
+  className,
+}: {
+  member: TeamMember;
+  showRole?: boolean;
+  className?: string;
+}) {
   return (
-    <motion.article variants={staggerItem} className="group text-center">
+    <motion.article variants={staggerItem} className={cn("group text-center", className)}>
       <div className="relative mx-auto mb-2 aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-[8px] bg-[#f0ebe6]">
         <Image
           src={member.image}
@@ -60,24 +72,18 @@ export function AboutTeam() {
   return (
     <section id="team" className="bg-white pb-8 pt-8 md:pb-12 md:pt-10">
       <Container>
-        <div className="mb-8 grid gap-6 lg:mb-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-16">
+        <div className="mb-8 lg:mb-10">
           <FadeUp className="space-y-5">
             <SectionLabel label="Our Team" />
             <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
               Meet the team that defies the impossible
             </h2>
           </FadeUp>
-          <FadeUp delay={0.08}>
-            <p className="text-[15px] leading-[1.65] text-[var(--color-slate)] md:text-[16px]">
-              Behind every innovation is a team driven by passion and purpose. Together, we create
-              solutions that shape the future of digital advertising.
-            </p>
-          </FadeUp>
         </div>
 
-        <Stagger className="mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-16 lg:gap-y-12">
+        <Stagger className="mx-auto flex max-w-6xl flex-wrap justify-center gap-x-8 gap-y-8 sm:gap-x-12 sm:gap-y-10 lg:gap-x-16 lg:gap-y-12">
           {leadershipTeam.map((member) => (
-            <TeamCard key={member.id} member={member} />
+            <TeamCard key={member.id} member={member} className={leaderCardWidth} />
           ))}
         </Stagger>
 
