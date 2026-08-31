@@ -31,12 +31,6 @@ export const careersHero = {
 export const careersGallery = {
   label: "Photo Gallery",
   title: "LEMMA behind the scenes",
-  description:
-    "Empowering businesses with innovative, transparent, and technology-driven advertising solutions. Building a smarter digital future through adaptability, collaboration, and sustainable growth.",
-  tabs: [
-    { id: "life", label: "Life at Lemma" },
-    { id: "events", label: "Events" },
-  ] as const,
   lifeImages: [
     {
       id: "g1",
@@ -70,30 +64,6 @@ export const careersGallery = {
       src: "/images/careers/gallery-6.png",
       alt: "Lemma team white-water rafting",
       wide: true,
-    },
-  ] satisfies CareersGalleryImage[],
-  eventsImages: [
-    {
-      id: "e1",
-      src: "/images/careers/gallery-3.png",
-      alt: "Lemma awards and recognition event",
-      wide: true,
-    },
-    {
-      id: "e2",
-      src: "/images/careers/gallery-6.png",
-      alt: "Lemma team offsite adventure",
-    },
-    {
-      id: "e3",
-      src: "/images/careers/gallery-1.png",
-      alt: "Lemma holiday celebration",
-      wide: true,
-    },
-    {
-      id: "e4",
-      src: "/images/careers/gallery-2.png",
-      alt: "Lemma sports event",
     },
   ] satisfies CareersGalleryImage[],
 } as const;

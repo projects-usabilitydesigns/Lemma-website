@@ -68,12 +68,14 @@ export function AboutValues() {
               </div>
             </div>
 
-            <div className="relative min-h-[340px] overflow-hidden bg-[#eef1f4] md:min-h-[460px]">
+            <div className="relative flex min-h-[340px] items-center justify-center overflow-hidden bg-[linear-gradient(180deg,#FFF2F8_0%,#E1F3FF_100%)] md:min-h-[460px]">
               <Image
                 src={active.image}
-                alt={`${active.label} — Lemma values`}
-                fill
-                className="object-cover object-center"
+                alt="Lemma values — Energetic, Innovation, Transparency, Agility"
+                width={708}
+                height={519}
+                unoptimized
+                className="h-auto w-full object-contain object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

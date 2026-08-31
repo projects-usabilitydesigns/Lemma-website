@@ -3,6 +3,7 @@
 import { FadeUp } from "@/components/animation";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { WordPlay } from "@/components/ui/WordPlay";
 
 export function DeltaIntro() {
   return (
@@ -12,7 +13,9 @@ export function DeltaIntro() {
           <FadeUp className="space-y-5">
             <SectionLabel label="Future Ready" accent="blue" />
             <h2 className="font-heading max-w-xl text-[32px] font-semibold tracking-[-0.72px] text-black md:text-[45px] md:leading-[1.15]">
-              With the right tools Elemmanate
+              With the right tools
+              <br />
+              <WordPlay word="Elemmanate" />
               <br />
               the complexities of digital advertising
             </h2>

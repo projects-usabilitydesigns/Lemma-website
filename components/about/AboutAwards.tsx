@@ -14,7 +14,7 @@ export function AboutAwards() {
   return (
     <section className="bg-white pb-8 pt-8 md:pb-12 md:pt-10">
       <Container>
-        <div className="mb-12 grid gap-8 lg:mb-16 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-x-16 xl:gap-x-20">
+        <div className="mb-12 lg:mb-16">
           <FadeUp className="space-y-5">
             <SectionLabel label="Our Awards" accent="blue" />
             <div className="flex items-center gap-6 xl:gap-8">
@@ -31,14 +31,6 @@ export function AboutAwards() {
                 className="hidden size-[72px] shrink-0 object-contain lg:block xl:size-[80px]"
               />
             </div>
-          </FadeUp>
-
-          <FadeUp delay={0.08} className="lg:justify-self-end">
-            <p className="max-w-md font-[family-name:var(--font-inter)] text-[16px] font-medium leading-[22px] tracking-normal text-[var(--color-slate)] lg:max-w-[360px]">
-              Our achievements reflect a commitment to innovation, excellence, and industry
-              leadership. Every recognition inspires us to push the boundaries of digital
-              advertising even further.
-            </p>
           </FadeUp>
         </div>
 
