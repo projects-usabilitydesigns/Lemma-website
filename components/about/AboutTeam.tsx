@@ -12,15 +12,14 @@ import { cn } from "@/lib/utils";
 const leaderCardWidth =
   "w-full sm:w-[calc((100%-3rem)/2)] md:w-[calc((100%-6rem)/3)] lg:w-[calc((100%-12rem)/4)]";
 
-function LinkedInIcon({ className }: { className?: string }) {
+function LinkedInBadge({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-      className={className}
-    >
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    <svg viewBox="0 0 24 24" aria-hidden className={className}>
+      <rect width="24" height="24" rx="4" fill="#0A66C2" />
+      <path
+        fill="#fff"
+        d="M7.36 9.2H5.18V19h2.18V9.2zM6.27 4.5c-.7 0-1.27.58-1.27 1.28 0 .7.57 1.28 1.27 1.28.7 0 1.27-.58 1.27-1.28 0-.7-.57-1.28-1.27-1.28zM19 12.64c0-2.08-1.11-3.42-3.18-3.42-1.46 0-2.11.8-2.48 1.37h-.06V9.2h-2.18c.03.62 0 9.8 0 9.8h2.18v-5.48c0-.28.02-.56.1-.76.23-.56.74-1.13 1.6-1.13 1.13 0 1.58.86 1.58 2.12V19H19v-6.36z"
+      />
     </svg>
   );
 }
@@ -34,17 +33,38 @@ function TeamCard({
   showRole?: boolean;
   className?: string;
 }) {
+  const portrait = (
+    <div className="relative mx-auto mb-3 aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-[8px] bg-[#f0ebe6]">
+      <Image
+        src={member.image}
+        alt={member.name}
+        fill
+        className="object-cover object-top"
+        sizes="280px"
+      />
+      {member.linkedin ? (
+        <span className="absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+          <LinkedInBadge className="size-10 shrink-0 shadow-md" />
+        </span>
+      ) : null}
+    </div>
+  );
+
   return (
-    <motion.article variants={staggerItem} className={cn("group text-center", className)}>
-      <div className="relative mx-auto mb-2 aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-[8px] bg-[#f0ebe6]">
-        <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          className="object-cover object-top"
-          sizes="280px"
-        />
-      </div>
+    <motion.article variants={staggerItem} className={cn("text-center", className)}>
+      {member.linkedin ? (
+        <Link
+          href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${member.name} on LinkedIn`}
+          className="group block outline-none"
+        >
+          {portrait}
+        </Link>
+      ) : (
+        portrait
+      )}
       <h3 className="text-[18px] font-bold tracking-[-0.2px] text-[var(--color-ink)] md:text-[19px]">
         {member.name}
       </h3>
@@ -53,24 +73,13 @@ function TeamCard({
           {member.role}
         </p>
       ) : null}
-      {member.linkedin ? (
-        <Link
-          href={member.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${member.name} on LinkedIn`}
-          className="mt-1 inline-flex size-8 items-center justify-center rounded-full text-[#0A66C2] transition-opacity hover:opacity-80"
-        >
-          <LinkedInIcon className="size-5" />
-        </Link>
-      ) : null}
     </motion.article>
   );
 }
 
 export function AboutTeam() {
   return (
-    <section id="team" className="bg-white pb-8 pt-8 md:pb-12 md:pt-10">
+    <section id="team" className="bg-white py-10 md:py-14">
       <Container>
         <div className="mb-8 lg:mb-10">
           <FadeUp className="space-y-5">

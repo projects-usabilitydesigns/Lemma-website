@@ -22,13 +22,15 @@ type ButtonProps = {
   lift?: boolean;
 };
 
+const filledVariants: ReadonlySet<ButtonVariant> = new Set(["primary", "secondary", "outline"]);
+
 const variants: Record<ButtonVariant, string> = {
   primary:
     "text-[var(--color-btn-text)] border border-white/8 px-8 py-4 rounded-full uppercase tracking-[2.52px] text-[14px] font-medium shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
   secondary:
-    "bg-white text-[var(--color-ink)] border border-[var(--color-border)] px-8 py-[17px] rounded-full text-[14px] font-medium",
+    "text-[var(--color-btn-text)] border border-white/8 px-8 py-[17px] rounded-full text-[14px] font-medium shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
   outline:
-    "bg-white text-black border border-black px-5 py-2.5 rounded-full text-[16px] font-semibold hover:bg-black hover:text-white",
+    "text-[var(--color-btn-text)] border border-white/8 px-5 py-2.5 rounded-full text-[16px] font-semibold shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
   ghost:
     "bg-transparent text-[var(--color-blue-link)] text-[18px] font-medium capitalize px-0 py-0",
   link: "bg-transparent text-[var(--color-blue-learn)] text-[14px] font-medium capitalize px-0 py-0",
@@ -66,10 +68,9 @@ export function Button({
     className,
   );
 
-  const resolvedStyle =
-    variant === "primary"
-      ? { backgroundImage: "var(--gradient-blue)", ...style }
-      : style;
+  const resolvedStyle = filledVariants.has(variant)
+    ? { ...style, backgroundImage: "var(--gradient-blue)" }
+    : style;
 
   const hoverMotion = lift ? { y: -2, scale: 1.03 } : undefined;
   const tapMotion = lift ? { scale: 0.98 } : undefined;

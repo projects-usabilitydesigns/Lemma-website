@@ -18,7 +18,7 @@ export function SuccessStories() {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="overflow-hidden bg-[var(--color-cream-soft)] py-16 md:py-[90px]">
+    <section className="overflow-hidden bg-[var(--color-cream-soft)] py-10 md:py-14">
       <Container className="mb-10">
         <FadeUp className="space-y-4 text-center md:text-left">
           <SectionLabel label="Lemmagnified success stories" align="center" dual className="md:justify-start md:!w-auto" />

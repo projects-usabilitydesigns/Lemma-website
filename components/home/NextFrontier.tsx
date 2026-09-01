@@ -14,7 +14,7 @@ export function NextFrontier() {
   const [videoOpen, setVideoOpen] = useState(false);
 
   return (
-    <section id="next-frontier" className="relative overflow-hidden py-16 md:py-[90px]">
+    <section id="next-frontier" className="relative overflow-hidden py-10 md:py-14">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-home-mesh)]" />
       <Container className="relative">

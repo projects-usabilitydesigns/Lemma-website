@@ -1,6 +1,6 @@
 export const spacing = {
-  sectionY: "100px",
-  sectionYMobile: "64px",
+  sectionY: "56px",
+  sectionYMobile: "40px",
   containerX: "40px",
   containerMax: "1400px",
   pageGutter: "260px",

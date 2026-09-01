@@ -8,7 +8,7 @@ import type { ResourceArticle } from "@/lib/resources-page-data";
 
 export function NewsroomSection({ articles }: { articles: ResourceArticle[] }) {
   return (
-    <section id="newsroom" className="bg-white pb-12 pt-12 md:pb-16 md:pt-16">
+    <section id="newsroom" className="bg-white py-10 md:py-14">
       <Container>
         <FadeUp className="mb-10 max-w-2xl">
           <h2 className="font-heading text-[28px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[40px] md:leading-[44px]">

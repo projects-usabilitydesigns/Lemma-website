@@ -119,7 +119,7 @@ export function PrivacyPolicyContent() {
         </Container>
       </section>
 
-      <section className="bg-white py-12 md:py-20">
+      <section className="bg-white py-10 md:py-14">
         <Container>
           <article className="w-full space-y-12">
             <section className="space-y-4">

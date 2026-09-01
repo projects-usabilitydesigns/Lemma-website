@@ -7,7 +7,7 @@ import { deltaAssets } from "@/lib/delta-data";
 
 export function DeltaAdvantage() {
   return (
-    <section className="overflow-x-clip bg-white pb-16 pt-6 md:pb-24 md:pt-8">
+    <section className="overflow-x-clip bg-white py-10 md:py-14">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-[671px_1fr] lg:gap-10 xl:gap-14">
           <div

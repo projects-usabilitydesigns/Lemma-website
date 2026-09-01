@@ -7,7 +7,7 @@ import { contactHero } from "@/lib/contact-data";
 
 export function ContactCta() {
   return (
-    <section className="bg-[#ECF1F4] py-14 md:py-[70px]">
+    <section className="bg-[#ECF1F4] py-10 md:py-14">
       <Container>
         <FadeUp className="flex flex-col items-center gap-6 text-center">
           <h2 className="font-heading max-w-2xl text-[28px] font-semibold tracking-[-0.5px] text-[var(--color-ink)] md:text-[36px] md:leading-[1.2]">

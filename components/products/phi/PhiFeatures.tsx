@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function PhiFeatures() {
   return (
-    <section className="overflow-x-clip bg-white pb-16 pt-8 md:pb-24 md:pt-12">
+    <section className="overflow-x-clip bg-white py-10 md:py-14">
       <Container className="flex flex-col gap-16 md:gap-24">
         {phiFeatures.map((feature) => {
           const imageLeft = feature.layout === "image-left";

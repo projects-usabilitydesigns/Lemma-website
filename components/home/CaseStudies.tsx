@@ -25,9 +25,9 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
   const closeVideo = useCallback(() => setActiveVideo(null), []);
 
   return (
-    <section id="case-studies" className="overflow-hidden bg-white pb-16 pt-8 md:pb-[90px] md:pt-10">
-      <Container className="mb-12">
-        <FadeUp className="space-y-5">
+    <section id="case-studies" className="overflow-hidden bg-white py-10 md:py-14">
+      <Container className="mb-8">
+        <FadeUp className="space-y-4">
           <SectionLabel label="Case Studies" />
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Lemmagnified success stories.
@@ -111,7 +111,7 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
         </Swiper>
       </div>
 
-      <Container className="mt-10">
+      <Container className="mt-8">
         <div className="mb-8 flex items-center gap-3">
           <div className="h-px flex-1 bg-[var(--color-divider)]" />
           <div className="flex gap-3">

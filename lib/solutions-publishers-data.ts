@@ -110,7 +110,7 @@ export const publishersChannels = {
       id: "header",
       title: "Header Bidding",
       description:
-        "Increase competition for every impression with Infibid and unified auction intelligence.",
+        "Increase competition for every impression with header bidding and unified auction intelligence.",
       icon: "network",
     },
     {
@@ -163,7 +163,7 @@ export const publishersCapabilities = {
     },
     {
       id: "bidding",
-      title: "Infibid Header Bidding",
+      title: "Header Bidding",
       description: "Increase auction competition and reduce latency across demand partners.",
       icon: "shopping",
     },
@@ -237,7 +237,7 @@ export const publishersFaqs: BrandsFaq[] = [
     id: "q3",
     question: "How does header bidding fit in?",
     answer:
-      "Infibid helps publishers increase competition for every impression, improve auction efficiency, and unlock stronger CPMs without adding unnecessary complexity.",
+      "Header bidding helps publishers increase competition for every impression, improve auction efficiency, and unlock stronger CPMs without adding unnecessary complexity.",
   },
   {
     id: "q4",

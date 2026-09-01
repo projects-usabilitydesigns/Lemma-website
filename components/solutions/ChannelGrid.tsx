@@ -71,9 +71,9 @@ export function ChannelGrid({
   channels?: BrandsChannel[];
 }) {
   return (
-    <section className="bg-[#ECF1F4] py-16 md:py-[90px]">
+    <section className="bg-[#ECF1F4] py-10 md:py-14">
       <Container>
-        <FadeUp className="mx-auto mb-12 max-w-3xl space-y-4 text-center">
+        <FadeUp className="mx-auto mb-8 max-w-3xl space-y-4 text-center">
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             {title}
           </h2>

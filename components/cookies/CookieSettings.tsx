@@ -36,7 +36,7 @@ function Toggle({
       disabled={disabled}
       onClick={() => onChange(!checked)}
       className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
-        disabled ? "cursor-not-allowed bg-[#cfd8dc]" : checked ? "bg-[#009352]" : "bg-[#c4cdd4]"
+        disabled ? "cursor-not-allowed bg-[#cfd8dc]" : checked ? "bg-[var(--color-blue)]" : "bg-[#c4cdd4]"
       }`}
     >
       <span
@@ -171,7 +171,7 @@ export function CookieSettings({ preferences, onChange, onSave, onClose }: Cooki
         <button
           type="button"
           onClick={onSave}
-          className="min-h-11 rounded-sm bg-[#009352] px-6 text-[14px] font-semibold text-white transition hover:brightness-110"
+          className="min-h-11 rounded-sm bg-[var(--color-blue)] px-6 text-[14px] font-semibold text-white transition hover:brightness-110"
         >
           Save And Accept
         </button>

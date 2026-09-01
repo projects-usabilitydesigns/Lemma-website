@@ -21,7 +21,7 @@ export function RequestDemoHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pb-14 pt-[121px] md:pb-20 md:pt-[135px]"
+      className="relative overflow-hidden pb-10 pt-[121px] md:pb-14 md:pt-[135px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <motion.div

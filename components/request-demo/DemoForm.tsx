@@ -152,7 +152,8 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
             </p>
             <a
               href="mailto:contactus@lemmamedia.com"
-              className="mt-7 inline-flex items-center gap-2 rounded-full border border-black bg-white px-6 py-3 text-[15px] font-semibold text-black transition hover:bg-black hover:text-white"
+              className="mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-[15px] font-semibold text-[var(--color-btn-text)] transition hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
+              style={{ backgroundImage: "var(--gradient-blue)" }}
             >
               Email us directly
               <ArrowRight className="size-4" />
