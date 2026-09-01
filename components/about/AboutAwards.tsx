@@ -17,20 +17,20 @@ export function AboutAwards() {
         <div className="mb-12 lg:mb-16">
           <FadeUp className="space-y-5">
             <SectionLabel label="Our Awards" accent="blue" />
-            <div className="flex items-center gap-6 xl:gap-8">
-              <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-black md:text-[45px] md:leading-[50px]">
+            <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-black md:text-[45px] md:leading-[50px]">
+              <span className="inline-flex items-center gap-2.5 md:gap-3">
                 Accolades that define
-                <br />
-                our progress
-              </h2>
-              <Image
-                src={aboutImage("trophy-star 1.png")}
-                alt=""
-                width={80}
-                height={80}
-                className="hidden size-[72px] shrink-0 object-contain lg:block xl:size-[80px]"
-              />
-            </div>
+                <Image
+                  src={aboutImage("trophy-star 1.png")}
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="hidden h-[0.92em] w-[0.92em] shrink-0 object-contain object-center lg:inline-block"
+                />
+              </span>
+              <br />
+              our progress
+            </h2>
           </FadeUp>
         </div>
 

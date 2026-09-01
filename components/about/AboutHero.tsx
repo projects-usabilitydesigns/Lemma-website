@@ -67,7 +67,7 @@ export function AboutHero() {
             initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.15 }}
-            className="relative mx-auto w-full max-w-[520px]"
+            className="relative mx-auto w-full max-w-[600px]"
           >
             <div className="relative aspect-[702/527] w-full">
               <Image
