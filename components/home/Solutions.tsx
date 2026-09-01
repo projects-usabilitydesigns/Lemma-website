@@ -12,7 +12,7 @@ import type { Solution } from "@/types";
 export function Solutions({ solutions }: { solutions?: Solution[] }) {
   const data = solutions?.length ? solutions : defaultSolutions;
   return (
-    <section id="solutions" className="relative overflow-hidden bg-white py-12 md:py-[100px]">
+    <section id="solutions" className="relative overflow-hidden bg-white py-10 md:py-14">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[min(720px,52%)] items-center justify-end md:flex"
@@ -29,8 +29,8 @@ export function Solutions({ solutions }: { solutions?: Solution[] }) {
       </div>
 
       <Container className="relative z-10">
-        <div className="mb-8 md:mb-12">
-          <FadeUp className="max-w-xl space-y-4 md:space-y-5">
+        <div className="mb-8">
+          <FadeUp className="max-w-xl space-y-3 md:space-y-4">
             <SectionLabel label="Solutions" />
             <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
               Built for the people
@@ -99,7 +99,7 @@ export function Solutions({ solutions }: { solutions?: Solution[] }) {
           ))}
         </Stagger>
 
-        <div className="mt-8 flex justify-center md:mt-10">
+        <div className="mt-8 flex justify-center">
           <Button href="#cta" variant="primary">
             learn more
           </Button>

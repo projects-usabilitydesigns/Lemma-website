@@ -15,16 +15,16 @@ export function CareersGallery() {
   }
 
   return (
-    <section id="gallery" className="bg-white py-16 md:py-[90px]">
+    <section id="gallery" className="bg-white py-10 md:py-14">
       <Container>
-        <FadeUp className="mb-10 max-w-2xl space-y-5 md:mb-12">
+        <FadeUp className="mb-8 max-w-2xl space-y-4">
           <SectionLabel label={careersGallery.label} accent="blue" />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             {careersGallery.title}
           </h2>
         </FadeUp>
 
-        <FadeUp delay={0.1} className="mb-10 md:mb-12">
+        <FadeUp delay={0.1} className="mb-8">
           <p className="relative inline-block pb-3 text-[18px] font-semibold uppercase tracking-[-0.3px] text-[var(--color-ink)] md:text-[24px]">
             Life at Lemma
             <span className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-[var(--color-pink)]" />

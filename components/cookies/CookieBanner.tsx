@@ -45,21 +45,21 @@ export function CookieBanner({ onAcceptAll, onRejectAll, onCustomize }: CookieBa
         <button
           type="button"
           onClick={onAcceptAll}
-          className="min-h-11 flex-1 rounded-md bg-[#009352] px-4 text-[14px] font-semibold text-white transition hover:brightness-110"
+          className="min-h-11 flex-1 rounded-md bg-[var(--color-blue)] px-4 text-[14px] font-semibold text-white transition hover:brightness-110"
         >
           Accept All
         </button>
         <button
           type="button"
           onClick={onRejectAll}
-          className="min-h-11 flex-1 rounded-md bg-[#F05A27] px-4 text-[14px] font-semibold text-white transition hover:brightness-110"
+          className="min-h-11 flex-1 rounded-md bg-[var(--color-blue)] px-4 text-[14px] font-semibold text-white transition hover:brightness-110"
         >
           Reject All
         </button>
         <button
           type="button"
           onClick={onCustomize}
-          className="min-h-11 flex-1 rounded-md bg-[#008FDB] px-4 text-[14px] font-semibold text-white transition hover:brightness-110"
+          className="min-h-11 flex-1 rounded-md bg-[var(--color-blue)] px-4 text-[14px] font-semibold text-white transition hover:brightness-110"
         >
           Customize
         </button>

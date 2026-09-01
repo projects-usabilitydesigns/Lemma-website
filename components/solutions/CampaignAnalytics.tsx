@@ -50,9 +50,9 @@ export function CampaignAnalytics({
   metrics?: BrandsStat[];
 }) {
   return (
-    <section className="bg-white py-16 md:py-[90px]">
+    <section className="bg-white py-10 md:py-14">
       <Container>
-        <FadeUp className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
+        <FadeUp className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Success metrics" align="center" dual accent="blue" />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             {title}

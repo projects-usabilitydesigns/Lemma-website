@@ -18,7 +18,7 @@ export default function CareersPage() {
         <CareersHero />
         <CareersGallery />
         <CareersJobs />
-        <Faq items={careersFaqs} className="py-16 md:py-[90px]" />
+        <Faq items={careersFaqs} className="py-10 md:py-14" />
         <CareersCta />
       </main>
     </>

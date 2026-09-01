@@ -369,7 +369,7 @@ export function ArticleDetailContent({
   );
 
   return (
-    <section className="bg-white pb-16 pt-[110px] md:pb-24 md:pt-[120px]">
+    <section className="bg-white pb-10 pt-[110px] md:pb-14 md:pt-[120px]">
       <Container>
         <nav
           aria-label="Breadcrumb"

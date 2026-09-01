@@ -101,14 +101,6 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             iconColor: "#74be44",
             iconSymbol: "φ",
           },
-          {
-            id: "infibid",
-            title: "Infibid",
-            description: "Header bidding",
-            href: "#products",
-            iconColor: "#f05a27",
-            iconSymbol: "∞",
-          },
         ],
       },
       {
@@ -199,7 +191,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
 export const heroStats: Stat[] = [
   { value: "3.5M", numericValue: 3.5, decimals: 1, suffix: "M", label: "SCREENS GLOBALLY" },
   { value: "40+", numericValue: 40, suffix: "+", label: "Markets worldwide" },
-  { value: "5", numericValue: 5, label: "Native products" },
+  { value: "4", numericValue: 4, label: "Native products" },
 ];
 
 export const products: Product[] = [
@@ -209,7 +201,7 @@ export const products: Product[] = [
     description:
       "Connect real-world visibility to measurable digital results (ROI) with full-funnel activation, retargeting, and attribution.",
     logo: "/images/products/integral.svg",
-    logoColor: "/images/products/integral-color.png",
+    logoColor: "/images/products/integral-hero-logo.svg",
     href: "/products/integral",
   },
   {
@@ -236,17 +228,8 @@ export const products: Product[] = [
     description:
       "Effortlessly plan, schedule, and deliver dynamic DOOH content across all screens, networks, and formats from one central platform.",
     logo: "/images/products/phi.svg",
-    logoColor: "/images/products/phi-color.png",
+    logoColor: "/images/products/phi-hero-logo.svg",
     href: "/products/phi",
-  },
-  {
-    id: "infibid",
-    name: "Infibid",
-    description:
-      "Maximize revenue and fill rates through server-side header bidding and advanced auction management technology.",
-    logo: "/images/products/infibid.svg",
-    logoColor: "/images/products/infibid-color.png",
-    href: "#products",
   },
 ];
 
@@ -508,7 +491,6 @@ export const footerLinks = {
     { label: "Delta", href: "/products/delta" },
     { label: "Sigma", href: "/#products" },
     { label: "Phi", href: "/products/phi" },
-    { label: "Infibid", href: "/#products" },
   ],
   solutions: [
     { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },

@@ -92,7 +92,7 @@ function FeaturedPanel({
           href={featured.ctaHref}
           onClick={onNavigate}
           className="inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-[14px] font-semibold text-white transition hover:brightness-110"
-          style={{ backgroundImage: "var(--gradient-cta)" }}
+          style={{ backgroundImage: "var(--gradient-blue)" }}
         >
           {featured.ctaLabel}
           <ArrowUpRight className="size-4" strokeWidth={2.25} />

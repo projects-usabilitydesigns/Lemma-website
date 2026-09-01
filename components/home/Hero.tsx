@@ -59,18 +59,12 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pb-16 pt-[138px] md:pb-24 md:pt-[184px]"
+      className="relative overflow-hidden pb-10 pt-[138px] md:pb-14 md:pt-[184px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-80">
         <Image src="/images/hero-bg.png" alt="" fill className="object-cover object-left" priority />
       </motion.div>
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "var(--gradient-home-mesh)",
-        }}
-      />
 
       <Container className="relative">
         <div className="grid items-start gap-10 lg:grid-cols-2">
@@ -133,7 +127,7 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
                 <div className="absolute left-[12%] top-[8%] z-10 w-[55%] max-w-[382px] md:left-[143px] md:top-[38px] md:w-[382px]">
                   <Image
                     src="/images/products/integral-white.svg"
-                    alt="Lemma Integral"
+                    alt="Lemma Integral®"
                     width={382}
                     height={35}
                     className="h-[22px] w-auto object-contain object-left md:h-[35px] md:w-[382px]"

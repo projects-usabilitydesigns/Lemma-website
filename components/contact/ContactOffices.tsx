@@ -25,9 +25,9 @@ function OfficeFlag({ countryCode, country }: { countryCode: string; country: st
 
 export function ContactOffices() {
   return (
-    <section id="offices" className="bg-white py-16 md:py-[90px]">
+    <section id="offices" className="bg-white py-10 md:py-14">
       <Container>
-        <FadeUp className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
+        <FadeUp className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Our Offices" align="center" dual accent="blue" />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Local teams, global reach

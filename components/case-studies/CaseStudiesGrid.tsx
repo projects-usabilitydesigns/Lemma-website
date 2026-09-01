@@ -10,7 +10,7 @@ import type { ResourceArticle } from "@/lib/resources-page-data";
 
 export function CaseStudiesGrid({ articles }: { articles: ResourceArticle[] }) {
   return (
-    <section className="bg-white pb-16 pt-8 md:pb-[100px] md:pt-10">
+    <section className="bg-white py-10 md:py-14">
       <Container>
         <FadeUp className="mb-8 md:mb-10">
           <Link

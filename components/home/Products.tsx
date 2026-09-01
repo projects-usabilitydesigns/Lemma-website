@@ -11,16 +11,16 @@ import { products as defaultProducts } from "@/lib/data";
 export function Products() {
   const data = defaultProducts;
   return (
-    <section id="products" className="bg-white py-16 md:py-[100px]">
+    <section id="products" className="bg-white py-10 md:py-14">
       <Container>
-        <FadeUp className="mb-11 space-y-5">
+        <FadeUp className="mb-8 space-y-4">
           <SectionLabel label="The Lemma Stack" />
           <h2 className="max-w-4xl text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Five products. One outcome engine.
+            Four products. One outcome engine.
           </h2>
         </FadeUp>
 
-        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {data.map((product) => (
             <motion.article
               key={product.id}

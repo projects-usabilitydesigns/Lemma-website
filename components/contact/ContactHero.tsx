@@ -9,7 +9,7 @@ import { contactHero } from "@/lib/contact-data";
 
 export function ContactHero() {
   return (
-    <section className="relative overflow-hidden pb-14 pt-[121px] md:pb-20 md:pt-[135px]">
+    <section className="relative overflow-hidden pb-10 pt-[121px] md:pb-14 md:pt-[135px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div
         className="pointer-events-none absolute inset-0"

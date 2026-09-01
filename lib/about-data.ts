@@ -26,38 +26,45 @@ export function aboutImage(filename: string) {
   return `/images/${encodeURIComponent(filename)}`;
 }
 
+/** Encode public-root filenames that contain spaces or + */
+export function publicAsset(filename: string) {
+  return `/${encodeURIComponent(filename)}`;
+}
+
+const valuesHud = publicAsset("Container+BackgroundColor.svg");
+
 export const aboutValues: ValueTab[] = [
   {
     id: "transparency",
     label: "Transparency",
-    title: "Building Trust Through Transparency",
+    title: "Transparency",
     description:
-      "Transparency is the foundation of everything we do. We believe that open communication, honest practices, and clear decision-making create stronger relationships and lasting trust. By fostering an environment where information flows freely and expectations are clearly defined, we empower our teams, partners, and clients to collaborate with confidence.",
-    image: aboutImage("our-values.svg"),
+      "Transparency is our foundation. We're committed to open operations that build trust. It's about more than just revealing processes; it's fostering a culture where every action resonates with clarity.",
+    image: valuesHud,
   },
   {
     id: "innovation",
     label: "Innovation",
-    title: "Driving Change Through Innovation",
+    title: "Innovation",
     description:
-      "Innovation powers everything we build — from AI-first attribution to programmatic DOOH. We push boundaries so outdoor and omnichannel media get the same measurement rigor as digital, unlocking new possibilities for brands and media owners alike.",
-    image: aboutImage("our-values.svg"),
+      "We're not content with the status quo; we're pioneers of change, constantly evolving to stay ahead. Our dedication to innovation sets the pace for the future of digital advertising.",
+    image: publicAsset("innovation-img.jpg"),
   },
   {
     id: "agility",
     label: "Agility",
-    title: "Moving Faster With Agility",
+    title: "Agility",
     description:
-      "Agility lets us adapt campaigns in real time — optimizing bids, creatives, and delivery as markets shift. Speed without sacrificing precision keeps brands ahead and ensures every impression works harder toward measurable outcomes.",
-    image: aboutImage("our-values.svg"),
+      "We don't just adapt; we embrace change with youthful vigor. Our dynamic approach, agility and foresight keep us ahead as we navigate complexities effortlessly.",
+    image: publicAsset("agility-img.jpg"),
   },
   {
     id: "energetic",
     label: "Energetic",
-    title: "Staying Bold And Energetic",
+    title: "Energetic",
     description:
-      "An energetic culture fuels curiosity and collaboration. We bring that energy to every partnership — helping brands and media owners turn impressions into outcomes with passion, purpose, and relentless forward momentum.",
-    image: aboutImage("our-values.svg"),
+      "Going beyond traditional partnerships, we're your dynamically, injecting fresh energy into every collaboration. Eager to redefine digital marketing standards, we pursue excellence with relentless energy.",
+    image: publicAsset("energetic-img.jpg"),
   },
 ];
 
@@ -321,22 +328,28 @@ export const aboutFaqs = [
 ] as const;
 
 export const aboutPrinciples = {
+  intro:
+    "Empowering businesses with innovative, transparent, and technology-driven advertising solutions. Building a smarter digital future through adaptability, collaboration, and sustainable growth.",
   vision: {
     title: "Our Vision",
     description:
-      "To revolutionize advertising through innovation, transparency, and technology—creating meaningful connections between brands and audiences while driving sustainable growth.",
-    image: aboutImage("Component 12.png"),
+      "Is to revolutionize the advertising industry by fostering a culture of empowerment and openness using cutting-edge technology.",
+    image: publicAsset("image 30.svg"),
+    background: publicAsset("+BackgroundColor.svg"),
   },
   mission: {
     title: "Our Mission",
     description:
       "Is to be the driving force behind business success in the digital world, offering a platform that is transparent, cost-effective, and highly adaptable, supported with the right tools to navigate the dynamic digital ecosystem.",
-    image: aboutImage("Component 13.png"),
+    image: publicAsset("image 31.svg"),
+    background: publicAsset("+BackgroundColor (1).svg"),
   },
 } as const;
 
 export const aboutAssets = {
   hero: aboutImage("about-hero.png"),
   community: aboutImage("Component 11.png"),
-  values: aboutImage("our-values.svg"),
+  values: valuesHud,
+  valuesBanner: publicAsset("leme-white-bg.svg"),
+  valuesMark: publicAsset("values-prism.png"),
 } as const;

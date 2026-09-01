@@ -29,7 +29,7 @@ export function JourneySection({
   const cta = useDemoCta(data.cta.href, data.cta.label);
 
   return (
-    <section className="bg-white py-16 md:py-[90px]">
+    <section className="bg-white py-10 md:py-14">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <FadeRight>
@@ -55,7 +55,7 @@ export function JourneySection({
                 href={cta.href}
                 onClick={cta.onClick}
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-semibold uppercase tracking-[2px] text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
-                style={{ backgroundImage: "var(--gradient-cta)" }}
+                style={{ backgroundImage: "var(--gradient-blue)" }}
               >
                 {data.cta.label}
                 <span aria-hidden>→</span>

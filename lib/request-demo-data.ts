@@ -22,7 +22,7 @@ export const requestDemoHero = {
   stats: [
     { id: "screens", value: "3.5M", label: "Screens globally" },
     { id: "markets", value: "40+", label: "Markets worldwide" },
-    { id: "products", value: "5", label: "Native products" },
+    { id: "products", value: "4", label: "Native products" },
   ],
 } as const;
 
@@ -50,7 +50,6 @@ export const demoInterests = [
   { id: "delta", label: "Delta" },
   { id: "sigma", label: "Sigma" },
   { id: "phi", label: "Phi" },
-  { id: "infibid", label: "Infibid" },
   { id: "not-sure", label: "Not sure yet" },
 ] as const;
 
@@ -99,17 +98,6 @@ export const demoProducts: DemoProductBrief[] = [
     highlights: ["Screen scheduling", "Creative control", "Free to use"],
     href: "/solutions/network-operators",
   },
-  {
-    id: "infibid",
-    name: "Infibid",
-    tagline: "Header bidding",
-    description:
-      "Increase fill rates and revenue with server-side header bidding and advanced auction management.",
-    logo: "/images/products/infibid.svg",
-    accent: "#f05a27",
-    highlights: ["Server-side bidding", "Higher fill rates", "Auction insights"],
-    href: "/solutions/publishers",
-  },
 ];
 
 export const demoSteps = [
@@ -153,7 +141,7 @@ export const demoFaqs = [
     id: "what-you-see",
     question: "What will we actually see?",
     answer:
-      "A live look at the Lemma stack—campaign planning in Delta, full-funnel measurement in Integral, and yield tooling in Sigma, Phi, or Infibid depending on your needs.",
+      "A live look at the Lemma stack—campaign planning in Delta, full-funnel measurement in Integral, and yield tooling in Sigma or Phi depending on your needs.",
   },
   {
     id: "which-product",
