@@ -218,7 +218,7 @@ export const products: Product[] = [
     description:
       "Scale programmatic advertising across DOOH and CTV with real-time bidding, automated performance controls, and maximum reach.",
     logo: "/images/products/delta.svg",
-    logoColor: "/images/products/delta-color.png",
+    logoColor: "/images/products/delta-color.svg",
     href: "/products/delta",
   },
   {
@@ -227,7 +227,7 @@ export const products: Product[] = [
     description:
       "Connect outdoor and CTV inventory to global buyers and optimize monetization with transparent, real-time reporting.",
     logo: "/images/products/sigma.svg",
-    logoColor: "/images/products/sigma-color.png",
+    logoColor: "/images/products/sigma-color.svg",
     href: "/products/sigma",
   },
   {
@@ -489,7 +489,7 @@ export const channels = [
 ] as const;
 
 export const clientLogos: ClientLogo[] = [
-  { id: "burger-king", name: "Burger King", src: "/images/logos/burger-king.svg", width: 120, height: 36 },
+  { id: "burger-king", name: "Burger King", src: "/images/logos/burger-king.svg", width: 33, height: 36 },
   { id: "azorte", name: "AZORTE", src: "/images/logos/azorte.svg", width: 120, height: 36 },
   { id: "hsbc", name: "HSBC", src: "/images/logos/hsbc.svg", width: 100, height: 36 },
   { id: "oneplus", name: "OnePlus", src: "/images/logos/oneplus.svg", width: 110, height: 36 },
@@ -498,8 +498,8 @@ export const clientLogos: ClientLogo[] = [
   { id: "pepsi", name: "Pepsi", src: "/images/logos/pepsi.svg", width: 90, height: 36 },
   { id: "samsung", name: "Samsung", src: "/images/logos/samsung.svg", width: 140, height: 26 },
   { id: "nestle", name: "Nestlé", src: "/images/logos/nestle.svg", width: 125, height: 36 },
-  { id: "dabur", name: "Dabur", src: "/images/logos/dabur.svg", width: 110, height: 36 },
-  { id: "amazon-prime-video", name: "Amazon Prime Video", src: "/images/logos/amazon-prime-video.svg", width: 150, height: 36 },
+  { id: "dabur", name: "Dabur", src: "/images/logos/dabur.svg", width: 40, height: 36 },
+  { id: "amazon-prime-video", name: "Amazon Prime Video", src: "/images/logos/amazon-prime-video.svg", width: 112, height: 36 },
 ];
 
 export const footerLinks = {

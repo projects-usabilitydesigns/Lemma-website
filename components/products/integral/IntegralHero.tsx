@@ -61,15 +61,28 @@ export function IntegralHero() {
           </div>
 
           <div className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center overflow-visible pt-4 md:pt-6 lg:max-w-[680px] lg:translate-y-4">
-            <div className="relative aspect-[781/820] w-full max-md:mb-8 max-md:origin-top max-md:scale-125">
+            <div className="relative w-full max-md:mb-8 max-md:origin-top max-md:scale-125">
               <Image
                 src={integralAssets.heroFunnel}
-                alt="Lemma Integral full funnel — Reach, Reinforce, Results, Outcome"
-                fill
-                className="object-contain object-center"
+                alt="Lemma Integral™ full funnel — Reach, Reinforce, Results, Outcome"
+                width={837}
+                height={715}
+                className="h-auto w-full object-contain object-center"
+                style={{ clipPath: "inset(8.35% 0 0 0)" }}
                 priority
                 sizes="(max-width: 1024px) 100vw, 680px"
               />
+              <div className="pointer-events-none absolute left-1/2 top-[1.6%] z-10 w-[42%] -translate-x-1/2">
+                <Image
+                  src={integralAssets.heroLogo}
+                  alt=""
+                  width={320}
+                  height={30}
+                  unoptimized
+                  aria-hidden
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
           </div>
         </div>

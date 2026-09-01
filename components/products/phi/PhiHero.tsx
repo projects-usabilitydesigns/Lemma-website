@@ -41,19 +41,33 @@ export function PhiHero() {
               ease: animation.easeOut,
               delay: 0.12,
             }}
-            className="relative mx-auto flex w-full max-w-[640px] items-center justify-center lg:mx-0 lg:max-w-none lg:justify-self-end"
+            className="relative mx-auto flex w-full max-w-[640px] items-center justify-center lg:mx-0 lg:max-w-[620px] lg:justify-self-end"
           >
-            <Image
-              src={phiAssets.heroGraphic}
-              alt="Lemma Phi — content management for DOOH screens"
-              width={738}
-              height={540}
-              quality={100}
-              unoptimized
-              className="h-auto w-full max-w-[620px] object-contain object-center lg:max-w-none"
-              priority
-              sizes="(max-width: 1024px) 100vw, 620px"
-            />
+            <div className="relative w-full">
+              <Image
+                src={phiAssets.heroGraphic}
+                alt="Lemma Phi™ — content management for DOOH screens"
+                width={738}
+                height={540}
+                quality={100}
+                unoptimized
+                className="h-auto w-full object-contain object-center"
+                style={{ clipPath: "inset(7.5% 0 0 0)" }}
+                priority
+                sizes="(max-width: 1024px) 100vw, 620px"
+              />
+              <div className="pointer-events-none absolute left-1/2 top-[1.2%] z-10 w-[30%] -translate-x-1/2">
+                <Image
+                  src={phiAssets.heroLogo}
+                  alt=""
+                  width={188}
+                  height={28}
+                  unoptimized
+                  aria-hidden
+                  className="h-auto w-full"
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
       </Container>
