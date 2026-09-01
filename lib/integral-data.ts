@@ -8,6 +8,7 @@ export function productAsset(filename: string) {
 
 export const integralAssets = {
   heroFunnel: productImage("Frame 1597890042-nobg.png"),
+  heroLogo: productAsset("integral-hero-logo.svg"),
   keyword: productImage("keyword based.png"),
   reinforce: productImage("seamless.png"),
   results: productImage("integral image.png"),
