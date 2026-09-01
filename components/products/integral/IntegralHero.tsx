@@ -64,7 +64,7 @@ export function IntegralHero() {
             <div className="relative w-full max-md:mb-8 max-md:origin-top max-md:scale-125">
               <Image
                 src={integralAssets.heroFunnel}
-                alt="Lemma Integral™ full funnel — Reach, Reinforce, Results, Outcome"
+                alt="Lemma Integral® full funnel — Reach, Reinforce, Results, Outcome"
                 width={837}
                 height={715}
                 className="h-auto w-full object-contain object-center"

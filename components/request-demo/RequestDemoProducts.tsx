@@ -11,12 +11,12 @@ import { demoProducts } from "@/lib/request-demo-data";
 
 export function RequestDemoProducts() {
   return (
-    <section className="bg-white py-16 md:py-[90px]">
+    <section className="bg-white py-10 md:py-14">
       <Container>
-        <FadeUp className="mx-auto mb-12 max-w-2xl space-y-4 text-center">
+        <FadeUp className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
           <SectionLabel label="What we'll show you" align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Five products. One outcome engine.
+            Four products. One outcome engine.
           </h2>
           <p className="text-[18px] leading-relaxed text-[var(--color-slate)] md:text-[20px]">
             Your demo is shaped around the products that fit your goals—whether you&apos;re

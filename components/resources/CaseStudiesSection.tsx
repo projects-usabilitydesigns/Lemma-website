@@ -8,7 +8,7 @@ import type { ResourceArticle } from "@/lib/resources-page-data";
 
 export function CaseStudiesSection({ articles }: { articles: ResourceArticle[] }) {
   return (
-    <section id="case-studies" className="bg-[#f0f4f8] pb-12 pt-12 md:pb-16 md:pt-16">
+    <section id="case-studies" className="bg-[#f0f4f8] py-10 md:py-14">
       <Container>
         <FadeUp className="mb-10 max-w-2xl">
           <h2 className="font-heading text-[28px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[40px] md:leading-[44px]">

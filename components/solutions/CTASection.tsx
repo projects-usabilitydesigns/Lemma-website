@@ -22,7 +22,7 @@ export function CTASection({
   label?: string;
 }) {
   return (
-    <section id="cta" className="relative overflow-hidden py-16 md:py-24">
+    <section id="cta" className="relative overflow-hidden py-10 md:py-14">
       <div
         className="absolute inset-0"
         style={{

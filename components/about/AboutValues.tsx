@@ -3,9 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { aboutValues } from "@/lib/about-data";
+import { aboutAssets, aboutValues } from "@/lib/about-data";
 import { cn } from "@/lib/utils";
 
 export function AboutValues() {
@@ -15,73 +14,80 @@ export function AboutValues() {
   const active = aboutValues.find((v) => v.id === activeId) ?? aboutValues[0];
 
   return (
-    <section id="values" className="bg-white pb-8 pt-6 md:pb-12 md:pt-10">
+    <section id="values" className="bg-white pt-10 md:pt-14">
       <Container>
         <FadeUp>
-          <h2 className="mb-8 text-center font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:mb-10 md:text-[45px] md:leading-[50px]">
+          <h2 className="mb-8 font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:mb-10 md:text-[45px] md:leading-[50px]">
             Our Values
           </h2>
         </FadeUp>
+      </Container>
 
-        <FadeUp delay={0.05}>
-          <div className="mx-auto mb-10 flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-3 rounded-full bg-[#f3f4f5] px-6 py-4 md:mb-12 md:gap-x-12 md:px-10">
-            {aboutValues.map((value) => {
-              const isActive = activeId === value.id;
-              return (
-                <button
-                  key={value.id}
-                  type="button"
-                  onClick={() => setActiveId(value.id)}
-                  className={cn(
-                    "relative cursor-pointer pb-2 text-[13px] font-semibold uppercase tracking-[1.5px] transition-colors md:text-[14px]",
-                    isActive
-                      ? "text-[var(--color-ink)]"
-                      : "text-[var(--color-slate)] hover:text-[var(--color-ink)]",
-                  )}
-                >
-                  {value.label}
-                  {isActive ? (
-                    <span
-                      className="absolute inset-x-0 bottom-0 h-[2px] bg-[var(--color-ink)]"
-                      aria-hidden
-                    />
-                  ) : null}
-                </button>
-              );
-            })}
-          </div>
-        </FadeUp>
+      <div className="relative overflow-hidden bg-[#0083CE]">
+        <img
+          src={aboutAssets.valuesBanner}
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute right-0 top-1/2 hidden h-[120%] w-auto -translate-y-1/2 select-none md:block"
+        />
 
-        <FadeUp delay={0.1}>
-          <div className="grid overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white lg:grid-cols-2">
-            <div className="flex flex-col justify-center space-y-6 p-8 md:p-12 lg:p-14">
-              <h3 className="text-[26px] font-semibold tracking-[-0.4px] text-[var(--color-ink)] md:text-[32px] md:leading-[1.2]">
-                {active.title}
-              </h3>
-              <p className="text-[15px] leading-[1.7] text-[var(--color-slate)] md:text-[16px]">
-                {active.description}
-              </p>
-              <div>
-                <Button href="#cta" variant="primary" arrow="right">
-                  Learn more
-                </Button>
+        <div className="relative mx-auto w-full max-w-[1400px] px-5 py-14 md:px-10 md:py-16 lg:px-8 lg:py-20 xl:px-12">
+          <div className="relative mx-auto max-w-[1116px] lg:ml-auto lg:mr-[4%]">
+            <Image
+              src={aboutAssets.valuesMark}
+              alt=""
+              width={400}
+              height={400}
+              unoptimized
+              className="pointer-events-none absolute -left-6 -top-8 z-20 hidden w-[140px] select-none md:block lg:-left-[13.5rem] lg:-top-[4.5rem] lg:w-[220px] xl:-left-[15rem] xl:-top-20 xl:w-[250px]"
+            />
+
+            <div className="relative z-10 mx-auto grid h-[568px] w-full max-w-[1116px] overflow-hidden bg-[#FFFAFA] shadow-[0_18px_50px_rgba(0,0,0,0.18)] lg:w-[1116px] lg:grid-cols-[376px_minmax(0,1fr)]">
+              <nav
+                aria-label="Our values"
+                className="flex h-full flex-row items-center overflow-x-auto bg-[#f2f2f2] sm:flex-col sm:justify-center sm:overflow-visible"
+              >
+                <div className="flex h-auto w-full flex-row sm:h-[354px] sm:w-[376px] sm:flex-col sm:justify-between">
+                  {aboutValues.map((value) => {
+                    const isActive = activeId === value.id;
+                    return (
+                      <button
+                        key={value.id}
+                        type="button"
+                        onClick={() => setActiveId(value.id)}
+                        className={cn(
+                          "cursor-pointer whitespace-nowrap px-6 py-3 text-left font-[Arial,Helvetica,sans-serif] text-[24px] font-bold uppercase leading-[34px] tracking-[6px] transition-colors sm:px-10 sm:py-4",
+                          isActive
+                            ? "bg-white text-[#0083CE]"
+                            : "bg-transparent text-[#A7A5A6] hover:text-[#6f6d6e]",
+                        )}
+                      >
+                        {value.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </nav>
+
+              <div className="flex h-full min-h-0 flex-col justify-center gap-5 overflow-hidden bg-[#FFF8D8] p-6 sm:gap-6 sm:p-10 lg:px-[70px] lg:py-8">
+                <p className="max-w-[463px] font-[family-name:var(--font-inter)] text-[16px] font-normal leading-[1.4] text-black lg:text-[21.62px] lg:leading-[1.4]">
+                  {active.description}
+                </p>
+                <div className="relative h-[180px] w-full max-w-[463px] shrink-0 overflow-hidden sm:h-[220px] lg:h-[308px] lg:w-[463px]">
+                  <Image
+                    src={active.image}
+                    alt={`Lemma value — ${active.label}`}
+                    fill
+                    unoptimized
+                    className="object-cover object-center"
+                    sizes="463px"
+                  />
+                </div>
               </div>
             </div>
-
-            <div className="relative flex min-h-[340px] items-center justify-center overflow-hidden bg-[linear-gradient(180deg,#FFF2F8_0%,#E1F3FF_100%)] md:min-h-[460px]">
-              <Image
-                src={active.image}
-                alt="Lemma values — Energetic, Innovation, Transparency, Agility"
-                width={708}
-                height={519}
-                unoptimized
-                className="h-auto w-full object-contain object-center"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
           </div>
-        </FadeUp>
-      </Container>
+        </div>
+      </div>
     </section>
   );
 }

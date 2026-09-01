@@ -88,7 +88,7 @@ export function ArchitectureImpact() {
     impressions >= 1000 ? `${(impressions / 1000).toFixed(1)} Billion` : `${impressions} Million`;
 
   return (
-    <section id="architecture" className="relative overflow-hidden py-16 md:py-[100px]">
+    <section id="architecture" className="relative overflow-hidden py-10 md:py-14">
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -97,7 +97,7 @@ export function ArchitectureImpact() {
         }}
       />
       <Container className="relative">
-        <FadeUp className="mx-auto mb-10 max-w-3xl space-y-5 text-center">
+        <FadeUp className="mx-auto mb-8 max-w-3xl space-y-4 text-center">
           <SectionLabel label="Interactive Assessment" accent="blue" align="center" dual />
           <h2 className="text-[28px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] sm:text-[32px] md:text-[45px] md:leading-[50px]">
             Project Your Lemma
@@ -192,7 +192,7 @@ export function ArchitectureImpact() {
           </div>
         </FadeUp>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <Button href="#architecture" variant="primary">
             learn more
           </Button>

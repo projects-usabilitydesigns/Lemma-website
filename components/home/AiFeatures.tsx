@@ -63,10 +63,10 @@ export function AiFeatures() {
   const data = defaultAiFeatures;
 
   return (
-    <section id="ai" className="bg-white py-16 md:pb-[50px] md:pt-10">
+    <section id="ai" className="bg-white py-10 md:py-14">
       <Container>
-        <div className="mb-12 grid items-center gap-10 lg:mb-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
-          <FadeUp className="space-y-5">
+        <div className="mb-8 grid items-center gap-8 lg:mb-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
+          <FadeUp className="space-y-4">
             <SectionLabel label="AI at Lemma" accent="blue" />
             <h2 className="font-heading max-w-xl text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
               Full-funnel AI-Powered
@@ -136,7 +136,7 @@ export function AiFeatures() {
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <Button href="#ai" variant="primary">
             learn more
           </Button>

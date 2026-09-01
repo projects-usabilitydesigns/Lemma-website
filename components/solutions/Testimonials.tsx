@@ -18,7 +18,7 @@ export function Testimonials() {
     setIndex((current) => (current === brandsTestimonials.length - 1 ? 0 : current + 1));
 
   return (
-    <section className="bg-white py-16 md:py-[90px]">
+    <section className="bg-white py-10 md:py-14">
       <Container>
         <FadeUp className="mx-auto mb-10 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Testimonials" align="center" dual />

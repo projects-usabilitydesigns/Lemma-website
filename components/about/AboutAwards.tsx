@@ -12,7 +12,7 @@ export function AboutAwards() {
   const bottomAwards = aboutAwards.slice(8);
 
   return (
-    <section className="bg-white pb-8 pt-8 md:pb-12 md:pt-10">
+    <section className="bg-white py-10 md:py-14">
       <Container>
         <div className="mb-12 lg:mb-16">
           <FadeUp className="space-y-5">

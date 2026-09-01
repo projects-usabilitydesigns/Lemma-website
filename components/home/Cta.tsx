@@ -45,12 +45,12 @@ function MagneticButton({
 
 export function Cta() {
   return (
-    <section id="cta" className="relative overflow-hidden py-16 md:py-24">
+    <section id="cta" className="relative overflow-hidden py-10 md:py-14">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-home-mesh)]" />
 
       <Container className="relative text-center">
-        <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-7">
+        <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-5">
           <SectionLabel label="Let's talk" />
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Make your next

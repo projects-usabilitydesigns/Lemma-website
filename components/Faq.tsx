@@ -42,9 +42,9 @@ export function Faq({
   const prefix = idPrefix ?? sectionId;
 
   return (
-    <section id={sectionId} className={cn("bg-white pb-16 md:pb-[100px]", className)}>
+    <section id={sectionId} className={cn("bg-white py-10 md:py-14", className)}>
       <Container>
-        <FadeUp className="mx-auto mb-12 max-w-2xl space-y-6 text-center">
+        <FadeUp className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
           <SectionLabel label="FAQ" align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Helpful Answers Before
@@ -91,7 +91,7 @@ export function Faq({
                   </span>
                   <span
                     className="mt-0.5 flex size-[30px] shrink-0 items-center justify-center rounded-full text-white"
-                    style={{ backgroundImage: "var(--gradient-cta)" }}
+                    style={{ backgroundImage: "var(--gradient-blue)" }}
                     aria-hidden
                   >
                     {open ? <Minus className="size-4" /> : <Plus className="size-4" />}

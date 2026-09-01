@@ -15,7 +15,7 @@ const wordPlay = {
 
 export function AboutCommunity() {
   return (
-    <section id="community" className="bg-white py-16 md:py-[90px]">
+    <section id="community" className="bg-white py-10 md:py-14">
       <Container>
         {/* Desktop — Figma: frame 1421×751, text cutout 746×298 @ x:675 */}
         <FadeUp className="group relative mx-auto hidden w-full max-w-[1421px] overflow-hidden rounded-[40px] lg:block">

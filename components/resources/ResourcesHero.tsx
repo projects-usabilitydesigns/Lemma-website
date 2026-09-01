@@ -12,7 +12,7 @@ import { animation } from "@/lib/design-system";
 export function ResourcesHero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#fff0f6] via-[#f0f7ff] to-[#f2fcf5]">
-      <Container className="relative pt-[120px] pb-16 md:pt-[140px] md:pb-24">
+      <Container className="relative pt-[120px] pb-10 md:pt-[140px] md:pb-14">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
           {/* Left Content */}
           <motion.div

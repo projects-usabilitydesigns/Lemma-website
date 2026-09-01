@@ -13,7 +13,7 @@ import { demoFaqs } from "@/lib/request-demo-data";
 export const metadata: Metadata = {
   title: "Request a Demo",
   description:
-    "Book a personalized walkthrough of the Lemma stack—Integral, Delta, Sigma, Phi, and Infibid—across DOOH, CTV, OTT, mobile, and web. Our team replies within 24 hours.",
+    "Book a personalized walkthrough of the Lemma stack—Integral, Delta, Sigma, and Phi—across DOOH, CTV, OTT, mobile, and web. Our team replies within 24 hours.",
 };
 
 export default function RequestDemoPage() {

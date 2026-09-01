@@ -8,7 +8,7 @@ import { careersCta } from "@/lib/careers-data";
 
 export function CareersCta() {
   return (
-    <section id="cta" className="relative overflow-hidden py-16 md:py-[90px]">
+    <section id="cta" className="relative overflow-hidden py-10 md:py-14">
       <div
         className="absolute inset-0"
         style={{

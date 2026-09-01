@@ -72,7 +72,7 @@ export function TopTrending({ articles }: { articles: ResourceArticle[] }) {
   if (articles.length === 0) return null;
 
   return (
-    <section id="top-trending" className="bg-white pb-12 pt-12 md:pb-16 md:pt-16">
+    <section id="top-trending" className="bg-white py-10 md:py-14">
       <Container>
         <FadeUp className="mb-10 flex items-center justify-between gap-4">
           <h2 className="font-heading text-[28px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[40px] md:leading-[44px]">
