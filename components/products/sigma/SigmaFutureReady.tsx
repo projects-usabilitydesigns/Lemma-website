@@ -1,30 +1,17 @@
 "use client";
 
-import { FadeUp } from "@/components/animation";
-import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ProductIntro } from "@/components/products/ProductIntro";
+import { WordPlay } from "@/components/ui/WordPlay";
 
 export function SigmaFutureReady() {
   return (
-    <section className="bg-white pb-3 pt-10 md:pb-4 md:pt-12">
-      <Container>
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16">
-          <FadeUp className="space-y-5">
-            <SectionLabel label="Future Ready" accent="blue" />
-            <h2 className="font-heading text-[36px] font-semibold tracking-[-0.72px] text-black md:text-[54px] md:leading-[1.1]">
-              Master control &amp; enjoy unparalleled transparency
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.08}>
-            <p className="font-[family-name:var(--font-inter)] text-[18px] font-medium leading-[1.65] text-[var(--color-slate)] lg:pt-12">
-              Tailored for emerging formats such as DOOH, CTV/OTT, retail media, and beyond, Lemma
-              Sigma boosts programmatic bidding for your inventory across various formats — all
-              within a single, user-friendly interface. No need for multiple tools; the native
-              engine ensures monetization is optimized at all times.
-            </p>
-          </FadeUp>
-        </div>
-      </Container>
-    </section>
+    <ProductIntro
+      title={
+        <>
+          <WordPlay word="lemmaMaster" /> control & enjoy unparalleled transparency
+        </>
+      }
+      description="Lemma Sigma boosts programmatic bidding for DOOH, CTV, and Retail, making inventory easily discoverable to global DSPs including DV360 and TTD and others. Single native engine to optimize monetization at all times."
+    />
   );
 }

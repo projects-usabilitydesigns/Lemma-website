@@ -15,14 +15,13 @@ export const publishersHero = {
     { label: "For Publishers", href: "/solutions/publishers" },
   ],
   label: "Solutions",
-  title: "For Publishers",
   gradientTitle: "Programmatic monetization, maximized",
   description:
     "Unlock premium demand, protect brand safety, and grow yield across digital, CTV, and emerging formats—without giving up control of your inventory.",
   primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
-  image: "/images/solutions/publishers-hero.png",
-  imageAlt: "LEMMA digital billboard over a city highway at sunset",
+  image: "/images/solutions/publishers-hero-web.png",
+  imageAlt: "Publisher workstation showing a news website with display ads and a programmatic yield dashboard",
 } as const;
 
 export const publishersStats: BrandsStat[] = [
@@ -83,7 +82,7 @@ export const publishersWhy = {
 export const publishersChannels = {
   title: "Formats and channels publishers can monetize with Lemma",
   description:
-    "Meet audiences wherever attention lives—then turn that attention into sustainable, brand-safe revenue.",
+    "Meet audiences wherever attention lives then turn that attention into sustainable, brand-safe revenue.",
   items: [
     {
       id: "display",
@@ -108,7 +107,7 @@ export const publishersChannels = {
     },
     {
       id: "header",
-      title: "Header Bidding",
+      title: "Header Bidding with Infibid",
       description:
         "Increase competition for every impression with header bidding and unified auction intelligence.",
       icon: "network",

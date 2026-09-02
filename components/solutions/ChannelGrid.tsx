@@ -12,6 +12,7 @@ import {
   ThumbsUp,
   TrendingUp,
   Tv,
+  Volume2,
   Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -26,6 +27,7 @@ const icons = {
   thumbsUp: ThumbsUp,
   billboard: Clapperboard,
   network: Network,
+  volume: Volume2,
   boxes: Boxes,
   images: Images,
   zap: Zap,

@@ -51,7 +51,7 @@ function FeatureCard({ feature }: { feature: BrandsFeature }) {
 }
 
 const brandsDefaults = {
-  title: "Outcomes, not just reach.",
+  title: "Outdoor to Outcome",
   description:
     "Lemma helps brands activate outdoor attention across every screen and measure what actually moves the business.",
   features: brandsWhyFeatures,

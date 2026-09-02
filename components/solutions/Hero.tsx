@@ -15,7 +15,7 @@ import { animation } from "@/lib/design-system";
 type HeroData = {
   breadcrumb: readonly { label: string; href: string }[];
   label: string;
-  title: string;
+  title?: string;
   gradientTitle: string;
   description: string;
   primaryCta: { label: string; href: string };
@@ -40,7 +40,7 @@ function StatItem({
         {decimals > 0 ? value.toFixed(decimals) : Math.round(value)}
         {suffix}
       </p>
-      <p className="text-[11px] font-semibold uppercase tracking-[1.2px] text-[var(--color-slate)] md:text-[12px]">
+      <p className="whitespace-pre-line text-[11px] font-semibold uppercase tracking-[1.2px] text-[var(--color-slate)] md:text-[12px]">
         {label}
       </p>
     </div>
@@ -93,25 +93,41 @@ export function BrandsHero({
             </FadeUp>
 
             <div className="space-y-3">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: animation.duration.slow, ease: animation.easeOut }}
-                className="font-heading text-[34px] font-semibold leading-[1.08] text-[var(--color-ink)] md:text-[48px]"
-              >
-                {data.title}
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: animation.duration.base, delay: 0.12, ease: animation.easeOut }}
-                className="font-heading bg-clip-text text-[24px] font-semibold leading-[1.2] text-transparent md:text-[34px]"
-                style={{
-                  backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
-                }}
-              >
-                {data.gradientTitle}
-              </motion.p>
+              {data.title ? (
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: animation.duration.slow, ease: animation.easeOut }}
+                  className="font-heading text-[34px] font-semibold leading-[1.08] text-[var(--color-ink)] md:text-[48px]"
+                >
+                  {data.title}
+                </motion.h1>
+              ) : null}
+              {data.title ? (
+                <motion.p
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: animation.duration.base, delay: 0.12, ease: animation.easeOut }}
+                  className="font-heading bg-clip-text text-[24px] font-semibold leading-[1.2] text-transparent md:text-[34px]"
+                  style={{
+                    backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
+                  }}
+                >
+                  {data.gradientTitle}
+                </motion.p>
+              ) : (
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: animation.duration.slow, ease: animation.easeOut }}
+                  className="font-heading bg-clip-text text-[34px] font-semibold leading-[1.08] text-transparent md:text-[48px]"
+                  style={{
+                    backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
+                  }}
+                >
+                  {data.gradientTitle}
+                </motion.h1>
+              )}
               <FadeUp delay={0.18}>
                 <p className="max-w-xl text-[17px] leading-relaxed text-[var(--color-ink-muted)] md:text-[19px]">
                   {data.description}
@@ -158,7 +174,7 @@ export function BrandsHero({
             <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] shadow-[0_20px_50px_rgba(9,19,26,0.14)] md:aspect-[4/3]">
               <Image
                 src={data.image}
-                alt={data.imageAlt ?? data.title}
+                alt={data.imageAlt ?? data.title ?? data.gradientTitle}
                 fill
                 priority
                 className="object-cover object-center"

@@ -1,6 +1,5 @@
 import type {
   BrandsCapability,
-  BrandsChannel,
   BrandsFaq,
   BrandsFeature,
   BrandsKpi,
@@ -12,13 +11,12 @@ export const agenciesHero = {
   breadcrumb: [
     { label: "Home", href: "/" },
     { label: "Solutions", href: "/#solutions" },
-    { label: "For Agencies", href: "/solutions/agencies" },
+    { label: "For Demand Partners", href: "/solutions/agencies" },
   ],
   label: "Solutions",
-  title: "For Agencies",
   gradientTitle: "LEMMA CTV Solutions",
   description:
-    "Reach and connect unique audiences at scale across premium streaming TV content in the Open Web—including OTTs and CTV networks—with one powerful platform.",
+    "Reach and connect unique audiences at scale across premium streaming TV content in the Open Web including OTTs and CTV networks with one powerful platform.",
   primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/agencies-hero.png",
@@ -26,22 +24,22 @@ export const agenciesHero = {
 } as const;
 
 export const agenciesStats: BrandsStat[] = [
-  { id: "publishers", value: 100, suffix: "+", label: "Video Publishers" },
+  { id: "publishers", value: 100, suffix: "+", label: "Video\nPublishers" },
   { id: "markets", value: 40, suffix: "+", label: "Markets Worldwide" },
   { id: "platforms", value: 5, label: "Proprietary Platforms" },
-  { id: "premium", value: 100, suffix: "%", label: "Premium CTV Focus" },
+  { id: "premium", value: 100, suffix: "%", label: "Premium CTV\nFocus" },
 ];
 
 export const agenciesWhy = {
-  title: "All your CTV solutions in one powerful platform",
+  title: "SEAMLESS ADS. STRIKING RESULTS.",
   description:
-    "Lemma brings together scale and expertise in the fastest growing programmatic channel—so agencies can plan, buy, and measure CTV with confidence.",
+    "CTV built for outcomes, combining scale and expertise to turn CTV campaigns into measurable conversions & ROI",
   features: [
     {
       id: "scale",
       title: "Scale",
       description:
-        "Access a large choice of video publishers for unique CTV needs—direct supply on Lemma Exchange plus curated publishers via leading SSP partners.",
+        "Access a large choice of video publishers for unique CTV need direct supply on Lemma Exchange plus curated publishers via leading SSP partners.",
       accent: "#008fdb",
       icon: "layers",
     },
@@ -80,59 +78,31 @@ export const agenciesWhy = {
   ] satisfies BrandsFeature[],
 };
 
-export const agenciesChannels = {
-  title: "Stop boring your audience—capture attention with Lemmastudio",
-  description:
-    "With Lemmastudio you can craft multi-stage campaigns, explore awareness formats, unlock creative automations, and set up dynamic ad placements.",
-  items: [
-    {
-      id: "multi-stage",
-      title: "Multi-Stage Campaigns",
-      description:
-        "Craft sequential journeys that move audiences from awareness to action across premium CTV environments.",
-      icon: "play",
-    },
-    {
-      id: "awareness",
-      title: "Brand Awareness Formats",
-      description:
-        "Explore creative formats designed to drive brand awareness on streaming TV at scale.",
-      icon: "tv",
-    },
-    {
-      id: "automation",
-      title: "Creative Automations",
-      description:
-        "Unlock creative automations that support sequential objectives without slowing activation.",
-      icon: "network",
-    },
-    {
-      id: "dynamic",
-      title: "Dynamic Ad Placements",
-      description:
-        "Set up dynamic placements that adapt messaging to context, audience, and campaign goals.",
-      icon: "monitor",
-    },
-    {
-      id: "true-tv",
-      title: "True TV Inventory",
-      description:
-        "Access premium True TV supply with viewership and exposure insights you can plan against.",
-      icon: "billboard",
-    },
-    {
-      id: "pmp",
-      title: "Curated PMP Solutions",
-      description:
-        "Activate genre-based contextual audiences and curated private marketplace deals with precision.",
-      icon: "thumbsUp",
-    },
-  ] satisfies BrandsChannel[],
-};
+export const agenciesOffers = {
+  label: "Lemma Offers",
+  title: "CTV that understands the moment.",
+  rejected: "A sportswear brand shouldn't simply target 18-34-year-olds.",
+  stackLabel: "The stack identifies & combines:",
+  stack: [
+    "18-34 Demographic",
+    "Fitness Affinity + Sports Content",
+    "Evening Viewing + High-Value Geography",
+  ],
+  image: "/images/solutions/lemma-offers-ctv.png",
+  imageAlt: "Friends watching a match together on a living-room CTV screen",
+  callouts: [
+    { id: "segment", text: "Audience segment: Esports & active lifestyle enthusiasts" },
+    { id: "pool", text: "High-engagement CTV targeting pool" },
+    { id: "demo", text: "Primary demographic: Adults 18-34" },
+    { id: "coview", text: "High co-viewing profiles" },
+    { id: "context", text: "Contextual placements: Gaming & sports content genres" },
+    { id: "household", text: "Tech-forward & cross-device active household" },
+  ],
+} as const;
 
 export const agenciesJourney = {
   label: "Venue-based CTV",
-  title: "It's not sorta CTV—it's venue-based CTV advertising",
+  title: "It's not sorta CTV it's venue-based CTV advertising",
   description:
     "Lemma introduces a straightforward and transparent way to buy premium CTV screens at contextually relevant real-world locations.",
   bullets: [
@@ -208,7 +178,7 @@ export const agenciesCapabilities = {
 
 export const agenciesSuccessMetrics: BrandsStat[] = [
   { id: "publishers", value: 100, suffix: "+", label: "Video Publishers" },
-  { id: "markets", value: 40, suffix: "+", label: "Markets Activated" },
+  { id: "households", value: 99, suffix: "%", label: "of CTV Households Mapped" },
   { id: "completion", value: 96, suffix: "%", label: "Avg. Completion Rate" },
   { id: "viewability", value: 91, suffix: "%", label: "Premium Viewability" },
   { id: "transparency", value: 100, suffix: "%", label: "Reporting Clarity" },
@@ -217,21 +187,22 @@ export const agenciesSuccessMetrics: BrandsStat[] = [
 export const agenciesAnalytics = {
   title: "Access high-quality CTV at scale",
   description:
-    "Lemma brings together scale and expertise in the fastest growing programmatic channel—built for agencies that need outcomes, not just impressions.",
+    "Lemma brings together scale and expertise in the fastest growing programmatic channel built for agencies that need outcomes, not just impressions.",
 } as const;
 
 export const agenciesFaqs: BrandsFaq[] = [
   {
     id: "q1",
-    question: "How does Lemma help agencies activate CTV?",
+    question: "How does Lemma help Demand Partners activate CTV?",
+    questionAccent: "Demand Partners",
     answer:
-      "Lemma provides scale across premium OTT and CTV supply, advanced targeting, direct publisher integrations, and transparent measurement—so agencies can plan and buy CTV in one platform.",
+      "Lemma provides scale across premium OTT and CTV supply, advanced targeting, direct publisher integrations, and transparent measurement so demand partners can plan and buy CTV in one platform.",
   },
   {
     id: "q2",
-    question: "What targeting options are available for CTV?",
+    question: "How is Lemma CTV solutions different from others?",
     answer:
-      "Agencies can access True TV inventory, TV viewership and ad exposure signals, genre-based contextual audiences, curated PMP solutions, and user-level audience targeting.",
+      "Unlike broad, proxy-based demographic targeting, Lemma analyzes brand assets and intent signals to map high-impact CTV moments. This delivers context-relevant ads that eliminate waste and drive measurable conversions.",
   },
   {
     id: "q3",
@@ -241,15 +212,16 @@ export const agenciesFaqs: BrandsFaq[] = [
   },
   {
     id: "q4",
-    question: "What is venue-based CTV advertising?",
+    question: "What is Lemma Audience Graph?",
     answer:
-      "Venue-based CTV is a transparent way to buy premium CTV screens at contextually relevant real-world locations. It is currently available in the USA and expanding globally.",
+      "The Lemma Audience Graph maps 95% of CTV households using real-world location signals, intent data, and IP anchoring. It builds precise targeting pools to deliver context-relevant cross-device campaigns.",
+    answerBold: ["location signals, intent data, and IP anchoring"],
   },
   {
     id: "q5",
-    question: "What is Lemmastudio?",
+    question: "What downstream outcomes can advertisers track using Lemma’s CTV solution?",
     answer:
-      "Lemmastudio helps agencies craft multi-stage campaigns, explore awareness-driving formats, unlock creative automations, and set up dynamic ad placements for stronger CTV storytelling.",
+      "Lemma tracks full-funnel downstream outcomes, connecting living-room CTV views to mobile banner clicks, site conversions, online purchases, and closed-loop physical store foot-traffic through cross-device attribution.",
   },
 ];
 

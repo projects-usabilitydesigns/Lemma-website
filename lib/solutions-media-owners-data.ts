@@ -1,12 +1,12 @@
 import type {
   BrandsCapability,
-  BrandsChannel,
   BrandsFaq,
   BrandsFeature,
   BrandsKpi,
   BrandsStat,
 } from "@/lib/solutions-brands-data";
 import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
+import type { Solution } from "@/types";
 
 export const mediaOwnersHero = {
   breadcrumb: [
@@ -15,7 +15,6 @@ export const mediaOwnersHero = {
     { label: "For Media Owners", href: "/solutions/media-owners" },
   ],
   label: "Solutions",
-  title: "For Media Owners",
   gradientTitle: "Lemmaster your inventory!",
   description:
     "Your Screens. Your Rules. Our Global Network. Partner with us to monetize, manage, and meticulously measure every aspect of your inventory.",
@@ -41,7 +40,7 @@ export const mediaOwnersWhy = {
       id: "transparency",
       title: "Transparent Monetization",
       description:
-        "Clear, detailed insights into every facet of ad monetization—so you understand revenue streams and performance metrics end to end.",
+        "Clear, detailed insights into every facet of ad monetization, so you understand revenue streams and performance metrics end to end.",
       accent: "#008fdb",
       icon: "chart",
     },
@@ -73,68 +72,57 @@ export const mediaOwnersWhy = {
       id: "partner",
       title: "Strategic Partnership",
       description:
-        "Work with a global demand network that treats your inventory as premium—and helps you grow yield without losing control.",
+        "Work with a global demand network that treats your inventory as premium and helps you grow yield without losing control.",
       accent: "#f05a27",
       icon: "sparkles",
     },
   ] satisfies BrandsFeature[],
 };
 
-export const mediaOwnersChannels = {
+export const mediaOwnersPlatformsHeading = {
   title: "Platforms built for media owners",
   description:
     "Integrate Lemma Sigma and Phi to gain complete control, transparency, and free content management across your inventory.",
-  items: [
-    {
-      id: "sigma",
-      title: "Lemma Sigma",
-      description:
-        "Integrate with Lemma and gain complete control and transparency over your inventory with a transparent SSP.",
-      icon: "boxes",
-    },
-    {
-      id: "phi",
-      title: "Lemma Phi",
-      description:
-        "Introducing Lemma Phi—our DCS that is completely free of cost, so you can manage content without friction.",
-      icon: "images",
-    },
-    {
-      id: "rtb",
-      title: "Real-Time Bidding",
-      description:
-        "Capture optimal prices through automation and RTB workflows designed for fast-paced digital advertising.",
-      icon: "zap",
-    },
-    {
-      id: "yield",
-      title: "Yield Optimization",
-      description:
-        "Prioritize premium placements and maximize fill while protecting the value of your inventory.",
-      icon: "trendingUp",
-    },
-    {
-      id: "safety",
-      title: "Brand Safety Controls",
-      description:
-        "Uphold quality standards and creative guidelines so every ad on your screens meets your rules.",
-      icon: "shield",
-    },
-    {
-      id: "insights",
-      title: "Revenue Insights",
-      description:
-        "See clear monetization reporting so you always know what’s driving performance and where to improve.",
-      icon: "barChart",
-    },
-  ] satisfies BrandsChannel[],
-};
+} as const;
+
+export const mediaOwnersPlatforms: Solution[] = [
+  {
+    id: "sigma",
+    number: "01",
+    eyebrow: "Supply, unlocked",
+    title: "Lemma Sigma",
+    description:
+      "Integrate with Lemma and gain complete control and transparency over your inventory with a transparent SSP.",
+    features: [
+      "Real-time bidding and yield optimization",
+      "Brand safety controls on every screen",
+      "Clear revenue insights across your network",
+    ],
+    image: "/images/solutions/brands-color.png",
+    href: "/products/sigma",
+  },
+  {
+    id: "phi",
+    number: "02",
+    eyebrow: "Content, simplified",
+    title: "Lemma Phi",
+    description:
+      "Lemma Phi is our DCS that is completely free of cost, so you can manage content without friction.",
+    features: [
+      "Plan, schedule, and deliver across every screen",
+      "Creative control across every screen size",
+      "Automated demand to improve yield and fill",
+    ],
+    image: "/images/solutions/owners-color.png",
+    href: "/products/phi",
+  },
+];
 
 export const mediaOwnersJourney = {
   label: "Advantage Lemma",
   title: "Get the LEMMA partner benefit",
   description:
-    "See workflows and use cases that can be achieved through our platforms—built to help media owners monetize with clarity and control.",
+    "See workflows and use cases that can be achieved through our platforms built to help media owners monetize with clarity and control.",
   bullets: [
     "Transparent insights across every revenue stream and performance metric",
     "Intuitive inventory management for premium ad placements",
@@ -207,15 +195,15 @@ export const mediaOwnersCapabilities = {
 };
 
 export const mediaOwnersSuccessMetrics: BrandsStat[] = [
-  { id: "screens", value: 1.5, decimals: 1, suffix: "M+", label: "Digital OOH Screens" },
-  { id: "markets", value: 40, suffix: "+", label: "Markets Connected" },
+  { id: "screens", value: 4, suffix: "M+", label: "Screens" },
+  { id: "households", value: 99, suffix: "%", label: "CTV Households Mapped" },
   { id: "demand", value: 120, suffix: "+", label: "Demand Partners" },
   { id: "uptime", value: 99.9, decimals: 1, suffix: "%", label: "Network Reliability" },
   { id: "partners", value: 100, suffix: "%", label: "Partner Transparency" },
 ];
 
 export const mediaOwnersAnalytics = {
-  title: "Scale that compounds into yield",
+  title: "Scale that compounds into outcomes",
   description:
     "Tap into global demand with inventory tools, automation, and measurement built for modern media owners.",
 } as const;

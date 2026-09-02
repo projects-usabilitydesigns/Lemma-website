@@ -37,21 +37,23 @@ export function CareersGallery() {
               key={rowIndex}
               className={cn(
                 "grid gap-5",
-                rowIndex % 2 === 0
-                  ? "md:grid-cols-[0.9fr_1.1fr]"
-                  : "md:grid-cols-[1.1fr_0.9fr]",
+                row.length === 1
+                  ? "md:grid-cols-1"
+                  : rowIndex % 2 === 0
+                    ? "md:grid-cols-[0.9fr_1.1fr]"
+                    : "md:grid-cols-[1.1fr_0.9fr]",
               )}
             >
               {row.map((image) => (
                 <div
                   key={image.id}
-                  className="relative h-[260px] overflow-hidden rounded-[20px] md:h-[420px] lg:h-[520px]"
+                  className="relative h-[240px] overflow-hidden rounded-[20px] md:h-[340px] lg:h-[380px]"
                 >
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover transition duration-700 hover:scale-105"
+                    className="object-cover object-center"
                     sizes="(max-width: 768px) 100vw, 55vw"
                   />
                 </div>

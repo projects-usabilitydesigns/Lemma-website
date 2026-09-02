@@ -4,7 +4,7 @@ import { CaseStudies } from "@/components/home/CaseStudies";
 import {
   BrandsHero,
   WhyLemma,
-  ChannelGrid,
+  LemmaOffers,
   JourneySection,
   PlatformFeatures,
   CampaignAnalytics,
@@ -14,7 +14,6 @@ import { Faq } from "@/components/Faq";
 import {
   agenciesAnalytics,
   agenciesCapabilities,
-  agenciesChannels,
   agenciesCta,
   agenciesFaqs,
   agenciesHero,
@@ -26,9 +25,9 @@ import {
 } from "@/lib/solutions-agencies-data";
 
 export const metadata: Metadata = {
-  title: "For Agencies",
+  title: "For Demand Partners",
   description:
-    "LEMMA CTV Solutions for agencies—reach unique audiences at scale across premium streaming TV, OTTs, and CTV networks with precise targeting and transparent measurement.",
+    "LEMMA CTV Solutions—reach unique audiences at scale across premium streaming TV, OTTs, and CTV networks with precise targeting and transparent measurement.",
 };
 
 export default function AgenciesPage() {
@@ -42,11 +41,7 @@ export default function AgenciesPage() {
           description={agenciesWhy.description}
           features={agenciesWhy.features}
         />
-        <ChannelGrid
-          title={agenciesChannels.title}
-          description={agenciesChannels.description}
-          channels={agenciesChannels.items}
-        />
+        <LemmaOffers />
         <JourneySection
           data={agenciesJourney}
           kpis={agenciesKpis}

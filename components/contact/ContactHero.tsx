@@ -27,7 +27,7 @@ export function ContactHero() {
             </FadeUp>
 
             <BlurReveal>
-              <h1 className="font-heading max-w-xl text-[36px] font-semibold leading-[1.08] tracking-[-0.72px] text-[var(--color-ink)] md:text-[52px]">
+              <h1 className="font-heading max-w-xl text-[36px] font-bold leading-[1.08] tracking-[-0.72px] text-[var(--color-ink)] md:text-[52px]">
                 {contactHero.title}
               </h1>
             </BlurReveal>
@@ -44,8 +44,8 @@ export function ContactHero() {
                   href={`mailto:${contactHero.email}`}
                   className="group flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-white/80 p-4 transition hover:border-[var(--color-blue)] hover:bg-white"
                 >
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[rgba(21,129,197,0.1)] text-[var(--color-blue-link)]">
-                    <Mail className="size-5" />
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#008fdb] text-white">
+                    <Mail className="size-4" />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-[11px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]">
@@ -61,8 +61,8 @@ export function ContactHero() {
                   href={`tel:${contactHero.phone.replace(/\s/g, "")}`}
                   className="group flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-white/80 p-4 transition hover:border-[var(--color-blue)] hover:bg-white"
                 >
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[rgba(0,147,82,0.1)] text-[var(--color-green)]">
-                    <Phone className="size-5" />
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#74be44] text-white">
+                    <Phone className="size-4" />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-[11px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]">
@@ -83,9 +83,10 @@ export function ContactHero() {
                     key={item}
                     className="flex items-start gap-3 text-[16px] text-[var(--color-ink-muted)] md:text-[17px]"
                   >
-                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[rgba(0,143,219,0.12)] text-[var(--color-pink)]">
-                      <Check className="size-3.5" strokeWidth={2.5} />
-                    </span>
+                    <Check
+                      className="mt-0.5 size-5 shrink-0 text-[#008fdb]"
+                      strokeWidth={2.5}
+                    />
                     {item}
                   </li>
                 ))}

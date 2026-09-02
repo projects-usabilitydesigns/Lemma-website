@@ -177,14 +177,14 @@ export function ContactForm() {
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
                 <label className={labelClass} htmlFor={`${formId}-firstName`}>
-                  First name*
+                  First name<span className="text-[var(--color-error)]">*</span>
                 </label>
                 <input
                   id={`${formId}-firstName`}
                   name="firstName"
                   autoComplete="given-name"
                   className={cn(fieldClass, errors.firstName && "border-[var(--color-error)]")}
-                  placeholder="Priya"
+                  placeholder="John / Jane"
                   value={values.firstName}
                   onChange={(event) => setField("firstName", event.target.value)}
                   aria-invalid={Boolean(errors.firstName)}
@@ -195,14 +195,14 @@ export function ContactForm() {
 
               <div>
                 <label className={labelClass} htmlFor={`${formId}-lastName`}>
-                  Last name*
+                  Last name<span className="text-[var(--color-error)]">*</span>
                 </label>
                 <input
                   id={`${formId}-lastName`}
                   name="lastName"
                   autoComplete="family-name"
                   className={cn(fieldClass, errors.lastName && "border-[var(--color-error)]")}
-                  placeholder="Sharma"
+                  placeholder="Doe"
                   value={values.lastName}
                   onChange={(event) => setField("lastName", event.target.value)}
                   aria-invalid={Boolean(errors.lastName)}
@@ -213,7 +213,7 @@ export function ContactForm() {
 
               <div>
                 <label className={labelClass} htmlFor={`${formId}-company`}>
-                  Company name*
+                  Company name<span className="text-[var(--color-error)]">*</span>
                 </label>
                 <input
                   id={`${formId}-company`}
@@ -231,7 +231,7 @@ export function ContactForm() {
 
               <div>
                 <label className={labelClass} htmlFor={`${formId}-email`}>
-                  Company email ID*
+                  Company email ID<span className="text-[var(--color-error)]">*</span>
                 </label>
                 <input
                   id={`${formId}-email`}
@@ -251,7 +251,7 @@ export function ContactForm() {
 
               <div>
                 <label className={labelClass} htmlFor={`${formId}-country`}>
-                  Country*
+                  Country<span className="text-[var(--color-error)]">*</span>
                 </label>
                 <select
                   id={`${formId}-country`}
@@ -274,7 +274,7 @@ export function ContactForm() {
 
               <div>
                 <label className={labelClass} htmlFor={`${formId}-mobile`}>
-                  Mobile number*
+                  Mobile number<span className="text-[var(--color-error)]">*</span>
                 </label>
                 <input
                   id={`${formId}-mobile`}
@@ -310,7 +310,7 @@ export function ContactForm() {
             <div>
               <div className="flex items-baseline justify-between">
                 <label className={labelClass} htmlFor={`${formId}-message`}>
-                  Message*
+                  Message<span className="text-[var(--color-error)]">*</span>
                 </label>
                 <span
                   className={cn(
