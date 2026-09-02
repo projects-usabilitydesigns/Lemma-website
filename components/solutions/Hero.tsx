@@ -40,7 +40,7 @@ function StatItem({
         {decimals > 0 ? value.toFixed(decimals) : Math.round(value)}
         {suffix}
       </p>
-      <p className="text-[11px] font-semibold uppercase tracking-[1.2px] text-[var(--color-slate)] md:text-[12px]">
+      <p className="whitespace-pre-line text-[11px] font-semibold uppercase tracking-[1.2px] text-[var(--color-slate)] md:text-[12px]">
         {label}
       </p>
     </div>

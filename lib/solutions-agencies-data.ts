@@ -24,10 +24,10 @@ export const agenciesHero = {
 } as const;
 
 export const agenciesStats: BrandsStat[] = [
-  { id: "publishers", value: 100, suffix: "+", label: "Video Publishers" },
+  { id: "publishers", value: 100, suffix: "+", label: "Video\nPublishers" },
   { id: "markets", value: 40, suffix: "+", label: "Markets Worldwide" },
   { id: "platforms", value: 5, label: "Proprietary Platforms" },
-  { id: "premium", value: 100, suffix: "%", label: "Premium CTV Focus" },
+  { id: "premium", value: 100, suffix: "%", label: "Premium CTV\nFocus" },
 ];
 
 export const agenciesWhy = {
