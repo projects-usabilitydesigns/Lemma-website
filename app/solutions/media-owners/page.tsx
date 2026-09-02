@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { CaseStudies } from "@/components/home/CaseStudies";
+import { Solutions } from "@/components/home/Solutions";
 import {
   BrandsHero,
   WhyLemma,
-  ChannelGrid,
   JourneySection,
   PlatformFeatures,
   CampaignAnalytics,
@@ -14,12 +14,13 @@ import { Faq } from "@/components/Faq";
 import {
   mediaOwnersAnalytics,
   mediaOwnersCapabilities,
-  mediaOwnersChannels,
   mediaOwnersCta,
   mediaOwnersFaqs,
   mediaOwnersHero,
   mediaOwnersJourney,
   mediaOwnersKpis,
+  mediaOwnersPlatforms,
+  mediaOwnersPlatformsHeading,
   mediaOwnersStats,
   mediaOwnersSuccessMetrics,
   mediaOwnersWhy,
@@ -42,10 +43,14 @@ export default function MediaOwnersPage() {
           description={mediaOwnersWhy.description}
           features={mediaOwnersWhy.features}
         />
-        <ChannelGrid
-          title={mediaOwnersChannels.title}
-          description={mediaOwnersChannels.description}
-          channels={mediaOwnersChannels.items}
+        <Solutions
+          id="platforms"
+          label=""
+          title={mediaOwnersPlatformsHeading.title}
+          description={mediaOwnersPlatformsHeading.description}
+          solutions={mediaOwnersPlatforms}
+          showBackground={false}
+          showFooterCta={false}
         />
         <JourneySection
           data={mediaOwnersJourney}
@@ -61,6 +66,9 @@ export default function MediaOwnersPage() {
           title={mediaOwnersAnalytics.title}
           description={mediaOwnersAnalytics.description}
           metrics={mediaOwnersSuccessMetrics}
+          className="bg-gradient-to-r from-[#e8f6ff] via-[#f4f7f5] to-[#fce8f2] py-14 md:py-20"
+          labelUppercase={false}
+          squareCards
         />
         <CaseStudies />
         <Faq items={mediaOwnersFaqs} />

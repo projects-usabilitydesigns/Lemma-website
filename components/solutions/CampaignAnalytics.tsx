@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useCountUp } from "@/hooks/useCountUp";
 import { brandsSuccessMetrics, type BrandsStat } from "@/lib/solutions-brands-data";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 function Metric({
@@ -12,12 +13,17 @@ function Metric({
   decimals = 0,
   suffix = "",
   label,
-}: BrandsStat & { end: number }) {
+  labelUppercase = true,
+  square = false,
+}: BrandsStat & { end: number; labelUppercase?: boolean; square?: boolean }) {
   const { ref, value } = useCountUp({ end, decimals });
   return (
     <motion.div
       variants={staggerItem}
-      className="rounded-[20px] border border-[var(--color-border)] bg-white px-5 py-7 text-center shadow-[0_8px_24px_rgba(9,19,26,0.04)]"
+      className={cn(
+        "rounded-[20px] border border-[var(--color-border)] bg-white px-5 py-7 text-center shadow-[0_8px_24px_rgba(9,19,26,0.04)]",
+        square && "flex aspect-square flex-col items-center justify-center px-4 py-6",
+      )}
     >
       <p
         ref={ref as React.RefObject<HTMLParagraphElement>}
@@ -26,7 +32,12 @@ function Metric({
         {decimals > 0 ? value.toFixed(decimals) : Math.round(value)}
         {suffix}
       </p>
-      <p className="mt-2 text-[13px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]">
+      <p
+        className={cn(
+          "mt-2 text-[13px] font-semibold leading-snug text-[var(--color-slate)]",
+          labelUppercase ? "uppercase tracking-[1.4px]" : "tracking-[0.2px]",
+        )}
+      >
         {label}
       </p>
     </motion.div>
@@ -44,13 +55,19 @@ export function CampaignAnalytics({
   title = brandsDefaults.title,
   description = brandsDefaults.description,
   metrics = brandsDefaults.metrics,
+  className,
+  labelUppercase = true,
+  squareCards = false,
 }: {
   title?: string;
   description?: string;
   metrics?: BrandsStat[];
+  className?: string;
+  labelUppercase?: boolean;
+  squareCards?: boolean;
 }) {
   return (
-    <section className="bg-white py-10 md:py-14">
+    <section className={cn("bg-white py-10 md:py-14", className)}>
       <Container>
         <FadeUp className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Success metrics" align="center" dual accent="blue" />
@@ -64,7 +81,13 @@ export function CampaignAnalytics({
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5" delay={0.08}>
           {metrics.map((metric) => (
-            <Metric key={metric.id} {...metric} end={metric.value} />
+            <Metric
+              key={metric.id}
+              {...metric}
+              end={metric.value}
+              labelUppercase={labelUppercase}
+              square={squareCards}
+            />
           ))}
         </Stagger>
       </Container>

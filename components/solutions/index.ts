@@ -1,6 +1,7 @@
 export { BrandsHero } from "./Hero";
 export { WhyLemma } from "./WhyLemma";
 export { ChannelGrid } from "./ChannelGrid";
+export { LemmaOffers } from "./LemmaOffers";
 export { JourneySection } from "./JourneySection";
 export { PlatformFeatures } from "./PlatformFeatures";
 export { CampaignAnalytics } from "./CampaignAnalytics";

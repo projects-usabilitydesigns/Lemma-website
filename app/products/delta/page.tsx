@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { AboutCta } from "@/components/about/AboutCta";
 import { Faq } from "@/components/Faq";
-import { DeltaHero, DeltaIntro, DeltaAdvantage } from "@/components/products/delta";
+import { DeltaHero, DeltaIntro, DeltaAdvantage, DeltaActivation } from "@/components/products/delta";
 import { deltaFaqs } from "@/lib/delta-data";
 
 export const metadata: Metadata = {
@@ -19,6 +19,7 @@ export default function DeltaProductPage() {
         <DeltaHero />
         <DeltaIntro />
         <DeltaAdvantage />
+        <DeltaActivation />
         <Faq items={deltaFaqs} />
         <AboutCta />
       </main>

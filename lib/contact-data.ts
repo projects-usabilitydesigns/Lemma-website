@@ -12,14 +12,14 @@ export const contactHero = {
   label: "Contact Us",
   title: "Connect. Collaborate. Conquer.",
   description:
-    "Impactful new-media campaigns start with a conversation. Tell us what you're planning and the right Lemma specialist will get back to you within 24 hours.",
+    "Impactful new-media campaigns start with a conversation. Tell us what you're planning, and the right Lemma specialist will get back to you within 24 hours.",
   email: "support@lemmamedia.com",
   salesEmail: "contactus@lemmamedia.com",
   phone: "+91 9325443396",
   highlights: [
     "Global teams across 9 offices and 40+ markets",
     "Support for advertisers, agencies, and media owners",
-    "A reply from a real specialist within 24 hours",
+    "Hear back from a specialist within 24 hours",
   ],
 } as const;
 

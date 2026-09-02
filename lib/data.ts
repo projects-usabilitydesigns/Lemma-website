@@ -121,8 +121,8 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
           },
           {
             id: "agencies",
-            title: "For Agencies",
-            description: "Cross-screen buying",
+            title: "For Demand Partners",
+            description: "CTV + Cross Screen Activation",
             href: "/solutions/agencies",
           },
           {
@@ -495,7 +495,7 @@ export const footerLinks = {
   solutions: [
     { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },
     { label: "For Media Owners", href: "/solutions/media-owners" },
-    { label: "For Agencies", href: "/solutions/agencies" },
+    { label: "For Demand Partners", href: "/solutions/agencies" },
     { label: "For Publishers", href: "/solutions/publishers" },
     { label: "For Network Operators", href: "/solutions/network-operators" },
   ],

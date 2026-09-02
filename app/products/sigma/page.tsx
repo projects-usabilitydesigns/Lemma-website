@@ -6,6 +6,7 @@ import {
   SigmaHero,
   SigmaFutureReady,
   SigmaFeatures,
+  SigmaMonetization,
 } from "@/components/products/sigma";
 import { sigmaFaqs } from "@/lib/sigma-data";
 
@@ -23,6 +24,7 @@ export default function SigmaProductPage() {
         <SigmaHero />
         <SigmaFutureReady />
         <SigmaFeatures />
+        <SigmaMonetization />
         <Faq items={sigmaFaqs} />
         <AboutCta />
       </main>

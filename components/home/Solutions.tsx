@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
@@ -9,34 +10,61 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { solutions as defaultSolutions } from "@/lib/data";
 import type { Solution } from "@/types";
 
-export function Solutions({ solutions }: { solutions?: Solution[] }) {
+export function Solutions({
+  solutions,
+  id = "solutions",
+  label = "Solutions",
+  title,
+  description,
+  showBackground = true,
+  showFooterCta = true,
+}: {
+  solutions?: Solution[];
+  id?: string;
+  label?: string;
+  title?: ReactNode;
+  description?: string;
+  showBackground?: boolean;
+  showFooterCta?: boolean;
+}) {
   const data = solutions?.length ? solutions : defaultSolutions;
   return (
-    <section id="solutions" className="relative overflow-hidden bg-white py-10 md:py-14">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[min(720px,52%)] items-center justify-end md:flex"
-      >
-        <Image
-          src="/images/solutions/bg.png"
-          alt=""
-          width={1024}
-          height={935}
-          className="h-[85%] w-auto max-w-none object-contain object-right opacity-45"
-          sizes="45vw"
-          priority={false}
-        />
-      </div>
+    <section id={id} className="relative overflow-hidden bg-white py-10 md:py-14">
+      {showBackground ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[min(720px,52%)] items-center justify-end md:flex"
+        >
+          <Image
+            src="/images/solutions/bg.png"
+            alt=""
+            width={1024}
+            height={935}
+            className="h-[85%] w-auto max-w-none object-contain object-right opacity-45"
+            sizes="45vw"
+            priority={false}
+          />
+        </div>
+      ) : null}
 
       <Container className="relative z-10">
         <div className="mb-8">
-          <FadeUp className="max-w-xl space-y-3 md:space-y-4">
-            <SectionLabel label="Solutions" />
+          <FadeUp className={`${description ? "max-w-3xl" : "max-w-xl"} space-y-3 md:space-y-4`}>
+            {label ? <SectionLabel label={label} /> : null}
             <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-              Built for the people
-              <br />
-              who move media.
+              {title ?? (
+                <>
+                  Built for the people
+                  <br />
+                  who move media.
+                </>
+              )}
             </h2>
+            {description ? (
+              <p className="max-w-2xl text-[18px] leading-relaxed text-[var(--color-slate)] md:text-[20px]">
+                {description}
+              </p>
+            ) : null}
           </FadeUp>
         </div>
 
@@ -99,11 +127,13 @@ export function Solutions({ solutions }: { solutions?: Solution[] }) {
           ))}
         </Stagger>
 
-        <div className="mt-8 flex justify-center">
-          <Button href="#cta" variant="primary">
-            learn more
-          </Button>
-        </div>
+        {showFooterCta ? (
+          <div className="mt-8 flex justify-center">
+            <Button href="#cta" variant="primary">
+              learn more
+            </Button>
+          </div>
+        ) : null}
       </Container>
     </section>
   );

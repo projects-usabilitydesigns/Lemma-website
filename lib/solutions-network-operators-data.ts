@@ -15,7 +15,6 @@ export const networkOperatorsHero = {
     { label: "For Network Operators", href: "/solutions/network-operators" },
   ],
   label: "Solutions",
-  title: "For Network Operators",
   gradientTitle: "LEMMA DOOH Solutions",
   description:
     "Bridging brands and global audiences across a large, unmatched network of premium digital out-of-home screens—powered by location-based AdTech.",
