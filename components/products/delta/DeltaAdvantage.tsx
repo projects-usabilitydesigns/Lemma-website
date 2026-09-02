@@ -23,7 +23,7 @@ export function DeltaAdvantage() {
             <p className="font-[family-name:var(--font-inter)] text-[18px] font-normal leading-[1.65] text-[#5a6570] md:text-[20px]">
               Whether you aim to engage with student on campus, connect with shoppers at luxury
               malls or target sports enthusiasts we have got you covered with our expansive DOOH
-              inventory, In-venue CTV and wide array of OTT channels.
+              inventory, In venue CTV and wide array of OTT channels.
             </p>
           </div>
 

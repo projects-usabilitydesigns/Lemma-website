@@ -30,10 +30,10 @@ export function ContactOffices() {
         <FadeUp className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
           <SectionLabel label="Our Offices" align="center" dual accent="blue" />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Local teams, global reach
+            Global Reach, Local Expertise
           </h2>
           <p className="text-[18px] leading-relaxed text-[var(--color-slate)] md:text-[20px]">
-            Wherever your campaigns or screens are, there&apos;s a Lemma team nearby.
+            Closer to your markets. Closer to your business.
           </p>
         </FadeUp>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
 import { FadeUp } from "@/components/animation";
@@ -13,7 +13,25 @@ export type FaqItem = {
   id: string;
   question: string;
   answer: string;
+  questionAccent?: string;
+  answerBold?: readonly string[];
 };
+
+function highlightPhrase(
+  text: string,
+  phrase: string,
+  render: (match: string) => ReactNode,
+) {
+  const index = text.indexOf(phrase);
+  if (index === -1) return text;
+  return (
+    <>
+      {text.slice(0, index)}
+      {render(phrase)}
+      {text.slice(index + phrase.length)}
+    </>
+  );
+}
 
 export type FaqProps = {
   /** Page-specific questions and answers */
@@ -87,7 +105,11 @@ export function Faq({
                       open ? "text-[22px] leading-6" : "py-2 text-[20px] leading-[26px]",
                     )}
                   >
-                    {item.question}
+                    {item.questionAccent
+                      ? highlightPhrase(item.question, item.questionAccent, (match) => (
+                          <span className="font-semibold text-[var(--color-orange)]">{match}</span>
+                        ))
+                      : item.question}
                   </span>
                   <span
                     className="mt-0.5 flex size-[30px] shrink-0 items-center justify-center rounded-full text-white"
@@ -108,7 +130,11 @@ export function Faq({
                       className="overflow-hidden"
                     >
                       <p className="px-5 pb-5 text-[16px] leading-[22px] text-[#424242]">
-                        {item.answer}
+                        {item.answerBold?.[0]
+                          ? highlightPhrase(item.answer, item.answerBold[0], (match) => (
+                              <strong className="font-semibold text-[var(--color-ink)]">{match}</strong>
+                            ))
+                          : item.answer}
                       </p>
                     </motion.div>
                   ) : null}

@@ -23,39 +23,33 @@ export const integralAssets = {
 export const integralFaqs = [
   {
     id: "i1",
-    question: "What is Lemma Technologies?",
+    question: "What is Lemma?",
     answer:
-      "Lemma is an AI-first omnichannel Adtech platform that helps brands, agencies, and media owners plan, activate, optimize, and measure campaigns across DOOH, CTV, OTT, Mobile, and Audio channels.",
+      "Lemma is a leading global omnichannel media technology platform that enables brands to plan, activate and measure advertising across DOOH, CTV, OTT, MOBILE, WEB, AUDIO, RETAIL and other channels.",
   },
   {
     id: "i2",
-    question: "Who can use Lemma’s platform?",
+    question: "What is the meaning of the name “LEMMA”?",
     answer:
-      "Brands, agencies, and media owners use Lemma to run and monetize omnichannel campaigns—from global advertisers activating DOOH and CTV to publishers unlocking premium demand.",
+      "Lemma means a path to a solution. It reflects our belief that the right answer isn’t always obvious, it’s discovered in connecting data, technology and intelligence to turn complexity into smarter outcomes.",
   },
   {
     id: "i3",
     question: "What is Lemma Integral?",
     answer:
-      "Integral is Lemma's full-funnel platform that turns outdoor impressions into measurable outcomes — activating mass-media reach, reinforcing mid-funnel audiences, and driving digital conversion.",
+      "Integral is Lemma's full-funnel activation layer for measuring, retargeting, and attributing every OOH impression with deep audience analytics.",
   },
   {
     id: "i4",
-    question: "What does Lemma Delta do?",
+    question: "How is Lemma different from other performance / OOH platforms?",
     answer:
-      "Delta is the demand-side engine for scaling DOOH and CTV with automated bidding, real-time optimization, and maximum qualified reach.",
+      "Lemma connects media exposure to measurable outcomes across channels, starting with OOH and extending into the wider digital ecosystem. It enables outcome-driven planning, activation and attribution across the audience journey.",
   },
   {
     id: "i5",
-    question: "What is Lemma Sigma?",
+    question: "Who can use Lemma Integral?",
     answer:
-      "Sigma is Lemma's transparent SSP that helps media owners maximize inventory yield with real-time insights and global demand access.",
-  },
-  {
-    id: "i6",
-    question: "How does Lemma Phi help media owners?",
-    answer:
-      "Phi centralizes DOOH content planning, scheduling, and delivery so operators can manage screens, locations, and formats from one platform.",
+      "Lemma Integral is for outcome-driven brands, advertisers, agencies & marketers focused on optimizing spend to drive full-funnel outcomes - from brand awareness to mid-funnel consideration and final purchase through a single performance platform.",
   },
 ] as const;
 
@@ -77,11 +71,11 @@ export const integralFeatures = [
   {
     id: "reinforce",
     title: "Seamless Audience Mapping & Mid-Funnel Activation",
-    body: "Leveraging users household IP addresses of audiences reached through Lemma Audience Graph, you can retarget them on CTV",
+    body: "Combining spatial lat-long data with household IP anchoring from the Lemma Audience Graph, Lemma Integral seamlessly retargets real-world outdoor audiences across mobile and web",
     image: integralAssets.reinforce,
     imageAlt: "Audience mapping across devices",
     layout: "image-left" as const,
-    highlight: ["Lemma Audience Graph"],
+    highlight: ["Lemma Audience Graph", "Lemma Integral"],
     titleSize: 40 as const,
     bodySize: 18 as const,
     badge: integralAssets.badgeReinforce,
@@ -91,11 +85,11 @@ export const integralFeatures = [
   {
     id: "results",
     title: "Unmatched Performance & Results",
-    body: "We expand reach and enhance campaign performance with ad placements on Google, Meta, LinkedIn and other platforms.\n\nAchieve best-in-class outcomes with Lemma Integral, delivering higher CTRs, increased website visits, conversions and more.",
+    body: "Leveraging high-intent audience targeting across Meta, Google, and LinkedIn, Lemma Integral shortens the conversion journey to boost CTRs, website visits, leads, sales & more.",
     image: integralAssets.results,
     imageAlt: "Digital results across social platforms",
     layout: "text-left" as const,
-    highlight: ["Google, Meta, LinkedIn", "higher CTRs, increased website visits, conversions and more"],
+    highlight: ["high-intent audience targeting"],
     titleSize: 40 as const,
     bodySize: 18 as const,
     badge: integralAssets.badgeResults,

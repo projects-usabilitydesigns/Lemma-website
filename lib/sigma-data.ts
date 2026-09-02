@@ -1,3 +1,6 @@
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
+import type { BrandsKpi } from "@/lib/solutions-brands-data";
+
 export function productImage(filename: string) {
   return `/images/${encodeURIComponent(filename)}`;
 }
@@ -16,42 +19,58 @@ export const sigmaAssets = {
   logo: productAsset("sigma.svg"),
 } as const;
 
+export const sigmaJourney = {
+  label: "Programmatic SSP Monetization",
+  title: "Integrate, maximize yield, and optimize revenue effortlessly.",
+  description:
+    "Drive maximum yield for every impression by exposing inventory to concurrent buyers in real time using advanced supply path optimization.",
+  bullets: [
+    "First-party data onboarding for precise interest-based audience segments",
+    "Real-time multi-buyer auctions for maximum impression value and competitive pricing",
+    "Direct activation of guaranteed deals",
+    "Native yield-optimization tools",
+    "Leading 3rd party DSP integrations for preferred deals",
+  ],
+  cta: { label: "Explore Lemma Sigma", href: DEMO_MODAL_HREF },
+} as const;
+
+export const sigmaKpis: BrandsKpi[] = [
+  { id: "impressions", label: "Impressions (Auction)", value: "158.3M", trend: "+X.X%" },
+  { id: "yield", label: "Yield (eCPM)", value: "$4.89", trend: "+X.X%" },
+  { id: "deals", label: "Guaranteed Deals", value: "4.1M", trend: "+X.X%" },
+  { id: "fill", label: "Fill Rate", value: "81.2%", trend: "+X.X%" },
+];
+
 export const sigmaFaqs = [
   {
     id: "s1",
-    question: "What is Lemma Technologies?",
+    question: "What is Lemma Sigma?",
     answer:
-      "Lemma is an AI-first omnichannel AdTech platform that helps brands, agencies, and media owners plan, activate, optimize, and measure campaigns across DOOH, CTV, OTT, Mobile, and Audio channels.",
+      "Lemma Sigma is an SSP empowering publishers to monetize inventory, maximize impression value, and connect with global DSPs seamlessly.",
   },
   {
     id: "s2",
-    question: "Who can use Lemma’s platform?",
+    question: "What does Lemma Sigma do?",
     answer:
-      "Brands, agencies, and media owners use Lemma to run and monetize omnichannel campaigns—from global advertisers activating DOOH and CTV to publishers unlocking premium demand.",
+      "Lemma Sigma enables publishers to monetize DOOH, CTV, OTT, App, web and mobile inventory through first-party data integration, real-time multi-buyer auctions, and direct integrations with leading DSPs.",
   },
   {
     id: "s3",
-    question: "What is Lemma Integral?",
+    question: "Who is Lemma Sigma for?",
     answer:
-      "Integral is Lemma's full-funnel activation layer for measuring, retargeting, and attributing every OOH impression with deep audience analytics.",
+      "Lemma Sigma is built for media owners, CTV/OTT/ Web/ App/ Mobile publishers, retail networks, and all digital screens & formats seeking to maximize programmatic ad revenue.",
   },
   {
     id: "s4",
-    question: "What does Lemma Delta do?",
+    question: "How does Lemma Sigma protect my inventory's brand safety and pricing control?",
     answer:
-      "Delta is the demand-side engine for scaling DOOH and CTV with automated bidding, real-time optimization, and maximum qualified reach.",
+      "Lemma Sigma gives media owners complete control by allowing you to set minimum floor prices, manage category blocks, and restrict specific advertisers to protect brand integrity.",
   },
   {
     id: "s5",
-    question: "What is Lemma Sigma?",
+    question: "What makes Lemma Sigma different from traditional SSPs?",
     answer:
-      "Sigma is Lemma's transparent Supply Side Platform (SSP) that helps media owners maximize inventory yield with real-time insights, demand access, and complete transparency across DOOH, CTV/OTT, and retail media.",
-  },
-  {
-    id: "s6",
-    question: "How does Lemma Phi help media owners?",
-    answer:
-      "Phi centralizes DOOH content planning, scheduling, and delivery so operators can manage screens, locations, and formats from one platform.",
+      "Unlike standard SSPs built purely for web display, Lemma Sigma is purpose-built for DOOH, CTV, and other omnichannel inventory, offering native screen orchestration and precision targeting.",
   },
 ] as const;
 
@@ -59,9 +78,9 @@ export const sigmaFeatures = [
   {
     id: "access-dsp",
     eyebrow: "Demand Access",
-    title: "Access DSP",
+    title: "Tap Global Demand",
     body: "Designed for publishers and media owners, Sigma effortlessly integrates with top demand partners, automating sales and enhancing operational efficiency.",
-    highlights: ["top demand partners", "automating sales", "enhanced operational efficiency"],
+    highlights: ["top demand partners", "automating sales"],
     image: sigmaAssets.accessDsp,
     imageAlt: "Access DSP — top demand partners, automated sales, enhanced efficiency",
     layout: "text-left" as const,

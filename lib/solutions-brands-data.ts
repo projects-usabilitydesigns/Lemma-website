@@ -27,6 +27,7 @@ export type BrandsChannel = {
     | "thumbsUp"
     | "billboard"
     | "network"
+    | "volume"
     | "boxes"
     | "images"
     | "zap"
@@ -64,6 +65,8 @@ export type BrandsFaq = {
   id: string;
   question: string;
   answer: string;
+  questionAccent?: string;
+  answerBold?: readonly string[];
 };
 
 export type BrandsKpi = {
@@ -80,17 +83,17 @@ export const brandsHero = {
     { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },
   ],
   label: "Solutions",
-  title: "For Brands & Advertisers",
   gradientTitle: "Lemmaximize your impact!",
   description:
     "When you team up with the world’s largest omnichannel platform, you gain access to audience-centric advertising solutions. Today’s tech? Nailed it. Tomorrow’s trends? We’re already on it.",
   primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
   image: "/images/solutions/brands-hero-billboard.png",
+  imageAlt: "Lemma outdoor to outcome billboard in a city at sunset",
 } as const;
 
 export const brandsStats: BrandsStat[] = [
-  { id: "campaigns", value: 3.5, decimals: 1, suffix: "M+", label: "Campaigns Delivered" },
+  { id: "campaigns", value: 100, suffix: "K+", label: "Campaigns Delivered" },
   { id: "markets", value: 40, suffix: "+", label: "Markets Worldwide" },
   { id: "platforms", value: 5, label: "Proprietary Platforms" },
   { id: "outcomes", value: 100, suffix: "%", label: "Real Business Outcomes" },
@@ -165,16 +168,16 @@ export const brandsChannels: BrandsChannel[] = [
     icon: "thumbsUp",
   },
   {
-    id: "billboards",
-    title: "Digital Billboards",
-    description: "Own the streetscape at retail, transit, airports, and premium urban locations.",
-    icon: "billboard",
+    id: "display",
+    title: "Display Ads",
+    description: "Reach audiences across premium web and app placements with measurable, brand-safe display.",
+    icon: "images",
   },
   {
-    id: "omni",
-    title: "Omnichannel Platform",
-    description: "Plan, activate, and measure every screen from a single intelligent control plane.",
-    icon: "network",
+    id: "audio",
+    title: "Audio",
+    description: "Activate podcasts, streaming audio, and digital radio to extend brand presence beyond the screen.",
+    icon: "volume",
   },
 ];
 
@@ -182,7 +185,7 @@ export const brandsJourney = {
   label: "Full-funnel activation",
   title: "From awareness to conversion, we’ve got you covered.",
   description:
-    "With Lemma Delta, searching, targeting, planning, launching, and measuring multimedia campaigns has never been easier.",
+    "With Lemma Integral, searching, targeting, planning, launching, and measuring multimedia campaigns has never been easier.",
   bullets: [
     "Audience intelligence across demographics, interests, and behavior",
     "Cross-channel orchestration from DOOH to CTV and beyond",
@@ -202,6 +205,19 @@ export const brandsKpis: BrandsKpi[] = [
 
 export const brandsCapabilities: BrandsCapability[] = [
   {
+    id: "programmatic",
+    title: "Programmatic Precision",
+    description:
+      "Turns every screen into an opportunity to connect with the right audience set.",
+    icon: "shopping",
+  },
+  {
+    id: "targeting",
+    title: "AI Orchestration",
+    description: "Use intelligent models to find high-intent audiences at the moments that matter.",
+    icon: "crosshair",
+  },
+  {
     id: "audience",
     title: "Audience Intelligence",
     description: "Pinpoint the right people with precise demographic, interest, and behavior signals.",
@@ -220,12 +236,6 @@ export const brandsCapabilities: BrandsCapability[] = [
     icon: "palette",
   },
   {
-    id: "targeting",
-    title: "AI Targeting",
-    description: "Use intelligent models to find high-intent audiences at the moments that matter.",
-    icon: "crosshair",
-  },
-  {
     id: "measurement",
     title: "Measurement",
     description: "Track campaign performance with clear analytics across channels and formats.",
@@ -242,12 +252,6 @@ export const brandsCapabilities: BrandsCapability[] = [
     title: "Personalization",
     description: "Deliver context-aware messaging that adapts to location, time, and audience.",
     icon: "sparkles",
-  },
-  {
-    id: "programmatic",
-    title: "Programmatic Buying",
-    description: "Access global inventory with transparent buying and real-time yield controls.",
-    icon: "shopping",
   },
 ];
 
@@ -291,7 +295,7 @@ export const brandsStories: BrandsStory[] = [
 ];
 
 export const brandsSuccessMetrics: BrandsStat[] = [
-  { id: "screens", value: 1.5, decimals: 1, suffix: "M+", label: "Digital OOH Screens" },
+  { id: "screens", value: 4, suffix: "M+", label: "Screens" },
   { id: "impressions", value: 268, suffix: "K+", label: "Avg. Monthly Impact Signals" },
   { id: "roas", value: 4.7, decimals: 1, suffix: "x", label: "Average ROAS Lift" },
   { id: "markets2", value: 40, suffix: "+", label: "Markets Activated" },
@@ -340,9 +344,9 @@ export const brandsFaqs: BrandsFaq[] = [
   },
   {
     id: "q3",
-    question: "What is Lemma Delta?",
+    question: "What is Lemma Integral?",
     answer:
-      "Delta is Lemma’s omnichannel demand platform for searching, targeting, planning, launching, and measuring multimedia campaigns in one place.",
+      "Integral is Lemma’s omnichannel demand platform for searching, targeting, planning, launching, and measuring multimedia campaigns in one place.",
   },
   {
     id: "q4",

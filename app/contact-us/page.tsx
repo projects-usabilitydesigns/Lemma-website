@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
-import { LogosMarquee } from "@/components/home/LogosMarquee";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactOffices } from "@/components/contact/ContactOffices";
 import { ContactCta } from "@/components/contact/ContactCta";
@@ -17,7 +16,6 @@ export default function ContactPage() {
       <Header />
       <main>
         <ContactHero />
-        <LogosMarquee />
         <ContactOffices />
         <ContactCta />
       </main>

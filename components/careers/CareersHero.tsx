@@ -9,7 +9,7 @@ import { careersHero } from "@/lib/careers-data";
 
 export function CareersHero() {
   return (
-    <section className="relative overflow-hidden pb-10 pt-[100px] md:pb-14 md:pt-[112px]">
+    <section className="relative overflow-x-hidden pb-10 pt-[100px] md:pb-14 md:pt-[112px]">
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
       <div
         className="pointer-events-none absolute inset-0"
@@ -19,13 +19,13 @@ export function CareersHero() {
         }}
       />
 
-      <Container className="relative">
+      <Container className="relative z-10">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
           <div className="space-y-7">
-            <FadeUp>
+            <FadeUp initial={false}>
               <SectionLabel label={careersHero.label} />
             </FadeUp>
-            <FadeUp delay={0.05} className="space-y-5">
+            <FadeUp delay={0.05} className="space-y-5" initial={false}>
               <h1 className="font-heading max-w-xl text-[40px] font-semibold tracking-[-0.9px] text-[var(--color-ink)] md:text-[56px] md:leading-[60px]">
                 {careersHero.title}
               </h1>
@@ -33,7 +33,7 @@ export function CareersHero() {
                 {careersHero.description}
               </p>
             </FadeUp>
-            <FadeUp delay={0.1}>
+            <FadeUp delay={0.1} initial={false}>
               <Button
                 href={careersHero.primaryCta.href}
                 variant="primary"
@@ -45,7 +45,7 @@ export function CareersHero() {
             </FadeUp>
           </div>
 
-          <FadeLeft delay={0.1}>
+          <FadeLeft delay={0.1} initial={false}>
             <div className="relative mx-auto aspect-[772/515] w-full max-w-[772px]">
               <Image
                 src={careersHero.image}

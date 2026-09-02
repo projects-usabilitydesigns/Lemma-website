@@ -1,3 +1,5 @@
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
+
 export function productImage(filename: string) {
   return `/images/${encodeURIComponent(filename)}`;
 }
@@ -20,44 +22,48 @@ export const phiAssets = {
   squarePink: productImage("Rectangle 3.png"),
   squareGreen: productImage("Rectangle 4.png"),
   squareOrange: productImage("Rectangle 5.png"),
+  laptop: productAsset("phi-laptop.png"),
+} as const;
+
+export const phiJourney = {
+  label: "Screen Content Management",
+  title: "Deploy, manage, and monetize screens effortlessly.",
+  description:
+    "With Lemma Phi, an enterprise-grade CMS platform, managing screen content and activating programmatic demand has never been easier and is completely free for screen owners.",
+  bullets: [
+    "Enterprise-grade CMS for robust multi-screen management",
+    "Zero cost for platform access and core features",
+    "Establish instant programmatic connectivity for immediate ad demand",
+    "Optimize for maximum yield and premium advertiser direct deals",
+    "Comprehensive reporting for screen health, content performance, and revenue",
+  ],
+  cta: { label: "Explore Lemma Phi", href: DEMO_MODAL_HREF },
 } as const;
 
 export const phiFaqs = [
   {
     id: "p1",
-    question: "What is Lemma Technologies?",
+    question: "What is Lemma Phi?",
     answer:
-      "Lemma is an AI-first omnichannel Adtech platform that helps brands, agencies, and media owners plan, activate, optimize, and measure campaigns across DOOH, CTV, OTT, Mobile, and Audio channels.",
+      "Lemma Phi is a free enterprise-grade CMS enabling screen owners to manage multi-screen content schedules while instantly unlocking programmatic demand to maximize yield.",
   },
   {
     id: "p2",
-    question: "Who can use Lemma’s platform?",
+    question: "Who is Lemma Phi for?",
     answer:
-      "Brands, agencies, and media owners use Lemma to run and monetize omnichannel campaigns—from global advertisers activating DOOH and CTV to publishers unlocking premium demand.",
+      "Lemma Phi is built for DOOH media owners, retail networks, and venue operators needing to manage screens and monetize ad inventory without software costs.",
   },
   {
     id: "p3",
-    question: "What is Lemma Integral?",
+    question: "How much does Lemma Phi cost?",
     answer:
-      "Integral is Lemma's full-funnel platform that turns outdoor impressions into measurable outcomes — activating mass-media reach, reinforcing mid-funnel audiences, and driving digital conversion.",
+      "Lemma Phi (CMS) is 100% free for digital screen owners and operators. There are zero platform access fees, software licenses, or monthly subscription costs.",
   },
   {
     id: "p4",
-    question: "What does Lemma Delta do?",
+    question: "Can I use Lemma Phi without replacing my existing CMS?",
     answer:
-      "Delta is the demand-side engine for scaling DOOH and CTV with automated bidding, real-time optimization, and maximum qualified reach.",
-  },
-  {
-    id: "p5",
-    question: "What is Lemma Sigma?",
-    answer:
-      "Sigma is Lemma's transparent SSP that helps media owners maximize inventory yield with real-time insights and global demand access.",
-  },
-  {
-    id: "p6",
-    question: "How does Lemma Phi help media owners?",
-    answer:
-      "Phi centralizes DOOH content planning, scheduling, and delivery so operators can manage screens, locations, and formats from one platform.",
+      "Yes. Lemma Phi can either completely replace your legacy software or run seamlessly alongside your current CMS via lightweight integration, giving you instant access to programmatic monetization without disrupting existing workflows.",
   },
 ] as const;
 
