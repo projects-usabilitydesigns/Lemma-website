@@ -1,3 +1,8 @@
+/**
+ * Network Operators page — SECTION REMOVED per client request (PPT slide 36).
+ * Code kept commented out for easy restoration.
+ */
+/*
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { CaseStudies } from "@/components/home/CaseStudies";
@@ -68,4 +73,10 @@ export default function NetworkOperatorsPage() {
       </main>
     </>
   );
+}
+*/
+
+// Route stub so Next.js keeps the URL valid (renders nothing).
+export default function NetworkOperatorsPage() {
+  return null;
 }

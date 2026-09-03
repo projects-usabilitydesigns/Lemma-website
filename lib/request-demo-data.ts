@@ -28,10 +28,10 @@ export const requestDemoHero = {
 
 export const demoRoles = [
   "Brand / Advertiser",
-  "Agency",
+  "Demand Partner",
   "Media Owner",
   "Publisher",
-  "Network Operator",
+  // "Network Operator",
   "Other",
 ] as const;
 
@@ -96,7 +96,7 @@ export const demoProducts: DemoProductBrief[] = [
     logo: "/images/products/phi.svg",
     accent: "#74be44",
     highlights: ["Screen scheduling", "Creative control", "Free to use"],
-    href: "/solutions/network-operators",
+    href: "/products/phi",
   },
 ];
 

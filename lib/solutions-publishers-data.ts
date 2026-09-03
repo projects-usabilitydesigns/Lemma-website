@@ -162,7 +162,7 @@ export const publishersCapabilities = {
     },
     {
       id: "bidding",
-      title: "Header Bidding",
+      title: "Header Bidding with Infibid",
       description: "Increase auction competition and reduce latency across demand partners.",
       icon: "shopping",
     },

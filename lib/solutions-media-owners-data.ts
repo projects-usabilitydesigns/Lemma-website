@@ -197,7 +197,7 @@ export const mediaOwnersCapabilities = {
 export const mediaOwnersSuccessMetrics: BrandsStat[] = [
   { id: "screens", value: 4, suffix: "M+", label: "Screens" },
   { id: "households", value: 99, suffix: "%", label: "CTV Households Mapped" },
-  { id: "demand", value: 120, suffix: "+", label: "Demand Partners" },
+  { id: "demand", value: 1000, suffix: "+", label: "Demand Partners" },
   { id: "uptime", value: 99.9, decimals: 1, suffix: "%", label: "Network Reliability" },
   { id: "partners", value: 100, suffix: "%", label: "Partner Transparency" },
 ];

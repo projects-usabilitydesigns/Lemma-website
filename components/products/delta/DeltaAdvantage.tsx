@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { WordPlay } from "@/components/ui/WordPlay";
 import { deltaAssets } from "@/lib/delta-data";
 
 export function DeltaAdvantage() {
@@ -14,7 +13,14 @@ export function DeltaAdvantage() {
             className="flex w-full max-w-[671px] flex-col justify-center rounded-[20px] bg-[var(--color-feature-box)] px-8 py-10 md:px-12 md:py-14 lg:min-h-[414.58px] lg:px-14"
           >
             <h3 className="font-[family-name:var(--font-inter)] text-[28px] font-semibold tracking-[-0.4px] text-[#111] md:text-[36px] md:leading-[1.2]">
-              The <WordPlay word="Lemmaadvantage" />
+              The{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "var(--gradient-cta)" }}
+              >
+                Lemma
+              </span>
+              advantage
             </h3>
             <div
               className="mt-4 mb-6 h-px w-14 bg-gradient-to-r from-[var(--color-blue)] to-transparent"

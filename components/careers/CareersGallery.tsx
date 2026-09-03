@@ -53,7 +53,10 @@ export function CareersGallery() {
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover object-center"
+                    className="object-cover"
+                    style={{
+                      objectPosition: `center ${image.focus ?? 50}%`,
+                    }}
                     sizes="(max-width: 768px) 100vw, 55vw"
                   />
                 </div>
