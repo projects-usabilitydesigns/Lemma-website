@@ -131,12 +131,12 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             description: "Programmatic monetization",
             href: "/solutions/publishers",
           },
-          {
-            id: "operators",
-            title: "For Network Operators",
-            description: "DOOH control plane",
-            href: "/solutions/network-operators",
-          },
+          // {
+          //   id: "operators",
+          //   title: "For Network Operators",
+          //   description: "DOOH control plane",
+          //   href: "/solutions/network-operators",
+          // },
         ],
       },
     ],
@@ -497,7 +497,7 @@ export const footerLinks = {
     { label: "For Media Owners", href: "/solutions/media-owners" },
     { label: "For Demand Partners", href: "/solutions/demand-partners" },
     { label: "For Publishers", href: "/solutions/publishers" },
-    { label: "For Network Operators", href: "/solutions/network-operators" },
+    // { label: "For Network Operators", href: "/solutions/network-operators" },
   ],
   legal: [
     { label: "Privacy", href: "/privacy-policy" },

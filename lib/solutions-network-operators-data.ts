@@ -1,3 +1,8 @@
+/**
+ * Network Operators data — SECTION REMOVED per client request (PPT slide 36).
+ * Kept commented out for easy restoration.
+ */
+/*
 import type {
   BrandsCapability,
   BrandsChannel,
@@ -17,7 +22,7 @@ export const networkOperatorsHero = {
   label: "Solutions",
   gradientTitle: "LEMMA DOOH Solutions",
   description:
-    "Bridging brands and global audiences across a large, unmatched network of premium digital out-of-home screens—powered by location-based AdTech.",
+    "Bridging brands and global audiences across a large, unmatched network of premium digital out-of-home screensâ€”powered by location-based AdTech.",
   primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/network-operators-hero.png",
@@ -82,7 +87,7 @@ export const networkOperatorsWhy = {
 export const networkOperatorsChannels = {
   title: "Location-based AdTech that activates every platform",
   description:
-    "Capable of activating various types of location-based ads across all platforms—while creating unique narrative journeys for maximum efficiency.",
+    "Capable of activating various types of location-based ads across all platformsâ€”while creating unique narrative journeys for maximum efficiency.",
   items: [
     {
       id: "location-ads",
@@ -131,9 +136,9 @@ export const networkOperatorsChannels = {
 
 export const networkOperatorsJourney = {
   label: "Geospatial signals",
-  title: "Data’s emerging dimension",
+  title: "Dataâ€™s emerging dimension",
   description:
-    "Geospatial signals transform the way data is interpreted—with heightened precision, contextual relevance, and deeper insights into patterns and trends.",
+    "Geospatial signals transform the way data is interpretedâ€”with heightened precision, contextual relevance, and deeper insights into patterns and trends.",
   bullets: [
     "Higher precision in audience and location interpretation",
     "Contextual relevance that improves creative and placement decisions",
@@ -228,7 +233,7 @@ export const networkOperatorsFaqs: BrandsFaq[] = [
   },
   {
     id: "q2",
-    question: "How large is Lemma’s DOOH screen network?",
+    question: "How large is Lemmaâ€™s DOOH screen network?",
     answer:
       "Lemma provides access to 1Mn+ DOOH screens globally, including 100% exclusivity on 92+ premium screen networks in India covering 400K screens, plus 50+ high-demand cluster locations.",
   },
@@ -242,7 +247,7 @@ export const networkOperatorsFaqs: BrandsFaq[] = [
     id: "q4",
     question: "Can operators upgrade their CMS with Lemma?",
     answer:
-      "Yes. Network operators can switch to Lemma Phi and upgrade their CMS for free—simplifying content management across screens and formats.",
+      "Yes. Network operators can switch to Lemma Phi and upgrade their CMS for freeâ€”simplifying content management across screens and formats.",
   },
   {
     id: "q5",
@@ -255,8 +260,10 @@ export const networkOperatorsFaqs: BrandsFaq[] = [
 export const networkOperatorsCta = {
   title: "Want to Lemmaximize your inventory?",
   description:
-    "Tell us how to reach you and you’ll hear from us in 24 hours. Let’s unlock more value across every screen in your network.",
+    "Tell us how to reach you and youâ€™ll hear from us in 24 hours. Letâ€™s unlock more value across every screen in your network.",
   primaryCta: { label: "Get In Touch", href: "mailto:contactus@lemmamedia.com" },
   secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/owners.jpg",
 } as const;
+
+*/

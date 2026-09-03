@@ -11,7 +11,7 @@ export function productAsset(filename: string) {
 
 export const sigmaAssets = {
   heroPuzzle: "/images/products/sigma/sigma-control.png",
-  accessDsp: "/images/products/sigma/access-dsp-circle.png",
+  accessDsp: "/images/products/sigma/access-dsp-4icons.png",
   firstPartyData: "/images/products/sigma/first-party-data.png",
   unifiedAction: "/images/products/sigma/unified-action.png",
   supplyPathTop: "/images/products/sigma/supply-path1.png",

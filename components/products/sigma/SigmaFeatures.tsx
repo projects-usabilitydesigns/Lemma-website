@@ -27,7 +27,7 @@ function highlightText(text: string, highlights: readonly string[]) {
 
 export function SigmaFeatures() {
   return (
-    <section className="overflow-x-clip bg-white pb-12 pt-6 md:pb-16 md:pt-8">
+    <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-8" style={{ overflowX: "clip", overflowY: "visible" }}>
       <Container className="flex flex-col gap-10 md:gap-14">
         {sigmaFeatures.map((feature, index) => {
           const imageLeft = feature.layout === "image-left";
@@ -62,12 +62,17 @@ export function SigmaFeatures() {
 
                 <div
                   className={cn(
-                    "relative mx-auto isolate w-full max-w-[520px] md:max-w-[580px] lg:max-w-[620px]",
+                    "relative mx-auto w-full max-w-[520px] md:max-w-[580px] lg:max-w-[620px]",
+                    feature.id !== "access-dsp" && "isolate",
                     imageLeft ? "lg:mx-0 lg:justify-self-start" : "lg:mx-0 lg:justify-self-end",
+                    feature.id === "access-dsp" && "py-16 md:py-20"
                   )}
                 >
                   <div
-                    className="pointer-events-none absolute left-1/2 top-1/2 z-0 aspect-square w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+                    className={cn(
+                      "pointer-events-none absolute left-1/2 top-1/2 z-0 aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full",
+                      feature.id === "access-dsp" ? "w-[115%]" : "w-[72%]"
+                    )}
                     style={{
                       backgroundImage: "var(--gradient-feature-glow)",
                     }}
@@ -96,7 +101,10 @@ export function SigmaFeatures() {
                         </div>
                       </div>
                     ) : (
-                      <div className="relative aspect-[5/4] w-full">
+                      <div className={cn(
+                        "relative w-full",
+                        feature.id === "access-dsp" ? "aspect-[3/2]" : "aspect-[5/4]"
+                      )}>
                         <Image
                           src={feature.image}
                           alt={feature.imageAlt}
