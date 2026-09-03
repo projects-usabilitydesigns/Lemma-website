@@ -151,7 +151,7 @@ export const mediaOwnersCapabilities = {
     },
     {
       id: "manage",
-      title: "Inventory Management",
+      title: "Media Inventory Management",
       description: "Organize, prioritize, and operate placements from one intuitive control plane.",
       icon: "map",
     },
@@ -225,7 +225,7 @@ export const mediaOwnersFaqs: BrandsFaq[] = [
     id: "q3",
     question: "What is Lemma Phi?",
     answer:
-      "Phi is Lemma’s content management system (DCS) offered completely free of cost, helping media owners manage creatives and screen content with ease.",
+      "Phi is Lemma’s content management system (CMS) offered completely free of cost, helping media owners manage creatives and screen content with ease.",
   },
   {
     id: "q4",
