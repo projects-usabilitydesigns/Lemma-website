@@ -11,13 +11,14 @@ export function isDemoCta(href?: string) {
 
 const pathRoles: Record<string, string> = {
   "/solutions/brands-advertisers": "Brand / Advertiser",
-  "/solutions/agencies": "Agency",
+  "/solutions/demand-partners": "Demand Partner",
+  "/solutions/agencies": "Demand Partner",
   "/solutions/media-owners": "Media Owner",
   "/solutions/publishers": "Publisher",
   "/solutions/network-operators": "Network Operator",
 };
 
-const demandRoles = ["Brand / Advertiser", "Agency"];
+const demandRoles = ["Brand / Advertiser", "Demand Partner", "Agency"];
 
 /**
  * Prefills "I am a" from the page the visitor is on, corrected by CTA intent:

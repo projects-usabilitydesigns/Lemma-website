@@ -1,8 +1,10 @@
 export { BrandsHero } from "./Hero";
 export { WhyLemma } from "./WhyLemma";
+export { WhyLemmaCtv } from "./WhyLemmaCtv";
 export { ChannelGrid } from "./ChannelGrid";
 export { LemmaOffers } from "./LemmaOffers";
 export { JourneySection } from "./JourneySection";
+export { ConsumerJourney } from "./ConsumerJourney";
 export { PlatformFeatures } from "./PlatformFeatures";
 export { CampaignAnalytics } from "./CampaignAnalytics";
 export { SuccessStories } from "./SuccessStories";

@@ -11,7 +11,7 @@ export const agenciesHero = {
   breadcrumb: [
     { label: "Home", href: "/" },
     { label: "Solutions", href: "/#solutions" },
-    { label: "For Demand Partners", href: "/solutions/agencies" },
+    { label: "For Demand Partners", href: "/solutions/demand-partners" },
   ],
   label: "Solutions",
   gradientTitle: "LEMMA CTV Solutions",
@@ -78,31 +78,128 @@ export const agenciesWhy = {
   ] satisfies BrandsFeature[],
 };
 
+export const agenciesWhyCtv = {
+  titleBefore: "Why ",
+  titleHighlight: "Lemma",
+  titleAfter: " for CTV?",
+  description:
+    "Real-world location intelligence, exclusive DOOH+CTV cross-screen cohorts, and US-proven scale",
+  cards: [
+    {
+      id: "graph",
+      number: "01",
+      accent: "#008fdb",
+      title: "Real-World Audience Graph",
+      kicker: null,
+      visual: "avatars" as const,
+      points: [
+        {
+          label: "Beyond Digital Signals",
+          text: "While other platforms rely strictly on digital web/browsing sources, Lemma is the only player providing true real-world location data.",
+        },
+        {
+          label: "Privacy-Safe Matching",
+          text: "Connects persistent mobile signals to home living-room screens.",
+        },
+      ],
+    },
+    {
+      id: "cohorts",
+      number: "02",
+      accent: "#f05a27",
+      title: "DOOH + CTV Cohorts",
+      kicker: "The cross-screen “echo effect”",
+      visual: "echo" as const,
+      points: [
+        {
+          label: "Sequential Retargeting",
+          text: "Retarget outdoor billboard-exposed audiences on living room CTVs during prime time.",
+        },
+        {
+          label: "Higher Brand Recall",
+          text: "Multi-touchpoint reinforcement builds recall and minimizes media waste.",
+        },
+        {
+          label: "Full-Funnel Journey",
+          text: "Connects outdoor high-impact visibility seamlessly to living room conversions.",
+        },
+      ],
+    },
+    {
+      id: "success",
+      number: "03",
+      accent: "#a684ff",
+      title: "Proven US & Global Success",
+      kicker: null,
+      visual: "ctv" as const,
+      image: "/images/solutions/why-lemma-ctv-success.png",
+      imageAlt: "Viewer watching a living-room CTV screen filled with streaming content",
+      points: [
+        {
+          label: "Advanced Market Pedigree",
+          text: "Tested, scaled, and proven in the world's most sophisticated CTV ecosystem (US).",
+        },
+        {
+          label: "Mature Programmatic Stack",
+          text: "Native PMP, FAST channels, etc",
+        },
+      ],
+    },
+  ],
+} as const;
+
 export const agenciesOffers = {
   label: "Lemma Offers",
   title: "CTV that understands the moment.",
-  rejected: "A sportswear brand shouldn't simply target 18-34-year-olds.",
+  rejected: "A sportswear brand shouldn't simply target 18–34-year-olds.",
   stackLabel: "The stack identifies & combines:",
   stack: [
-    "18-34 Demographic",
+    "18–34 Demographic",
     "Fitness Affinity + Sports Content",
     "Evening Viewing + High-Value Geography",
   ],
-  image: "/images/solutions/lemma-offers-ctv.png",
-  imageAlt: "Friends watching a match together on a living-room CTV screen",
+  image: "/images/solutions/lemma-offers-pool.png",
+  imageAlt: "Friends gaming together on a living-room CTV screen",
+  poolTitle: "High-engagement CTV targeting pool",
   callouts: [
-    { id: "segment", text: "Audience segment: Esports & active lifestyle enthusiasts" },
-    { id: "pool", text: "High-engagement CTV targeting pool" },
-    { id: "demo", text: "Primary demographic: Adults 18-34" },
-    { id: "coview", text: "High co-viewing profiles" },
-    { id: "context", text: "Contextual placements: Gaming & sports content genres" },
-    { id: "household", text: "Tech-forward & cross-device active household" },
+    {
+      id: "segment",
+      tone: "pink" as const,
+      icon: "target" as const,
+      label: "Audience Segment",
+      value: "Esports & active lifestyle enthusiasts",
+    },
+    {
+      id: "demo",
+      tone: "blue" as const,
+      icon: "user" as const,
+      label: "Primary Demographic",
+      value: "Adults 18–34",
+    },
+    {
+      id: "coview",
+      tone: "orange" as const,
+      icon: "users" as const,
+      label: "High Co-Viewing",
+      value: "Profiles Identified",
+    },
+    {
+      id: "household",
+      tone: "slate" as const,
+      icon: "shield" as const,
+      label: "Household Profile",
+      value: "Tech-forward & cross-device active",
+    },
   ],
+  placement: {
+    label: "Contextual Placement",
+    value: "Gaming & sports content genres",
+  },
 } as const;
 
 export const agenciesJourney = {
   label: "Venue-based CTV",
-  title: "It's not sorta CTV it's venue-based CTV advertising",
+  title: "It's not sorta CTV—it's venue-based CTV advertising",
   description:
     "Lemma introduces a straightforward and transparent way to buy premium CTV screens at contextually relevant real-world locations.",
   bullets: [
@@ -112,7 +209,7 @@ export const agenciesJourney = {
     "Third-party validation with globally accepted measurement partners",
     "Real-time dashboards to monitor campaign performance",
   ],
-  cta: { label: "Find Venue-Based CTV", href: "#cta" },
+  cta: { label: "Find Venue Based CTV", href: DEMO_MODAL_HREF },
 } as const;
 
 export const agenciesKpis: BrandsKpi[] = [
@@ -121,6 +218,38 @@ export const agenciesKpis: BrandsKpi[] = [
   { id: "viewability", label: "Viewability", value: "91%", trend: "+5.2%" },
   { id: "brand", label: "Brand Lift", value: "+18%", trend: "+6.4%" },
 ];
+
+export const agenciesOmnichannel = {
+  label: "From awareness to action - the conversion flow",
+  title: "Omnichannel Consumer Journey",
+  underlineWord: "Omnichannel",
+  image: "/images/solutions/omnichannel-journey.png",
+  imageAlt:
+    "Living-room CTV and a smartphone showing the same beach creative, illustrating second-screen conversion",
+  steps: [
+    {
+      id: "exposure",
+      icon: "tv" as const,
+      tone: "blue" as const,
+      title: "Initial Exposure",
+      body: "The consumer watches a premium 30-second video ad on their living room Smart TV during evening streaming.",
+    },
+    {
+      id: "activation",
+      icon: "phone" as const,
+      tone: "blue" as const,
+      title: "Second-Screen Activation",
+      body: "The next morning, while browsing news on their smartphone, a matching display banner appears.",
+    },
+    {
+      id: "conversion",
+      icon: "pointer" as const,
+      tone: "green" as const,
+      title: "Frictionless Conversion",
+      body: "The high brand recall from TV encourages an immediate tap on the mobile banner to complete the deal.",
+    },
+  ],
+} as const;
 
 export const agenciesCapabilities = {
   title: "LEMMA data marketplace for smarter CTV buying",

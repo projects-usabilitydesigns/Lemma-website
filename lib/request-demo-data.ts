@@ -28,7 +28,7 @@ export const requestDemoHero = {
 
 export const demoRoles = [
   "Brand / Advertiser",
-  "Agency",
+  "Demand Partner",
   "Media Owner",
   "Publisher",
   "Network Operator",
