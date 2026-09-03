@@ -252,7 +252,7 @@ export const solutions: Solution[] = [
     title: "For Media Owners",
     description:
       "Open your inventory to global demand without losing control. Programmatic transparency, premium yield, and direct relationships at your fingertips.",
-    features: ["Yield optimization", "Global demand access", "Inventory control"],
+    features: ["Yield optimization", "Global demand access", "Media Inventory Management"],
     image: "/images/solutions/owners-color.png",
     href: "/solutions/media-owners",
   },

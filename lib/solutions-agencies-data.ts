@@ -325,7 +325,7 @@ export const agenciesFaqs: BrandsFaq[] = [
     question: "How does Lemma help Demand Partners activate CTV?",
     questionAccent: "Demand Partners",
     answer:
-      "Lemma provides scale across premium OTT and CTV supply, advanced targeting, direct publisher integrations, and transparent measurement so demand partners can plan and buy CTV in one platform.",
+      "Lemma provides scale across premium OTT and CTV supply, advanced targeting, direct publisher integrations, and transparent measurement so demand partners can plan and buy connected TV in one platform.",
   },
   {
     id: "q2",
