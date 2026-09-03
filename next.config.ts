@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
     ],
   },
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/solutions/agencies",
+        destination: "/solutions/demand-partners",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

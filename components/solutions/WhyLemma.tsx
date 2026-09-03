@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import {
   BarChart3,
   Layers,
@@ -61,15 +62,17 @@ export function WhyLemma({
   title = brandsDefaults.title,
   description = brandsDefaults.description,
   features = brandsDefaults.features,
+  visual,
 }: {
   title?: string;
   description?: string;
   features?: BrandsFeature[];
+  visual?: ReactNode;
 }) {
   return (
     <section className="bg-white py-10 md:py-14">
       <Container>
-        <FadeUp className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
+        <FadeUp className="mx-auto mb-8 max-w-3xl space-y-4 text-center">
           <SectionLabel label="Why Lemma" align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             {title}
@@ -79,11 +82,15 @@ export function WhyLemma({
           </p>
         </FadeUp>
 
-        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5" delay={0.08}>
-          {features.map((feature) => (
-            <FeatureCard key={feature.id} feature={feature} />
-          ))}
-        </Stagger>
+        {visual ? (
+          <FadeUp delay={0.08}>{visual}</FadeUp>
+        ) : (
+          <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5" delay={0.08}>
+            {features.map((feature) => (
+              <FeatureCard key={feature.id} feature={feature} />
+            ))}
+          </Stagger>
+        )}
       </Container>
     </section>
   );
