@@ -3,6 +3,8 @@ export type CareersGalleryImage = {
   src: string;
   alt: string;
   wide?: boolean;
+  /** Vertical focal point, 0 = top, 50 = center. Use ~32–40 for standing portraits. */
+  focus?: number;
 };
 
 export type CareersJob = {
@@ -48,6 +50,7 @@ export const careersGallery = {
       id: "g3",
       src: "/images/careers/life-award-1.jpg",
       alt: "Lemma colleague receiving a certificate of recognition",
+      focus: 36,
     },
     {
       id: "g4",
@@ -59,6 +62,7 @@ export const careersGallery = {
       id: "g5",
       src: "/images/careers/life-goafest.jpg",
       alt: "Lemma team at Goafest 2026",
+      focus: 34,
     },
     {
       id: "g6",
@@ -70,6 +74,7 @@ export const careersGallery = {
       id: "g7",
       src: "/images/careers/life-panel.jpg",
       alt: "Lemma speaking on an industry panel",
+      focus: 32,
     },
     {
       id: "g8",
@@ -81,6 +86,7 @@ export const careersGallery = {
       id: "g9",
       src: "/images/careers/life-award-2.jpg",
       alt: "Lemma employee recognition ceremony in the office",
+      focus: 40,
     },
     {
       id: "g10",
@@ -92,6 +98,7 @@ export const careersGallery = {
       id: "g11",
       src: "/images/careers/life-gift-1.jpg",
       alt: "Lemma teammates celebrating with a gift in the office",
+      focus: 22,
     },
     {
       id: "g12",
@@ -103,6 +110,7 @@ export const careersGallery = {
       id: "g13",
       src: "/images/careers/life-award-3.jpg",
       alt: "Lemma colleagues posing with a recognition certificate",
+      focus: 38,
     },
     {
       id: "g14",
@@ -125,6 +133,7 @@ export const careersGallery = {
       id: "g17",
       src: "/images/careers/life-award-4.jpg",
       alt: "Lemma employee receiving an award in the office",
+      focus: 38,
     },
     {
       id: "g18",
@@ -136,6 +145,7 @@ export const careersGallery = {
       id: "g19",
       src: "/images/careers/life-gift-2.jpg",
       alt: "Lemma colleagues exchanging a gift at work",
+      focus: 34,
     },
     {
       id: "g20",
@@ -147,16 +157,19 @@ export const careersGallery = {
       id: "g21",
       src: "/images/careers/life-training.jpg",
       alt: "Lemma training session on campaign lifecycle",
+      focus: 36,
     },
     {
       id: "g22",
       src: "/images/careers/life-event-1.jpg",
       alt: "Lemma colleague receiving a branded tote at a company session",
+      focus: 34,
     },
     {
       id: "g23",
       src: "/images/careers/life-event-2.jpg",
       alt: "Lemma presentation on the full-funnel ad tech platform",
+      focus: 48,
     },
   ] satisfies CareersGalleryImage[],
 } as const;
