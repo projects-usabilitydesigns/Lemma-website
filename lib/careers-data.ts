@@ -169,9 +169,8 @@ export const careersGallery = {
     },
     {
       id: "g23",
-      src: "/images/careers/life-event-2.jpg",
-      alt: "Lemma presentation on the full-funnel ad tech platform",
-      cropBottom: 30,
+      src: "/images/careers/life-event-2.png",
+      alt: "Lemma Introduction 2017",
     },
   ] satisfies CareersGalleryImage[],
 } as const;

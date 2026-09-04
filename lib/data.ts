@@ -109,7 +109,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
         items: [
           {
             id: "brands",
-            title: "For Brands & Advertisers",
+            title: "For Outcome Driven Marketers & Agencies",
             description: "Omnichannel activation",
             href: "/solutions/brands-advertisers",
           },
@@ -238,7 +238,7 @@ export const solutions: Solution[] = [
     id: "brands",
     number: "01",
     eyebrow: "Mass media, measured",
-    title: "For Brands & Advertisers",
+    title: "For Outcome Driven Marketers & Agencies",
     description:
       "Run campaigns that don't end at the impression. Retarget high-intent audiences across personal devices and close the loop with attribution.",
     features: ["Omnichannel activation", "Cross-screen retargeting", "Outcome attribution"],
@@ -493,7 +493,7 @@ export const footerLinks = {
     { label: "Phi", href: "/products/phi" },
   ],
   solutions: [
-    { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },
+    { label: "For Outcome Driven Marketers & Agencies", href: "/solutions/brands-advertisers" },
     { label: "For Media Owners", href: "/solutions/media-owners" },
     { label: "For Demand Partners", href: "/solutions/demand-partners" },
     { label: "For Publishers", href: "/solutions/publishers" },

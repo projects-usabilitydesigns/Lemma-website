@@ -14,7 +14,7 @@ import { Faq } from "@/components/Faq";
 import { brandsFaqs } from "@/lib/solutions-brands-data";
 
 export const metadata: Metadata = {
-  title: "For Brands & Advertisers",
+  title: "For Outcome Driven Marketers & Agencies",
   description:
     "Lemmaximize your impact with Lemma’s omnichannel advertising solutions for brands and advertisers across DOOH, CTV, OTT, and digital.",
 };

@@ -16,6 +16,7 @@ export function Solutions({
   label = "Solutions",
   title,
   description,
+  ctaLabel = "Learn more",
   showBackground = true,
   showFooterCta = true,
 }: {
@@ -24,6 +25,7 @@ export function Solutions({
   label?: string;
   title?: ReactNode;
   description?: string;
+  ctaLabel?: string;
   showBackground?: boolean;
   showFooterCta?: boolean;
 }) {
@@ -119,7 +121,7 @@ export function Solutions({
                     lift={false}
                     className="w-full normal-case tracking-normal px-6 py-3 text-[15px] font-semibold sm:w-auto sm:px-8 sm:text-[16px]"
                   >
-                    Learn more
+{ctaLabel}
                   </Button>
                 </div>
               </div>

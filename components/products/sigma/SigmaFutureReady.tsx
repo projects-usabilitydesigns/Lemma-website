@@ -9,7 +9,7 @@ export function SigmaFutureReady() {
       title={
         <>
           <GradientText>Lemma</GradientText>
-          Master control & enjoy unparalleled transparency
+          master control & enjoy unparalleled transparency
         </>
       }
       description="Lemma Sigma boosts programmatic bidding for DOOH, CTV, and Retail, making inventory easily discoverable to global DSPs including DV360 and TTD and others. Single native engine to optimize monetization at all times."
