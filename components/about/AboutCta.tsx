@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { aboutImage } from "@/lib/about-data";
-import { WordPlay } from "@/components/ui/WordPlay";
+import { GradientText } from "@/components/ui/GradientText";
 
 function MagneticButton({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,7 +61,7 @@ export function AboutCta() {
         <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-6 md:gap-7">
           <SectionLabel label="Let's talk" align="center" />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            Want to <WordPlay word="Lemmaximize" /> your
+            Want to <GradientText>Lemmaximize</GradientText> your
             <br />
             campaigns/ inventory?
           </h2>

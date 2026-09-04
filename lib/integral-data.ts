@@ -49,7 +49,7 @@ export const integralFaqs = [
     id: "i5",
     question: "Who can use Lemma Integral?",
     answer:
-      "Lemma Integral is for outcome-driven brands, advertisers, agencies & marketers focused on optimizing spend to drive full-funnel outcomes - from brand awareness to mid-funnel consideration and final purchase through a single performance platform.",
+      "Lemma Integral is for outcome-driven brands, advertisers, agencies & marketers focused on optimizing spend to drive full-funnel outcomes - from brand awareness to mid-funnel consideration and final purchase through a single performance based advertising platform.",
   },
 ] as const;
 

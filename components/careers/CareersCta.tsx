@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { GradientText } from "@/components/ui/GradientText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { careersCta } from "@/lib/careers-data";
 
@@ -28,14 +29,7 @@ export function CareersCta() {
           <SectionLabel label={careersCta.label} align="center" dual />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             {careersCta.titleBefore}{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
-              }}
-            >
-              {careersCta.titleAccent}
-            </span>{" "}
+            <GradientText>{careersCta.titleAccent}</GradientText>{" "}
             {careersCta.titleAfter}
           </h2>
           <p className="max-w-xl text-[18px] leading-7 text-[var(--color-slate)]">

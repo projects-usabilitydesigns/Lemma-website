@@ -1,6 +1,7 @@
 "use client";
 
 import { ProductIntro } from "@/components/products/ProductIntro";
+import { GradientText } from "@/components/ui/GradientText";
 
 export function DeltaIntro() {
   return (
@@ -9,12 +10,7 @@ export function DeltaIntro() {
         <>
           With the right tools{" "}
           E
-          <span
-            className="bg-clip-text text-transparent"
-            style={{ backgroundImage: "var(--gradient-cta)" }}
-          >
-            lemma
-          </span>
+          <GradientText>lemma</GradientText>
           nate the complexities of digital advertising
         </>
       }
