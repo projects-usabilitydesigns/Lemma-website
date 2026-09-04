@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { GradientText } from "@/components/ui/GradientText";
 import { deltaAssets } from "@/lib/delta-data";
 
 export function DeltaAdvantage() {
@@ -14,12 +15,7 @@ export function DeltaAdvantage() {
           >
             <h3 className="font-[family-name:var(--font-inter)] text-[28px] font-semibold tracking-[-0.4px] text-[#111] md:text-[36px] md:leading-[1.2]">
               The{" "}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: "var(--gradient-cta)" }}
-              >
-                Lemma
-              </span>
+              <GradientText>Lemma</GradientText>
               advantage
             </h3>
             <div

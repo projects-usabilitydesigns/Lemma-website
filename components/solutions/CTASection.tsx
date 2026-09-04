@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { withGradientAccent } from "@/components/ui/GradientText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { brandsCta } from "@/lib/solutions-brands-data";
 
@@ -47,7 +48,7 @@ export function CTASection({
         <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-7">
           <SectionLabel label={label} />
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            {data.title}
+            {withGradientAccent(data.title)}
           </h2>
           <p className="max-w-xl text-[18px] leading-7 text-[var(--color-slate)] md:text-[20px]">
             {data.description}

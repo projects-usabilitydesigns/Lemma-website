@@ -5,6 +5,8 @@ export type CareersGalleryImage = {
   wide?: boolean;
   /** Vertical focal point, 0 = top, 50 = center. Use ~32–40 for standing portraits. */
   focus?: number;
+  /** Percent of the photo to clip from the bottom (e.g. empty floor). */
+  cropBottom?: number;
 };
 
 export type CareersJob = {
@@ -169,7 +171,7 @@ export const careersGallery = {
       id: "g23",
       src: "/images/careers/life-event-2.jpg",
       alt: "Lemma presentation on the full-funnel ad tech platform",
-      focus: 48,
+      cropBottom: 30,
     },
   ] satisfies CareersGalleryImage[],
 } as const;

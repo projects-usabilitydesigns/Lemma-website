@@ -25,10 +25,10 @@ export const publishersHero = {
 } as const;
 
 export const publishersStats: BrandsStat[] = [
-  { id: "demand", value: 120, suffix: "+", label: "Demand Partners" },
+  { id: "demand", value: 120, suffix: "+", label: "Demand\nPartners" },
   { id: "markets", value: 40, suffix: "+", label: "Markets Connected" },
   { id: "platforms", value: 5, label: "Proprietary Platforms" },
-  { id: "transparency", value: 100, suffix: "%", label: "Revenue Clarity" },
+  { id: "transparency", value: 100, suffix: "%", label: "Revenue\nClarity" },
 ];
 
 export const publishersWhy = {
