@@ -83,8 +83,7 @@ export const brandsHero = {
     { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },
   ],
   label: "Solutions",
-  title: "For Outcome Driven Marketers & Agencies",
-  gradientTitle: "",
+  gradientTitle: "Lemmaximize Your Impact!",
   description:
     "When you team up with the world’s largest omnichannel platform, you gain access to audience-centric advertising solutions. Today’s tech? Nailed it. Tomorrow’s trends? We’re already on it.",
   primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },

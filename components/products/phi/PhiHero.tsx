@@ -41,7 +41,7 @@ export function PhiHero() {
               ease: animation.easeOut,
               delay: 0.12,
             }}
-            className="relative mx-auto flex w-full max-w-[640px] items-center justify-center lg:mx-0 lg:max-w-[620px] lg:justify-self-end"
+            className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center pt-4 md:pt-6 lg:mx-0 lg:max-w-[620px] lg:translate-y-8 lg:justify-self-end"
           >
             <div className="relative w-full">
               <Image
@@ -52,11 +52,11 @@ export function PhiHero() {
                 quality={100}
                 unoptimized
                 className="h-auto w-full object-contain object-center"
-                style={{ clipPath: "inset(7.5% 0 0 0)" }}
+                style={{ clipPath: "inset(8.5% 0 0 0)" }}
                 priority
                 sizes="(max-width: 1024px) 100vw, 620px"
               />
-              <div className="pointer-events-none absolute left-1/2 top-[1.2%] z-10 w-[30%] -translate-x-1/2">
+              <div className="pointer-events-none absolute inset-x-0 top-[2.2%] z-10 flex justify-center">
                 <Image
                   src={phiAssets.heroLogo}
                   alt=""
@@ -64,7 +64,7 @@ export function PhiHero() {
                   height={28}
                   unoptimized
                   aria-hidden
-                  className="h-auto w-full"
+                  className="h-auto w-[32%]"
                 />
               </div>
             </div>

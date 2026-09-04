@@ -40,7 +40,7 @@ export function Solutions({
             alt=""
             width={1024}
             height={935}
-            className="h-[85%] w-auto max-w-none object-contain object-right opacity-45"
+            className="h-[85%] w-auto max-w-none object-contain object-right opacity-[0.12]"
             sizes="45vw"
             priority={false}
           />
@@ -119,7 +119,7 @@ export function Solutions({
                     lift={false}
                     className="w-full normal-case tracking-normal px-6 py-3 text-[15px] font-semibold sm:w-auto sm:px-8 sm:text-[16px]"
                   >
-                    Talk to our team
+                    Learn more
                   </Button>
                 </div>
               </div>

@@ -15,7 +15,7 @@ export const mediaOwnersHero = {
     { label: "For Media Owners", href: "/solutions/media-owners" },
   ],
   label: "Solutions",
-  gradientTitle: "Lemmaster your inventory!",
+  gradientTitle: "Lemmaster Your Inventory!",
   description:
     "Your Screens. Your Rules. Our Global Network. Partner with us to monetize, manage, and meticulously measure every aspect of your inventory.",
   primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },

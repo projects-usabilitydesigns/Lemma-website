@@ -9,9 +9,10 @@ export function DeltaIntro() {
       title={
         <>
           With the right tools{" "}
-          E
-          <GradientText>lemma</GradientText>
-          nate the complexities of digital advertising
+          <span className="whitespace-nowrap">
+            E<GradientText>lemma</GradientText>nate
+          </span>{" "}
+          the complexities of digital advertising
         </>
       }
       description="Built for SMBs and growing agencies, Lemma Delta, the omnichannel DSP, simplifies media buying, enabling seamless supply deal curation across DOOH, CTV, and OTT platforms."
