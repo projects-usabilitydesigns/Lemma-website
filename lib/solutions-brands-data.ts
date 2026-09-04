@@ -80,10 +80,10 @@ export const brandsHero = {
   breadcrumb: [
     { label: "Home", href: "/" },
     { label: "Solutions", href: "/#solutions" },
-    { label: "For Brands & Advertisers", href: "/solutions/brands-advertisers" },
+    { label: "For Outcome Driven Marketers & Agencies", href: "/solutions/brands-advertisers" },
   ],
   label: "Solutions",
-  title: "For Outcome Driven Marketers & Agencies",
+  title: "Lemmaximize your impact!",
   gradientTitle: "",
   description:
     "When you team up with the world’s largest omnichannel platform, you gain access to audience-centric advertising solutions. Today’s tech? Nailed it. Tomorrow’s trends? We’re already on it.",

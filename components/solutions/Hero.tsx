@@ -97,10 +97,7 @@ export function BrandsHero({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: animation.duration.slow, ease: animation.easeOut }}
-                className="font-heading bg-clip-text text-[34px] font-semibold leading-[1.08] text-transparent md:text-[48px]"
-                style={{
-                  backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
-                }}
+                className="font-heading gradient-text text-[34px] font-semibold leading-[1.08] md:text-[48px]"
               >
                 {data.title ?? data.gradientTitle}
               </motion.h1>

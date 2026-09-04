@@ -44,23 +44,40 @@ export function CareersGallery() {
                     : "md:grid-cols-[1.1fr_0.9fr]",
               )}
             >
-              {row.map((image) => (
-                <div
-                  key={image.id}
-                  className="relative h-[240px] overflow-hidden rounded-[20px] md:h-[340px] lg:h-[380px]"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover"
-                    style={{
-                      objectPosition: `center ${image.focus ?? 50}%`,
-                    }}
-                    sizes="(max-width: 768px) 100vw, 55vw"
-                  />
-                </div>
-              ))}
+              {row.map((image) => {
+                const keep = (100 - (image.cropBottom ?? 0)) / 100;
+                return row.length === 1 ? (
+                  <div
+                    key={image.id}
+                    className="relative w-full overflow-hidden rounded-[20px]"
+                    style={{ aspectRatio: `4284 / ${Math.round(2999 * keep)}` }}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 1188px"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    key={image.id}
+                    className="relative h-[240px] overflow-hidden rounded-[20px] md:h-[340px] lg:h-[380px]"
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                      style={{
+                        objectPosition: `center ${image.focus ?? 50}%`,
+                      }}
+                      sizes="(max-width: 768px) 100vw, 55vw"
+                    />
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>

@@ -107,6 +107,14 @@ img {
   background: rgba(0, 143, 219, 0.18);
 }
 
+.gradient-text {
+  background-image: var(--gradient-cta);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 .marquee-fade {
   mask-image: linear-gradient(
     to right,

@@ -1,20 +1,14 @@
 "use client";
 
 import { ProductIntro } from "@/components/products/ProductIntro";
+import { GradientText } from "@/components/ui/GradientText";
 
 export function SigmaFutureReady() {
   return (
     <ProductIntro
       title={
         <>
-          <span
-            className="bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, #008fdb 0%, #009352 100%)",
-            }}
-          >
-            lemma
-          </span>
+          <GradientText>Lemma</GradientText>
           Master control & enjoy unparalleled transparency
         </>
       }
