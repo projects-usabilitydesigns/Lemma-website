@@ -107,7 +107,7 @@ export const mediaOwnersPlatforms: Solution[] = [
     eyebrow: "Content, simplified",
     title: "Lemma Phi",
     description:
-      "Lemma Phi is our DCS that is completely free of cost, so you can manage content without friction.",
+      "Lemma Phi is our CMS that is completely free of cost, so you can manage content without friction.",
     features: [
       "Plan, schedule, and deliver across every screen",
       "Creative control across every screen size",
@@ -170,7 +170,7 @@ export const mediaOwnersCapabilities = {
     {
       id: "cms",
       title: "Phi Content Management",
-      description: "Run Lemma Phi DCS at no cost to manage creatives and screen content easily.",
+      description: "Run Lemma phi CMS at no cost to manage creatives and screen content easily.",
       icon: "palette",
     },
     {
