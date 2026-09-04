@@ -39,7 +39,7 @@ export default async function HomePage() {
         <Hero heroStats={heroStats} />
         <LogosMarquee clientLogos={clientLogos} />
         <Products />
-        <Solutions solutions={solutions} />
+        <Solutions solutions={solutions} showFooterCta={false} />
         <CaseStudies caseStudies={caseStudies} />
         <AiFeatures />
         <NextFrontier />
