@@ -457,7 +457,7 @@ export const faqs: FaqItem[] = [
     id: "lemma-cms",
     question: "How Lemma CMS helps screen owners?",
     answer:
-      "Lemma CMS (Phi) gives screen owners a free content management system to plan, schedule, and deliver creatives across screens, locations, and formats from one platform—with full control over what goes live.",
+      "Lemma CMS (Phi) gives screen owners a free content management system to plan, schedule, and deliver creatives across screens, locations, and formats from one platform with full control over what goes live.",
   },
 ];
 

@@ -322,16 +322,16 @@ export const agenciesAnalytics = {
 export const agenciesFaqs: BrandsFaq[] = [
   {
     id: "q1",
-    question: "How does Lemma help Demand Partners activate CTV?",
+    question: "How does Lemma help Demand Partners activate Connected TV?",
     questionAccent: "Demand Partners",
     answer:
-      "Lemma provides scale across premium OTT and CTV supply, advanced targeting, direct publisher integrations, and transparent measurement so demand partners can plan and buy connected TV in one platform.",
+      "Lemma provides scale across premium OTT and Connected TV supply, advanced targeting, direct publisher integrations, and transparent measurement so demand partners can plan and buy connected TV in one platform.",
   },
   {
     id: "q2",
-    question: "How is Lemma CTV solutions different from others?",
+    question: "How is Lemma Connected TV solutions different from others?",
     answer:
-      "Unlike broad, proxy-based demographic targeting, Lemma analyzes brand assets and intent signals to map high-impact CTV moments. This delivers context-relevant ads that eliminate waste and drive measurable conversions.",
+      "Unlike broad, proxy-based demographic targeting, Lemma analyzes brand assets and intent signals to map high-impact Connected TV moments. This delivers context-relevant ads that eliminate waste and drive measurable conversions.",
   },
   {
     id: "q3",
@@ -343,14 +343,14 @@ export const agenciesFaqs: BrandsFaq[] = [
     id: "q4",
     question: "What is Lemma Audience Graph?",
     answer:
-      "The Lemma Audience Graph maps 95% of CTV households using real-world location signals, intent data, and IP anchoring. It builds precise targeting pools to deliver context-relevant cross-device campaigns.",
+      "The Lemma Audience Graph maps 95% of Connected TV households using real-world location signals, intent data, and IP anchoring. It builds precise targeting pools to deliver context-relevant cross-device campaigns.",
     answerBold: ["location signals, intent data, and IP anchoring"],
   },
   {
     id: "q5",
-    question: "What downstream outcomes can advertisers track using Lemma’s CTV solution?",
+    question: "What downstream outcomes can advertisers track using Lemma’s Connected TV solution?",
     answer:
-      "Lemma tracks full-funnel downstream outcomes, connecting living-room CTV views to mobile banner clicks, site conversions, online purchases, and closed-loop physical store foot-traffic through cross-device attribution.",
+      "Lemma tracks full-funnel downstream outcomes, connecting living-room Connected TV views to mobile banner clicks, site conversions, online purchases, and closed-loop physical store foot-traffic through cross-device attribution.",
   },
 ];
 
