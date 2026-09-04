@@ -15,7 +15,7 @@ export const publishersHero = {
     { label: "For Publishers", href: "/solutions/publishers" },
   ],
   label: "Solutions",
-  gradientTitle: "Programmatic monetization, maximized",
+  gradientTitle: "Programmatic Monetization, Maximized",
   description:
     "Unlock premium demand, protect brand safety, and grow yield across digital, CTV, and emerging formats—without giving up control of your inventory.",
   primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },

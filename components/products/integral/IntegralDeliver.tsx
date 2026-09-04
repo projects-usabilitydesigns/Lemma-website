@@ -6,7 +6,7 @@ export function IntegralDeliver() {
   return (
     <ProductIntro
       title="How we deliver outcome with outdoors"
-      description="Introducing Lemma Integral, our latest platform designed to empower agencies and brands in effortlessly curating supply deals for emerging formats through three seamless steps: Plan, Activate, Measure."
+      description="Lemma Integral, our latest platform designed to empower agencies and brands in effortlessly curating supply deals for emerging formats through three seamless steps: Plan, Activate, Measure."
     />
   );
 }
