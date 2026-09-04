@@ -10,7 +10,7 @@ export function GradientText({
   children: ReactNode;
   className?: string;
 }) {
-  return <span className={cn("gradient-text inline-block", className)}>{children}</span>;
+  return <span className={cn("gradient-text", className)}>{children}</span>;
 }
 
 /** Wraps the first occurrence of `accent` in the shared CTA text gradient. */

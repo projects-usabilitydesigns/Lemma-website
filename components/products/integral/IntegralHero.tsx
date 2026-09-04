@@ -27,14 +27,14 @@ export function IntegralHero() {
             </FadeUp>
             <BlurReveal>
               <h1 className="font-heading text-[40px] font-semibold leading-[1.08] tracking-[-0.72px] text-black md:text-[56px]">
-                Introducing the Core Performance Engine – Lemma Integral
+Introducing the Core Performance Engine - Lemma Integral
               </h1>
             </BlurReveal>
             <FadeUp delay={0.12}>
               <p className="font-heading max-w-xl text-[18px] font-normal leading-[140%] tracking-[0.7px] text-[#09131A] md:text-[22px]">
-                A full-funnel platform that transforms your OOH impressions into impactful
-                results. It maximizes your campaign impact, driving full-funnel success with
-                improved visibility, recall, and digital conversions.
+A full funnel Platform that transforms your OOH
+                impressions into impactful results. It maximizes your campaign impact, driving
+                full-funnel success with improved visibility, recall, and digital conversions.
               </p>
             </FadeUp>
             <FadeUp delay={0.22} className="flex flex-wrap items-center gap-3">

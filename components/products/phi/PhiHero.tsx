@@ -41,7 +41,7 @@ export function PhiHero() {
               ease: animation.easeOut,
               delay: 0.12,
             }}
-            className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center pt-4 md:pt-6 lg:mx-0 lg:max-w-[620px] lg:translate-y-8 lg:justify-self-end"
+className="relative mx-auto flex w-full max-w-[640px] items-center justify-center lg:max-w-[620px]"
           >
             <div className="relative w-full">
               <Image
