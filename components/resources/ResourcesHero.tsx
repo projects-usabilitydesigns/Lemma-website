@@ -37,7 +37,7 @@ export function ResourcesHero() {
                 href={resourcesHero.primaryCta.href}
                 variant="primary"
                 arrow="right"
-                className="normal-case tracking-normal px-7 py-3 text-[15px] font-semibold"
+                className="normal-case tracking-normal text-[16px] font-semibold"
               >
                 {resourcesHero.primaryCta.label}
               </Button>

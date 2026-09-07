@@ -194,7 +194,7 @@ export function ArchitectureImpact() {
 
         <div className="mt-8 flex justify-center">
           <Button href="#architecture" variant="primary">
-            learn more
+            Learn more
           </Button>
         </div>
       </Container>

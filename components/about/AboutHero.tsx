@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { aboutAssets } from "@/lib/about-data";
@@ -44,20 +44,10 @@ export function AboutHero() {
               transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.2 }}
               className="flex flex-wrap items-center gap-3 pt-1"
             >
-              <Button
-                href="#community"
-                variant="primary"
-                arrow="none"
-                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
-              >
+              <Button href="#community" variant="primary" className={pairCtaClassName}>
                 Discover Our Story
               </Button>
-              <Button
-                href="#principles"
-                variant="outline"
-                arrow="right"
-                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
-              >
+              <Button href="#principles" variant="outline" arrow="none" className={pairCtaClassName}>
                 Learn More
               </Button>
             </motion.div>

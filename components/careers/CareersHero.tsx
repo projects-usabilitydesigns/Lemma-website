@@ -38,7 +38,7 @@ export function CareersHero() {
                 href={careersHero.primaryCta.href}
                 variant="primary"
                 arrow="none"
-                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                className="normal-case tracking-normal text-[16px] font-semibold"
               >
                 {careersHero.primaryCta.label}
               </Button>

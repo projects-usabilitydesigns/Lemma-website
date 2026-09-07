@@ -10,7 +10,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { aiFeatures as defaultAiFeatures } from "@/lib/data";
@@ -141,12 +140,6 @@ export function AiFeatures() {
               </ul>
             </article>
           ))}
-        </div>
-
-        <div className="mt-8 flex justify-center">
-          <Button href="#ai" variant="primary">
-            learn more
-          </Button>
         </div>
       </Container>
     </section>

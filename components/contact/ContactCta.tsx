@@ -1,7 +1,7 @@
 "use client";
 
 import { FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { contactHero } from "@/lib/contact-data";
 
@@ -24,20 +24,10 @@ export function ContactCta() {
             .
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button
-              href="/request-demo"
-              variant="primary"
-              arrow="none"
-              className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
-            >
+            <Button href="/request-demo" variant="primary" className={pairCtaClassName}>
               Request A Demo
             </Button>
-            <Button
-              href="/#products"
-              variant="outline"
-              arrow="right"
-              className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
-            >
+            <Button href="/#products" variant="outline" arrow="none" className={pairCtaClassName}>
               Explore Platforms
             </Button>
           </div>
