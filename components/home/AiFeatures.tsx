@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   BrainCircuit,
   PieChart,
+  Sparkles,
   Target,
   TrendingUp,
   type LucideIcon,
@@ -69,7 +70,13 @@ export function AiFeatures() {
           <FadeUp className="space-y-4">
             <SectionLabel label="AI at Lemma" accent="blue" />
             <h2 className="font-heading max-w-xl text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-              Full-funnel AI-Powered
+              Full-funnel{" "}
+              <Sparkles
+                className="mb-1 inline-block size-[0.7em]"
+                strokeWidth={2.25}
+                style={{ color: "#008fdb" }}
+              />{" "}
+              AI-Powered
               <br />
               Platform.
             </h2>

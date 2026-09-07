@@ -69,10 +69,12 @@ export function TopTrending({ articles }: { articles: ResourceArticle[] }) {
     startAutoSlide(); // reset the timer so it doesn't jump right after a manual click
   };
 
-  if (articles.length === 0) return null;
+  if (articles.length === 0) {
+    return <section id="top-trending" aria-hidden className="scroll-mt-[100px]" />;
+  }
 
   return (
-    <section id="top-trending" className="bg-white py-10 md:py-14">
+    <section id="top-trending" className="scroll-mt-[100px] bg-white py-10 md:py-14">
       <Container>
         <FadeUp className="mb-10 flex items-center justify-between gap-4">
           <h2 className="font-heading text-[28px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[40px] md:leading-[44px]">

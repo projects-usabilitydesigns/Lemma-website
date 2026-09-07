@@ -15,8 +15,9 @@ export function DeltaAdvantage() {
           >
             <h3 className="font-[family-name:var(--font-inter)] text-[28px] font-semibold tracking-[-0.4px] text-[#111] md:text-[36px] md:leading-[1.2]">
               The{" "}
-              <GradientText>Lemma</GradientText>
-              advantage
+              <span className="whitespace-nowrap">
+                <GradientText>Lemma</GradientText>dvantage
+              </span>
             </h3>
             <div
               className="mt-4 mb-6 h-px w-14 bg-gradient-to-r from-[var(--color-blue)] to-transparent"
@@ -25,7 +26,7 @@ export function DeltaAdvantage() {
             <p className="font-[family-name:var(--font-inter)] text-[18px] font-normal leading-[1.65] text-[#5a6570] md:text-[20px]">
               Whether you aim to engage with student on campus, connect with shoppers at luxury
               malls or target sports enthusiasts we have got you covered with our expansive DOOH
-              inventory, In venue CTV and wide array of OTT channels.
+              inventory, CTV and wide array of OTT channels.
             </p>
           </div>
 

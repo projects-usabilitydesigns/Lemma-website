@@ -71,7 +71,7 @@ export function AboutCta() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <MagneticButton>
               <Button
-                href="mailto:contactus@lemmamedia.com"
+                href="/contact-us"
                 variant="primary"
                 arrow="up-right"
                 className="normal-case tracking-normal border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(0,143,219,0.28)]"

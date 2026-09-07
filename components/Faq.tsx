@@ -7,6 +7,7 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { DEMO_PAGE_HREF } from "@/lib/demo-cta";
 import { cn } from "@/lib/utils";
 
 export type FaqItem = {
@@ -40,20 +41,20 @@ export type FaqProps = {
   sectionId?: string;
   /** Prefix for accordion panel ids — defaults from sectionId */
   idPrefix?: string;
-  /** VIEW ALL link target */
+  /** Request A Demo link target */
   viewAllHref?: string;
   className?: string;
 };
 
 /**
  * Single shared FAQ accordion used across the site.
- * Pass page-specific `items` — heading, accordion, and VIEW ALL stay the same everywhere.
+ * Pass page-specific `items` — heading, accordion, and Request A Demo stay the same everywhere.
  */
 export function Faq({
   items,
   sectionId = "faq",
   idPrefix,
-  viewAllHref = "/#faq",
+  viewAllHref = DEMO_PAGE_HREF,
   className,
 }: FaqProps) {
   const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null);
@@ -145,8 +146,12 @@ export function Faq({
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button href={viewAllHref} variant="primary">
-            VIEW ALL
+          <Button
+            href={viewAllHref}
+            variant="primary"
+            className="normal-case tracking-normal"
+          >
+            Request A Demo
           </Button>
         </div>
       </Container>

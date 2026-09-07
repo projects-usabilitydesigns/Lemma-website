@@ -169,9 +169,8 @@ export const careersGallery = {
     },
     {
       id: "g23",
-      src: "/images/careers/life-event-2.jpg",
-      alt: "Lemma presentation on the full-funnel ad tech platform",
-      cropBottom: 30,
+      src: "/images/careers/life-event-2.png",
+      alt: "Lemma Introduction 2017",
     },
   ] satisfies CareersGalleryImage[],
 } as const;
@@ -252,6 +251,6 @@ export const careersCta = {
   titleAccent: "Lemmaximize",
   titleAfter: "your campaigns/ inventory?",
   description: "Get in touch with us and start your journey with us today.",
-  primaryCta: { label: "Contact Us", href: "mailto:contactus@lemmamedia.com" },
+  primaryCta: { label: "Contact Us", href: "/contact-us" },
   secondaryCta: { label: "Request Demo", href: "/request-demo" },
 } as const;

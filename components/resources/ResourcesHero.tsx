@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Globe, FileEdit, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -129,8 +130,12 @@ export function ResourcesHero() {
               initial={{ opacity: 0, scale: 0.9, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute left-[-10px] top-[10px] z-10 w-[230px] -rotate-[26deg] rounded-[22px] border-2 border-[#ff2d89] bg-white p-4.5 shadow-[0_12px_28px_rgba(255,45,137,0.15)] transition-transform hover:scale-105"
+              className="absolute left-[-10px] top-[10px] z-10 w-[230px] -rotate-[26deg] transition-transform hover:scale-105"
             >
+              <Link
+                href={resourcesHero.orbit.newsroom.href}
+                className="block rounded-[22px] border-2 border-[#ff2d89] bg-white p-4.5 shadow-[0_12px_28px_rgba(255,45,137,0.15)]"
+              >
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <h3 className="font-heading text-[17px] font-bold text-[#ff2d89]">
@@ -144,6 +149,7 @@ export function ResourcesHero() {
                   <Globe className="size-5" strokeWidth={2} />
                 </div>
               </div>
+              </Link>
             </motion.div>
 
             {/* 2. Blogs Card (Top-Right - Straight) */}
@@ -151,8 +157,12 @@ export function ResourcesHero() {
               initial={{ opacity: 0, scale: 0.9, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute right-[-15px] top-[95px] z-10 w-[220px] rounded-[20px] border-2 border-[#008fdb] bg-white p-4 shadow-[0_12px_28px_rgba(0,143,219,0.15)] transition-transform hover:scale-105"
+              className="absolute right-[-15px] top-[95px] z-10 w-[220px] transition-transform hover:scale-105"
             >
+              <Link
+                href={resourcesHero.orbit.blogs.href}
+                className="block rounded-[20px] border-2 border-[#008fdb] bg-white p-4 shadow-[0_12px_28px_rgba(0,143,219,0.15)]"
+              >
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <h3 className="font-heading text-[17px] font-bold text-[#008fdb]">
@@ -166,6 +176,7 @@ export function ResourcesHero() {
                   <FileEdit className="size-5" strokeWidth={2} />
                 </div>
               </div>
+              </Link>
             </motion.div>
 
             {/* 3. Case Studies Card (Bottom-Center - Straight) */}
@@ -173,8 +184,12 @@ export function ResourcesHero() {
               initial={{ opacity: 0, scale: 0.9, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="absolute bottom-[-15px] left-[185px] z-10 w-[225px] -translate-x-1/2 rounded-[20px] border-2 border-[#009352] bg-white p-4 shadow-[0_12px_28px_rgba(0,147,82,0.15)] transition-transform hover:scale-105"
+              className="absolute bottom-[-15px] left-[185px] z-10 w-[225px] -translate-x-1/2 transition-transform hover:scale-105"
             >
+              <Link
+                href={resourcesHero.orbit.caseStudies.href}
+                className="block rounded-[20px] border-2 border-[#009352] bg-white p-4 shadow-[0_12px_28px_rgba(0,147,82,0.15)]"
+              >
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <h3 className="font-heading text-[17px] font-bold text-[#009352]">
@@ -188,6 +203,7 @@ export function ResourcesHero() {
                   <TrendingUp className="size-5" strokeWidth={2} />
                 </div>
               </div>
+              </Link>
             </motion.div>
           </div>
         </div>

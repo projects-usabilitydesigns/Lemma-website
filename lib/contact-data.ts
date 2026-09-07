@@ -19,7 +19,7 @@ export const contactHero = {
   highlights: [
     "Global teams across 9 offices and 40+ markets",
     "Support for advertisers, agencies, and media owners",
-    "Hear back from a specialist within 24 hours",
+    "Hear back from us within 24 hrs",
   ],
 } as const;
 
