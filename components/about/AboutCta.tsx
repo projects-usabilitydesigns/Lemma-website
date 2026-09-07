@@ -7,7 +7,6 @@ import { FadeUp } from "@/components/animation";
 import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { aboutImage } from "@/lib/about-data";
 import { GradientText } from "@/components/ui/GradientText";
 
 function MagneticButton({ children }: { children: React.ReactNode }) {
@@ -48,14 +47,8 @@ export function AboutCta() {
       id="cta"
       className="relative flex h-[589.59px] items-center overflow-hidden"
     >
-      <Image
-        src={aboutImage("Frame 1597889838.png")}
-        alt=""
-        fill
-        className="object-cover object-center"
-        sizes="100vw"
-        priority={false}
-      />
+      <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-home-mesh)]" />
 
       <Container className="relative text-center">
         <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-6 md:gap-7">
