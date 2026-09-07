@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -62,22 +62,12 @@ export function Cta() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <MagneticButton>
-              <Button
-                href="/contact-us"
-                variant="primary"
-                arrow="up-right"
-                className="normal-case tracking-normal text-[16px] font-semibold"
-              >
+              <Button href="/contact-us" variant="primary" className={pairCtaClassName}>
                 Get in touch
               </Button>
             </MagneticButton>
             <MagneticButton>
-              <Button
-                href="#products"
-                variant="secondary"
-                arrow="none"
-                className="normal-case tracking-normal text-[16px] font-semibold"
-              >
+              <Button href="#products" variant="outline" arrow="none" className={pairCtaClassName}>
                 See products
               </Button>
             </MagneticButton>

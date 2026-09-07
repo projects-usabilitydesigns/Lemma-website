@@ -174,7 +174,7 @@ export function Header({
         </nav>
 
         <div className="hidden lg:block" onMouseEnter={scheduleCloseMega}>
-          <Button href="/request-demo" variant="outline" arrow="none">
+          <Button href="/request-demo" variant="outline" arrow="none" lift={false}>
             Request Demo
           </Button>
         </div>
@@ -311,7 +311,7 @@ export function Header({
                       className="shrink-0 border-t border-[var(--color-border)] p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]"
                       onClick={closeMobileMenu}
                     >
-                      <Button href="/request-demo" variant="primary" className="w-full" arrow="none">
+                      <Button href="/request-demo" variant="outline" className="w-full" arrow="none">
                         Request Demo
                       </Button>
                     </div>

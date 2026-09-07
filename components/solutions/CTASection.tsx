@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { withGradientAccent } from "@/components/ui/GradientText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -54,19 +54,14 @@ export function CTASection({
             {data.description}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Button
-              href={data.primaryCta.href}
-              variant="primary"
-              arrow="up-right"
-              className="normal-case tracking-normal text-[16px] font-semibold"
-            >
+            <Button href={data.primaryCta.href} variant="primary" className={pairCtaClassName}>
               {data.primaryCta.label}
             </Button>
             <Button
               href={data.secondaryCta.href}
-              variant="secondary"
+              variant="outline"
               arrow="none"
-              className="normal-case tracking-normal text-[16px] font-semibold"
+              className={pairCtaClassName}
             >
               {data.secondaryCta.label}
             </Button>

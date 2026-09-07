@@ -152,7 +152,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
             </p>
             <a
               href="mailto:contactus@lemmamedia.com"
-              className="mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-[15px] font-semibold text-[var(--color-btn-text)] transition hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
+              className="mt-7 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[16px] font-semibold text-[var(--color-btn-text)] transition hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
               style={{ backgroundImage: "var(--gradient-blue)" }}
             >
               Email us directly
@@ -414,7 +414,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full px-8 py-3 text-[15px] font-semibold text-[var(--color-btn-text)] transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)] disabled:cursor-not-allowed disabled:opacity-70"
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full px-5 py-2.5 text-[16px] font-semibold text-[var(--color-btn-text)] transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)] disabled:cursor-not-allowed disabled:opacity-70"
               style={{ backgroundImage: "var(--gradient-blue)" }}
             >
               {status === "submitting" ? (

@@ -76,7 +76,7 @@ export function JourneySection({
               <a
                 href={cta.href}
                 onClick={cta.onClick}
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-semibold uppercase tracking-[2px] text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[16px] font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
                 style={{ backgroundImage: "var(--gradient-blue)" }}
               >
                 {data.cta.label}

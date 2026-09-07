@@ -22,15 +22,19 @@ type ButtonProps = {
   lift?: boolean;
 };
 
-const filledVariants: ReadonlySet<ButtonVariant> = new Set(["primary", "secondary", "outline"]);
+const filledVariants: ReadonlySet<ButtonVariant> = new Set(["primary", "secondary"]);
+
+/** Shared type for side-by-side CTAs: gradient fill + white/black outline. */
+export const pairCtaClassName =
+  "normal-case tracking-normal text-[16px] font-semibold font-[family-name:var(--font-inter)] h-[48px] px-[22px] leading-none";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "text-[var(--color-btn-text)] border border-white/8 px-8 py-4 rounded-full uppercase tracking-[2.52px] text-[14px] font-medium shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
+    "text-white border border-white/8 px-5 py-2.5 rounded-full normal-case tracking-normal text-[16px] font-semibold font-[family-name:var(--font-inter)] shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
   secondary:
-    "text-[var(--color-btn-text)] border border-white/8 px-8 py-[17px] rounded-full text-[14px] font-medium shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
+    "text-white border border-white/8 px-5 py-2.5 rounded-full normal-case tracking-normal text-[16px] font-semibold font-[family-name:var(--font-inter)] shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
   outline:
-    "text-[var(--color-btn-text)] border border-white/8 px-5 py-2.5 rounded-full text-[16px] font-semibold shadow-none hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]",
+    "bg-white text-black border border-black px-5 py-2.5 rounded-full text-[16px] font-semibold tracking-normal normal-case font-[family-name:var(--font-inter)] shadow-none hover:bg-white hover:shadow-[0_10px_30px_rgba(9,19,26,0.12)]",
   ghost:
     "bg-transparent text-[var(--color-blue-link)] text-[18px] font-medium capitalize px-0 py-0",
   link: "bg-transparent text-[var(--color-blue-learn)] text-[14px] font-medium capitalize px-0 py-0",
