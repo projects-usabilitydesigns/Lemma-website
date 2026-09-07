@@ -36,7 +36,7 @@ export function CookieBanner({ onAcceptAll, onRejectAll, onCustomize }: CookieBa
           privacy policy
         </Link>{" "}
         and{" "}
-        <Link href="#" className="font-semibold text-[var(--color-blue-link)] hover:underline">
+        <Link href="/privacy-policy" className="font-semibold text-[var(--color-blue-link)] hover:underline">
           cookie statement
         </Link>{" "}
         to know more.

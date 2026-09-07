@@ -76,7 +76,7 @@ export function Solutions({
               key={item.id}
               variants={staggerItem}
               whileHover={{ y: -6 }}
-              className="grid overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-cream)] transition-shadow duration-300 hover:shadow-[0px_12px_40px_rgba(9,19,26,0.12)] md:rounded-none md:grid-cols-5"
+              className="grid h-full overflow-hidden rounded-[12px] border border-[var(--color-border)] bg-[var(--color-cream)] transition-shadow duration-300 hover:shadow-[0px_12px_40px_rgba(9,19,26,0.12)] md:rounded-none md:grid-cols-5"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden md:col-span-2 md:aspect-auto md:min-h-[376px]">
                 {item.image ? (
@@ -92,7 +92,7 @@ export function Solutions({
                   {item.number}
                 </p>
               </div>
-              <div className="flex flex-col p-5 pb-6 md:col-span-3 md:p-7">
+              <div className="flex h-full flex-col p-5 pb-6 md:col-span-3 md:p-7">
                 <p className="text-[11px] font-medium uppercase tracking-[2.16px] text-[var(--color-slate)] md:text-[12px]">
                   {item.eyebrow}
                 </p>
@@ -113,7 +113,7 @@ export function Solutions({
                     </li>
                   ))}
                 </ul>
-                <div className="mt-5 md:mt-6">
+                <div className="mt-auto pt-5 md:pt-6">
                   <Button
                     href={item.href}
                     variant="outline"
@@ -121,7 +121,7 @@ export function Solutions({
                     lift={false}
                     className="w-full normal-case tracking-normal px-6 py-3 text-[15px] font-semibold sm:w-auto sm:px-8 sm:text-[16px]"
                   >
-{ctaLabel}
+                    {ctaLabel}
                   </Button>
                 </div>
               </div>

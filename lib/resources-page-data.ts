@@ -32,16 +32,19 @@ export const resourcesHero = {
       label: "Newsroom",
       description: "Breaking stories from our world to yours.",
       accent: "#008fdb",
+      href: "/newsroom",
     },
     blogs: {
       label: "Blogs",
       description: "Insights drive growth.",
       accent: "#008fdb",
+      href: "/resources/blogs",
     },
     caseStudies: {
       label: "Case Studies",
       description: "Strategic intelligence and analytics.",
       accent: "#009352",
+      href: "/case-studies",
     },
   },
 } as const;
