@@ -116,10 +116,10 @@ export function Solutions({
                 <div className="mt-auto pt-5 md:pt-6">
                   <Button
                     href={item.href}
-                    variant="outline"
+                    variant="primary"
                     arrow="none"
                     lift={false}
-                    className="w-full normal-case tracking-normal px-6 py-3 text-[15px] font-semibold sm:w-auto sm:px-8 sm:text-[16px]"
+                    className="w-full sm:w-auto"
                   >
                     {ctaLabel}
                   </Button>
@@ -132,7 +132,7 @@ export function Solutions({
         {showFooterCta ? (
           <div className="mt-8 flex justify-center">
             <Button href="#cta" variant="primary">
-              learn more
+              Learn more
             </Button>
           </div>
         ) : null}

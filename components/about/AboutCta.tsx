@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { aboutImage } from "@/lib/about-data";
@@ -70,18 +70,12 @@ export function AboutCta() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <MagneticButton>
-              <Button
-                href="/contact-us"
-                variant="primary"
-                arrow="up-right"
-                className="normal-case tracking-normal border-white/[0.08] text-white hover:shadow-[0_10px_30px_rgba(0,143,219,0.28)]"
-                style={{ backgroundImage: "var(--gradient-cta)" }}
-              >
+              <Button href="/contact-us" variant="primary" className={pairCtaClassName}>
                 Get in touch
               </Button>
             </MagneticButton>
             <MagneticButton>
-              <Button href="/#products" variant="secondary" arrow="none">
+              <Button href="/#products" variant="outline" arrow="none" className={pairCtaClassName}>
                 See products
               </Button>
             </MagneticButton>

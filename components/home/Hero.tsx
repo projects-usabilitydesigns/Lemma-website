@@ -87,10 +87,10 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
               <FadeUp delay={0.2} className="pt-1">
                 <Button
                   href="#products"
-                  variant="outline"
+                  variant="primary"
                   arrow="none"
                   lift={false}
-                  className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                  className="px-8"
                 >
                   Learn More
                 </Button>

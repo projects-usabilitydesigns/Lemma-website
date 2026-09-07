@@ -70,7 +70,7 @@ export function Blog({ blogPosts }: { blogPosts?: ResourceArticle[] }) {
 
         <div className="mt-12 flex justify-center">
           <Button href="/resources/blogs" variant="primary">
-            VIEW ALL
+            View All
           </Button>
         </div>
       </Container>

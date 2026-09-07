@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { GradientText } from "@/components/ui/GradientText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -36,19 +36,14 @@ export function CareersCta() {
             {careersCta.description}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Button
-              href={careersCta.primaryCta.href}
-              variant="primary"
-              arrow="up-right"
-              className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
-            >
+            <Button href={careersCta.primaryCta.href} variant="primary" className={pairCtaClassName}>
               {careersCta.primaryCta.label}
             </Button>
             <Button
               href={careersCta.secondaryCta.href}
               variant="outline"
               arrow="none"
-              className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+              className={pairCtaClassName}
             >
               {careersCta.secondaryCta.label}
             </Button>

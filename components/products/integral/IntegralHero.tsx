@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { BlurReveal, FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { VideoModal } from "@/components/ui/VideoModal";
@@ -41,19 +41,18 @@ A full funnel Platform that transforms your OOH
               <Button
                 type="button"
                 variant="primary"
-                arrow="none"
                 lift={false}
                 onClick={() => setVideoOpen(true)}
                 ariaLabel="Watch Integral in action"
-                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                className={pairCtaClassName}
               >
                 Watch In Action
               </Button>
               <Button
                 href={DEMO_MODAL_HREF}
                 variant="outline"
-                arrow="right"
-                className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                arrow="none"
+                className={pairCtaClassName}
               >
                 Advertise With Us
               </Button>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Play } from "lucide-react";
 import { FadeUp } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { VideoModal } from "@/components/ui/VideoModal";
 
@@ -31,19 +31,10 @@ export function NextFrontier() {
               Out-of-Home advertising.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2 sm:gap-4">
-              <Button
-                href="/request-demo"
-                variant="primary"
-                className="box-border h-11 min-w-[228px] px-6 py-2.5 text-[14px] leading-none tracking-[1.2px]"
-              >
-                Book a free audit
+              <Button href="/request-demo" variant="primary" className={pairCtaClassName}>
+                Book a Free Audit
               </Button>
-              <Button
-                href="/contact-us"
-                variant="outline"
-                arrow="none"
-                className="box-border h-11 min-w-[228px] px-6 leading-none"
-              >
+              <Button href="/contact-us" variant="outline" arrow="none" className={pairCtaClassName}>
                 Talk To Sales
               </Button>
             </div>

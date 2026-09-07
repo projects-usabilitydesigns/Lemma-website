@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeLeft, FadeUp, Stagger, staggerItem } from "@/components/animation";
-import { Button } from "@/components/ui/Button";
+import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -120,12 +120,7 @@ export function BrandsHero({
 
             <Stagger className="flex flex-wrap items-center gap-3" delay={0.22}>
               <motion.div variants={staggerItem}>
-                <Button
-                  href={data.primaryCta.href}
-                  variant="primary"
-                  arrow="none"
-                  className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
-                >
+                <Button href={data.primaryCta.href} variant="primary" className={pairCtaClassName}>
                   {data.primaryCta.label}
                 </Button>
               </motion.div>
@@ -133,8 +128,8 @@ export function BrandsHero({
                 <Button
                   href={data.secondaryCta.href}
                   variant="outline"
-                  arrow="right"
-                  className="normal-case tracking-normal px-8 py-3 text-[16px] font-semibold"
+                  arrow="none"
+                  className={pairCtaClassName}
                 >
                   {data.secondaryCta.label}
                 </Button>
