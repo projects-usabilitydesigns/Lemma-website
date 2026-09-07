@@ -172,8 +172,8 @@ export const careersGallery = {
       src: "/images/careers/life-event-2.png",
       alt: "Lemma Introduction 2017",
     },
-  ] satisfies CareersGalleryImage[],
-} as const;
+  ] as CareersGalleryImage[],
+};
 
 export const careersJobs = {
   label: "Careers",
