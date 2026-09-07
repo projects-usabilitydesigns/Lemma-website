@@ -63,7 +63,7 @@ export function Cta() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <MagneticButton>
               <Button
-                href="mailto:contactus@lemmamedia.com"
+                href="/contact-us"
                 variant="primary"
                 arrow="up-right"
                 className="normal-case tracking-normal text-[16px] font-semibold"
