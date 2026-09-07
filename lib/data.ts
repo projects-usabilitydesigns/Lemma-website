@@ -13,7 +13,7 @@ import type {
 
 export const navItems: NavItem[] = [
   { label: "Who We Are?", href: "/about", hasDropdown: true, megaMenu: "who-we-are" },
-  { label: "What We Do?", href: "#products", hasDropdown: true, megaMenu: "what-we-do" },
+  { label: "What We Do?", href: "/#products", hasDropdown: true, megaMenu: "what-we-do" },
   { label: "Resources", href: "/resources", hasDropdown: true, megaMenu: "resources" },
   { label: "Contact Us", href: "/contact-us" },
 ];
@@ -489,7 +489,7 @@ export const footerLinks = {
   products: [
     { label: "Integral", href: "/products/integral" },
     { label: "Delta", href: "/products/delta" },
-    { label: "Sigma", href: "/#products" },
+    { label: "Sigma", href: "/products/sigma" },
     { label: "Phi", href: "/products/phi" },
   ],
   solutions: [

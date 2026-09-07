@@ -269,24 +269,33 @@ export function Header({
 
                           return (
                             <div key={item.label} className="border-b border-[var(--color-border)] pb-2">
-                              <button
-                                type="button"
-                                className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-lg font-medium text-[var(--color-ink)]"
-                                aria-expanded={expanded}
-                                onClick={() =>
-                                  setMobileExpanded((current) =>
-                                    current === item.megaMenu ? null : item.megaMenu!,
-                                  )
-                                }
-                              >
-                                {item.label}
-                                <ChevronDown
-                                  className={cn(
-                                    "size-4 transition-transform",
-                                    expanded && "rotate-180",
-                                  )}
-                                />
-                              </button>
+                              <div className="flex items-center">
+                                <Link
+                                  href={item.href}
+                                  className="min-w-0 flex-1 rounded-xl px-3 py-3 text-lg font-medium text-[var(--color-ink)]"
+                                  onClick={closeMobileMenu}
+                                >
+                                  {item.label}
+                                </Link>
+                                <button
+                                  type="button"
+                                  className="mr-1 inline-flex size-11 shrink-0 items-center justify-center rounded-xl text-[var(--color-ink)]"
+                                  aria-expanded={expanded}
+                                  aria-label={`${expanded ? "Hide" : "Show"} ${item.label} links`}
+                                  onClick={() =>
+                                    setMobileExpanded((current) =>
+                                      current === item.megaMenu ? null : item.megaMenu!,
+                                    )
+                                  }
+                                >
+                                  <ChevronDown
+                                    className={cn(
+                                      "size-4 transition-transform",
+                                      expanded && "rotate-180",
+                                    )}
+                                  />
+                                </button>
+                              </div>
                               {expanded ? (
                                 <div className="pb-3 pl-2">
                                   <MegaMenuPanel menu={menu} onNavigate={closeMobileMenu} />

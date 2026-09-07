@@ -110,7 +110,6 @@ type MegaMenuPanelProps = {
 export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
   return (
     <motion.div
-      role="menu"
       aria-label="Submenu"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}

@@ -11,6 +11,7 @@ export function productAsset(filename: string) {
 export const phiAssets = {
   logo: productAsset("phi-main.svg"),
   heroLogo: productAsset("phi-hero-logo.svg"),
+  heroTitle: productAsset("phi-hero-title.png"),
   logoLarge: productAsset("phi.svg"),
   heroGraphic: productImage("Group 1597883478.png"),
   phiSymbol: productImage("ChatGPT Image Aug 4, 2026, 08_12_34 PM 1.png"),
