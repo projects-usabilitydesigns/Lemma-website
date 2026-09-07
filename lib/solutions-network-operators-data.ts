@@ -261,7 +261,7 @@ export const networkOperatorsCta = {
   title: "Want to Lemmaximize your inventory?",
   description:
     "Tell us how to reach you and youâ€™ll hear from us in 24 hours. Letâ€™s unlock more value across every screen in your network.",
-  primaryCta: { label: "Get In Touch", href: "mailto:contactus@lemmamedia.com" },
+  primaryCta: { label: "Get In Touch", href: "/contact-us" },
   secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/owners.jpg",
 } as const;

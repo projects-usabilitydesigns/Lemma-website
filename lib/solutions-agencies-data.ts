@@ -358,7 +358,7 @@ export const agenciesCta = {
   title: "Want to Lemmaximize your CTV campaigns?",
   description:
     "Tell us how to reach you and you’ll hear from us in 24 hours. Let’s turn premium streaming attention into measurable results.",
-  primaryCta: { label: "Get In Touch", href: "mailto:contactus@lemmamedia.com" },
+  primaryCta: { label: "Get In Touch", href: "/contact-us" },
   secondaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   image: "/images/solutions/brands.jpg",
 } as const;
