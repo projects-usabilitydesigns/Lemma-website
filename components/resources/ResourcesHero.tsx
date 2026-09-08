@@ -130,7 +130,7 @@ export function ResourcesHero() {
               initial={{ opacity: 0, scale: 0.9, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute left-[-10px] top-[10px] z-10 w-[230px] -rotate-[26deg] transition-transform hover:scale-105"
+className="absolute left-[-10px] top-[10px] z-10 w-[230px] transition-transform hover:scale-105"
             >
               <Link
                 href={resourcesHero.orbit.newsroom.href}
@@ -145,7 +145,7 @@ export function ResourcesHero() {
                     Latest updates from Lemma Technologies.
                   </p>
                 </div>
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#ff2d89] text-white shadow-sm">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#ffe7f3] text-[#ff2d89]">
                   <Globe className="size-5" strokeWidth={2} />
                 </div>
               </div>
