@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { FadeUp } from "@/components/animation";
 import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { GradientText } from "@/components/ui/GradientText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
 function MagneticButton({
@@ -55,7 +56,7 @@ export function Cta() {
           <h2 className="text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
             Make your next
             <br />
-            campaign unmissable
+            campaign <GradientText>unmissable</GradientText>
           </h2>
           <p className="max-w-xl text-[18px] leading-7 text-[var(--color-slate)] md:text-[20px]">
             Tell us how to reach you. You&apos;ll hear back within 24 hours.

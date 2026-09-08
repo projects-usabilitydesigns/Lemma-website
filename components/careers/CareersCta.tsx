@@ -10,13 +10,8 @@ import { careersCta } from "@/lib/careers-data";
 export function CareersCta() {
   return (
     <section id="cta" className="relative overflow-hidden py-10 md:py-14">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 15% 0%, rgba(0,143,219,0.22), transparent 55%), radial-gradient(circle at 85% 20%, rgba(0,147,82,0.18), transparent 50%), radial-gradient(circle at 50% 100%, rgba(116,190,68,0.20), transparent 55%), linear-gradient(135.27deg, #e8f6ff 0%, #ecfdf5 50%, #ecfccb 100%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-home-mesh)]" />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -left-20 top-10 size-72 rounded-full bg-sky-300/30 blur-3xl"

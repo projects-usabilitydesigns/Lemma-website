@@ -40,7 +40,7 @@ export const aboutValues: ValueTab[] = [
     title: "Building Trust Through Transparency",
     description:
       "Transparency is our foundation. We're committed to open operations that build trust. It's about more than just revealing processes; it's fostering a culture where every action resonates with clarity.",
-    image: aboutImage("our-values.svg"),
+    image: aboutImage("our-values-v2.png"),
   },
   {
     id: "innovation",
@@ -48,7 +48,7 @@ export const aboutValues: ValueTab[] = [
     title: "Disruption with Innovation",
     description:
       "We're not content with the status quo; we're pioneers of change, constantly evolving to stay ahead. Our dedication to innovation sets the pace for the future of digital advertising.",
-    image: aboutImage("our-values.svg"),
+    image: aboutImage("our-values-v2.png"),
   },
   {
     id: "agility",
@@ -56,7 +56,7 @@ export const aboutValues: ValueTab[] = [
     title: "Agile and Adaptive",
     description:
       "We don't just adapt; we embrace change with youthful vigor. Our dynamic approach, agility and foresight keep us ahead as we navigate complexities effortlessly.",
-    image: aboutImage("our-values.svg"),
+    image: aboutImage("our-values-v2.png"),
   },
   {
     id: "energetic",
@@ -64,7 +64,7 @@ export const aboutValues: ValueTab[] = [
     title: "High Impact Drive",
     description:
       "We inject dynamic momentum into every relationship, replacing passive account management with an eager, high-energy drive to elevate campaign standards.",
-    image: aboutImage("our-values.svg"),
+    image: aboutImage("our-values-v2.png"),
   },
 ];
 

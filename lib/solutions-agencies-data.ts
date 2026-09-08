@@ -323,7 +323,6 @@ export const agenciesFaqs: BrandsFaq[] = [
   {
     id: "q1",
     question: "How does Lemma help Demand Partners activate Connected TV?",
-    questionAccent: "Demand Partners",
     answer:
       "Lemma provides scale across premium OTT and Connected TV supply, advanced targeting, direct publisher integrations, and transparent measurement so demand partners can plan and buy connected TV in one platform.",
   },
