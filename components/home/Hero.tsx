@@ -39,7 +39,12 @@ function StatItem({
         {suffix}
       </p>
       <p className="text-[12px] font-semibold uppercase tracking-[1.2px] text-[var(--color-slate)] md:text-[14px] md:tracking-[2px]">
-        {label}
+        {label.split(" ").map((word, i) => (
+          <span key={i}>
+            {word}
+            {i < label.split(" ").length - 1 && <br />}
+          </span>
+        ))}
       </p>
     </div>
   );
