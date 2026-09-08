@@ -65,16 +65,6 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                  <span
-                    className="rounded-full px-3 py-1.5 text-[14px] font-extrabold tracking-[-0.28px] text-transparent"
-                    style={{
-                      backgroundImage: "var(--gradient-brand)",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                    }}
-                  >
-                    LEMMA
-                  </span>
                   <span className="rounded-full bg-[rgba(252,252,249,0.8)] px-3 py-1.5 text-[10px] uppercase tracking-[1.8px] text-[rgba(3,10,17,0.8)] backdrop-blur-[4px]">
                     {study.year}
                   </span>
