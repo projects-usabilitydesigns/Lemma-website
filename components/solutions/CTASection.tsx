@@ -12,15 +12,17 @@ type CtaData = {
   title: string;
   description: string;
   primaryCta: { label: string; href: string };
-  secondaryCta: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
 };
 
 export function CTASection({
   data = brandsCta,
   label = "Let's talk",
+  titleAccent,
 }: {
   data?: CtaData;
   label?: string;
+  titleAccent?: string;
 }) {
   return (
     <section id="cta" className="relative overflow-hidden py-10 md:py-14">
@@ -41,9 +43,9 @@ export function CTASection({
 
       <Container className="relative text-center">
         <FadeUp className="mx-auto flex max-w-3xl flex-col items-center gap-7">
-          <SectionLabel label={label} />
+          {label ? <SectionLabel label={label} /> : null}
           <h2 className="font-heading text-[32px] font-semibold tracking-[-0.72px] text-[var(--color-ink)] md:text-[45px] md:leading-[50px]">
-            {withGradientAccent(data.title)}
+            {withGradientAccent(data.title, titleAccent)}
           </h2>
           <p className="max-w-xl text-[18px] leading-7 text-[var(--color-slate)] md:text-[20px]">
             {data.description}
@@ -52,14 +54,16 @@ export function CTASection({
             <Button href={data.primaryCta.href} variant="primary" className={pairCtaClassName}>
               {data.primaryCta.label}
             </Button>
-            <Button
-              href={data.secondaryCta.href}
-              variant="outline"
-              arrow="none"
-              className={pairCtaClassName}
-            >
-              {data.secondaryCta.label}
-            </Button>
+            {data.secondaryCta ? (
+              <Button
+                href={data.secondaryCta.href}
+                variant="outline"
+                arrow="none"
+                className={pairCtaClassName}
+              >
+                {data.secondaryCta.label}
+              </Button>
+            ) : null}
           </div>
         </FadeUp>
       </Container>

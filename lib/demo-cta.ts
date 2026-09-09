@@ -15,6 +15,7 @@ const pathRoles: Record<string, string> = {
   "/solutions/agencies": "Demand Partner",
   "/solutions/media-owners": "Media Owner",
   "/solutions/publishers": "Publisher",
+  "/solutions/business-growth": "Brand / Advertiser",
   // "/solutions/network-operators": "Network Operator",
 };
 

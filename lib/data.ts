@@ -131,6 +131,12 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             description: "Programmatic monetization",
             href: "/solutions/publishers",
           },
+          {
+            id: "business-growth",
+            title: "For Business Growth",
+            description: "Entrepreneurs/ Startup's / SMB's",
+            href: "/solutions/business-growth",
+          },
           // {
           //   id: "operators",
           //   title: "For Network Operators",
@@ -497,6 +503,7 @@ export const footerLinks = {
     { label: "For Media Owners", href: "/solutions/media-owners" },
     { label: "For Demand Partners", href: "/solutions/demand-partners" },
     { label: "For Publishers", href: "/solutions/publishers" },
+    { label: "For Business Growth", href: "/solutions/business-growth" },
     // { label: "For Network Operators", href: "/solutions/network-operators" },
   ],
   legal: [
