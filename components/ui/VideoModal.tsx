@@ -13,6 +13,10 @@ type VideoModalProps = {
   onClose: () => void;
 };
 
+function isFileVideo(url: string) {
+  return /\.(mp4|webm|ogg)(\?|$)/i.test(url);
+}
+
 function toEmbedUrl(url: string, allowMarketingCookies: boolean) {
   try {
     const parsed = new URL(url);
@@ -35,6 +39,7 @@ function toEmbedUrl(url: string, allowMarketingCookies: boolean) {
 export function VideoModal({ open, title, videoUrl, onClose }: VideoModalProps) {
   const { preferences } = useCookieConsent();
   const allowMarketingCookies = preferences.marketing;
+  const fileVideo = isFileVideo(videoUrl);
 
   useEffect(() => {
     if (!open) return;
@@ -90,13 +95,25 @@ export function VideoModal({ open, title, videoUrl, onClose }: VideoModalProps) 
               <X className="size-5" />
             </button>
             <div className="aspect-video w-full">
-              <iframe
-                src={toEmbedUrl(videoUrl, allowMarketingCookies)}
-                title={title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="h-full w-full border-0"
-              />
+              {fileVideo ? (
+                <video
+                  key={videoUrl}
+                  src={videoUrl}
+                  title={title}
+                  autoPlay
+                  controls
+                  playsInline
+                  className="h-full w-full"
+                />
+              ) : (
+                <iframe
+                  src={toEmbedUrl(videoUrl, allowMarketingCookies)}
+                  title={title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="h-full w-full border-0"
+                />
+              )}
             </div>
           </motion.div>
         </motion.div>

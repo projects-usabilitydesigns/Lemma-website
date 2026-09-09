@@ -2,31 +2,40 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { ChevronRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeLeft, FadeUp, Stagger, staggerItem } from "@/components/animation";
 import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { VideoModal } from "@/components/ui/VideoModal";
 import { useCountUp } from "@/hooks/useCountUp";
+import { withGradientAccent } from "@/components/ui/GradientText";
 import { brandsHero, brandsStats, type BrandsStat } from "@/lib/solutions-brands-data";
 import { animation } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 type HeroData = {
   breadcrumb: readonly { label: string; href: string }[];
   label: string;
   title?: string;
+  titleAccent?: string;
   gradientTitle: string;
   description: string;
-  primaryCta: { label: string; href: string };
-  secondaryCta: { label: string; href: string };
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
   image: string;
   imageAlt?: string;
+  video?: string;
+  poster?: string;
+  videoDuration?: string;
 };
 
 function StatItem({
   end,
   decimals = 0,
+  prefix = "",
   suffix = "",
   label,
 }: BrandsStat & { end: number }) {
@@ -37,6 +46,7 @@ function StatItem({
         ref={ref as React.RefObject<HTMLParagraphElement>}
         className="font-heading text-[24px] font-semibold tracking-[-0.48px] text-[var(--color-ink-deep)] md:text-[32px]"
       >
+        {prefix}
         {decimals > 0 ? value.toFixed(decimals) : Math.round(value)}
         {suffix}
       </p>
@@ -44,6 +54,57 @@ function StatItem({
         {label}
       </p>
     </div>
+  );
+}
+
+function HeroMedia({ data }: { data: HeroData }) {
+  const [videoOpen, setVideoOpen] = useState(false);
+  const alt = data.imageAlt ?? data.title ?? data.gradientTitle;
+  const thumbnail = data.image;
+
+  if (!data.video) {
+    return (
+      <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] shadow-[0_20px_50px_rgba(9,19,26,0.14)] md:aspect-[4/3]">
+        <Image
+          src={data.image}
+          alt={alt}
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="(max-width: 1024px) 100vw, 46vw"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className="group relative w-full overflow-hidden rounded-[16px] border-2 border-[#037C7C] shadow-[0_20px_50px_rgba(9,19,26,0.14)]">
+        <Image
+          src={thumbnail}
+          alt={alt}
+          width={676}
+          height={392}
+          priority
+          className="h-auto w-full"
+        />
+        <button
+          type="button"
+          aria-label="Play video"
+          onClick={() => setVideoOpen(true)}
+          className="absolute left-1/2 top-1/2 z-10 flex size-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-[0px_10px_40px_-5px_rgba(0,143,219,0.55)] transition-transform duration-300 group-hover:scale-110"
+          style={{ backgroundImage: "linear-gradient(135deg, #008fdb 0%, #009352 100%)" }}
+        >
+          <Play className="ml-0.5 size-[27px] fill-white text-white" />
+        </button>
+      </div>
+      <VideoModal
+        open={videoOpen}
+        title={alt}
+        videoUrl={data.video}
+        onClose={() => setVideoOpen(false)}
+      />
+    </>
   );
 }
 
@@ -97,9 +158,14 @@ export function BrandsHero({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: animation.duration.slow, ease: animation.easeOut }}
-                className="font-heading gradient-text text-[34px] font-semibold leading-[1.08] md:text-[48px]"
+                className={cn(
+                  "font-heading text-[34px] font-semibold leading-[1.08] md:text-[48px]",
+                  data.titleAccent ? "text-[var(--color-ink)]" : "gradient-text",
+                )}
               >
-                {data.title ?? data.gradientTitle}
+                {data.titleAccent
+                  ? withGradientAccent(data.title ?? data.gradientTitle, data.titleAccent)
+                  : (data.title ?? data.gradientTitle)}
               </motion.h1>
               {data.title && data.gradientTitle ? (
                 <motion.p
@@ -118,23 +184,29 @@ export function BrandsHero({
               </FadeUp>
             </div>
 
-            <Stagger className="flex flex-wrap items-center gap-3" delay={0.22}>
-              <motion.div variants={staggerItem}>
-                <Button href={data.primaryCta.href} variant="primary" className={pairCtaClassName}>
-                  {data.primaryCta.label}
-                </Button>
-              </motion.div>
-              <motion.div variants={staggerItem}>
-                <Button
-                  href={data.secondaryCta.href}
-                  variant="outline"
-                  arrow="none"
-                  className={pairCtaClassName}
-                >
-                  {data.secondaryCta.label}
-                </Button>
-              </motion.div>
-            </Stagger>
+            {data.primaryCta || data.secondaryCta ? (
+              <Stagger className="flex flex-wrap items-center gap-3" delay={0.22}>
+                {data.primaryCta ? (
+                  <motion.div variants={staggerItem}>
+                    <Button href={data.primaryCta.href} variant="primary" className={pairCtaClassName}>
+                      {data.primaryCta.label}
+                    </Button>
+                  </motion.div>
+                ) : null}
+                {data.secondaryCta ? (
+                  <motion.div variants={staggerItem}>
+                    <Button
+                      href={data.secondaryCta.href}
+                      variant="outline"
+                      arrow="none"
+                      className={pairCtaClassName}
+                    >
+                      {data.secondaryCta.label}
+                    </Button>
+                  </motion.div>
+                ) : null}
+              </Stagger>
+            ) : null}
 
             <Stagger
               className="grid grid-cols-2 gap-5 border-t border-[var(--color-border)] pt-5 sm:grid-cols-4"
@@ -149,16 +221,7 @@ export function BrandsHero({
           </div>
 
           <FadeLeft delay={0.12}>
-            <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] shadow-[0_20px_50px_rgba(9,19,26,0.14)] md:aspect-[4/3]">
-              <Image
-                src={data.image}
-                alt={data.imageAlt ?? data.title ?? data.gradientTitle}
-                fill
-                priority
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 46vw"
-              />
-            </div>
+            <HeroMedia data={data} />
           </FadeLeft>
         </div>
       </Container>

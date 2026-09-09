@@ -4,6 +4,7 @@ export type BrandsStat = {
   id: string;
   value: number;
   decimals?: number;
+  prefix?: string;
   suffix?: string;
   label: string;
 };
@@ -89,8 +90,8 @@ export const brandsHero = {
     "When you team up with the world’s largest omnichannel platform, you gain access to audience-centric advertising solutions. Today’s tech? Nailed it. Tomorrow’s trends? We’re already on it.",
   primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
-  image: "/images/solutions/brands-hero-billboard.png",
-  imageAlt: "Lemma outdoor to outcome billboard in a city at sunset",
+  image: "/images/solutions/brands-hero.jpg",
+  imageAlt: "Cinematic landscape with a glowing cyan structure and silhouettes on a reflective floor",
 } as const;
 
 export const brandsStats: BrandsStat[] = [

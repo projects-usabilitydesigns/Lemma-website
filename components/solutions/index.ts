@@ -10,3 +10,6 @@ export { CampaignAnalytics } from "./CampaignAnalytics";
 export { SuccessStories } from "./SuccessStories";
 export { Testimonials } from "./Testimonials";
 export { CTASection } from "./CTASection";
+export { AdPlatforms } from "./AdPlatforms";
+export { FunnelJourney } from "./FunnelJourney";
+export { GrowthResults } from "./GrowthResults";
