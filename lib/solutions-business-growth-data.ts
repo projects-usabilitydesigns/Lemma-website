@@ -20,7 +20,7 @@ export const businessGrowthHero = {
 } as const;
 
 export const businessGrowthStats: BrandsStat[] = [
-  { id: "spend", value: 1.5, decimals: 1, prefix: "₹", suffix: "Cr+", label: "Monthly Spends Managed" },
+  { id: "spend", value: 1.5, decimals: 1, prefix: "₹", suffix: "+Cr", label: "Monthly Spends Managed" },
   { id: "retention", value: 100, suffix: "%", label: "Client Retention Till Date" },
   { id: "platforms", value: 7, label: "Ad Platforms Managed" },
   { id: "markets", value: 4, suffix: "+", label: "Global\nMarkets" },
