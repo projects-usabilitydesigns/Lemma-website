@@ -20,8 +20,8 @@ export const mediaOwnersHero = {
     "Your Screens. Your Rules. Our Global Network. Partner with us to monetize, manage, and meticulously measure every aspect of your inventory.",
   primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
-  image: "/images/solutions/media-owners-hero.png",
-  imageAlt: "Media operations control room with multi-screen analytics and city skyline",
+  image: "/images/solutions/media-owners-hero.jpg",
+  imageAlt: "Glowing digital installation at night with visitors walking in front of a large illuminated screen",
 } as const;
 
 export const mediaOwnersStats: BrandsStat[] = [

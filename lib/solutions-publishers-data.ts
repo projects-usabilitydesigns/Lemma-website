@@ -20,8 +20,8 @@ export const publishersHero = {
     "Unlock premium demand, protect brand safety, and grow yield across digital, CTV, and emerging formats—without giving up control of your inventory.",
   primaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Explore Platforms", href: "/#products" },
-  image: "/images/solutions/publishers-hero-web.png",
-  imageAlt: "Publisher workstation showing a news website with display ads and a programmatic yield dashboard",
+  image: "/images/solutions/publishers-hero.jpg",
+  imageAlt: "Glowing analytics dashboard with real-time performance charts and yield metrics",
 } as const;
 
 export const publishersStats: BrandsStat[] = [

@@ -19,8 +19,8 @@ export const agenciesHero = {
     "Reach and connect unique audiences at scale across premium streaming TV content in the Open Web including OTTs and CTV networks with one powerful platform.",
   primaryCta: { label: "Advertise With Us", href: DEMO_MODAL_HREF },
   secondaryCta: { label: "Partner With Us", href: DEMO_MODAL_HREF },
-  image: "/images/solutions/agencies-hero.png",
-  imageAlt: "Lemma agency workspace with campaign analytics dashboards and city skyline",
+  image: "/images/solutions/demand-partners-hero.png",
+  imageAlt: "Connected TV with a DNA helix passing through the screen in a digital studio",
 } as const;
 
 export const agenciesStats: BrandsStat[] = [
