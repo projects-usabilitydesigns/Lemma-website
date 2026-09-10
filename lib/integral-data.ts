@@ -9,14 +9,14 @@ export function productAsset(filename: string) {
 export const integralAssets = {
   heroFunnel: productImage("Frame 1597890042-nobg.png"),
   heroLogo: productAsset("integral.png"),
-  keyword: productImage("keyword based.png"),
-  reinforce: productImage("seamless.png"),
+  keyword: productAsset("integral-keyword.png"),
+  reinforce: productAsset("integral-audience-mapping.png"),
   results: productImage("integral image.png"),
   dashboard: productImage("ChatGPT Image Aug 3, 2026, 07_47_03 PM 1.png"),
   badgeReach: productImage("Frame 1597889835.png"),
   badgeReinforce: productImage("Frame 1597890298.png"),
   badgeResults: productImage("Frame 1597890299.png"),
-  audienceGraph: productImage("ChatGPT Image Aug 3, 2026, 08_05_43 PM 1.png"),
+  audienceGraph: productAsset("integral-audience-graph.png"),
   logo: productAsset("integral.svg"),
 } as const;
 

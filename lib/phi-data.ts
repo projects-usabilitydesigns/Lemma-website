@@ -23,7 +23,7 @@ export const phiAssets = {
   squarePink: productImage("Rectangle 3.png"),
   squareGreen: productImage("Rectangle 4.png"),
   squareOrange: productImage("Rectangle 5.png"),
-  laptop: productAsset("phi-laptop.png"),
+  laptop: productAsset("phi-deploy-manage.png"),
 } as const;
 
 export const phiJourney = {
