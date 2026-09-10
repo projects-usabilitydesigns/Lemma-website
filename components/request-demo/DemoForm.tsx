@@ -6,6 +6,7 @@ import { ArrowRight, Check, Loader2, ShieldCheck } from "lucide-react";
 import { getEmailError, getPhoneError } from "@/lib/form-validation";
 import { demoInterests, demoRegions, demoRoles } from "@/lib/request-demo-data";
 import { sendDemoRequest } from "@/lib/send-demo-request";
+import { EmailDirectCta } from "@/components/ui/EmailDirectCta";
 import { fieldClass, labelClass } from "@/lib/form-styles";
 import { cn } from "@/lib/utils";
 
@@ -150,14 +151,7 @@ export function DemoForm({ defaultRole = "", frameless = false }: DemoFormProps)
               Your demo request is in. A Lemma specialist will reach out within 24 hours with a
               couple of times that suit your team.
             </p>
-            <a
-              href="mailto:contactus@lemmamedia.com"
-              className="mt-7 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[16px] font-semibold text-[var(--color-btn-text)] transition hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
-              style={{ backgroundImage: "var(--gradient-blue)" }}
-            >
-              Email us directly
-              <ArrowRight className="size-4" />
-            </a>
+            <EmailDirectCta />
           </motion.div>
         ) : (
           <motion.form
