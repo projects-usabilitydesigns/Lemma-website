@@ -489,10 +489,13 @@ export const clientLogos: ClientLogo[] = [
   { id: "nestle", name: "Nestlé", src: "/images/logos/nestle.svg", width: 125, height: 36 },
   { id: "dabur", name: "Dabur", src: "/images/logos/dabur.svg", width: 40, height: 36 },
   { id: "amazon-prime-video", name: "Amazon Prime Video", src: "/images/logos/amazon-prime-video.svg", width: 112, height: 36 },
-  { id: "lemonade", name: "Lemonade", src: "/images/logos/lemonade.png", width: 140, height: 36 },
-  { id: "nutriorg", name: "Nutriorg", src: "/images/logos/nutriorg.png", width: 120, height: 36 },
-  { id: "mf-bharat", name: "MF Bharat Mutual Fund", src: "/images/logos/mf-bharat.png", width: 130, height: 36 },
-  { id: "omay", name: "Omay", src: "/images/logos/omay.png", width: 80, height: 36 },
+  { id: "lemonade", name: "Lemonade", src: "/images/logos/lemonade-grey.png", width: 140, height: 36 },
+  { id: "nutriorg", name: "Nutriorg", src: "/images/logos/nutriorg-grey.png", width: 81, height: 36 },
+  { id: "mf-bharat", name: "MF Bharat Mutual Fund", src: "/images/logos/mf-bharat-grey.png", width: 102, height: 36 },
+  { id: "omay", name: "Omay", src: "/images/logos/omay-grey.png", width: 52, height: 36 },
+  { id: "aadyaa", name: "Aadyaa", src: "/images/logos/aadyaa-grey.png", width: 58, height: 36 },
+  { id: "sthorn", name: "Sthorn", src: "/images/logos/sthorn-grey.png", width: 134, height: 36 },
+  { id: "vasansi", name: "Vasansi", src: "/images/logos/vasansi-grey.png", width: 73, height: 36 },
 ];
 
 export const footerLinks = {

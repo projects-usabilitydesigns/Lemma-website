@@ -10,7 +10,7 @@ export function productAsset(filename: string) {
 }
 
 export const deltaAssets = {
-  heroGraphic: productAsset("delta-hero.svg"),
+  heroGraphic: productAsset("delta-hero.png"),
   heroLogo: productAsset("delta-hero.svg"),
   logo: productAsset("delta.svg"),
   advantage: productImage("lemmaadvantage.png"),

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
+import { LogosMarquee } from "@/components/home/LogosMarquee";
 import {
   BrandsHero,
   AdPlatforms,
@@ -7,6 +8,7 @@ import {
   GrowthResults,
   CTASection,
 } from "@/components/solutions";
+import { getClientLogos } from "@/lib/api";
 import {
   businessGrowthCta,
   businessGrowthHero,
@@ -19,12 +21,15 @@ export const metadata: Metadata = {
     "AI-driven performance marketing for entrepreneurs, startups, and SMBs. Full-funnel customer acquisition across every platform, market, and category.",
 };
 
-export default function BusinessGrowthPage() {
+export default async function BusinessGrowthPage() {
+  const clientLogos = await getClientLogos();
+
   return (
     <>
       <Header />
       <main>
         <BrandsHero data={businessGrowthHero} stats={businessGrowthStats} />
+        <LogosMarquee clientLogos={clientLogos} bottomTrack="platforms" />
         <AdPlatforms />
         <FunnelJourney />
         <GrowthResults />
