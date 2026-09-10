@@ -59,15 +59,19 @@ export function DeltaHero() {
             transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.15 }}
             className="relative mx-auto w-full max-w-[560px]"
           >
-            <Image
-              src={deltaAssets.heroGraphic}
-              alt="LEMMA DELTA™ — Plan, Activate, Measure"
-              width={709}
-              height={568}
-              unoptimized
-              className="h-auto w-full object-contain object-center"
-              priority
-            />
+            <div className="relative w-full">
+              <Image
+                src={deltaAssets.heroGraphic}
+                alt="LEMMA DELTA™ — Plan, Activate, Measure"
+                width={709}
+                height={568}
+                unoptimized
+                className="h-auto w-full object-contain object-center"
+                priority
+              />
+              {/* White cover to hide black "Lemma Delta" text below the colorful logo */}
+              <div className="absolute left-0 right-0 bg-[image:var(--gradient-hero)]" style={{ top: "26%", height: "3.5%" }} />
+            </div>
           </motion.div>
         </div>
       </Container>

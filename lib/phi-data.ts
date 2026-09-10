@@ -13,7 +13,7 @@ export const phiAssets = {
   heroLogo: productAsset("phi-hero-logo.svg"),
   heroTitle: productAsset("phi-hero-title.png"),
   logoLarge: productAsset("phi.svg"),
-  heroGraphic: productImage("Group 1597883478.png"),
+  heroGraphic: productAsset("phi-hero.png"),
   phiSymbol: productImage("ChatGPT Image Aug 4, 2026, 08_12_34 PM 1.png"),
   screens: productImage("ChatGPT Image Aug 5, 2026, 04_41_19 PM 1.png"),
   dashboard: productImage("Frame 1597890339.png"),

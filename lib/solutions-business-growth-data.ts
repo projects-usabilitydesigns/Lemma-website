@@ -13,7 +13,7 @@ export const businessGrowthHero = {
   description:
     "Full-funnel customer acquisition across every platform, every market, every category powered by data intelligence.",
   primaryCta: { label: "Book a Free Audit", href: "/contact-us" },
-  image: "/images/next-frontier.jpg",
+  image: "/images/business-growth-hero.png",
   imageAlt: "Lemma AI Discovery — screens, audience reach, and campaign planning",
   video: "/VIDEO-2026-09-09-12-30-13.mp4",
   poster: "/images/solutions/business-growth-poster.png",
