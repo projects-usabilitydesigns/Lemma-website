@@ -47,35 +47,14 @@ export function PhiHero() {
               <Image
                 src={phiAssets.heroGraphic}
                 alt="Lemma Phi™ — content management for DOOH screens"
-                width={738}
-                height={540}
+                width={799}
+                height={474}
                 quality={100}
                 unoptimized
                 className="h-auto w-full object-contain object-center"
-                style={{ clipPath: "inset(13.5% 0 0 0)" }}
                 priority
                 sizes="(max-width: 1024px) 100vw, 620px"
               />
-              <div className="pointer-events-none absolute left-1/2 top-[1.6%] z-10 flex w-full -translate-x-1/2 flex-col items-center">
-                <Image
-                  src={phiAssets.heroLogo}
-                  alt=""
-                  width={188}
-                  height={28}
-                  unoptimized
-                  aria-hidden
-                  className="h-auto w-[32%]"
-                />
-                <Image
-                  src={phiAssets.heroTitle}
-                  alt=""
-                  width={112}
-                  height={22}
-                  unoptimized
-                  aria-hidden
-                  className="mt-[0.6%] h-auto w-[15.18%]"
-                />
-              </div>
             </div>
           </motion.div>
         </div>

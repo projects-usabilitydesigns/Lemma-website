@@ -206,7 +206,7 @@ export const products: Product[] = [
     name: "Integral",
     description:
       "Connect real-world visibility to measurable digital results (ROI) with full-funnel activation, retargeting, and attribution.",
-    logo: "/images/products/integral.svg",
+    logo: "/images/products/integral.png",
     logoColor: "/images/products/integral-hero-logo.svg",
     href: "/products/integral",
   },
@@ -215,7 +215,7 @@ export const products: Product[] = [
     name: "Delta",
     description:
       "Scale programmatic advertising across DOOH and CTV with real-time bidding, automated performance controls, and maximum reach.",
-    logo: "/images/products/delta.svg",
+    logo: "/images/products/delta.png",
     logoColor: "/images/products/delta-color.svg",
     href: "/products/delta",
   },
@@ -224,7 +224,7 @@ export const products: Product[] = [
     name: "Sigma",
     description:
       "Connect outdoor and CTV inventory to global buyers and optimize monetization with transparent, real-time reporting.",
-    logo: "/images/products/sigma.svg",
+    logo: "/images/products/sigma.png",
     logoColor: "/images/products/sigma-color.svg",
     href: "/products/sigma",
   },
@@ -489,6 +489,10 @@ export const clientLogos: ClientLogo[] = [
   { id: "nestle", name: "Nestlé", src: "/images/logos/nestle.svg", width: 125, height: 36 },
   { id: "dabur", name: "Dabur", src: "/images/logos/dabur.svg", width: 40, height: 36 },
   { id: "amazon-prime-video", name: "Amazon Prime Video", src: "/images/logos/amazon-prime-video.svg", width: 112, height: 36 },
+  { id: "lemonade", name: "Lemonade", src: "/images/logos/lemonade.png", width: 140, height: 36 },
+  { id: "nutriorg", name: "Nutriorg", src: "/images/logos/nutriorg.png", width: 120, height: 36 },
+  { id: "mf-bharat", name: "MF Bharat Mutual Fund", src: "/images/logos/mf-bharat.png", width: 130, height: 36 },
+  { id: "omay", name: "Omay", src: "/images/logos/omay.png", width: 80, height: 36 },
 ];
 
 export const footerLinks = {
