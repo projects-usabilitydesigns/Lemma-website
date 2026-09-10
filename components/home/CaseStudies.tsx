@@ -52,19 +52,19 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
           grabCursor
           keyboard={{ enabled: true }}
           autoplay={{ delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }}
-          spaceBetween={28}
-          slidesPerView={1.35}
+          spaceBetween={24}
+          slidesPerView={1.59}
           centeredSlides={false}
           breakpoints={{
-            640: { slidesPerView: 1.65 },
-            768: { slidesPerView: 2.35 },
-            1200: { slidesPerView: 3.53 },
+            640: { slidesPerView: 1.94 },
+            768: { slidesPerView: 2.76 },
+            1200: { slidesPerView: 4.15 },
           }}
           className="!overflow-visible"
         >
           {data.map((study) => (
             <SwiperSlide key={study.id} className="!h-auto">
-              <article className="case-card group relative h-[520px] overflow-hidden rounded-[30px] border border-[var(--color-border)] transition-transform duration-500 md:h-[700px]">
+              <article className="case-card group relative h-[442px] overflow-hidden rounded-[26px] border border-[var(--color-border)] transition-transform duration-500 md:h-[595px]">
                 <Image
                   src={study.image}
                   alt={study.brand}

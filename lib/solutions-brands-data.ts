@@ -264,7 +264,7 @@ export const brandsStories: BrandsStory[] = [
     category: "QSR",
     title: "From roadside glance to app conversion",
     description: "Omnichannel DOOH and CTV activation that turned outdoor attention into measurable outcomes.",
-    image: "/images/case-studies/burger-king.png",
+    image: "/images/case-studies/burger-king.jpg",
     href: "/#case-studies",
   },
   {
@@ -273,7 +273,7 @@ export const brandsStories: BrandsStory[] = [
     category: "Travel",
     title: "Premium reach across global corridors",
     description: "High-impact placements that connected travelers with brand storytelling at scale.",
-    image: "/images/case-studies/etihad.png",
+    image: "/images/case-studies/etihad.jpg",
     href: "/#case-studies",
   },
   {
@@ -282,7 +282,16 @@ export const brandsStories: BrandsStory[] = [
     category: "Beauty",
     title: "Beauty moments that convert",
     description: "Audience-led creative and retargeting that amplified awareness into consideration.",
-    image: "/images/case-studies/schwarzkopf.png",
+    image: "/images/case-studies/schwarzkopf.jpg",
+    href: "/#case-studies",
+  },
+  {
+    id: "nexa-baleno",
+    brand: "Nexa Baleno",
+    category: "Auto",
+    title: "Launch energy that drives showroom intent",
+    description: "High-impact outdoor storytelling that put Baleno in front of the right buyers at the right moment.",
+    image: "/images/case-studies/nexa-baleno.jpg",
     href: "/#case-studies",
   },
   {
