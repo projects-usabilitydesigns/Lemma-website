@@ -18,7 +18,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
-  const data = caseStudies?.length ? caseStudies : defaultCaseStudies;
+  const data = (caseStudies?.length ? caseStudies : defaultCaseStudies).map((study) => {
+    const brand = study.brand.toLowerCase();
+    const local = defaultCaseStudies.find((item) => {
+      const localBrand = item.brand.toLowerCase();
+      return localBrand === brand || localBrand.includes(brand) || brand.includes(localBrand);
+    });
+    return local ? { ...study, image: local.image } : study;
+  });
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeVideo, setActiveVideo] = useState<CaseStudy | null>(null);
 
