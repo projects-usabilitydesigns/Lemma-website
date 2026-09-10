@@ -206,7 +206,7 @@ export const products: Product[] = [
     name: "Integral",
     description:
       "Connect real-world visibility to measurable digital results (ROI) with full-funnel activation, retargeting, and attribution.",
-    logo: "/images/products/integral.png",
+    logo: "/images/products/integral.svg",
     logoColor: "/images/products/integral-hero-logo.svg",
     href: "/products/integral",
   },
@@ -215,7 +215,7 @@ export const products: Product[] = [
     name: "Delta",
     description:
       "Scale programmatic advertising across DOOH and CTV with real-time bidding, automated performance controls, and maximum reach.",
-    logo: "/images/products/delta.png",
+    logo: "/images/products/delta.svg",
     logoColor: "/images/products/delta-color.svg",
     href: "/products/delta",
   },
@@ -224,7 +224,7 @@ export const products: Product[] = [
     name: "Sigma",
     description:
       "Connect outdoor and CTV inventory to global buyers and optimize monetization with transparent, real-time reporting.",
-    logo: "/images/products/sigma.png",
+    logo: "/images/products/sigma.svg",
     logoColor: "/images/products/sigma-color.svg",
     href: "/products/sigma",
   },
