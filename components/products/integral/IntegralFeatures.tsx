@@ -73,7 +73,7 @@ function FeatureImage({
         fill
         className={cn(
           "object-contain object-center",
-          feature.id !== "unified" && "mix-blend-screen",
+          feature.id === "results" && "mix-blend-screen",
         )}
         sizes="(max-width: 1024px) 100vw, 620px"
       />
