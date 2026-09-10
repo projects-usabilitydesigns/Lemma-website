@@ -125,12 +125,13 @@ export function Footer() {
         <FadeUp>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(2,1fr)] lg:gap-10">
             <div>
-              <Link href="/" className="relative mb-5 block h-8 w-[149px]">
+              <Link href="/" className="mb-5 block">
                 <Image
                   src="/images/logo-lemma.svg"
                   alt="LEMMA"
-                  fill
-                  className="object-contain object-left"
+                  width={163}
+                  height={35}
+                  className="h-8 w-[149px] object-contain object-left"
                 />
               </Link>
               <ul className="space-y-3 text-[14px] leading-relaxed text-[var(--color-slate)]">
