@@ -31,8 +31,12 @@ export function SigmaFeatures() {
       <Container className="flex flex-col gap-10 md:gap-14">
         {sigmaFeatures.map((feature, index) => {
           const imageLeft = feature.layout === "image-left";
-          const stacked =
-            "imageSecondary" in feature && Boolean(feature.imageSecondary);
+          const imageSecondary =
+            "imageSecondary" in feature &&
+            typeof (feature as { imageSecondary?: unknown }).imageSecondary === "string"
+              ? (feature as { imageSecondary: string }).imageSecondary
+              : undefined;
+          const stacked = Boolean(imageSecondary);
 
           return (
             <FadeUp key={feature.id} delay={index * 0.04}>
@@ -79,7 +83,7 @@ export function SigmaFeatures() {
                     aria-hidden
                   />
                   <div className="relative z-10 w-full">
-                    {stacked ? (
+                    {stacked && imageSecondary ? (
                       <div className="flex w-full flex-col items-center">
                         <div className="relative aspect-[388/259] w-[58%]">
                           <Image
@@ -92,7 +96,7 @@ export function SigmaFeatures() {
                         </div>
                         <div className="relative aspect-[678/281] w-[82%]">
                           <Image
-                            src={feature.imageSecondary}
+                            src={imageSecondary}
                             alt=""
                             fill
                             className="object-contain object-center"
