@@ -1,3 +1,5 @@
+import { FORM_INBOX_EMAIL } from "@/lib/form-inbox";
+
 export type Office = {
   id: string;
   city: string;
@@ -13,8 +15,8 @@ export const contactHero = {
   title: "Connect. Collaborate. Conquer.",
   description:
     "Impactful new-media campaigns start with a conversation. Tell us what you're planning, and the right Lemma specialist will get back to you within 24 hours.",
-  email: "support@lemmamedia.com",
-  salesEmail: "contactus@lemmamedia.com",
+  email: FORM_INBOX_EMAIL,
+  salesEmail: FORM_INBOX_EMAIL,
   phone: "+91 9325443396",
   highlights: [
     "Global teams across 9 offices and 40+ markets",

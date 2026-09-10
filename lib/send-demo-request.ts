@@ -1,4 +1,4 @@
-export const DEMO_INBOX_EMAIL = "shreyadasnam@gmail.com";
+export { FORM_INBOX_EMAIL as DEMO_INBOX_EMAIL } from "@/lib/form-inbox";
 
 export type DemoRequestPayload = {
   firstName: string;

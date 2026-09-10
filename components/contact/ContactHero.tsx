@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { contactHero } from "@/lib/contact-data";
+import { getEmailComposeUrl } from "@/lib/email-compose";
 
 export function ContactHero() {
   return (
@@ -41,7 +42,9 @@ export function ContactHero() {
             <FadeUp delay={0.16}>
               <div className="grid max-w-xl gap-3 sm:grid-cols-2">
                 <a
-                  href={`mailto:${contactHero.email}`}
+                  href={getEmailComposeUrl(contactHero.email)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-white/80 p-4 transition hover:border-[var(--color-blue)] hover:bg-white"
                 >
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#008fdb] text-white">

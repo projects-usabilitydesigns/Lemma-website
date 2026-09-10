@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Check, Loader2, ShieldCheck } from "lucide-react";
 import { contactAudiences, type ContactAudienceId } from "@/lib/contact-data";
 import { countries } from "@/lib/countries";
+import { sendContactRequest } from "@/lib/send-contact-request";
+import { EmailDirectCta } from "@/components/ui/EmailDirectCta";
 import { fieldClass, labelClass } from "@/lib/form-styles";
 import { cn } from "@/lib/utils";
 
@@ -83,6 +85,7 @@ export function ContactForm() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [submitError, setSubmitError] = useState("");
 
   const setField = <K extends keyof FormValues>(key: K, value: FormValues[K]) => {
     setValues((current) => ({ ...current, [key]: value }));
@@ -102,9 +105,18 @@ export function ContactForm() {
       return;
     }
 
+    setSubmitError("");
     setStatus("submitting");
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    setStatus("success");
+
+    try {
+      await sendContactRequest({ ...values, audience });
+      setStatus("success");
+    } catch (error) {
+      setStatus("idle");
+      setSubmitError(
+        error instanceof Error ? error.message : "Could not send your message. Please try again.",
+      );
+    }
   };
 
   return (
@@ -128,14 +140,7 @@ export function ContactForm() {
               Thanks, {values.firstName || "there"}. Our {audience === "advertisers" ? "advertiser" : "media owner"}{" "}
               team will get back to you within 24 hours.
             </p>
-            <a
-              href="mailto:support@lemmamedia.com"
-              className="mt-7 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[16px] font-semibold text-[var(--color-btn-text)] transition hover:shadow-[0_10px_30px_rgba(0,143,219,0.35)]"
-              style={{ backgroundImage: "var(--gradient-blue)" }}
-            >
-              Email us directly
-              <ArrowRight className="size-4" />
-            </a>
+            <EmailDirectCta />
           </motion.div>
         ) : (
           <motion.form
@@ -344,6 +349,10 @@ export function ContactForm() {
               />
               <FieldError id={`${formId}-message-error`} message={errors.message} />
             </div>
+
+            {submitError ? (
+              <p className="text-center text-[12px] font-medium text-[var(--color-error)]">{submitError}</p>
+            ) : null}
 
             <button
               type="submit"

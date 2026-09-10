@@ -106,12 +106,13 @@ export function Header({
       onMouseLeave={scheduleCloseMega}
     >
       <Container className="relative flex h-[90px] items-center justify-between">
-        <Link href="/" aria-label="Lemma Technologies home" className="relative h-[35px] w-[163px]">
+        <Link href="/" aria-label="Lemma Technologies home" className="block">
           <Image
             src="/images/logo-lemma.svg"
             alt="LEMMA"
-            fill
-            className="object-contain object-left"
+            width={163}
+            height={35}
+            className="h-[35px] w-[163px] object-contain object-left"
             priority
           />
         </Link>
