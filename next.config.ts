@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
 // Derive the allowed image host from STRAPI_URL so the same code works on
-// localhost (http://localhost:1337) and in production (https://cms.example.com).
-const strapi = new URL(process.env.STRAPI_URL ?? "http://localhost:1337");
+// localhost and production (https://strapi.lemmatechnologies.com).
+const strapi = new URL(
+  process.env.STRAPI_URL ?? "https://strapi.lemmatechnologies.com",
+);
 
 const nextConfig: NextConfig = {
   images: {
@@ -14,6 +16,24 @@ const nextConfig: NextConfig = {
         protocol: strapi.protocol.replace(":", "") as "http" | "https",
         hostname: strapi.hostname,
         ...(strapi.port ? { port: strapi.port } : {}),
+        pathname: "/uploads/**",
+      },
+      // Always allow production CMS media (covers builds where STRAPI_URL is unset)
+      {
+        protocol: "https",
+        hostname: "strapi.lemmatechnologies.com",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
         pathname: "/uploads/**",
       },
     ],
