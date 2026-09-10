@@ -4,6 +4,7 @@ import { FadeUp } from "@/components/animation";
 import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { contactHero } from "@/lib/contact-data";
+import { getEmailComposeUrl } from "@/lib/email-compose";
 
 export function ContactCta() {
   return (
@@ -16,7 +17,9 @@ export function ContactCta() {
           <p className="max-w-xl text-[17px] leading-relaxed text-[var(--color-slate)] md:text-[19px]">
             Book a tailored walkthrough of the Lemma stack, or write to our sales team at{" "}
             <a
-              href={`mailto:${contactHero.salesEmail}`}
+              href={getEmailComposeUrl(contactHero.salesEmail)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold text-[var(--color-blue-link)] hover:underline"
             >
               {contactHero.salesEmail}
