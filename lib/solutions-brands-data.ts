@@ -273,7 +273,7 @@ export const brandsStories: BrandsStory[] = [
     category: "Travel",
     title: "Premium reach across global corridors",
     description: "High-impact placements that connected travelers with brand storytelling at scale.",
-    image: "/images/case-studies/etihad.png",
+    image: "/images/case-studies/etihad.webp",
     href: "/#case-studies",
   },
   {
@@ -282,7 +282,7 @@ export const brandsStories: BrandsStory[] = [
     category: "Beauty",
     title: "Beauty moments that convert",
     description: "Audience-led creative and retargeting that amplified awareness into consideration.",
-    image: "/images/case-studies/schwarzkopf.png",
+    image: "/images/case-studies/schwarzkopf.webp",
     href: "/#case-studies",
   },
   {
