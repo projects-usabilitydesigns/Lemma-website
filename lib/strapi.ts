@@ -1,10 +1,18 @@
 import qs from "qs";
 
-const STRAPI_URL = process.env.STRAPI_URL ?? "http://localhost:1337";
+// Prefer 127.0.0.1 over "localhost" for local — Node fetch resolves localhost to ::1 (IPv6),
+// which fails when Strapi listens on IPv4 only.
+const STRAPI_URL = (
+  process.env.STRAPI_URL ?? "http://127.0.0.1:1337"
+).replace(/\/$/, "");
 const STRAPI_TOKEN = process.env.STRAPI_TOKEN;
 
+export function getStrapiUrl() {
+  return STRAPI_URL;
+}
+
 export function strapiUrl(path: string) {
-  return `${STRAPI_URL}${path}`;
+  return `${STRAPI_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 type StrapiResponse<T> = {
