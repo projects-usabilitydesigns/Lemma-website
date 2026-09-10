@@ -52,15 +52,17 @@ export function SigmaHero() {
             transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.15 }}
             className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center pt-4 md:pt-6 lg:max-w-[680px] lg:translate-y-4"
           >
-            <Image
-              src={sigmaAssets.heroPuzzle}
-              alt="Lemma Sigma™ — Publishers connected to Multiple Buyers across DOOH, CTV/OTT and Retail Media"
-              width={843}
-              height={503}
-              className="h-auto w-full object-contain object-center"
-              priority
-              sizes="(max-width: 1024px) 100vw, 680px"
-            />
+            <div className="relative w-full">
+              <Image
+                src={sigmaAssets.logo}
+                alt="Lemma Sigma™ — Publishers connected to Multiple Buyers across DOOH, CTV/OTT and Retail Media"
+                width={843}
+                height={487}
+                className="h-auto w-full object-contain object-center"
+                priority
+                sizes="(max-width: 1024px) 100vw, 680px"
+              />
+            </div>
           </motion.div>
         </div>
       </Container>
