@@ -111,6 +111,8 @@ export type ClientLogo = {
   id: string;
   name: string;
   src: string;
+  /** Original brand-color asset, revealed on hover only. */
+  srcColor?: string;
   width: number;
   height: number;
 };

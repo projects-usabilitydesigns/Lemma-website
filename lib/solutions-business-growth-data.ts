@@ -19,6 +19,15 @@ export const businessGrowthHero = {
   poster: "/images/solutions/business-growth-poster.png",
 } as const;
 
+export const businessGrowthLogoIds = [
+  "lemonade",
+  "nutriorg",
+  "mf-bharat",
+  "omay",
+  "aadyaa",
+  "sthorn",
+] as const;
+
 export const businessGrowthStats: BrandsStat[] = [
   { id: "spend", value: 1.5, decimals: 1, prefix: "₹", suffix: "+Cr", label: "Monthly Spends Managed" },
   { id: "retention", value: 100, suffix: "%", label: "Client Retention Till Date" },
