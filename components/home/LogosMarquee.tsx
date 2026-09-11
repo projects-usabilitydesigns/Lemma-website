@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { FadeIn } from "@/components/animation";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { getBrandLogoColorSrc } from "@/lib/brand-logo-colors";
 import { channels as defaultChannels, clientLogos as defaultClientLogos } from "@/lib/data";
 import { businessGrowthPlatforms } from "@/lib/solutions-business-growth-data";
 import type { ClientLogo } from "@/types";
@@ -23,6 +25,16 @@ const LOCAL_LOGO_BY_NAME: Record<string, Pick<ClientLogo, "src" | "width" | "hei
     width: 33,
     height: 36,
   },
+  pepsi: {
+    src: "/images/logos/pepsi.svg",
+    width: 36,
+    height: 36,
+  },
+  lemonade: {
+    src: "/images/logos/lemonade-grey.png",
+    width: 140,
+    height: 12,
+  },
 };
 
 const EXTRA_LOGO_IDS = new Set(["aadyaa", "sthorn", "vasansi"]);
@@ -33,7 +45,9 @@ const EXTRA_CLIENT_LOGOS: ClientLogo[] = defaultClientLogos.filter((logo) =>
 
 function resolveLogo(logo: ClientLogo): ClientLogo {
   const local = LOCAL_LOGO_BY_NAME[logo.name.trim().toLowerCase()];
-  return local ? { ...logo, ...local } : logo;
+  const resolved = local ? { ...logo, ...local } : logo;
+  const srcColor = getBrandLogoColorSrc(resolved);
+  return srcColor ? { ...resolved, srcColor } : resolved;
 }
 
 function mergeLogos(incoming?: ClientLogo[]) {
@@ -73,23 +87,7 @@ export function LogosMarquee({
       <div className="marquee-fade mb-4">
         <Marquee pauseOnHover speed={40} gradient={false} autoFill>
           {logos.map((logo) => (
-            <div
-              key={`${logo.id}-${logo.src}`}
-              className="mx-8 flex h-8 shrink-0 items-center opacity-80 transition hover:opacity-100 md:mx-10"
-            >
-              <Image
-                src={logo.src}
-                alt={logo.name}
-                width={logo.width}
-                height={logo.height}
-                className={
-                  logo.id === "lemonade"
-                    ? "h-auto w-[140px] object-contain object-center"
-                    : "h-8 w-auto object-contain object-center"
-                }
-                style={logo.id === "lemonade" ? undefined : { width: "auto", aspectRatio: "auto" }}
-              />
-            </div>
+            <BrandLogo key={`${logo.id}-${logo.src}`} logo={logo} />
           ))}
         </Marquee>
       </div>
