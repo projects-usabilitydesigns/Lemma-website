@@ -124,6 +124,66 @@ img {
   );
 }
 
+.brand-logo-item {
+  pointer-events: auto;
+}
+
+.brand-logo-item,
+.brand-logo-item:hover,
+.brand-logo-frame,
+.brand-logo-item:hover .brand-logo-frame,
+.brand-logo-item img,
+.brand-logo-item:hover img {
+  transform: none;
+}
+
+.brand-logo-frame {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  overflow: hidden;
+}
+
+.brand-logo-item .brand-logo-muted {
+  position: relative;
+  z-index: 0;
+  max-width: none;
+  flex-shrink: 0;
+}
+
+.brand-logo-item .brand-logo-color {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+  object-position: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.brand-logo-item:hover .brand-logo-color {
+  opacity: 1;
+}
+
+.brand-logo-item:hover:has(.brand-logo-color) .brand-logo-muted {
+  opacity: 0;
+}
+
+.brand-logo-item:not(:has(.brand-logo-color)) .brand-logo-muted {
+  filter: grayscale(1);
+  transition: filter 0.35s ease;
+}
+
+.brand-logo-item:not(:has(.brand-logo-color)):hover .brand-logo-muted {
+  filter: grayscale(0);
+}
+
 .swiper-slide-active .case-card {
   transform: scale(1.02);
 }

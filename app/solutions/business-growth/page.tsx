@@ -12,6 +12,7 @@ import { getClientLogos } from "@/lib/api";
 import {
   businessGrowthCta,
   businessGrowthHero,
+  businessGrowthLogoIds,
   businessGrowthStats,
 } from "@/lib/solutions-business-growth-data";
 
@@ -29,7 +30,11 @@ export default async function BusinessGrowthPage() {
       <Header />
       <main>
         <BrandsHero data={businessGrowthHero} stats={businessGrowthStats} />
-        <LogosMarquee clientLogos={clientLogos} bottomTrack="platforms" />
+        <LogosMarquee
+          clientLogos={clientLogos}
+          logoIds={businessGrowthLogoIds}
+          bottomTrack="platforms"
+        />
         <AdPlatforms />
         <FunnelJourney />
         <GrowthResults />
