@@ -35,6 +35,31 @@ const LOCAL_LOGO_BY_NAME: Record<string, Pick<ClientLogo, "src" | "width" | "hei
     width: 140,
     height: 12,
   },
+  nutriorg: {
+    src: "/images/logos/nutriorg-grey.png",
+    width: 81,
+    height: 36,
+  },
+  "mf bharat mutual fund": {
+    src: "/images/logos/mf-bharat-grey.png",
+    width: 102,
+    height: 36,
+  },
+  omay: {
+    src: "/images/logos/omay-grey.png",
+    width: 52,
+    height: 36,
+  },
+  aadyaa: {
+    src: "/images/logos/aadyaa-grey.png",
+    width: 58,
+    height: 36,
+  },
+  sthorn: {
+    src: "/images/logos/sthorn-grey.png",
+    width: 134,
+    height: 36,
+  },
 };
 
 const EXTRA_LOGO_IDS = new Set(["aadyaa", "sthorn", "vasansi"]);
@@ -50,7 +75,18 @@ function resolveLogo(logo: ClientLogo): ClientLogo {
   return srcColor ? { ...resolved, srcColor } : resolved;
 }
 
-function mergeLogos(incoming?: ClientLogo[]) {
+function normalizeLogoKey(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function logoMatchesId(logo: ClientLogo, id: string) {
+  const key = normalizeLogoKey(id);
+  const logoId = normalizeLogoKey(logo.id);
+  const logoName = normalizeLogoKey(logo.name);
+  return logoId === key || logoName === key || logoName.includes(key);
+}
+
+function mergeLogos(incoming?: ClientLogo[], logoIds?: readonly string[]) {
   const base = (incoming?.length ? incoming : defaultClientLogos).map(resolveLogo);
   const seen = new Set(
     base.flatMap((logo) => [logo.id.toLowerCase(), logo.name.trim().toLowerCase()]),
@@ -58,17 +94,37 @@ function mergeLogos(incoming?: ClientLogo[]) {
   const extras = EXTRA_CLIENT_LOGOS.filter(
     (logo) => !seen.has(logo.id) && !seen.has(logo.name.toLowerCase()),
   );
-  return [...base, ...extras];
+  const logos = [...base, ...extras];
+
+  if (!logoIds?.length) return logos;
+
+  const allow = logoIds.map((id) => id.toLowerCase());
+  const byId = new Map<string, ClientLogo>();
+
+  for (const logo of logos) {
+    const match = allow.find((id) => logoMatchesId(logo, id));
+    if (match && !byId.has(match)) byId.set(match, logo);
+  }
+
+  for (const logo of defaultClientLogos) {
+    const resolved = resolveLogo(logo);
+    const match = allow.find((id) => logoMatchesId(resolved, id));
+    if (match && !byId.has(match)) byId.set(match, resolved);
+  }
+
+  return allow.map((id) => byId.get(id)).filter((logo): logo is ClientLogo => Boolean(logo));
 }
 
 export function LogosMarquee({
   clientLogos,
   bottomTrack = "channels",
+  logoIds,
 }: {
   clientLogos?: ClientLogo[];
   bottomTrack?: "channels" | "platforms";
+  logoIds?: readonly string[];
 }) {
-  const logos = mergeLogos(clientLogos);
+  const logos = mergeLogos(clientLogos, logoIds);
   const bottomItems =
     bottomTrack === "platforms"
       ? businessGrowthPlatforms.items.map((item) => item.name)
