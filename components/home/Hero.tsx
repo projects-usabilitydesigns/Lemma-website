@@ -64,11 +64,20 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pb-10 pt-[138px] md:pb-14 md:pt-[184px]"
+      className="relative overflow-hidden pb-16 pt-[138px] md:pb-14 md:pt-[184px]"
     >
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
-      <motion.div style={{ y: bgY }} className="pointer-events-none absolute inset-y-0 right-0 w-[70%] opacity-80">
-        <Image src="/images/hero-bg.png" alt="" fill className="object-cover object-left" priority />
+      <motion.div
+        style={{ y: bgY }}
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-[28rem] w-full opacity-80 [mask-image:linear-gradient(to_bottom,transparent_0%,black_26%,black_100%)] md:inset-y-0 md:left-auto md:h-auto md:w-[70%] md:[mask-image:none]"
+      >
+        <Image
+          src="/images/hero-bg.png"
+          alt=""
+          fill
+          className="object-cover object-[42%_28%] md:object-left"
+          priority
+        />
       </motion.div>
 
       <Container className="relative">

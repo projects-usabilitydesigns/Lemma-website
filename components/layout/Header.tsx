@@ -37,6 +37,10 @@ export function Header({
     setMobileExpanded(null);
   };
 
+  const toggleMobileExpanded = (id: MegaMenuId) => {
+    setMobileExpanded((current) => (current === id ? null : id));
+  };
+
   const clearCloseTimer = () => {
     if (closeTimer.current) {
       clearTimeout(closeTimer.current);
@@ -250,14 +254,14 @@ export function Header({
                       data-lenis-prevent
                       className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y [-webkit-overflow-scrolling:touch]"
                     >
-                      <nav className="flex flex-col gap-1 pb-6" aria-label="Mobile">
+                      <nav className="flex flex-col pb-6" aria-label="Mobile">
                         {nav.map((item) => {
                           if (!item.megaMenu) {
                             return (
                               <Link
                                 key={item.label}
                                 href={item.href}
-                                className="rounded-xl px-3 py-3 text-lg font-medium text-[var(--color-ink)]"
+                                className="rounded-xl px-3 py-2 text-lg font-medium text-[var(--color-ink)]"
                                 onClick={closeMobileMenu}
                               >
                                 {item.label}
@@ -269,36 +273,24 @@ export function Header({
                           const menu = menus[item.megaMenu];
 
                           return (
-                            <div key={item.label} className="border-b border-[var(--color-border)] pb-2">
-                              <div className="flex items-center">
-                                <Link
-                                  href={item.href}
-                                  className="min-w-0 flex-1 rounded-xl px-3 py-3 text-lg font-medium text-[var(--color-ink)]"
-                                  onClick={closeMobileMenu}
-                                >
-                                  {item.label}
-                                </Link>
-                                <button
-                                  type="button"
-                                  className="mr-1 inline-flex size-11 shrink-0 items-center justify-center rounded-xl text-[var(--color-ink)]"
-                                  aria-expanded={expanded}
-                                  aria-label={`${expanded ? "Hide" : "Show"} ${item.label} links`}
-                                  onClick={() =>
-                                    setMobileExpanded((current) =>
-                                      current === item.megaMenu ? null : item.megaMenu!,
-                                    )
-                                  }
-                                >
-                                  <ChevronDown
-                                    className={cn(
-                                      "size-4 transition-transform",
-                                      expanded && "rotate-180",
-                                    )}
-                                  />
-                                </button>
-                              </div>
+                            <div key={item.label} className="border-b border-[var(--color-border)]">
+                              <button
+                                type="button"
+                                className="flex w-full items-center rounded-xl px-3 py-2 text-left text-lg font-medium text-[var(--color-ink)]"
+                                aria-expanded={expanded}
+                                aria-haspopup="true"
+                                onClick={() => toggleMobileExpanded(item.megaMenu!)}
+                              >
+                                <span className="min-w-0 flex-1">{item.label}</span>
+                                <ChevronDown
+                                  className={cn(
+                                    "size-4 shrink-0 opacity-70 transition-transform duration-200",
+                                    expanded && "rotate-180",
+                                  )}
+                                />
+                              </button>
                               {expanded ? (
-                                <div className="pb-3 pl-2">
+                                <div className="pb-2 pl-2">
                                   <MegaMenuPanel menu={menu} onNavigate={closeMobileMenu} />
                                 </div>
                               ) : null}
