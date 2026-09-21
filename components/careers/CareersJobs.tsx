@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LinkArrow } from "@/components/ui/LinkArrow";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { careersJobs } from "@/lib/careers-data";
+import { careersJobs, type CareersJob } from "@/lib/careers-data";
 
-export function CareersJobs() {
+export function CareersJobs({ roles }: { roles: CareersJob[] }) {
   return (
     <section id="openings" className="relative overflow-hidden py-10 md:py-14">
       <div
@@ -32,7 +32,7 @@ export function CareersJobs() {
         </FadeUp>
 
         <Stagger className="mb-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {careersJobs.roles.map((role) => (
+          {roles.map((role) => (
             <motion.article
               key={role.id}
               variants={staggerItem}
@@ -53,8 +53,12 @@ export function CareersJobs() {
                 {role.title}
               </h3>
               <p className="text-[15px] leading-[22px] text-[var(--color-slate)] md:text-[16px]">
-                JOB ID:&nbsp;{role.jobId}
-                &nbsp;&nbsp;EXPERIENCE: {role.experience}
+                EXPERIENCE: {role.experience}
+                {role.location ? (
+                  <>
+                    &nbsp;&nbsp;LOCATION: {role.location}
+                  </>
+                ) : null}
               </p>
               <div className="mt-auto pt-2">
                 <LinkArrow href={role.href}>Job Description</LinkArrow>
@@ -63,11 +67,13 @@ export function CareersJobs() {
           ))}
         </Stagger>
 
-        <FadeUp delay={0.1} className="flex justify-center">
-          <Button href={careersJobs.viewAllHref} variant="primary" arrow="right">
-            View all jobs
-          </Button>
-        </FadeUp>
+        {roles.length > 3 ? (
+          <FadeUp delay={0.1} className="flex justify-center">
+            <Button href={careersJobs.viewAllHref} variant="primary" arrow="right">
+              View all jobs
+            </Button>
+          </FadeUp>
+        ) : null}
       </Container>
     </section>
   );

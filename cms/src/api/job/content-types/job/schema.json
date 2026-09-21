@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Role": {
+      "type": "string"
+    },
+    "RelevantExperience": {
+      "type": "string"
+    },
+    "JobLocation": {
+      "type": "string"
+    },
+    "AboutTheRole": {
+      "type": "richtext"
+    },
+    "KeyResponsibilities": {
+      "type": "richtext"
+    },
+    "SkillsAndQualifications": {
+      "type": "richtext"
+    },
+    "SoftSkills": {
+      "type": "richtext"
+    },
+    "Note": {
+      "type": "richtext"
+    }
+  }
+}

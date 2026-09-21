@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 // Derive the allowed image host from STRAPI_URL so the same code works on
 // localhost and production (https://strapi.lemmatechnologies.com).
@@ -7,6 +8,9 @@ const strapi = new URL(
 );
 
 const nextConfig: NextConfig = {
+  // Pin the tracing root: the nested mailer/ service has its own lockfile,
+  // without this Next.js warns about multiple lockfiles.
+  outputFileTracingRoot: path.join(__dirname),
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],

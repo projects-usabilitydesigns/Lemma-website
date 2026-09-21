@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /cms/node_modules
+/mailer/node_modules
 /.pnp
 .pnp.*
 .yarn/*

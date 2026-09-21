@@ -160,6 +160,8 @@ export function ArticleDetailContent({
   const [activeId, setActiveId] = useState(headings[0]?.id ?? "");
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [subscribing, setSubscribing] = useState(false);
+  const [subscribeError, setSubscribeError] = useState("");
   const [copied, setCopied] = useState(false);
   const [shareUrl, setShareUrl] = useState(`https://lemmamedia.com${sharePath}`);
 
@@ -191,12 +193,37 @@ export function ArticleDetailContent({
   }, [headings]);
 
   const onSubscribe = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
+    async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      if (!email.trim()) return;
-      setSubscribed(true);
+      if (!email.trim() || subscribing) return;
+      setSubscribeError("");
+      setSubscribing(true);
+
+      try {
+        const response = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email.trim(),
+            pageUrl: typeof window !== "undefined" ? window.location.href : "",
+          }),
+        });
+        const result = (await response.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        if (!response.ok) {
+          throw new Error(result?.error || "Could not subscribe. Please try again.");
+        }
+        setSubscribed(true);
+      } catch (error) {
+        setSubscribeError(
+          error instanceof Error ? error.message : "Could not subscribe. Please try again.",
+        );
+      } finally {
+        setSubscribing(false);
+      }
     },
-    [email],
+    [email, subscribing],
   );
 
   const onCopyLink = useCallback(async () => {
@@ -303,10 +330,14 @@ export function ArticleDetailContent({
             />
             <button
               type="submit"
-              className="inline-flex h-11 items-center justify-center rounded-[10px] bg-[var(--color-orange)] px-4 text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
+              disabled={subscribing}
+              className="inline-flex h-11 items-center justify-center rounded-[10px] bg-[var(--color-orange)] px-4 text-[14px] font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              Subscribe
+              {subscribing ? "Subscribing…" : "Subscribe"}
             </button>
+            {subscribeError ? (
+              <p className="text-[12px] font-medium text-[var(--color-error)]">{subscribeError}</p>
+            ) : null}
           </form>
         )}
       </div>
