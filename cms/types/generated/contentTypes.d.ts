@@ -517,6 +517,39 @@ export interface ApiCaseStudyCaseStudy extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiJobJob extends Struct.CollectionTypeSchema {
+  collectionName: 'jobs';
+  info: {
+    displayName: 'Job';
+    pluralName: 'jobs';
+    singularName: 'job';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AboutTheRole: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    JobLocation: Schema.Attribute.String;
+    KeyResponsibilities: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::job.job'> &
+      Schema.Attribute.Private;
+    Note: Schema.Attribute.RichText;
+    publishedAt: Schema.Attribute.DateTime;
+    RelevantExperience: Schema.Attribute.String;
+    Role: Schema.Attribute.String;
+    SkillsAndQualifications: Schema.Attribute.RichText;
+    SoftSkills: Schema.Attribute.RichText;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsroomNewsroom extends Struct.CollectionTypeSchema {
   collectionName: 'newsrooms';
   info: {
@@ -1069,6 +1102,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::blog.blog': ApiBlogBlog;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
+      'api::job.job': ApiJobJob;
       'api::newsroom.newsroom': ApiNewsroomNewsroom;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

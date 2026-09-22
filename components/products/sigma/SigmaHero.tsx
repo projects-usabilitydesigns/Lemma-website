@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { sigmaAssets } from "@/lib/sigma-data";
 import { animation } from "@/lib/design-system";
+import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
 
 export function SigmaHero() {
   return (
@@ -40,7 +41,7 @@ export function SigmaHero() {
               transition={{ duration: animation.duration.base, ease: animation.easeOut, delay: 0.2 }}
               className="flex flex-wrap items-center gap-3"
             >
-              <Button href="#cta" variant="primary">
+              <Button href={DEMO_MODAL_HREF} variant="primary">
                 Partner With Us
               </Button>
             </motion.div>

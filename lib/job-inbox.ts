@@ -1,0 +1,1 @@
+export const JOBS_INBOX_EMAIL = "sairaj.lole@usabilitydesigns.com";

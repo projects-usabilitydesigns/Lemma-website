@@ -1,3 +1,5 @@
+import type { BlogBodySection } from "./resources-page-data";
+
 export type CareersGalleryImage = {
   id: string;
   src: string;
@@ -14,7 +16,22 @@ export type CareersJob = {
   title: string;
   jobId: string;
   experience: string;
+  location?: string;
   href: string;
+};
+
+export type CareersJobDetail = {
+  slug: string;
+  title: string;
+  jobId: string;
+  role: string;
+  experience: string;
+  location: string;
+  about: BlogBodySection[];
+  responsibilities: BlogBodySection[];
+  skills: BlogBodySection[];
+  softSkills: BlogBodySection[];
+  note: BlogBodySection[];
 };
 
 export type CareersFaq = {

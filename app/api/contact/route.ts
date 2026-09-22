@@ -1,14 +1,19 @@
 import { NextResponse } from "next/server";
-import { buildContactRequestEmail } from "@/lib/contact-email";
 import type { ContactAudienceId } from "@/lib/contact-data";
 import { getEmailError, getPhoneError } from "@/lib/form-validation";
-import { envValue, getFormInbox, readLocalEnv, sendFormMail } from "@/lib/mailer";
+import { envValue, readLocalEnv } from "@/lib/mailer";
 import type { ContactRequestPayload } from "@/lib/send-contact-request";
 
 type ContactRequestBody = Partial<Record<keyof ContactRequestPayload, unknown>>;
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function mailerUrl(path: string) {
+  const localEnv = readLocalEnv();
+  const base = (envValue("MAILER_URL", localEnv) || "http://127.0.0.1:4000").replace(/\/$/, "");
+  return `${base}${path}`;
 }
 
 export async function POST(request: Request) {
@@ -45,31 +50,19 @@ export async function POST(request: Request) {
   const phoneError = getPhoneError(values.mobile, { required: true });
   if (phoneError) return NextResponse.json({ error: phoneError }, { status: 400 });
 
-  const localEnv = readLocalEnv();
-  const smtpUser = envValue("SMTP_USER", localEnv);
-  const smtpPass = envValue("SMTP_PASS", localEnv);
-
-  if (!smtpUser || !smtpPass) {
-    return NextResponse.json(
-      { error: "Email sending is not configured yet. Add SMTP_USER and SMTP_PASS to .env.local." },
-      { status: 500 },
-    );
-  }
-
-  const { subject, html, text } = buildContactRequestEmail(values);
-
   try {
-    await sendFormMail({
-      smtpUser,
-      smtpPass,
-      localEnv,
-      to: getFormInbox(localEnv),
-      replyTo: values.email,
-      subject,
-      text,
-      html,
+    const res = await fetch(mailerUrl("/api/contact"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
     });
-
+    const data = (await res.json().catch(() => null)) as { error?: string } | null;
+    if (!res.ok) {
+      return NextResponse.json(
+        { error: data?.error || "Could not send your message. Please try again." },
+        { status: res.status },
+      );
+    }
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
