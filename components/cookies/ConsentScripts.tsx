@@ -10,7 +10,7 @@ export function ConsentScripts() {
   const { hasConsented, preferences } = useCookieConsent();
 
   useEffect(() => {
-    if (!hasConsented || !GA_ID || typeof window.gtag !== "function") return;
+    if (!hasConsented || typeof window.gtag !== "function") return;
     window.gtag("consent", "update", {
       analytics_storage: preferences.analytics ? "granted" : "denied",
       ad_storage: preferences.marketing ? "granted" : "denied",
