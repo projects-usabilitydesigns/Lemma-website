@@ -46,6 +46,7 @@ export async function sendFormMail({
   subject,
   text,
   html,
+  files = [],
 }: {
   smtpUser: string;
   smtpPass: string;
@@ -55,6 +56,7 @@ export async function sendFormMail({
   subject: string;
   text: string;
   html: string;
+  files?: { filename: string; content: Buffer }[];
 }) {
   const transporter = nodemailer.createTransport({
     host: envValue("SMTP_HOST", localEnv) || "smtp.gmail.com",
@@ -79,6 +81,7 @@ export async function sendFormMail({
         path: path.join(process.cwd(), "public/images/logo-lemma.png"),
         cid: DEMO_LOGO_CID,
       },
+      ...files,
     ],
   });
 

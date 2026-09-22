@@ -7,6 +7,7 @@ import type {
   Solution,
   Stat,
 } from "@/types";
+import type { CareersJob, CareersJobDetail } from "@/lib/careers-data";
 import type { BlogBodySection, BlogPostDetail, ResourceArticle } from "./resources-page-data";
 import { defaultArticleCtas, type ArticleDetail } from "./article-detail";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
@@ -203,6 +204,148 @@ function formatStrapiDate(raw: unknown): string {
 
 function getFirstMedia(media: unknown) {
   return Array.isArray(media) ? media[0] : media;
+}
+
+/**
+ * Parses a Strapi richtext (markdown) field into renderable sections.
+ * Handles headings (#), numbered sub-headings (1. …), bullet lists (- * ● •)
+ * and paragraphs. Consecutive text lines merge into one paragraph.
+ */
+function markdownToSections(raw: unknown): BlogBodySection[] {
+  if (typeof raw !== "string" || !raw.trim()) return [];
+
+  const clean = (value: string) =>
+    value
+      .replace(/\*\*/g, "")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const sections: BlogBodySection[] = [];
+  const lines = raw.replace(/\r\n/g, "\n").split("\n");
+  let paragraph: string[] = [];
+  let list: string[] = [];
+
+  const flushParagraph = () => {
+    if (paragraph.length > 0) {
+      sections.push({ type: "paragraph", text: clean(paragraph.join(" ")) });
+      paragraph = [];
+    }
+  };
+  const flushList = () => {
+    if (list.length > 0) {
+      sections.push({ type: "list", items: list });
+      list = [];
+    }
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      flushParagraph();
+      flushList();
+      continue;
+    }
+
+    const heading = /^#{1,6}\s+(.+)$/.exec(trimmed);
+    if (heading) {
+      flushParagraph();
+      flushList();
+      sections.push({ type: "heading", text: clean(heading[1]) });
+      continue;
+    }
+
+    const bullet = /^[-*●•]\s+(.+)$/.exec(trimmed);
+    if (bullet) {
+      flushParagraph();
+      list.push(clean(bullet[1]));
+      continue;
+    }
+
+    const numbered = /^\d+[.)]\s+(.+)$/.exec(trimmed);
+    if (numbered) {
+      flushParagraph();
+      flushList();
+      sections.push({ type: "heading", text: clean(numbered[1]) });
+      continue;
+    }
+
+    flushList();
+    paragraph.push(clean(trimmed));
+  }
+
+  flushParagraph();
+  flushList();
+  return sections;
+}
+
+export async function getJobs(): Promise<CareersJob[]> {
+  try {
+    const res = await fetchCollection<W<{
+      Title: string;
+      JobId: string;
+      RelevantExperience: string;
+      JobLocation: string;
+    }>>("jobs", { revalidate: REVALIDATE, sort: "Title:asc" });
+    return res.data
+      .filter((item) => item.Title)
+      .map((item) => {
+        const id = item.documentId ?? String(item.id);
+        return {
+          id,
+          title: item.Title,
+          jobId: item.JobId ?? "",
+          experience: item.RelevantExperience ?? "",
+          location: item.JobLocation ?? "",
+          href: `/careers/jobs/${id}`,
+        };
+      });
+  } catch {
+    return [];
+  }
+}
+
+export async function getJobByDocumentId(documentId: string): Promise<CareersJobDetail | null> {
+  try {
+    const res = await fetchCollection<W<{
+      Title: string;
+      JobId: string;
+      Role: string;
+      RelevantExperience: string;
+      JobLocation: string;
+      AboutTheRole: string;
+      KeyResponsibilities: string;
+      SkillsAndQualifications: string;
+      SoftSkills: string;
+      Note: string;
+    }>>("jobs", {
+      revalidate: REVALIDATE,
+      filters: { documentId: { $eq: documentId } },
+    });
+    const item = res.data[0];
+    if (!item) return null;
+
+    return {
+      slug: item.documentId ?? String(item.id),
+      title: item.Title,
+      jobId: item.JobId ?? "",
+      role: item.Role ?? "",
+      experience: item.RelevantExperience ?? "",
+      location: item.JobLocation ?? "",
+      about: markdownToSections(item.AboutTheRole),
+      responsibilities: markdownToSections(item.KeyResponsibilities),
+      skills: markdownToSections(item.SkillsAndQualifications),
+      softSkills: markdownToSections(item.SoftSkills),
+      note: markdownToSections(item.Note),
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function getBlogPosts(): Promise<ResourceArticle[]> {
