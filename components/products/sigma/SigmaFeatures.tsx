@@ -69,13 +69,13 @@ export function SigmaFeatures() {
                     "relative mx-auto w-full max-w-[520px] md:max-w-[580px] lg:max-w-[620px]",
                     feature.id !== "access-dsp" && "isolate",
                     imageLeft ? "lg:mx-0 lg:justify-self-start" : "lg:mx-0 lg:justify-self-end",
-                    feature.id === "access-dsp" && "py-16 md:py-20"
+                    feature.id === "access-dsp" && "py-8 md:py-10"
                   )}
                 >
                   <div
                     className={cn(
                       "pointer-events-none absolute left-1/2 top-1/2 z-0 aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full",
-                      feature.id === "access-dsp" ? "w-[115%]" : "w-[72%]"
+                      feature.id === "access-dsp" ? "w-[82%]" : "w-[72%]"
                     )}
                     style={{
                       backgroundImage: "var(--gradient-feature-glow)",
