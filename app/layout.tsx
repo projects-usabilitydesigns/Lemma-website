@@ -7,6 +7,7 @@ import { CookieConsentProvider } from "@/components/cookies/CookieConsentProvide
 import { ConsentScripts } from "@/components/cookies/ConsentScripts";
 import { DemoModalProvider } from "@/components/request-demo/DemoModalProvider";
 import { CONSENT_BOOT_SCRIPT } from "@/lib/cookie-consent";
+import { GTM_CONTAINER_IDS, GTM_HEAD_SCRIPT } from "@/lib/gtm";
 import "./globals.css";
 
 const inter = Inter({
@@ -106,7 +107,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: GTM_HEAD_SCRIPT }} />
+      </head>
       <body className={`${inter.variable} ${googleSansFlex.variable} antialiased`}>
+        {GTM_CONTAINER_IDS.map((id) => (
+          <noscript key={id}>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${id}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        ))}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

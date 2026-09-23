@@ -9,6 +9,8 @@ export type CareersGalleryImage = {
   focus?: number;
   /** Percent of the photo to clip from the bottom (e.g. empty floor). */
   cropBottom?: number;
+  /** Percent of the photo to clip from the top (e.g. empty wall). */
+  cropTop?: number;
 };
 
 export type CareersJob = {
@@ -55,21 +57,21 @@ export const careersGallery = {
   lifeImages: [
     {
       id: "g1",
-      src: "/images/careers/life-traditional-day.jpg",
-      alt: "Lemma team in traditional attire at the office",
+      src: "/images/careers/life-iab-event.png",
+      alt: "Lemma team at the IAB Tech Lab Agentic Web event",
       wide: true,
     },
     {
       id: "g2",
-      src: "/images/careers/life-gold-award.jpg",
-      alt: "Lemma team receiving a Gold award at the e4m Performance Marketing Awards",
-      wide: true,
+      src: "/images/careers/life-panel.jpg",
+      alt: "Lemma speaking on an industry panel",
+      focus: 32,
     },
     {
       id: "g3",
-      src: "/images/careers/life-award-1.jpg",
-      alt: "Lemma colleague receiving a certificate of recognition",
-      focus: 36,
+      src: "/images/careers/life-training.jpg",
+      alt: "Lemma training session on campaign lifecycle",
+      focus: 68,
     },
     {
       id: "g4",
@@ -79,104 +81,104 @@ export const careersGallery = {
     },
     {
       id: "g5",
-      src: "/images/careers/life-goafest.jpg",
-      alt: "Lemma team at Goafest 2026",
-      focus: 34,
-    },
-    {
-      id: "g6",
-      src: "/images/careers/life-cricket.jpg",
-      alt: "Lemma colleagues playing cricket together",
-      wide: true,
-    },
-    {
-      id: "g7",
-      src: "/images/careers/life-panel.jpg",
-      alt: "Lemma speaking on an industry panel",
-      focus: 32,
-    },
-    {
-      id: "g8",
-      src: "/images/careers/life-iab-event.png",
-      alt: "Lemma team at the IAB Tech Lab Agentic Web event",
-      wide: true,
-    },
-    {
-      id: "g9",
-      src: "/images/careers/life-award-2.jpg",
-      alt: "Lemma employee recognition ceremony in the office",
-      focus: 40,
-    },
-    {
-      id: "g10",
-      src: "/images/careers/life-lunch.jpg",
-      alt: "Lemma colleagues sharing a team lunch",
-      wide: true,
-    },
-    {
-      id: "g11",
-      src: "/images/careers/life-gift-1.jpg",
-      alt: "Lemma teammates celebrating with a gift in the office",
-      focus: 22,
-    },
-    {
-      id: "g12",
-      src: "/images/careers/life-workshop.jpg",
-      alt: "Lemma team collaborating on a workshop activity",
-      wide: true,
-    },
-    {
-      id: "g13",
-      src: "/images/careers/life-award-3.jpg",
-      alt: "Lemma colleagues posing with a recognition certificate",
-      focus: 38,
-    },
-    {
-      id: "g14",
       src: "/images/careers/life-chinajoy.jpg",
       alt: "Lemma at ChinaJoy, the China Digital Entertainment Expo",
       wide: true,
     },
     {
-      id: "g15",
-      src: "/images/careers/life-christmas.jpg",
-      alt: "Christmas decorations in the Lemma office",
-    },
-    {
-      id: "g16",
-      src: "/images/careers/life-event-3.jpg",
-      alt: "Lemma team with campus visitors in front of the office logo",
-      wide: true,
-    },
-    {
-      id: "g17",
-      src: "/images/careers/life-award-4.jpg",
-      alt: "Lemma employee receiving an award in the office",
-      focus: 38,
-    },
-    {
-      id: "g18",
-      src: "/images/careers/life-event-4.jpg",
-      alt: "Lemma anniversary celebration with cake and team speeches",
-      wide: true,
-    },
-    {
-      id: "g19",
-      src: "/images/careers/life-gift-2.jpg",
-      alt: "Lemma colleagues exchanging a gift at work",
-      focus: 34,
-    },
-    {
-      id: "g20",
+      id: "g6",
       src: "/images/careers/life-event-5.jpg",
       alt: "Lemma team gathered for an all-hands meeting",
       wide: true,
     },
     {
-      id: "g21",
-      src: "/images/careers/life-training.jpg",
-      alt: "Lemma training session on campaign lifecycle",
+      id: "g7",
+      src: "/images/careers/life-traditional-day.jpg",
+      alt: "Lemma team in traditional attire at the office",
+      wide: true,
+    },
+    {
+      id: "g8",
+      src: "/images/careers/life-gold-award.jpg",
+      alt: "Lemma team receiving a Gold award at the e4m Performance Marketing Awards",
+      wide: true,
+    },
+    {
+      id: "g9",
+      src: "/images/careers/life-award-1.jpg",
+      alt: "Lemma colleague receiving a certificate of recognition",
       focus: 36,
+    },
+    {
+      id: "g10",
+      src: "/images/careers/life-goafest.jpg",
+      alt: "Lemma team at Goafest 2026",
+      focus: 34,
+    },
+    {
+      id: "g11",
+      src: "/images/careers/life-cricket.jpg",
+      alt: "Lemma colleagues playing cricket together",
+      wide: true,
+    },
+    {
+      id: "g12",
+      src: "/images/careers/life-award-2.jpg",
+      alt: "Lemma employee recognition ceremony in the office",
+      focus: 40,
+    },
+    {
+      id: "g13",
+      src: "/images/careers/life-lunch.jpg",
+      alt: "Lemma colleagues sharing a team lunch",
+      wide: true,
+    },
+    {
+      id: "g14",
+      src: "/images/careers/life-gift-1.jpg",
+      alt: "Lemma teammates celebrating with a gift in the office",
+      focus: 22,
+    },
+    {
+      id: "g15",
+      src: "/images/careers/life-workshop.jpg",
+      alt: "Lemma team collaborating on a workshop activity",
+      wide: true,
+    },
+    {
+      id: "g16",
+      src: "/images/careers/life-award-3.jpg",
+      alt: "Lemma colleagues posing with a recognition certificate",
+      focus: 38,
+    },
+    {
+      id: "g17",
+      src: "/images/careers/life-christmas.jpg",
+      alt: "Christmas decorations in the Lemma office",
+    },
+    {
+      id: "g18",
+      src: "/images/careers/life-event-3.jpg",
+      alt: "Lemma team with campus visitors in front of the office logo",
+      wide: true,
+    },
+    {
+      id: "g19",
+      src: "/images/careers/life-award-4.jpg",
+      alt: "Lemma employee receiving an award in the office",
+      focus: 38,
+    },
+    {
+      id: "g20",
+      src: "/images/careers/life-event-4.jpg",
+      alt: "Lemma anniversary celebration with cake and team speeches",
+      wide: true,
+    },
+    {
+      id: "g21",
+      src: "/images/careers/life-gift-2.jpg",
+      alt: "Lemma colleagues exchanging a gift at work",
+      focus: 34,
     },
     {
       id: "g22",
@@ -188,6 +190,7 @@ export const careersGallery = {
       id: "g23",
       src: "/images/careers/life-event-2.png",
       alt: "Lemma Introduction 2017",
+      cropTop: 8,
     },
   ] as CareersGalleryImage[],
 };
