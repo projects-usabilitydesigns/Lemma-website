@@ -52,13 +52,21 @@ export function CareersGallery() {
                     className="relative w-full overflow-hidden rounded-[20px]"
                     style={{ aspectRatio: `4284 / ${Math.round(2999 * keep)}` }}
                   >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 1188px"
-                    />
+                    <div
+                      className="absolute inset-x-0"
+                      style={{
+                        top: image.cropTop ? `-${image.cropTop}%` : 0,
+                        height: image.cropTop ? `${100 + image.cropTop}%` : "100%",
+                      }}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 100vw, 1188px"
+                      />
+                    </div>
                   </div>
                 ) : (
                   <div
