@@ -532,6 +532,7 @@ export interface ApiJobJob extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    JobId: Schema.Attribute.String;
     JobLocation: Schema.Attribute.String;
     KeyResponsibilities: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

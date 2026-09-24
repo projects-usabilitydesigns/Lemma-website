@@ -15,6 +15,9 @@
       "type": "string",
       "required": true
     },
+    "JobId": {
+      "type": "string"
+    },
     "Role": {
       "type": "string"
     },
@@ -38,6 +41,15 @@
     },
     "Note": {
       "type": "richtext"
+    }
+  },
+  "config": {
+    "metadatas": {
+      "JobId": {
+        "edit": {
+          "label": "Job ID"
+        }
+      }
     }
   }
 }
