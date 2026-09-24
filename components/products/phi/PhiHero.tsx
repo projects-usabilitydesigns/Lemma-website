@@ -48,8 +48,8 @@ export function PhiHero() {
               <Image
                 src={phiAssets.heroGraphic}
                 alt="Lemma Phi™ — content management for DOOH screens"
-                width={799}
-                height={474}
+                width={737}
+                height={557}
                 quality={100}
                 unoptimized
                 className="h-auto w-full object-contain object-center"
