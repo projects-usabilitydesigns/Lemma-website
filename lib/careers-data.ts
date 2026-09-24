@@ -16,6 +16,7 @@ export type CareersJob = {
   title: string;
   jobId: string;
   experience: string;
+  role?: string;
   location?: string;
   href: string;
 };
