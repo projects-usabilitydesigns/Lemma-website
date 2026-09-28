@@ -127,11 +127,11 @@ export function Footer() {
             <div>
               <Link href="/" className="mb-5 block">
                 <Image
-                  src="/images/logo-lemma.svg"
+                  src="/images/logo-lemma-registered.png"
                   alt="LEMMA"
-                  width={163}
-                  height={35}
-                  className="h-8 w-[149px] object-contain object-left"
+                  width={1089}
+                  height={241}
+                  className="h-8 w-[145px] object-contain object-left"
                 />
               </Link>
               <ul className="space-y-3 text-[14px] leading-relaxed text-[var(--color-slate)]">
