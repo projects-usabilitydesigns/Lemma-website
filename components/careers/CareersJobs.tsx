@@ -1,15 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FadeUp, Stagger, staggerItem } from "@/components/animation";
+import { FadeUp } from "@/components/animation";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { animation } from "@/lib/design-system";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LinkArrow } from "@/components/ui/LinkArrow";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { careersJobs, type CareersJob } from "@/lib/careers-data";
 
+const INITIAL_VISIBLE_COUNT = 6;
+
 export function CareersJobs({ roles }: { roles: CareersJob[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const visibleRoles = expanded ? roles : roles.slice(0, INITIAL_VISIBLE_COUNT);
+  const reduced = useReducedMotion();
   return (
     <section id="openings" className="relative overflow-hidden py-10 md:py-14">
       <div
@@ -31,11 +39,18 @@ export function CareersJobs({ roles }: { roles: CareersJob[] }) {
           </p>
         </FadeUp>
 
-        <Stagger className="mb-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {roles.map((role) => (
+        <div className="mb-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {visibleRoles.map((role, index) => (
             <motion.article
               key={role.id}
-              variants={staggerItem}
+              initial={reduced ? false : { opacity: 0, y: 24 }}
+              whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{
+                duration: animation.duration.base,
+                ease: animation.easeOut,
+                delay: reduced ? 0 : (index % 3) * 0.08,
+              }}
               whileHover={{ y: -6 }}
               className="flex h-full flex-col gap-5 rounded-[16px] border border-[#b8babc] bg-white p-5 shadow-[0px_4px_0px_#008fdb] transition-shadow duration-300 hover:shadow-[0px_8px_24px_rgba(0,143,219,0.2)]"
             >
@@ -53,10 +68,15 @@ export function CareersJobs({ roles }: { roles: CareersJob[] }) {
                 {role.title}
               </h3>
               <p className="text-[15px] leading-[22px] text-[var(--color-slate)] md:text-[16px]">
-                EXPERIENCE: {role.experience}
+                Experience: {role.experience}
+                {role.role ? (
+                  <>
+                    &nbsp;&nbsp;Role: {role.role}
+                  </>
+                ) : null}
                 {role.location ? (
                   <>
-                    &nbsp;&nbsp;LOCATION: {role.location}
+                    &nbsp;&nbsp;Location: {role.location}
                   </>
                 ) : null}
               </p>
@@ -65,12 +85,18 @@ export function CareersJobs({ roles }: { roles: CareersJob[] }) {
               </div>
             </motion.article>
           ))}
-        </Stagger>
+        </div>
 
-        {roles.length > 3 ? (
+        {roles.length > INITIAL_VISIBLE_COUNT ? (
           <FadeUp delay={0.1} className="flex justify-center">
-            <Button href={careersJobs.viewAllHref} variant="primary" arrow="right">
-              View all jobs
+            <Button
+              variant="primary"
+              arrow="right"
+              onClick={() => setExpanded((value) => !value)}
+              ariaLabel={expanded ? "Show fewer jobs" : "View all jobs"}
+              ariaExpanded={expanded}
+            >
+              {expanded ? "Show less" : "View all jobs"}
             </Button>
           </FadeUp>
         ) : null}

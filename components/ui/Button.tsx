@@ -18,6 +18,7 @@ type ButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   ariaLabel?: string;
+  ariaExpanded?: boolean;
   /** When false, disables hover lift/scale so the button stays in place */
   lift?: boolean;
 };
@@ -50,6 +51,7 @@ export function Button({
   onClick,
   type = "button",
   ariaLabel,
+  ariaExpanded,
   lift = true,
 }: ButtonProps) {
   const ArrowIcon = arrow === "up-right" ? ArrowUpRight : ArrowRight;
@@ -86,6 +88,7 @@ export function Button({
           href={demoCta.href}
           onClick={demoCta.onClick}
           aria-label={ariaLabel}
+          aria-expanded={ariaExpanded}
           className={classes}
           style={resolvedStyle}
         >
@@ -100,6 +103,7 @@ export function Button({
       type={type}
       onClick={onClick}
       aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
       className={classes}
       style={resolvedStyle}
       whileHover={hoverMotion}

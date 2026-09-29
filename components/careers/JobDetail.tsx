@@ -76,9 +76,10 @@ function DetailBlock({
 
 export function JobDetail({ job }: { job: CareersJobDetail }) {
   const meta = [
-    { label: "Role", value: job.role },
     { label: "Experience", value: job.experience },
+    { label: "Role", value: job.role },
     { label: "Location", value: job.location },
+    { label: "Job ID", value: job.jobId },
   ].filter((item) => item.value);
 
   return (
