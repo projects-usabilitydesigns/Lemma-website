@@ -380,7 +380,7 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
       ),
       accent: "#008fdb",
       tone: "dark",
-      href: `/resources/blogs/${item.Slug}`,
+      href: `/blogs/${item.Slug}`,
     }));
   } catch {
     return [];

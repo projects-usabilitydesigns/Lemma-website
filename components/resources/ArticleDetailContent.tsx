@@ -153,7 +153,7 @@ export function ArticleDetailContent({
   const excerpt = cleanArticleText(article.excerpt);
   const sharePath =
     article.kind === "blog"
-      ? `/resources/blogs/${article.slug}`
+      ? `/blogs/${article.slug}`
       : article.kind === "newsroom"
         ? `/newsroom/${article.slug}`
         : `/case-studies/${article.slug}`;
