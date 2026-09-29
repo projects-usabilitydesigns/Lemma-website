@@ -112,7 +112,7 @@ export function Header({
       <Container className="relative flex h-[90px] items-center justify-between">
         <Link href="/" aria-label="Lemma Technologies home" className="block">
           <Image
-            src="/images/logo-lemma-registered.png"
+            src="/LEMMA%C2%AELogo.png"
             alt="LEMMA"
             width={1089}
             height={241}

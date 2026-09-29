@@ -140,13 +140,12 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
                 {/* LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
                 <div className="absolute left-[12%] top-[8%] z-10 w-[55%] max-w-[382px] md:left-[143px] md:top-[38px] md:w-[382px]">
                   <Image
-                    src="/images/products/integral-white.svg"
+                    src="/LEMMA_Integral_(R)%20(1).png"
                     alt="Lemma Integral®"
-                    width={382}
-                    height={35}
-                    className="h-[22px] w-auto object-contain object-left md:h-[35px] md:w-[382px]"
+                    width={674}
+                    height={65}
+                    className="h-[22px] w-auto object-contain object-left brightness-0 invert md:h-[35px] md:w-auto"
                     priority
-                    unoptimized
                   />
                 </div>
 

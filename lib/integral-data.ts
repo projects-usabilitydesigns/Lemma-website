@@ -7,8 +7,7 @@ export function productAsset(filename: string) {
 }
 
 export const integralAssets = {
-  heroFunnel: productImage("Frame 1597890042-nobg.png"),
-  heroLogo: productAsset("integral.png"),
+  heroFunnel: "/Frame%201597890042.png",
   keyword: productAsset("integral-keyword.png"),
   reinforce: productAsset("integral-audience-mapping.png"),
   results: productImage("integral image.png"),
@@ -17,7 +16,7 @@ export const integralAssets = {
   badgeReinforce: productImage("Frame 1597890298.png"),
   badgeResults: productImage("Frame 1597890299.png"),
   audienceGraph: productAsset("integral-audience-graph.png"),
-  logo: productAsset("integral.svg"),
+  logo: "/LEMMA_Integral_(R)%20(1).png",
 } as const;
 
 export const integralFaqs = [

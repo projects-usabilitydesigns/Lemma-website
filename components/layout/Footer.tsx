@@ -127,7 +127,7 @@ export function Footer() {
             <div>
               <Link href="/" className="mb-5 block">
                 <Image
-                  src="/images/logo-lemma-registered.png"
+                  src="/LEMMA%C2%AELogo.png"
                   alt="LEMMA"
                   width={1089}
                   height={241}
