@@ -8,8 +8,7 @@ const strapi = new URL(
 );
 
 const nextConfig: NextConfig = {
-  // Pin the tracing root: the nested mailer/ service has its own lockfile,
-  // without this Next.js warns about multiple lockfiles.
+  // Pin the tracing root: nested packages (cms/, mailer/) have their own lockfiles.
   outputFileTracingRoot: path.join(__dirname),
   images: {
     formats: ["image/avif", "image/webp"],

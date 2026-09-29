@@ -1,19 +1,17 @@
 import { NextResponse } from "next/server";
+import { buildContactAckEmail } from "@/lib/contact-ack-email";
+import { buildContactRequestEmail } from "@/lib/contact-email";
 import type { ContactAudienceId } from "@/lib/contact-data";
 import { getEmailError, getPhoneError } from "@/lib/form-validation";
-import { envValue, readLocalEnv } from "@/lib/mailer";
+import { normalizeAttribution } from "@/lib/lead-attribution";
+import { captureLeadSquared } from "@/lib/leadsquared";
+import { formMailErrorResponse, getFormInbox, sendFormMail, sendVisitorAck } from "@/lib/mailer";
 import type { ContactRequestPayload } from "@/lib/send-contact-request";
 
-type ContactRequestBody = Partial<Record<keyof ContactRequestPayload, unknown>>;
+type ContactRequestBody = Partial<Record<keyof ContactRequestPayload | "attribution", unknown>>;
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
-}
-
-function mailerUrl(path: string) {
-  const localEnv = readLocalEnv();
-  const base = (envValue("MAILER_URL", localEnv) || "http://127.0.0.1:4000").replace(/\/$/, "");
-  return `${base}${path}`;
 }
 
 export async function POST(request: Request) {
@@ -50,24 +48,55 @@ export async function POST(request: Request) {
   const phoneError = getPhoneError(values.mobile, { required: true });
   if (phoneError) return NextResponse.json({ error: phoneError }, { status: 400 });
 
+  const attribution = normalizeAttribution(body.attribution);
+  const inbox = getFormInbox();
+  const { subject, html, text } = buildContactRequestEmail(values);
+
   try {
-    const res = await fetch(mailerUrl("/api/contact"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
+    await sendFormMail({
+      to: inbox,
+      replyTo: values.email,
+      subject,
+      text,
+      html,
     });
-    const data = (await res.json().catch(() => null)) as { error?: string } | null;
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: data?.error || "Could not send your message. Please try again." },
-        { status: res.status },
-      );
-    }
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
-      { error: "Could not send your message. Please try again." },
-      { status: 502 },
-    );
+  } catch (error) {
+    const result = formMailErrorResponse(error, "Could not send your message. Please try again.");
+    return NextResponse.json({ error: result.error }, { status: result.status });
   }
+
+  const ack = buildContactAckEmail({
+    firstName: values.firstName,
+    audience: values.audience,
+  });
+
+  await Promise.allSettled([
+    sendVisitorAck({
+      to: values.email,
+      replyTo: inbox,
+      subject: ack.subject,
+      text: ack.text,
+      html: ack.html,
+    }),
+    captureLeadSquared({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      phone: values.mobile,
+      company: values.company,
+      jobTitle: values.designation,
+      country: values.country,
+      source: "Website - Contact",
+      website: attribution.currentUrl || attribution.landingPage,
+      notes: [
+        `Audience: ${audience === "media-owners" ? "Media owner" : "Advertiser"}`,
+        values.message ? `Message: ${values.message}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      attribution,
+    }),
+  ]);
+
+  return NextResponse.json({ ok: true });
 }
