@@ -207,7 +207,7 @@ export const products: Product[] = [
     description:
       "Connect real-world visibility to measurable digital results (ROI) with full-funnel activation, retargeting, and attribution.",
     logo: "/images/products/integral.svg",
-    logoColor: "/images/products/integral-hero-logo.svg",
+    logoColor: "/LEMMA_Integral_(R)%20(1).png",
     href: "/products/integral",
   },
   {
