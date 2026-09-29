@@ -131,7 +131,7 @@ export function Footer() {
                   alt="LEMMA"
                   width={1089}
                   height={241}
-                  className="h-8 w-[145px] object-contain object-left"
+                  className="h-[44px] w-[197px] object-contain object-left"
                 />
               </Link>
               <ul className="space-y-3 text-[14px] leading-relaxed text-[var(--color-slate)]">

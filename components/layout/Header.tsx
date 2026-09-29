@@ -116,7 +116,7 @@ export function Header({
             alt="LEMMA"
             width={1089}
             height={241}
-            className="h-[35px] w-[158px] object-contain object-left"
+            className="h-[50px] w-[222px] object-contain object-left"
             priority
           />
         </Link>
