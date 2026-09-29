@@ -172,13 +172,13 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
             id: "case-studies",
             title: "Case Studies",
             description: "Campaigns that performed",
-            href: "/case-studies",
+            href: "/resources/case-studies",
           },
           {
             id: "newsroom",
             title: "Newsroom",
             description: "News & announcements",
-            href: "/newsroom",
+            href: "/resources/newsroom",
           },
         ],
       },
@@ -188,7 +188,7 @@ export const megaMenus: Record<"who-we-are" | "what-we-do" | "resources", MegaMe
       title: "Campaigns that turned outdoor into outcomes.",
       description: "Explore how brands activate and measure across DOOH, CTV, and beyond with Lemma.",
       ctaLabel: "View case studies",
-      ctaHref: "/case-studies",
+      ctaHref: "/resources/case-studies",
       image: "/images/case-studies/etihad-new-year-sale.jpg",
     },
   },
@@ -400,7 +400,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 Min read",
     views: "72 Views",
     image: "/images/blog/iab.png",
-    href: "/resources/blogs/iab-tech-lab-summit-2026",
+    href: "/blogs/iab-tech-lab-summit-2026",
   },
   {
     id: "performance",
@@ -409,7 +409,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 Min read",
     views: "124 Views",
     image: "/images/blog/performance.png",
-    href: "/resources/blogs/why-performance-campaigns-fail-to-scale",
+    href: "/blogs/why-performance-campaigns-fail-to-scale",
   },
   {
     id: "ooh",
@@ -418,7 +418,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 Min read",
     views: "204 Views",
     image: "/images/blog/ooh.png",
-    href: "/resources/blogs/ooh-media-conference-2026",
+    href: "/blogs/ooh-media-conference-2026",
   },
 ];
 
