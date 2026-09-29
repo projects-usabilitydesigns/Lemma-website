@@ -87,7 +87,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Lemma Technologies",
   url: siteUrl,
-  logo: `${siteUrl}/images/logo-lemma.svg`,
+  logo: `${siteUrl}/images/logo-lemma-registered.png`,
   email: "contactus@lemmamedia.com",
   telephone: "+00 12345678",
   address: {

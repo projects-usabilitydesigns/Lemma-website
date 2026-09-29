@@ -53,30 +53,55 @@ function FeatureImage({
   feature: (typeof integralFeatures)[number];
   reduced: boolean;
 }) {
+  const isDashboard = feature.id === "unified";
+
   return (
     <motion.div
-      className="relative aspect-[5/4] w-full"
+      className={cn("relative w-full", !isDashboard && "aspect-[5/4]")}
       animate={reduced ? undefined : { y: [0, -6, 0] }}
       transition={
         reduced
           ? undefined
           : {
-              duration: 5.5 + (feature.id === "unified" ? 0.8 : 0),
+              duration: 5.5 + (isDashboard ? 0.8 : 0),
               ease: "easeInOut",
               repeat: Infinity,
             }
       }
     >
-      <Image
-        src={feature.image}
-        alt={feature.imageAlt}
-        fill
-        className={cn(
-          "object-contain object-center",
-          feature.id === "results" && "mix-blend-screen",
-        )}
-        sizes="(max-width: 1024px) 100vw, 620px"
-      />
+      {isDashboard ? (
+        <div className="relative mx-auto w-[94%]">
+          <div
+            className="rounded-[16px] p-[1.5px] shadow-[0_18px_44px_rgba(9,19,26,0.12),0_0_0_1px_rgba(0,143,219,0.08)]"
+            style={{
+              background:
+                "linear-gradient(145deg, rgba(0,143,219,0.55), rgba(197,216,230,0.95) 42%, rgba(0,84,129,0.32))",
+            }}
+          >
+            <div className="overflow-hidden rounded-[14.5px] bg-white">
+              <Image
+                src={feature.image}
+                alt={feature.imageAlt}
+                width={1600}
+                height={1000}
+                className="h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 620px"
+              />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Image
+          src={feature.image}
+          alt={feature.imageAlt}
+          fill
+          className={cn(
+            "object-contain object-center",
+            feature.id === "results" && "mix-blend-screen",
+          )}
+          sizes="(max-width: 1024px) 100vw, 620px"
+        />
+      )}
     </motion.div>
   );
 }

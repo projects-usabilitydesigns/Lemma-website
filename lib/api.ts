@@ -289,6 +289,7 @@ export async function getJobs(): Promise<CareersJob[]> {
     const res = await fetchCollection<W<{
       Title: string;
       JobId: string;
+      Role: string;
       RelevantExperience: string;
       JobLocation: string;
     }>>("jobs", { revalidate: REVALIDATE, sort: "Title:asc" });
@@ -301,6 +302,7 @@ export async function getJobs(): Promise<CareersJob[]> {
           title: item.Title,
           jobId: item.JobId ?? "",
           experience: item.RelevantExperience ?? "",
+          role: item.Role ?? "",
           location: item.JobLocation ?? "",
           href: `/careers/jobs/${id}`,
         };

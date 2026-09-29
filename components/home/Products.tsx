@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, staggerItem } from "@/components/animation";
@@ -11,6 +12,8 @@ import { cn } from "@/lib/utils";
 
 export function Products() {
   const data = defaultProducts;
+  const [activeId, setActiveId] = useState<string | null>(null);
+
   return (
     <section id="products" className="bg-white py-10 md:py-14">
       <Container>
@@ -22,42 +25,61 @@ export function Products() {
         </FadeUp>
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {data.map((product) => (
-            <motion.article
-              key={product.id}
-              variants={staggerItem}
-              whileHover={{ y: -8 }}
-              className="group flex h-full flex-col items-center rounded-[16px] border border-[var(--color-border-strong)] bg-white p-5 text-center shadow-[0px_4px_0px_#037C7C] transition-shadow duration-300 hover:shadow-[0px_8px_24px_rgba(3,124,124,0.25)]"
-            >
-              <div
-                className={cn(
-                  "relative mb-5 h-8 w-full",
-                  product.id === "phi" ? "max-w-[188px]" : "max-w-[230px]",
-                )}
+          {data.map((product) => {
+            const isActive = activeId === product.id;
+
+            return (
+              <motion.article
+                key={product.id}
+                variants={staggerItem}
+                whileHover={{ y: -8 }}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === "mouse") setActiveId(product.id);
+                }}
+                onPointerLeave={(event) => {
+                  if (event.pointerType === "mouse") {
+                    setActiveId((current) => (current === product.id ? null : current));
+                  }
+                }}
+                onPointerDown={() => setActiveId(product.id)}
+                className="group flex h-full flex-col items-center rounded-[16px] border border-[var(--color-border-strong)] bg-white p-5 text-center shadow-[0px_4px_0px_#037C7C] transition-shadow duration-300 hover:shadow-[0px_8px_24px_rgba(3,124,124,0.25)]"
               >
-                <Image
-                  src={product.logo}
-                  alt={`LEMMA ${product.name}`}
-                  fill
-                  unoptimized
-                  className="object-contain object-center transition-opacity duration-300 group-hover:opacity-0"
-                />
-                {product.logoColor ? (
+                <div
+                  className={cn(
+                    "relative mb-5 h-8 w-full",
+                    product.id === "phi" ? "max-w-[188px]" : "max-w-[230px]",
+                  )}
+                >
                   <Image
-                    src={product.logoColor}
-                    alt=""
+                    src={product.logo}
+                    alt={`LEMMA ${product.name}`}
                     fill
                     unoptimized
-                    className="object-contain object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    className={cn(
+                      "object-contain object-center transition-opacity duration-300",
+                      isActive && "opacity-0",
+                    )}
                   />
-                ) : null}
-              </div>
-              <p className="mb-6 flex-1 text-[16px] leading-[22px] text-[var(--color-slate)]">
-                {product.description}
-              </p>
-              <LinkArrow href={product.href}>learn more</LinkArrow>
-            </motion.article>
-          ))}
+                  {product.logoColor ? (
+                    <Image
+                      src={product.logoColor}
+                      alt=""
+                      fill
+                      unoptimized
+                      className={cn(
+                        "object-contain object-center transition-opacity duration-300",
+                        isActive ? "opacity-100" : "opacity-0",
+                      )}
+                    />
+                  ) : null}
+                </div>
+                <p className="mb-6 flex-1 text-[16px] leading-[22px] text-[var(--color-slate)]">
+                  {product.description}
+                </p>
+                <LinkArrow href={product.href}>learn more</LinkArrow>
+              </motion.article>
+            );
+          })}
         </Stagger>
       </Container>
     </section>
