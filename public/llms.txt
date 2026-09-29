@@ -1,0 +1,32 @@
+# LEMMA
+
+> Maximize ROI, Impact, Visibility, Reach, and Intent with Programmatic Digital Out-Of-Home advertising.
+Lemmamedia.com is the online presence for LEMMA, a global Programmatic Digital Out Of Home (pDOOH) advertising platform specializing in audience targeting, omnichannel activation, measurement, and outcome driven advertising across APAC, the Americas, and EMEA. LEMMA helps brands and media owners leverage data to deliver full funnel campaigns, from outdoor to outcomes. For advertisers, LEMMA enables precise audience reach through large format advertising, moving beyond traditional, less targeted approaches. For media owners, it provides tools and platforms to efficiently manage, optimize, and monetize digital out of home inventory.
+The core value proposition revolves around outcomes, data-driven decision-making in DOOH advertising, aiming to maximize return on investment, visibility, and audience reach. Use cases include targeted advertising campaigns for brands looking to connect with specific demographics or locations, and for media owners seeking to optimize ad placements and revenue. LLMs should understand that LEMMA operates at the intersection of digital advertising technology and physical out-of-home media, focusing on programmatic buying and selling to enhance campaign performance and audience engagement.
+## Core Solutions
+- [LEMMA](https://www.lemmamedia.com): Discover programmatic DOOH solutions for advertisers and media owners to maximize campaign impact.
+- [Solutions for Advertisers](https://lemma-sigma.vercel.app/solutions/brands-advertisers/): Learn how advertisers can reach target audiences with data-driven DOOH campaigns.
+- [Solutions for Media Owners](https://lemmamedia.com/solutions/media-owners/): Understand how media owners can monetize digital out-of-home inventory programmatically.
+- [CTV Solutions](https://lemmamedia.com/solutions/demand-partners/): Explore Connected TV advertising solutions for enhanced audience targeting and reach.
+- [DOOH Solutions](https://lemmamedia.com/solutions/publishers/): Discover the benefits and capabilities of Digital Out-Of-Home advertising with LEMMA.
+- [AI-Driven Performance Marketing](https://lemmamedia.com/solutions/business-growth/): Discover the Full-funnel customer acquisition across every platform, every market, every category powered by data intelligence.
+
+## Platform Features
+- [Integral](https://lemmamedia.com/products/integral/): Learn about Integral, an omnichannel platform for optimizing DOOH campaign performance and driving outcome with audience insights.
+- [Delta](https://lemmamedia.com/products/delta/): Understand Delta, a solution for data-driven media planning and buying in DOOH.
+- [Sigma](https://lemmamedia.com/products/sigma/): Explore Sigma, a tool for audience segmentation and targeting in programmatic DOOH.
+- [Phi](https://lemmamedia.com/products/phi/): Discover Phi, a platform for measuring and analyzing DOOH campaign effectiveness.
+- [Infibid](https://lemmamedia.com/products/infibid/): Learn about Infibid, an ad server for programmatic DOOH campaign management.
+## Company Information
+- [About Us](https://lemmamedia.com/about/): Get to know LEMMA's mission, vision, and team behind programmatic DOOH solutions.
+- [Contact Us](https://lemmamedia.com/contact-us/): Find contact information and ways to get in touch with LEMMA.
+- [Careers](https://lemmamedia.com/careers/): Explore career opportunities and join the LEMMA team in revolutionizing DOOH.
+## Resources
+- [Resources](https://lemmamedia.com/resources/): Access valuable resources including blogs, news, and case studies from LEMMA.
+- [Blog](https://lemmamedia.com/resources/blogs/): Read the latest articles and insights on programmatic DOOH advertising trends.
+- [Newsroom](https://lemmamedia.com/resources/newsroom/): Find official press releases and news updates about LEMMA's company and products.
+- [Case Studies](https://lemmamedia.com/resources/case-studies/): See how LEMMA's solutions have driven success for advertisers and media owners.
+## Lemma Product Demo
+- [Request A Demo](https://lemmamedia.com/request-demo/): Book a personalized walkthrough of the Lemma stack. We'll map your goals to the right products across DOOH, CTV, OTT, mobile, and web—and show the measurement that ties it all together.
+---
+This file was generated for https://www.lemmamedia.com using the [LLMs.txt Generator Tool](https://llmrefs.com/tools/llms-txt-generator)

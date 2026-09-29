@@ -62,7 +62,7 @@ A full funnel Platform that transforms your OOH
           <div className="relative mx-auto flex w-full max-w-[640px] items-center justify-center self-center overflow-visible pt-4 md:pt-6 lg:max-w-[680px] lg:translate-y-4">
             <div className="relative w-full max-md:mb-8 max-md:origin-top max-md:scale-125">
               <Image
-                src={integralAssets.heroLogo}
+                src={integralAssets.heroFunnel}
                 alt="Lemma Integral® full funnel — Reach, Reinforce, Results, Outcome"
                 width={837}
                 height={715}

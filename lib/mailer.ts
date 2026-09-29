@@ -113,7 +113,7 @@ export async function sendFormMail({
     attachments: [
       {
         filename: "logo-lemma.png",
-        path: path.join(process.cwd(), "public/images/logo-lemma.png"),
+        path: path.join(process.cwd(), "public", "LEMMA®Logo.png"),
         cid: DEMO_LOGO_CID,
       },
       ...files,

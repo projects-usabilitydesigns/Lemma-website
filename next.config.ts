@@ -49,6 +49,36 @@ const nextConfig: NextConfig = {
         destination: "/solutions/demand-partners",
         permanent: true,
       },
+      {
+        source: "/newsroom",
+        destination: "/resources/newsroom",
+        permanent: true,
+      },
+      {
+        source: "/case-studies",
+        destination: "/resources/case-studies",
+        permanent: true,
+      },
+      {
+        source: "/blogs",
+        destination: "/resources/blogs",
+        permanent: true,
+      },
+      {
+        source: "/resources/newsroom/:slug",
+        destination: "/newsroom/:slug",
+        permanent: true,
+      },
+      {
+        source: "/resources/case-studies/:slug",
+        destination: "/case-studies/:slug",
+        permanent: true,
+      },
+      {
+        source: "/resources/blogs/:slug",
+        destination: "/blogs/:slug",
+        permanent: true,
+      },
     ];
   },
 };
