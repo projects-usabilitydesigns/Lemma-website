@@ -1,6 +1,8 @@
 # lemma-mailer
 
-Standalone Node.js email service for Lemma websites. Receives form submissions over HTTP and sends branded emails with **nodemailer** (SMTP). Used by the Lemma-website contact, request-demo, job-application, and subscribe forms.
+Legacy standalone email service. The Lemma website now sends form emails **in-process** from Next.js API routes (`app/api/*/route.ts`) using `lib/mailer.ts` and the same SMTP env vars. You do **not** need to run this service for contact, request-demo, job-application, or subscribe forms.
+
+This folder is kept only as a reference implementation.
 
 ## Setup
 
