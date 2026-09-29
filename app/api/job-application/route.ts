@@ -1,20 +1,17 @@
 import { NextResponse } from "next/server";
-import { envValue, readLocalEnv } from "@/lib/mailer";
+import { getEmailError, getPhoneError } from "@/lib/form-validation";
+import { buildJobApplicationAckEmail } from "@/lib/job-application-ack-email";
+import { buildJobApplicationEmail } from "@/lib/job-application-email";
+import { normalizeAttribution } from "@/lib/lead-attribution";
+import { captureLeadSquared } from "@/lib/leadsquared";
+import { formMailErrorResponse, getJobsInbox, sendFormMail, sendVisitorAck } from "@/lib/mailer";
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const PHONE_PATTERN = /^[+\d][\d\s()-]{6,}$/;
 const MAX_CV_SIZE = 5 * 1024 * 1024;
 const ALLOWED_CV_EXTENSIONS = [".pdf", ".doc", ".docx"];
-
-function mailerUrl(path: string) {
-  const localEnv = readLocalEnv();
-  const base = (envValue("MAILER_URL", localEnv) || "http://127.0.0.1:4000").replace(/\/$/, "");
-  return `${base}${path}`;
-}
 
 export async function POST(request: Request) {
   let form: FormData;
@@ -37,19 +34,24 @@ export async function POST(request: Request) {
   const lastName = get("lastName");
   const email = get("email").toLowerCase();
   const jobTitle = get("jobTitle");
+  const phone = get("phone");
+  const company = get("company");
+  const message = get("message");
+  const jobId = get("jobId");
+  const pageUrl = get("pageUrl");
 
   if (!firstName || !lastName || !email || !jobTitle) {
     return NextResponse.json({ error: "Please complete the required fields." }, { status: 400 });
   }
 
-  if (!EMAIL_PATTERN.test(email)) {
-    return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
-  }
+  const emailError = getEmailError(email, { requireWorkEmail: false });
+  if (emailError) return NextResponse.json({ error: emailError }, { status: 400 });
 
-  const phone = get("phone");
-  if (phone && !PHONE_PATTERN.test(phone)) {
-    return NextResponse.json({ error: "Enter a valid phone number." }, { status: 400 });
-  }
+  const phoneError = getPhoneError(phone, { required: false });
+  if (phoneError) return NextResponse.json({ error: phoneError }, { status: 400 });
+
+  let cvFilename = "";
+  let cvFiles: { filename: string; content: Buffer }[] = [];
 
   if (rawCv && typeof rawCv !== "string") {
     const file = rawCv as File;
@@ -63,29 +65,83 @@ export async function POST(request: Request) {
     if (file.size > MAX_CV_SIZE) {
       return NextResponse.json({ error: "Your CV must be smaller than 5 MB." }, { status: 400 });
     }
+    cvFilename = file.name;
+    cvFiles = [{ filename: file.name, content: Buffer.from(await file.arrayBuffer()) }];
   }
 
+  let attributionRaw: unknown = get("attribution");
   try {
-    const forward = new FormData();
-    for (const [key, value] of form.entries()) {
-      forward.append(key, value);
-    }
-    const res = await fetch(mailerUrl("/api/job-application"), {
-      method: "POST",
-      body: forward,
-    });
-    const data = (await res.json().catch(() => null)) as { error?: string } | null;
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: data?.error || "Could not send your application. Please try again." },
-        { status: res.status },
-      );
-    }
-    return NextResponse.json({ ok: true });
+    attributionRaw = attributionRaw ? JSON.parse(String(attributionRaw)) : {};
   } catch {
-    return NextResponse.json(
-      { error: "Could not send your application. Please try again." },
-      { status: 502 },
-    );
+    attributionRaw = {};
   }
+  const attribution = normalizeAttribution(attributionRaw);
+
+  const values = {
+    firstName,
+    lastName,
+    email,
+    phone,
+    company,
+    message,
+    jobTitle,
+    jobId,
+    pageUrl,
+    cvFilename,
+  };
+
+  const inbox = getJobsInbox();
+  const { subject, html, text } = buildJobApplicationEmail(values);
+
+  try {
+    await sendFormMail({
+      to: inbox,
+      replyTo: email,
+      subject,
+      text,
+      html,
+      files: cvFiles,
+    });
+  } catch (error) {
+    const result = formMailErrorResponse(error, "Could not send your application. Please try again.");
+    return NextResponse.json({ error: result.error }, { status: result.status });
+  }
+
+  const ack = buildJobApplicationAckEmail({
+    firstName,
+    jobTitle,
+    cvFilename: cvFilename || undefined,
+  });
+
+  await Promise.allSettled([
+    sendVisitorAck({
+      to: email,
+      replyTo: inbox,
+      subject: ack.subject,
+      text: ack.text,
+      html: ack.html,
+    }),
+    captureLeadSquared({
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      jobTitle,
+      source: "Website - Careers",
+      website: pageUrl || attribution.currentUrl,
+      notes: [
+        jobTitle ? `Role: ${jobTitle}` : "",
+        jobId ? `Job ID: ${jobId}` : "",
+        cvFilename ? `CV: ${cvFilename}` : "",
+        message ? `Message: ${message}` : "",
+        pageUrl ? `Page: ${pageUrl}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      attribution,
+    }),
+  ]);
+
+  return NextResponse.json({ ok: true });
 }

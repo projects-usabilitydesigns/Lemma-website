@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/components/cookies/CookieConsentProvider";
 import { ConsentScripts } from "@/components/cookies/ConsentScripts";
+import { LeadAttributionCapture } from "@/components/leads/LeadAttributionCapture";
 import { DemoModalProvider } from "@/components/request-demo/DemoModalProvider";
 import { CONSENT_BOOT_SCRIPT } from "@/lib/cookie-consent";
 import { GTM_CONTAINER_IDS, GTM_HEAD_SCRIPT } from "@/lib/gtm";
@@ -128,6 +129,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOT_SCRIPT }} />
         <SmoothScrollProvider>
           <CookieConsentProvider>
+            <LeadAttributionCapture />
             <ConsentScripts />
             <DemoModalProvider>
               {children}

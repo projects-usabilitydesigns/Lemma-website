@@ -1,4 +1,5 @@
 import type { ContactAudienceId } from "@/lib/contact-data";
+import { getLeadAttribution } from "@/lib/lead-attribution";
 
 export type ContactRequestPayload = {
   firstName: string;
@@ -16,7 +17,10 @@ export async function sendContactRequest(values: ContactRequestPayload) {
   const response = await fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(values),
+    body: JSON.stringify({
+      ...values,
+      attribution: getLeadAttribution(),
+    }),
   });
 
   const result = (await response.json().catch(() => null)) as { error?: string } | null;
