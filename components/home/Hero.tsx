@@ -144,7 +144,7 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
                     alt="Lemma Integral®"
                     width={674}
                     height={65}
-                    className="h-[22px] w-auto object-contain object-left brightness-0 invert md:h-[35px] md:w-auto"
+                    className="h-[22px] w-auto object-contain object-left md:h-[35px] md:w-auto"
                     priority
                   />
                 </div>
