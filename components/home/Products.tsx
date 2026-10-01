@@ -47,7 +47,11 @@ export function Products() {
                 <div
                   className={cn(
                     "relative mb-5 h-8 w-full",
-                    product.id === "phi" ? "max-w-[188px]" : "max-w-[230px]",
+                    product.id === "phi"
+                      ? "max-w-[188px]"
+                      : product.id === "integral"
+                        ? "max-w-[290px]"
+                        : "max-w-[230px]",
                   )}
                 >
                   <Image
