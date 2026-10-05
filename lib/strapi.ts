@@ -122,6 +122,7 @@ export async function fetchCollection<T>(
   options?: {
     filters?: Record<string, unknown>;
     populate?: string | Record<string, unknown>;
+    fields?: string[];
     sort?: string | string[];
     pagination?: { page?: number; pageSize?: number };
     revalidate?: number;
@@ -130,9 +131,10 @@ export async function fetchCollection<T>(
   const query: Record<string, unknown> = {};
 
   if (options?.filters) query.filters = options.filters;
+  if (options?.fields?.length) query.fields = options.fields;
   if (options?.populate !== undefined) {
     query.populate = options.populate;
-  } else {
+  } else if (!options?.fields?.length) {
     query.populate = "*";
   }
   if (options?.sort) query.sort = options.sort;
