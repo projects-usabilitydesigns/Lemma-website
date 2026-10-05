@@ -42,8 +42,8 @@ export type ArticleDetail = {
 
 export const articleListing = {
   blog: { href: "/resources/blogs", label: "Blogs" },
-  newsroom: { href: "/newsroom", label: "Newsroom" },
-  "case-study": { href: "/case-studies", label: "Case Studies" },
+  newsroom: { href: "/resources/newsroom", label: "Newsroom" },
+  "case-study": { href: "/resources/case-studies", label: "Case Studies" },
 } as const;
 
 export const defaultArticleCtas: Record<ArticleKind, ArticleCta> = {

@@ -3,10 +3,12 @@ import { buildContactAckEmail } from "@/lib/contact-ack-email";
 import { buildContactRequestEmail } from "@/lib/contact-email";
 import type { ContactAudienceId } from "@/lib/contact-data";
 import { getEmailError, getPhoneError } from "@/lib/form-validation";
-import { envValue, getFormInbox, readLocalEnv, sendFormMail } from "@/lib/mailer";
+import { normalizeAttribution } from "@/lib/lead-attribution";
+import { captureLeadSquared } from "@/lib/leadsquared";
+import { formMailErrorResponse, getFormInbox, sendFormMail, sendVisitorAck } from "@/lib/mailer";
 import type { ContactRequestPayload } from "@/lib/send-contact-request";
 
-type ContactRequestBody = Partial<Record<keyof ContactRequestPayload, unknown>>;
+type ContactRequestBody = Partial<Record<keyof ContactRequestPayload | "attribution", unknown>>;
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
@@ -46,57 +48,55 @@ export async function POST(request: Request) {
   const phoneError = getPhoneError(values.mobile, { required: true });
   if (phoneError) return NextResponse.json({ error: phoneError }, { status: 400 });
 
-  const localEnv = readLocalEnv();
-  const smtpUser = envValue("SMTP_USER", localEnv);
-  const smtpPass = envValue("SMTP_PASS", localEnv);
-
-  if (!smtpUser || !smtpPass) {
-    return NextResponse.json(
-      { error: "Email sending is not configured yet. Add SMTP_USER and SMTP_PASS to .env.local." },
-      { status: 500 },
-    );
-  }
-
+  const attribution = normalizeAttribution(body.attribution);
+  const inbox = getFormInbox();
   const { subject, html, text } = buildContactRequestEmail(values);
 
   try {
     await sendFormMail({
-      smtpUser,
-      smtpPass,
-      localEnv,
-      to: getFormInbox(localEnv),
+      to: inbox,
       replyTo: values.email,
       subject,
       text,
       html,
     });
-
-    // Best-effort acknowledgment to the visitor — a failure here must not
-    // fail the message, the team email is the source of truth.
-    try {
-      const ack = buildContactAckEmail({
-        firstName: values.firstName,
-        audience: values.audience,
-      });
-      await sendFormMail({
-        smtpUser,
-        smtpPass,
-        localEnv,
-        to: values.email,
-        replyTo: getFormInbox(localEnv),
-        subject: ack.subject,
-        text: ack.text,
-        html: ack.html,
-      });
-    } catch (error) {
-      console.error("Failed to send contact acknowledgment email:", error);
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
-      { error: "Could not send your message. Please try again." },
-      { status: 502 },
-    );
+  } catch (error) {
+    const result = formMailErrorResponse(error, "Could not send your message. Please try again.");
+    return NextResponse.json({ error: result.error }, { status: result.status });
   }
+
+  const ack = buildContactAckEmail({
+    firstName: values.firstName,
+    audience: values.audience,
+  });
+
+  await Promise.allSettled([
+    sendVisitorAck({
+      to: values.email,
+      replyTo: inbox,
+      subject: ack.subject,
+      text: ack.text,
+      html: ack.html,
+    }),
+    captureLeadSquared({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      phone: values.mobile,
+      company: values.company,
+      jobTitle: values.designation,
+      country: values.country,
+      source: "Website - Contact",
+      website: attribution.currentUrl || attribution.landingPage,
+      notes: [
+        `Audience: ${audience === "media-owners" ? "Media owner" : "Advertiser"}`,
+        values.message ? `Message: ${values.message}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      attribution,
+    }),
+  ]);
+
+  return NextResponse.json({ ok: true });
 }

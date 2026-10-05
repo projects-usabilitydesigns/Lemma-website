@@ -33,7 +33,7 @@ export const resourcesHero = {
       label: "Newsroom",
       description: "Breaking stories from our world to yours.",
       accent: "#008fdb",
-      href: "/newsroom",
+      href: "/resources/newsroom",
     },
     blogs: {
       label: "Blogs",
@@ -45,7 +45,7 @@ export const resourcesHero = {
       label: "Case Studies",
       description: "Strategic intelligence and analytics.",
       accent: "#009352",
-      href: "/case-studies",
+      href: "/resources/case-studies",
     },
   },
 } as const;
@@ -62,7 +62,7 @@ export const blogs: ResourceArticle[] = [
     image: "/images/resources/dooh-festive-placement.png",
     accent: "#f05a27",
     tone: "dark",
-    href: "/resources/blogs/festive-dooh-touchpoint-cluster",
+    href: "/blogs/festive-dooh-touchpoint-cluster",
   },
   {
     id: "blog-2",
@@ -75,7 +75,7 @@ export const blogs: ResourceArticle[] = [
     image: "/images/resources/ooh-new-metrics.png",
     accent: "#008fdb",
     tone: "light",
-    href: "/resources/blogs/oac-2026-new-metrics-ooh",
+    href: "/blogs/oac-2026-new-metrics-ooh",
   },
   {
     id: "blog-3",
@@ -88,7 +88,7 @@ export const blogs: ResourceArticle[] = [
     image: "/images/resources/investing-in-context.png",
     accent: "#74be44",
     tone: "dark",
-    href: "/resources/blogs/investing-in-context",
+    href: "/blogs/investing-in-context",
   },
 ];
 
@@ -105,7 +105,7 @@ export const allBlogs: ResourceArticle[] = [
     image: "/images/resources/ai-ctv-advertising.png",
     accent: "#008fdb",
     tone: "dark",
-    href: "/resources/blogs/infocomm-2026-av-innovation",
+    href: "/blogs/infocomm-2026-av-innovation",
   },
   {
     id: "blog-5",
@@ -118,7 +118,7 @@ export const allBlogs: ResourceArticle[] = [
     image: "/images/resources/ctv-beyond-screen.png",
     accent: "#008fdb",
     tone: "dark",
-    href: "/resources/blogs/dooh-creative-rules",
+    href: "/blogs/dooh-creative-rules",
   },
   {
     id: "blog-6",
@@ -131,7 +131,7 @@ export const allBlogs: ResourceArticle[] = [
     image: "/images/resources/lemma-continuum-partnership.png",
     accent: "#009352",
     tone: "light",
-    href: "/resources/blogs/programmatic-dooh-battle-the-blast",
+    href: "/blogs/programmatic-dooh-battle-the-blast",
   },
   {
     id: "blog-7",
@@ -144,7 +144,7 @@ export const allBlogs: ResourceArticle[] = [
     image: "/images/resources/mixi-programmatic-dooh.png",
     accent: "#f05a27",
     tone: "dark",
-    href: "/resources/blogs/compliance-to-scale-playbook",
+    href: "/blogs/compliance-to-scale-playbook",
   },
   {
     id: "blog-8",
@@ -157,7 +157,7 @@ export const allBlogs: ResourceArticle[] = [
     image: "/images/blog/iab.png",
     accent: "#008fdb",
     tone: "dark",
-    href: "/resources/blogs/iab-tech-lab-summit-2026",
+    href: "/blogs/iab-tech-lab-summit-2026",
   },
   {
     id: "blog-9",
@@ -170,7 +170,7 @@ export const allBlogs: ResourceArticle[] = [
     image: "/images/blog/performance.png",
     accent: "#74be44",
     tone: "dark",
-    href: "/resources/blogs/why-performance-campaigns-fail-to-scale",
+    href: "/blogs/why-performance-campaigns-fail-to-scale",
   },
 ];
 

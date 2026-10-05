@@ -18,6 +18,7 @@ import { FadeUp } from "@/components/animation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { fieldClass } from "@/lib/form-styles";
+import { getLeadAttribution } from "@/lib/lead-attribution";
 import {
   articleCtaHref,
   articleHeadings,
@@ -152,7 +153,7 @@ export function ArticleDetailContent({
   const excerpt = cleanArticleText(article.excerpt);
   const sharePath =
     article.kind === "blog"
-      ? `/resources/blogs/${article.slug}`
+      ? `/blogs/${article.slug}`
       : article.kind === "newsroom"
         ? `/newsroom/${article.slug}`
         : `/case-studies/${article.slug}`;
@@ -206,6 +207,7 @@ export function ArticleDetailContent({
           body: JSON.stringify({
             email: email.trim(),
             pageUrl: typeof window !== "undefined" ? window.location.href : "",
+            attribution: getLeadAttribution(),
           }),
         });
         const result = (await response.json().catch(() => null)) as {

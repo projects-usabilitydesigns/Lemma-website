@@ -5,9 +5,11 @@ import { Footer } from "@/components/layout/Footer";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/components/cookies/CookieConsentProvider";
 import { ConsentScripts } from "@/components/cookies/ConsentScripts";
+import { LeadAttributionCapture } from "@/components/leads/LeadAttributionCapture";
 import { DemoModalProvider } from "@/components/request-demo/DemoModalProvider";
 import { CONSENT_BOOT_SCRIPT } from "@/lib/cookie-consent";
 import { GTM_CONTAINER_IDS, GTM_HEAD_SCRIPT } from "@/lib/gtm";
+import { LINKEDIN_INSIGHT_HEAD_SCRIPT, LINKEDIN_INSIGHT_NOSCRIPT_SRC } from "@/lib/linkedin-insight";
 import "./globals.css";
 
 const inter = Inter({
@@ -87,7 +89,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Lemma Technologies",
   url: siteUrl,
-  logo: `${siteUrl}/images/logo-lemma-registered.png`,
+  logo: `${siteUrl}/LEMMA%C2%AELogo.png`,
   email: "contactus@lemmamedia.com",
   telephone: "+00 12345678",
   address: {
@@ -109,6 +111,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script dangerouslySetInnerHTML={{ __html: GTM_HEAD_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: LINKEDIN_INSIGHT_HEAD_SCRIPT }} />
       </head>
       <body className={`${inter.variable} ${googleSansFlex.variable} antialiased`}>
         {GTM_CONTAINER_IDS.map((id) => (
@@ -121,6 +124,15 @@ export default function RootLayout({
             />
           </noscript>
         ))}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+            src={LINKEDIN_INSIGHT_NOSCRIPT_SRC}
+          />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -128,6 +140,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOT_SCRIPT }} />
         <SmoothScrollProvider>
           <CookieConsentProvider>
+            <LeadAttributionCapture />
             <ConsentScripts />
             <DemoModalProvider>
               {children}

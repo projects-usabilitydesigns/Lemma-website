@@ -1,17 +1,15 @@
 import { NextResponse } from "next/server";
+import { getEmailError, getPhoneError } from "@/lib/form-validation";
 import { buildJobApplicationAckEmail } from "@/lib/job-application-ack-email";
 import { buildJobApplicationEmail } from "@/lib/job-application-email";
-import { getEmailError, getPhoneError } from "@/lib/form-validation";
-import { JOBS_INBOX_EMAIL } from "@/lib/job-inbox";
-import { envValue, readLocalEnv, sendFormMail } from "@/lib/mailer";
-import type { JobApplicationPayload } from "@/lib/send-job-application";
+import { normalizeAttribution } from "@/lib/lead-attribution";
+import { captureLeadSquared } from "@/lib/leadsquared";
+import { formMailErrorResponse, getJobsInbox, sendFormMail, sendVisitorAck } from "@/lib/mailer";
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const PHONE_PATTERN = /^[+\d][\d\s()-]{6,}$/;
 const MAX_CV_SIZE = 5 * 1024 * 1024;
 const ALLOWED_CV_EXTENSIONS = [".pdf", ".doc", ".docx"];
 
@@ -32,38 +30,29 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please accept the privacy policy to continue." }, { status: 400 });
   }
 
-  const values: JobApplicationPayload = {
-    firstName: get("firstName"),
-    lastName: get("lastName"),
-    email: get("email").toLowerCase(),
-    phone: get("phone"),
-    company: get("company"),
-    message: get("message"),
-    jobTitle: get("jobTitle"),
-    jobId: get("jobId"),
-    pageUrl: get("pageUrl"),
-    cvFilename: "",
-  };
+  const firstName = get("firstName");
+  const lastName = get("lastName");
+  const email = get("email").toLowerCase();
+  const jobTitle = get("jobTitle");
+  const phone = get("phone");
+  const company = get("company");
+  const message = get("message");
+  const jobId = get("jobId");
+  const pageUrl = get("pageUrl");
 
-  if (!values.firstName || !values.lastName || !values.email || !values.jobTitle) {
+  if (!firstName || !lastName || !email || !jobTitle) {
     return NextResponse.json({ error: "Please complete the required fields." }, { status: 400 });
   }
 
-  if (!EMAIL_PATTERN.test(values.email)) {
-    return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
-  }
-
-  if (values.phone && !PHONE_PATTERN.test(values.phone)) {
-    return NextResponse.json({ error: "Enter a valid phone number." }, { status: 400 });
-  }
-
-  const emailError = getEmailError(values.email, { requireWorkEmail: false });
+  const emailError = getEmailError(email, { requireWorkEmail: false });
   if (emailError) return NextResponse.json({ error: emailError }, { status: 400 });
 
-  const phoneError = getPhoneError(values.phone, { required: false });
+  const phoneError = getPhoneError(phone, { required: false });
   if (phoneError) return NextResponse.json({ error: phoneError }, { status: 400 });
 
+  let cvFilename = "";
   let cvFiles: { filename: string; content: Buffer }[] = [];
+
   if (rawCv && typeof rawCv !== "string") {
     const file = rawCv as File;
     const extension = file.name.slice(file.name.lastIndexOf(".")).toLowerCase();
@@ -76,63 +65,83 @@ export async function POST(request: Request) {
     if (file.size > MAX_CV_SIZE) {
       return NextResponse.json({ error: "Your CV must be smaller than 5 MB." }, { status: 400 });
     }
-    values.cvFilename = file.name;
+    cvFilename = file.name;
     cvFiles = [{ filename: file.name, content: Buffer.from(await file.arrayBuffer()) }];
   }
 
-  const localEnv = readLocalEnv();
-  const smtpUser = envValue("SMTP_USER", localEnv);
-  const smtpPass = envValue("SMTP_PASS", localEnv);
-
-  if (!smtpUser || !smtpPass) {
-    return NextResponse.json(
-      { error: "Email sending is not configured yet. Add SMTP_USER and SMTP_PASS to .env.local." },
-      { status: 500 },
-    );
+  let attributionRaw: unknown = get("attribution");
+  try {
+    attributionRaw = attributionRaw ? JSON.parse(String(attributionRaw)) : {};
+  } catch {
+    attributionRaw = {};
   }
+  const attribution = normalizeAttribution(attributionRaw);
 
+  const values = {
+    firstName,
+    lastName,
+    email,
+    phone,
+    company,
+    message,
+    jobTitle,
+    jobId,
+    pageUrl,
+    cvFilename,
+  };
+
+  const inbox = getJobsInbox();
   const { subject, html, text } = buildJobApplicationEmail(values);
 
   try {
     await sendFormMail({
-      smtpUser,
-      smtpPass,
-      localEnv,
-      to: envValue("JOBS_INBOX_EMAIL", localEnv) || smtpUser || JOBS_INBOX_EMAIL,
-      replyTo: values.email,
+      to: inbox,
+      replyTo: email,
       subject,
       text,
       html,
       files: cvFiles,
     });
-
-    // Best-effort acknowledgment to the candidate — a failure here must not
-    // fail the application, the team email is the source of truth.
-    try {
-      const ack = buildJobApplicationAckEmail({
-        firstName: values.firstName,
-        jobTitle: values.jobTitle,
-        cvFilename: values.cvFilename || undefined,
-      });
-      await sendFormMail({
-        smtpUser,
-        smtpPass,
-        localEnv,
-        to: values.email,
-        replyTo: envValue("JOBS_INBOX_EMAIL", localEnv) || smtpUser || JOBS_INBOX_EMAIL,
-        subject: ack.subject,
-        text: ack.text,
-        html: ack.html,
-      });
-    } catch (error) {
-      console.error("Failed to send acknowledgment email to candidate:", error);
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
-      { error: "Could not send your application. Please try again." },
-      { status: 502 },
-    );
+  } catch (error) {
+    const result = formMailErrorResponse(error, "Could not send your application. Please try again.");
+    return NextResponse.json({ error: result.error }, { status: result.status });
   }
+
+  const ack = buildJobApplicationAckEmail({
+    firstName,
+    jobTitle,
+    cvFilename: cvFilename || undefined,
+  });
+
+  await Promise.allSettled([
+    sendVisitorAck({
+      to: email,
+      replyTo: inbox,
+      subject: ack.subject,
+      text: ack.text,
+      html: ack.html,
+    }),
+    captureLeadSquared({
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      jobTitle,
+      source: "Website - Careers",
+      website: pageUrl || attribution.currentUrl,
+      notes: [
+        jobTitle ? `Role: ${jobTitle}` : "",
+        jobId ? `Job ID: ${jobId}` : "",
+        cvFilename ? `CV: ${cvFilename}` : "",
+        message ? `Message: ${message}` : "",
+        pageUrl ? `Page: ${pageUrl}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      attribution,
+    }),
+  ]);
+
+  return NextResponse.json({ ok: true });
 }

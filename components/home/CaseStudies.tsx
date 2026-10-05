@@ -131,7 +131,7 @@ export function CaseStudies({ caseStudies }: { caseStudies?: CaseStudy[] }) {
           </div>
         </div>
         <div className="flex justify-center">
-          <Button href="/case-studies" variant="primary">
+          <Button href="/resources/case-studies" variant="primary">
             All Case Studies
           </Button>
         </div>

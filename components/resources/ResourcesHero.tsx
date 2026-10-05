@@ -114,7 +114,7 @@ export function ResourcesHero() {
             >
               <div className="relative h-8 w-[132px]">
                 <Image
-                  src="/images/logo-lemma-registered.png"
+                  src="/LEMMA%C2%AELogo.png"
                   alt="LEMMA"
                   fill
                   className="object-contain"

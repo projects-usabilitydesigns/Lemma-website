@@ -1,3 +1,5 @@
+import { getLeadAttribution } from "@/lib/lead-attribution";
+
 export type JobApplicationPayload = {
   firstName: string;
   lastName: string;
@@ -35,6 +37,7 @@ export async function sendJobApplication(values: {
   form.append("jobId", values.jobId);
   form.append("consent", String(values.consent));
   form.append("pageUrl", typeof window !== "undefined" ? window.location.href : values.pageUrl ?? "");
+  form.append("attribution", JSON.stringify(getLeadAttribution()));
   if (values.cv) form.append("cv", values.cv);
 
   const response = await fetch("/api/job-application", {
