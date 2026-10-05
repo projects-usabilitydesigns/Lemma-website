@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { AboutCta } from "@/components/about/AboutCta";
 import { ArticleDetailContent } from "@/components/resources/ArticleDetailContent";
 import { getCaseStudyBySlug, getCaseStudyArticles } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -13,10 +14,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const article = await getCaseStudyBySlug(slug);
   if (!article) return { title: "Case Studies" };
-  return {
+  return buildMetadataFromSeo(article.seo, {
     title: article.title,
     description: article.excerpt,
-  };
+    image: article.image,
+  });
 }
 
 export default async function CaseStudyDetailPage({ params }: PageProps) {

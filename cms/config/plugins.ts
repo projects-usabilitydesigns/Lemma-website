@@ -23,6 +23,12 @@ const deniedExecutableTypes = [
 ];
 
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin => ({
+  seo: {
+    enabled: true,
+  },
+  publisher: {
+    enabled: true,
+  },
   'users-permissions': {
     config: {
       jwtManagement: 'refresh',

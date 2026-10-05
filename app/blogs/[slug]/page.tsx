@@ -6,12 +6,22 @@ import { AboutCta } from "@/components/about/AboutCta";
 import { Container } from "@/components/ui/Container";
 import { BlogDetailContent } from "@/components/resources/BlogDetailContent";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blogs | Lemma",
-  description:
-    "Read expert insights, industry analysis, and thought leadership on DOOH, CTV, programmatic advertising, and omnichannel marketing from the Lemma team.",
+type PageProps = {
+  params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getBlogPostBySlug(slug);
+  if (!article) return { title: "Blogs | Lemma" };
+  return buildMetadataFromSeo(article.seo, {
+    title: article.title,
+    description: `Read expert insights, industry analysis, and thought leadership on DOOH, CTV, programmatic advertising, and omnichannel marketing from the Lemma team.`,
+    image: article.image,
+  });
+}
 
 export default async function BlogDetailPage({
   params,

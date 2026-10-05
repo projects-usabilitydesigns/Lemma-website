@@ -9,12 +9,17 @@ import { AboutTeam } from "@/components/about/AboutTeam";
 import { AboutCta } from "@/components/about/AboutCta";
 import { Faq } from "@/components/Faq";
 import { aboutFaqs } from "@/lib/about-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about Lemma Technologies — our mission, values, leadership team, and journey transforming advertising from outdoor to outcome.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("about");
+  return buildMetadataFromSeo(seo, {
+    title: "About Us",
+    description:
+      "Learn about Lemma Technologies — our mission, values, leadership team, and journey transforming advertising from outdoor to outcome.",
+  });
+}
 
 export default function AboutPage() {
   return (

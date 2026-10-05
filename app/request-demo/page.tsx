@@ -9,12 +9,17 @@ import {
   RequestDemoSteps,
 } from "@/components/request-demo";
 import { demoFaqs } from "@/lib/request-demo-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Request a Demo",
-  description:
-    "Book a personalized walkthrough of the Lemma stack—Integral, Delta, Sigma, and Phi—across DOOH, CTV, OTT, mobile, and web. Our team replies within 24 hours.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("request-demo");
+  return buildMetadataFromSeo(seo, {
+    title: "Request a Demo",
+    description:
+      "Book a personalized walkthrough of the Lemma stack—Integral, Delta, Sigma, and Phi—across DOOH, CTV, OTT, mobile, and web. Our team replies within 24 hours.",
+  });
+}
 
 export default function RequestDemoPage() {
   return (

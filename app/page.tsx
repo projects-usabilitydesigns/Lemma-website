@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { faqs as defaultFaqs } from "@/lib/data";
 import { Hero } from "@/components/home/Hero";
@@ -15,7 +16,18 @@ import {
   getCaseStudies,
   getFaqs,
   getClientLogos,
+  getPageSeo,
 } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("home");
+  return buildMetadataFromSeo(seo, {
+    title: "Lemma Technologies | Outdoor to Outcome",
+    description:
+      "An AI-first full-funnel attribution platform powering measurable omnichannel advertising across DOOH, CTV, mobile, and digital.",
+  });
+}
 
 export default async function HomePage() {
   const [

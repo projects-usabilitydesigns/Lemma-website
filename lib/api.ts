@@ -9,6 +9,7 @@ import type {
 } from "@/types";
 import type { CareersJob, CareersJobDetail } from "@/lib/careers-data";
 import type { BlogBodySection, BlogPostDetail, ResourceArticle } from "./resources-page-data";
+import type { StrapiSeo } from "./seo";
 import { defaultArticleCtas, type ArticleDetail } from "./article-detail";
 import { fetchCollection, getStrapiMediaUrl } from "./strapi";
 
@@ -207,6 +208,77 @@ function getFirstMedia(media: unknown) {
 }
 
 /**
+ * Normalizes the Categories multi-select value to a string array.
+ * Accepts the current array shape, legacy bare strings, and JSON-encoded
+ * strings defensively so old or unexpected payloads never crash mapping.
+ */
+function normalizeCategories(raw: unknown): string[] {
+  if (Array.isArray(raw)) {
+    return raw.filter(
+      (value): value is string => typeof value === "string" && value.trim().length > 0,
+    );
+  }
+  if (typeof raw === "string" && raw.trim().length > 0) {
+    try {
+      const parsed: unknown = JSON.parse(raw);
+      if (Array.isArray(parsed)) return normalizeCategories(parsed);
+    } catch {
+      // Not JSON — treat as a single legacy value below.
+    }
+    return [raw.trim()];
+  }
+  return [];
+}
+
+/**
+ * Extracts Tags from a shared.seo component payload.
+ * Handles every shape the field can take: the tagsinput chip array
+ * ([{ name: "x" }, ...]), its JSON-string form, a legacy comma-separated
+ * string, or a bare legacy array of strings. Chip strings are additionally
+ * comma-split so "a, b" typed as one chip still yields two tags.
+ */
+function tagsFromSeo(seo: unknown): string[] {
+  if (!seo || typeof seo !== "object") return [];
+  const out: string[] = [];
+  const addString = (value: string) => {
+    for (const part of value.split(",")) {
+      const trimmed = part.trim();
+      if (trimmed) out.push(trimmed);
+    }
+  };
+  const walk = (value: unknown): void => {
+    if (value == null) return;
+    if (typeof value === "string") {
+      const trimmed = value.trim();
+      if (!trimmed) return;
+      if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
+        try {
+          walk(JSON.parse(trimmed));
+          return;
+        } catch {
+          // Not JSON — fall through to comma-split.
+        }
+      }
+      addString(trimmed);
+      return;
+    }
+    if (Array.isArray(value)) {
+      value.forEach(walk);
+      return;
+    }
+    if (typeof value === "object") {
+      const record = value as Record<string, unknown>;
+      const known = ["name", "word", "value", "label", "title"]
+        .map((key) => record[key])
+        .find((entry): entry is string => typeof entry === "string" && entry.trim().length > 0);
+      if (known) addString(known);
+    }
+  };
+  walk((seo as { Tags?: unknown }).Tags);
+  return out;
+}
+
+/**
  * Parses a Strapi richtext (markdown) field into renderable sections.
  * Handles headings (#), numbered sub-headings (1. …), bullet lists (- * ● •)
  * and paragraphs. Consecutive text lines merge into one paragraph.
@@ -325,9 +397,11 @@ export async function getJobByDocumentId(documentId: string): Promise<CareersJob
       SkillsAndQualifications: string;
       SoftSkills: string;
       Note: string;
+      seo: unknown;
     }>>("jobs", {
       revalidate: REVALIDATE,
       filters: { documentId: { $eq: documentId } },
+      populate: { seo: { populate: "*" } },
     });
     const item = res.data[0];
     if (!item) return null;
@@ -344,6 +418,7 @@ export async function getJobByDocumentId(documentId: string): Promise<CareersJob
       skills: markdownToSections(item.SkillsAndQualifications),
       softSkills: markdownToSections(item.SoftSkills),
       note: markdownToSections(item.Note),
+      seo: (item.seo ?? null) as CareersJobDetail["seo"],
     };
   } catch {
     return null;
@@ -355,19 +430,19 @@ export async function getBlogPosts(): Promise<ResourceArticle[]> {
     const res = await fetchCollection<W<{
       Title: string;
       Slug: string;
-      Categories: string;
+      Categories: string[];
       DateTime: string;
       Content: unknown;
       Thumbnail: unknown;
       ViewCount?: number;
       PinToTrending?: boolean;
-    }>>("blogs", { revalidate: REVALIDATE, sort: "publishedAt:desc" });
+    }>>("blogs", { revalidate: REVALIDATE, sort: ["DateTime:desc", "publishedAt:desc"] });
     return res.data.map((item) => ({
       id: String(item.id),
       slug: item.Slug,
       kind: "blog",
       documentId: item.documentId,
-      category: item.Categories ?? "Blogs",
+      category: normalizeCategories(item.Categories)[0] ?? "Blogs",
       title: item.Title,
       date: formatStrapiDate(item.DateTime),
       rawPublishedAt: Date.parse(item.DateTime) || 0,
@@ -392,28 +467,29 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
     const res = await fetchCollection<W<{
       Title: string;
       Slug: string;
-      Categories: string;
+      Categories: string[];
       Author: string;
       DateTime: string;
       Content: unknown;
       Thumbnail: unknown;
+      seo: unknown;
     }>>("blogs", {
       revalidate: REVALIDATE,
       filters: { Slug: { $eq: slug } },
+      populate: { Thumbnail: { populate: "*" }, seo: { populate: "*" } },
     });
     const item = res.data[0];
     if (!item) return null;
 
     const body = blocksToSections(item.Content);
+    const seoTags = tagsFromSeo(item.seo);
     const tags =
-      typeof item.Categories === "string"
-        ? item.Categories.split(",").map((t) => t.trim()).filter(Boolean)
-        : [];
+      seoTags.length > 0 ? seoTags : normalizeCategories(item.Categories);
 
     return {
       slug: item.Slug,
       documentId: item.documentId,
-      category: item.Categories ?? "Blogs",
+      category: normalizeCategories(item.Categories)[0] ?? "Blogs",
       title: item.Title,
       author: item.Author ?? "",
       authorRole: "",
@@ -426,6 +502,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetail | 
       accent: "#008fdb",
       tags,
       body,
+      seo: (item.seo ?? null) as BlogPostDetail["seo"],
     };
   } catch {
     return null;
@@ -544,19 +621,24 @@ export async function getNewsroomBySlug(slug: string): Promise<ArticleDetail | n
       Datetime: string;
       Content: unknown;
       Thumbnail: unknown;
+      Categories: string[];
+      seo: unknown;
     }>>("newsrooms", {
       revalidate: REVALIDATE,
       filters: { Slug: { $eq: slug } },
+      populate: { Thumbnail: { populate: "*" }, seo: { populate: "*" } },
     });
     const item = res.data[0];
     if (!item) return null;
+
+    const newsroomCategories = normalizeCategories(item.Categories);
 
     return {
       slug: item.Slug,
       kind: "newsroom",
       documentId: item.documentId,
       category: "Newsroom",
-      categories: ["Newsroom"],
+      categories: newsroomCategories.length > 0 ? newsroomCategories : ["Newsroom"],
       title: item.Title,
       excerpt: "",
       author: item.Author ?? "",
@@ -566,13 +648,14 @@ export async function getNewsroomBySlug(slug: string): Promise<ArticleDetail | n
       image: getStrapiMediaUrl(
         getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
       ),
-      tags: [],
+      tags: tagsFromSeo(item.seo),
       body: blocksToSections(item.Content).map((section) =>
         section.type === "blockquote"
           ? { type: "paragraph" as const, text: section.text }
           : section,
       ),
       cta: defaultArticleCtas.newsroom,
+      seo: (item.seo ?? null) as ArticleDetail["seo"],
     };
   } catch {
     return null;
@@ -587,19 +670,24 @@ export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | 
       Datetime: string;
       Content: unknown;
       Thumbnail: unknown;
+      Categories: string[];
+      seo: unknown;
     }>>("case-studies", {
       revalidate: REVALIDATE,
       filters: { Slug: { $eq: slug } },
+      populate: { Thumbnail: { populate: "*" }, seo: { populate: "*" } },
     });
     const item = res.data[0];
     if (!item) return null;
+
+    const caseStudyCategories = normalizeCategories(item.Categories);
 
     return {
       slug: item.Slug,
       kind: "case-study",
       documentId: item.documentId,
       category: "Case Studies",
-      categories: ["Case Studies"],
+      categories: caseStudyCategories.length > 0 ? caseStudyCategories : ["Case Studies"],
       title: item.Title,
       excerpt: "",
       author: "",
@@ -609,13 +697,14 @@ export async function getCaseStudyBySlug(slug: string): Promise<ArticleDetail | 
       image: getStrapiMediaUrl(
         getFirstMedia(item.Thumbnail) as Parameters<typeof getStrapiMediaUrl>[0],
       ),
-      tags: [],
+      tags: tagsFromSeo(item.seo),
       body: blocksToSections(item.Content).map((section) =>
         section.type === "blockquote"
           ? { type: "paragraph" as const, text: section.text }
           : section,
       ),
       cta: defaultArticleCtas["case-study"],
+      seo: (item.seo ?? null) as ArticleDetail["seo"],
     };
   } catch {
     return null;
@@ -695,5 +784,28 @@ export async function getAwards(): Promise<
     }));
   } catch {
     return [];
+  }
+}
+
+/**
+ * Fetches the SEO component for a static page by its route slug
+ * (e.g. "contact-us", "products/delta", "home" for "/").
+ * Returns null when no entry exists — callers fall back to hardcoded meta.
+ */
+export async function getPageSeo(slug: string): Promise<StrapiSeo> {
+  try {
+    const res = await fetchCollection<W<{
+      slug: string;
+      seo: unknown;
+    }>>("page-seos", {
+      revalidate: REVALIDATE,
+      filters: { slug: { $eq: slug } },
+      populate: { seo: { populate: "*" } },
+    });
+    const item = res.data[0];
+    if (!item) return null;
+    return (item.seo ?? null) as StrapiSeo;
+  } catch {
+    return null;
   }
 }

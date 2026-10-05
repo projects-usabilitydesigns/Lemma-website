@@ -3,13 +3,17 @@ import { Header } from "@/components/layout/Header";
 import { Faq } from "@/components/Faq";
 import { CareersHero, CareersGallery, CareersJobs, CareersCta } from "@/components/careers";
 import { careersFaqs, careersJobs } from "@/lib/careers-data";
-import { getJobs } from "@/lib/api";
+import { getJobs, getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Careers",
-  description:
-    "Join Lemma Technologies — celebrate life at Lemma, explore open roles, and help shape the future of omnichannel AdTech.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("careers");
+  return buildMetadataFromSeo(seo, {
+    title: "Careers",
+    description:
+      "Join Lemma Technologies — celebrate life at Lemma, explore open roles, and help shape the future of omnichannel AdTech.",
+  });
+}
 
 export default async function CareersPage() {
   const jobs = await getJobs();

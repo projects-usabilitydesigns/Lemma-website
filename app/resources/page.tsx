@@ -10,13 +10,17 @@ import {
   CaseStudiesSection,
 } from "@/components/resources";
 import { faqs } from "@/lib/data";
-import { getBlogPosts, getCaseStudyArticles, getNewsroomPosts, getTopTrending } from "@/lib/api";
+import { getBlogPosts, getCaseStudyArticles, getNewsroomPosts, getTopTrending, getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Resources",
-  description:
-    "Stay informed with the latest from Lemma Tech. Explore newsroom updates, case studies, and expert insights shaping the future of digital advertising across DOOH, CTV, and omnichannel.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("resources");
+  return buildMetadataFromSeo(seo, {
+    title: "Resources",
+    description:
+      "Stay informed with the latest from Lemma Tech. Explore newsroom updates, case studies, and expert insights shaping the future of digital advertising across DOOH, CTV, and omnichannel.",
+  });
+}
 
 export default async function ResourcesPage() {
   const [blogs, newsroom, caseStudies, trending] = await Promise.all([
