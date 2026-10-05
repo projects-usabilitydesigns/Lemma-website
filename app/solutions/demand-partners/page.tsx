@@ -23,12 +23,17 @@ import {
   agenciesWhy,
   agenciesWhyCtv,
 } from "@/lib/solutions-agencies-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "For Demand Partners",
-  description:
-    "LEMMA CTV Solutions—reach unique audiences at scale across premium streaming TV, OTTs, and CTV networks with precise targeting and transparent measurement.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("solutions/demand-partners");
+  return buildMetadataFromSeo(seo, {
+    title: "For Demand Partners",
+    description:
+      "LEMMA CTV Solutions—reach unique audiences at scale across premium streaming TV, OTTs, and CTV networks with precise targeting and transparent measurement.",
+  });
+}
 
 export default function DemandPartnersPage() {
   return (

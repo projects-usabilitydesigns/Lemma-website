@@ -25,12 +25,17 @@ import {
   mediaOwnersSuccessMetrics,
   mediaOwnersWhy,
 } from "@/lib/solutions-media-owners-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "For Media Owners",
-  description:
-    "Lemmaster your inventory with Lemma. Your screens, your rules, our global network—monetize, manage, and measure every aspect of your inventory.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("solutions/media-owners");
+  return buildMetadataFromSeo(seo, {
+    title: "For Media Owners",
+    description:
+      "Lemmaster your inventory with Lemma. Your screens, your rules, our global network—monetize, manage, and measure every aspect of your inventory.",
+  });
+}
 
 export default function MediaOwnersPage() {
   return (

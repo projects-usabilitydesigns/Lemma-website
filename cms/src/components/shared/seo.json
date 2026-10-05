@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "seo",
+    "icon": "search",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 45
+    },
+    "metaDescription": {
+      "type": "text",
+      "maxLength": 160,
+      "minLength": 50
+    },
+    "keywords": {
+      "type": "text",
+      "regex": "[^,]+"
+    },
+    "Tags": {
+      "type": "customField",
+      "customField": "plugin::tagsinput.tags",
+      "description": "Enter tags as comma-separated values."
+    },
+    "canonicalURL": {
+      "type": "string"
+    },
+    "noIndex": {
+      "type": "boolean",
+      "default": false
+    },
+    "SocialImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    }
+  }
+}

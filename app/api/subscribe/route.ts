@@ -1,17 +1,12 @@
 import { NextResponse } from "next/server";
+import { buildSubscribeAckEmail, buildSubscribeNotificationEmail } from "@/lib/subscribe-email";
 import { getEmailError } from "@/lib/form-validation";
-import { envValue, readLocalEnv } from "@/lib/mailer";
+import { envValue, readLocalEnv, sendFormMail } from "@/lib/mailer";
 
 type SubscribeRequestBody = Partial<Record<"email" | "pageUrl", unknown>>;
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
-}
-
-function mailerUrl(path: string) {
-  const localEnv = readLocalEnv();
-  const base = (envValue("MAILER_URL", localEnv) || "http://127.0.0.1:4000").replace(/\/$/, "");
-  return `${base}${path}`;
 }
 
 export async function POST(request: Request) {
@@ -29,19 +24,49 @@ export async function POST(request: Request) {
   const emailError = getEmailError(email, { requireWorkEmail: false });
   if (emailError) return NextResponse.json({ error: emailError }, { status: 400 });
 
+  const localEnv = readLocalEnv();
+  const smtpUser = envValue("SMTP_USER", localEnv);
+  const smtpPass = envValue("SMTP_PASS", localEnv);
+
+  if (!smtpUser || !smtpPass) {
+    return NextResponse.json(
+      { error: "Email sending is not configured yet. Add SMTP_USER and SMTP_PASS to .env.local." },
+      { status: 500 },
+    );
+  }
+
+  const { subject, html, text } = buildSubscribeNotificationEmail(email, pageUrl);
+
   try {
-    const res = await fetch(mailerUrl("/api/subscribe"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, pageUrl }),
+    await sendFormMail({
+      smtpUser,
+      smtpPass,
+      localEnv,
+      to: smtpUser,
+      replyTo: email,
+      subject,
+      text,
+      html,
     });
-    const data = (await res.json().catch(() => null)) as { error?: string } | null;
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: data?.error || "Could not subscribe. Please try again." },
-        { status: res.status },
-      );
+
+    // Best-effort confirmation to the subscriber — a failure here must not
+    // fail the subscription.
+    try {
+      const ack = buildSubscribeAckEmail();
+      await sendFormMail({
+        smtpUser,
+        smtpPass,
+        localEnv,
+        to: email,
+        replyTo: smtpUser,
+        subject: ack.subject,
+        text: ack.text,
+        html: ack.html,
+      });
+    } catch (error) {
+      console.error("Failed to send subscription confirmation email:", error);
     }
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

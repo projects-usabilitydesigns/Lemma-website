@@ -23,7 +23,16 @@
       "required": true
     },
     "Categories": {
-      "type": "string"
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
+      "options": [
+        "Blogs",
+        "DOOH Advertising",
+        "CTV Advertising",
+        "Omnichannel Advertising",
+        "Programmatic Advertising",
+        "Full Funnel Advertising /Performance Marketing"
+      ]
     },
     "Content": {
       "type": "blocks",
@@ -46,12 +55,18 @@
       "type": "enumeration",
       "enum": [
         " Lemma Editorial Team",
-        "Lemma Team"
+        "Lemma Team",
+        "lemma neww"
       ]
     },
     "PinToTrending": {
       "type": "boolean",
       "default": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

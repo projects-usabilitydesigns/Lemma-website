@@ -1,19 +1,15 @@
 import { NextResponse } from "next/server";
+import { buildContactAckEmail } from "@/lib/contact-ack-email";
+import { buildContactRequestEmail } from "@/lib/contact-email";
 import type { ContactAudienceId } from "@/lib/contact-data";
 import { getEmailError, getPhoneError } from "@/lib/form-validation";
-import { envValue, readLocalEnv } from "@/lib/mailer";
+import { envValue, getFormInbox, readLocalEnv, sendFormMail } from "@/lib/mailer";
 import type { ContactRequestPayload } from "@/lib/send-contact-request";
 
 type ContactRequestBody = Partial<Record<keyof ContactRequestPayload, unknown>>;
 
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
-}
-
-function mailerUrl(path: string) {
-  const localEnv = readLocalEnv();
-  const base = (envValue("MAILER_URL", localEnv) || "http://127.0.0.1:4000").replace(/\/$/, "");
-  return `${base}${path}`;
 }
 
 export async function POST(request: Request) {
@@ -50,19 +46,52 @@ export async function POST(request: Request) {
   const phoneError = getPhoneError(values.mobile, { required: true });
   if (phoneError) return NextResponse.json({ error: phoneError }, { status: 400 });
 
+  const localEnv = readLocalEnv();
+  const smtpUser = envValue("SMTP_USER", localEnv);
+  const smtpPass = envValue("SMTP_PASS", localEnv);
+
+  if (!smtpUser || !smtpPass) {
+    return NextResponse.json(
+      { error: "Email sending is not configured yet. Add SMTP_USER and SMTP_PASS to .env.local." },
+      { status: 500 },
+    );
+  }
+
+  const { subject, html, text } = buildContactRequestEmail(values);
+
   try {
-    const res = await fetch(mailerUrl("/api/contact"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
+    await sendFormMail({
+      smtpUser,
+      smtpPass,
+      localEnv,
+      to: getFormInbox(localEnv),
+      replyTo: values.email,
+      subject,
+      text,
+      html,
     });
-    const data = (await res.json().catch(() => null)) as { error?: string } | null;
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: data?.error || "Could not send your message. Please try again." },
-        { status: res.status },
-      );
+
+    // Best-effort acknowledgment to the visitor — a failure here must not
+    // fail the message, the team email is the source of truth.
+    try {
+      const ack = buildContactAckEmail({
+        firstName: values.firstName,
+        audience: values.audience,
+      });
+      await sendFormMail({
+        smtpUser,
+        smtpPass,
+        localEnv,
+        to: values.email,
+        replyTo: getFormInbox(localEnv),
+        subject: ack.subject,
+        text: ack.text,
+        html: ack.html,
+      });
+    } catch (error) {
+      console.error("Failed to send contact acknowledgment email:", error);
     }
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

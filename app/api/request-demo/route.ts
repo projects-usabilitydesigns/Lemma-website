@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import { buildDemoRequestAckEmail } from "@/lib/demo-request-ack-email";
+import { buildDemoRequestEmail } from "@/lib/demo-email";
 import { getEmailError, getPhoneError } from "@/lib/form-validation";
-import { envValue, readLocalEnv } from "@/lib/mailer";
+import { envValue, getFormInbox, readLocalEnv, sendFormMail } from "@/lib/mailer";
 import type { DemoRequestPayload } from "@/lib/send-demo-request";
 
 type DemoRequestBody = Partial<Record<keyof DemoRequestPayload | "consent", unknown>>;
@@ -12,12 +14,6 @@ function asTrimmedString(value: unknown) {
 function asStringList(value: unknown) {
   if (!Array.isArray(value)) return [];
   return value.filter((item): item is string => typeof item === "string" && item.trim().length > 0);
-}
-
-function mailerUrl(path: string) {
-  const localEnv = readLocalEnv();
-  const base = (envValue("MAILER_URL", localEnv) || "http://127.0.0.1:4000").replace(/\/$/, "");
-  return `${base}${path}`;
 }
 
 export async function POST(request: Request) {
@@ -53,19 +49,52 @@ export async function POST(request: Request) {
   const phoneError = getPhoneError(values.phone, { required: true });
   if (phoneError) return NextResponse.json({ error: phoneError }, { status: 400 });
 
+  const localEnv = readLocalEnv();
+  const smtpUser = envValue("SMTP_USER", localEnv);
+  const smtpPass = envValue("SMTP_PASS", localEnv);
+
+  if (!smtpUser || !smtpPass) {
+    return NextResponse.json(
+      { error: "Email sending is not configured yet. Add SMTP_USER and SMTP_PASS to .env.local." },
+      { status: 500 },
+    );
+  }
+
+  const { subject, html, text } = buildDemoRequestEmail(values);
+
   try {
-    const res = await fetch(mailerUrl("/api/request-demo"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...values, consent: body.consent }),
+    await sendFormMail({
+      smtpUser,
+      smtpPass,
+      localEnv,
+      to: getFormInbox(localEnv),
+      replyTo: values.email,
+      subject,
+      text,
+      html,
     });
-    const data = (await res.json().catch(() => null)) as { error?: string } | null;
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: data?.error || "Could not send your request. Please try again." },
-        { status: res.status },
-      );
+
+    // Best-effort acknowledgment to the visitor — a failure here must not
+    // fail the request, the team email is the source of truth.
+    try {
+      const ack = buildDemoRequestAckEmail({
+        firstName: values.firstName,
+        company: values.company,
+      });
+      await sendFormMail({
+        smtpUser,
+        smtpPass,
+        localEnv,
+        to: values.email,
+        replyTo: getFormInbox(localEnv),
+        subject: ack.subject,
+        text: ack.text,
+        html: ack.html,
+      });
+    } catch (error) {
+      console.error("Failed to send demo request acknowledgment email:", error);
     }
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

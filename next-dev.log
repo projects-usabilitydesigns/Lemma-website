@@ -1,0 +1,695 @@
+
+> lemma-technologies@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.22
+   - Local:        http://localhost:3000
+   - Network:      http://169.254.83.107:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 7.5s
+ ○ Compiling /resources/blogs ...
+ ✓ Compiled /resources/blogs in 16.6s (1713 modules)
+ GET /resources/blogs 200 in 18234ms
+ ○ Compiling /resources/blogs/[slug] ...
+ ✓ Compiled /resources/blogs/[slug] in 1623ms (1730 modules)
+ ✓ Compiled in 689ms (751 modules)
+ GET /resources/blogs/advertising-is-entering-the-era-of-intelligence-and-accountability 200 in 3744ms
+ ✓ Compiled in 4.8s (751 modules)
+ ✓ Compiled in 1529ms (751 modules)
+ ✓ Compiled in 604ms (751 modules)
+ ✓ Compiled in 697ms (751 modules)
+ ✓ Compiled in 426ms (751 modules)
+ ✓ Compiled in 402ms (751 modules)
+ ✓ Compiled in 542ms (751 modules)
+ ✓ Compiled in 414ms (751 modules)
+ ✓ Compiled in 578ms (751 modules)
+ ✓ Compiled in 408ms (751 modules)
+ ✓ Compiled in 672ms (751 modules)
+ ✓ Compiled in 427ms (751 modules)
+ ✓ Compiled in 554ms (751 modules)
+ ✓ Compiled in 409ms (751 modules)
+ ✓ Compiled in 444ms (751 modules)
+ ✓ Compiled in 896ms (751 modules)
+ ✓ Compiled in 453ms (751 modules)
+ ✓ Compiled in 586ms (751 modules)
+ ✓ Compiled in 393ms (751 modules)
+ ✓ Compiled in 373ms (751 modules)
+ ✓ Compiled in 354ms (751 modules)
+ ✓ Compiled in 406ms (751 modules)
+ ✓ Compiled in 456ms (751 modules)
+ ✓ Compiled in 414ms (751 modules)
+ ✓ Compiled in 395ms (751 modules)
+ ✓ Compiled in 406ms (751 modules)
+ ✓ Compiled in 423ms (751 modules)
+ ✓ Compiled in 658ms (751 modules)
+ ✓ Compiled in 437ms (751 modules)
+ ✓ Compiled in 527ms (751 modules)
+ ✓ Compiled in 387ms (751 modules)
+ ✓ Compiled in 425ms (751 modules)
+ ✓ Compiled in 561ms (751 modules)
+ ✓ Compiled in 392ms (751 modules)
+ ✓ Compiled in 460ms (751 modules)
+ ✓ Compiled in 375ms (751 modules)
+ ✓ Compiled in 370ms (751 modules)
+ ✓ Compiled in 457ms (751 modules)
+ ✓ Compiled in 349ms (751 modules)
+ ✓ Compiled in 328ms (751 modules)
+ ✓ Compiled in 410ms (751 modules)
+ ✓ Compiled in 646ms (751 modules)
+ ✓ Compiled in 409ms (751 modules)
+ ✓ Compiled in 542ms (751 modules)
+ ✓ Compiled in 451ms (751 modules)
+ ✓ Compiled in 646ms (751 modules)
+ ✓ Compiled in 571ms (751 modules)
+ ✓ Compiled in 413ms (751 modules)
+ ✓ Compiled in 2.3s (751 modules)
+ ✓ Compiled in 396ms (751 modules)
+ ✓ Compiled in 1991ms (751 modules)
+ ✓ Compiled in 359ms (751 modules)
+ ✓ Compiled in 381ms (751 modules)
+ ✓ Compiled in 448ms (751 modules)
+ ✓ Compiled in 417ms (751 modules)
+ ✓ Compiled in 366ms (751 modules)
+ ✓ Compiled in 319ms (751 modules)
+ ✓ Compiled in 314ms (751 modules)
+ ✓ Compiled in 458ms (751 modules)
+ ✓ Compiled in 350ms (751 modules)
+ ✓ Compiled in 512ms (751 modules)
+ ✓ Compiled in 360ms (751 modules)
+ ✓ Compiled in 360ms (751 modules)
+ ✓ Compiled in 370ms (751 modules)
+ ✓ Compiled in 364ms (751 modules)
+ ✓ Compiled in 365ms (751 modules)
+ ✓ Compiled in 327ms (751 modules)
+ ✓ Compiled in 312ms (751 modules)
+ ✓ Compiled in 402ms (751 modules)
+ ✓ Compiled in 329ms (751 modules)
+ ✓ Compiled in 377ms (751 modules)
+ ✓ Compiled in 317ms (751 modules)
+ ✓ Compiled in 581ms (751 modules)
+ ✓ Compiled in 502ms (751 modules)
+ ✓ Compiled in 621ms (751 modules)
+ ✓ Compiled in 359ms (751 modules)
+ ✓ Compiled in 498ms (751 modules)
+ ✓ Compiled in 496ms (751 modules)
+ ✓ Compiled in 361ms (751 modules)
+ ✓ Compiled in 348ms (751 modules)
+ ✓ Compiled in 324ms (751 modules)
+ ✓ Compiled in 327ms (751 modules)
+ ✓ Compiled in 343ms (751 modules)
+ ✓ Compiled in 491ms (751 modules)
+ ✓ Compiled in 406ms (751 modules)
+ ✓ Compiled in 480ms (751 modules)
+ ✓ Compiled in 431ms (751 modules)
+ ✓ Compiled in 344ms (751 modules)
+ ✓ Compiled in 426ms (751 modules)
+ ✓ Compiled in 465ms (751 modules)
+ ✓ Compiled in 481ms (751 modules)
+ ✓ Compiled in 427ms (751 modules)
+ ✓ Compiled in 952ms (751 modules)
+ ✓ Compiled in 553ms (751 modules)
+ ✓ Compiled in 523ms (751 modules)
+ ✓ Compiled in 391ms (751 modules)
+ ✓ Compiled in 551ms (751 modules)
+ ✓ Compiled in 336ms (751 modules)
+ ✓ Compiled in 522ms (751 modules)
+ ✓ Compiled in 349ms (751 modules)
+ ✓ Compiled in 339ms (751 modules)
+ ✓ Compiled in 669ms (751 modules)
+ ✓ Compiled in 327ms (751 modules)
+ ✓ Compiled in 557ms (751 modules)
+ ✓ Compiled in 520ms (751 modules)
+ ✓ Compiled in 323ms (751 modules)
+ ✓ Compiled in 347ms (751 modules)
+ ✓ Compiled in 418ms (751 modules)
+ ✓ Compiled in 426ms (751 modules)
+ ✓ Compiled in 390ms (751 modules)
+ ✓ Compiled in 636ms (751 modules)
+ ✓ Compiled in 440ms (751 modules)
+ ✓ Compiled in 491ms (751 modules)
+ ✓ Compiled in 336ms (751 modules)
+ ✓ Compiled in 316ms (751 modules)
+ ✓ Compiled in 468ms (751 modules)
+ ✓ Compiled in 502ms (751 modules)
+ ✓ Compiled in 367ms (751 modules)
+ ✓ Compiled in 374ms (751 modules)
+ ✓ Compiled in 388ms (751 modules)
+ ✓ Compiled in 346ms (751 modules)
+ ✓ Compiled in 461ms (751 modules)
+ ✓ Compiled in 392ms (751 modules)
+ ✓ Compiled in 2s (751 modules)
+ ✓ Compiled in 353ms (751 modules)
+ ✓ Compiled in 493ms (751 modules)
+ ✓ Compiled in 337ms (751 modules)
+ ✓ Compiled in 337ms (751 modules)
+ ✓ Compiled in 902ms (751 modules)
+ ✓ Compiled in 341ms (751 modules)
+ ✓ Compiled in 447ms (751 modules)
+ ✓ Compiled in 424ms (751 modules)
+ ✓ Compiled in 314ms (751 modules)
+ ✓ Compiled in 261ms (751 modules)
+ ✓ Compiled in 298ms (751 modules)
+ ✓ Compiled in 330ms (751 modules)
+ ✓ Compiled in 388ms (751 modules)
+ ✓ Compiled in 292ms (751 modules)
+ ✓ Compiled in 297ms (751 modules)
+ ✓ Compiled in 327ms (751 modules)
+ ✓ Compiled in 291ms (751 modules)
+ ✓ Compiled in 328ms (751 modules)
+ ✓ Compiled in 470ms (751 modules)
+ ✓ Compiled in 299ms (751 modules)
+ ✓ Compiled in 270ms (751 modules)
+ ✓ Compiled in 262ms (751 modules)
+ ✓ Compiled in 383ms (751 modules)
+ ✓ Compiled in 425ms (751 modules)
+ ✓ Compiled in 461ms (751 modules)
+ ○ Compiling /resources/blogs/[slug] ...
+ ✓ Compiled /resources/blogs/[slug] in 640ms (962 modules)
+An empty string ("") was passed to the src attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to src instead of an empty string.
+ReactDOM.preload(): Expected two arguments, a non-empty `href` string and an `options` object with an `as` property valid for a `<link rel="preload" as="..." />` tag. The `href` argument encountered was an empty string.
+ GET /resources/blogs/blog 200 in 2318ms
+ ○ Compiling /careers/jobs/[documentId] ...
+ ✓ Compiled /careers/jobs/[documentId] in 1871ms (1725 modules)
+ GET /careers/jobs/d4jov192yx6fpwmruht1hp5z 200 in 3699ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.6s (1910 modules)
+ GET / 200 in 5072ms
+ ✓ Compiled /resources/blogs in 374ms (1071 modules)
+ GET /resources/blogs 200 in 635ms
+ GET /resources/blogs 200 in 82ms
+ ✓ Compiled /resources/blogs/[slug] in 304ms (1085 modules)
+An empty string ("") was passed to the src attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to src instead of an empty string.
+ReactDOM.preload(): Expected two arguments, a non-empty `href` string and an `options` object with an `as` property valid for a `<link rel="preload" as="..." />` tag. The `href` argument encountered was an empty string.
+ GET /resources/blogs/blog 200 in 851ms
+ GET /resources/blogs 200 in 265ms
+ GET /resources/blogs/3-game-changing-adtech-trends-to-watch-at-ces-2026 200 in 280ms
+ GET /resources/blogs 200 in 231ms
+ ✓ Compiled in 919ms (828 modules)
+ GET /resources/blogs 200 in 114ms
+ ✓ Compiled in 621ms (828 modules)
+ ✓ Compiled in 411ms (828 modules)
+ GET /resources/blogs 200 in 424ms
+ GET /resources/blogs 200 in 96ms
+ ✓ Compiled in 329ms (828 modules)
+ ✓ Compiled in 426ms (828 modules)
+ GET /resources/blogs 200 in 472ms
+ GET /resources/blogs 200 in 248ms
+ ✓ Compiled in 3.2s (828 modules)
+ ✓ Compiled in 440ms (828 modules)
+ GET /resources/blogs 200 in 624ms
+ ✓ Compiled in 483ms (828 modules)
+ GET /resources/blogs 200 in 147ms
+ GET /resources/blogs 200 in 109ms
+ ✓ Compiled in 506ms (828 modules)
+ ✓ Compiled in 346ms (828 modules)
+ ✓ Compiled in 3.8s (828 modules)
+ ✓ Compiled in 741ms (828 modules)
+ ✓ Compiled in 613ms (828 modules)
+ ✓ Compiled in 412ms (828 modules)
+ GET /resources/blogs 200 in 1528ms
+ GET / 200 in 1293ms
+ ○ Compiling /products/integral ...
+ ✓ Compiled /products/integral in 5.2s (1905 modules)
+ ✓ Compiled in 1544ms (835 modules)
+ GET /products/integral 200 in 6913ms
+ GET /products/integral 200 in 265ms
+ GET /products/integral 200 in 134ms
+ GET / 200 in 346ms
+ ✓ Compiled in 3.3s (835 modules)
+ GET / 200 in 576ms
+ ✓ Compiled in 6s (835 modules)
+ ✓ Compiled in 663ms (835 modules)
+ GET / 200 in 836ms
+ GET / 200 in 254ms
+ ✓ Compiled in 3.3s (835 modules)
+ ✓ Compiled in 633ms (835 modules)
+ ✓ Compiled in 702ms (835 modules)
+ GET / 200 in 1006ms
+ ✓ Compiled in 900ms (835 modules)
+ GET / 200 in 1272ms
+ ✓ Compiled in 639ms (835 modules)
+ GET / 200 in 654ms
+ GET / 200 in 138ms
+ GET / 200 in 111ms
+ ✓ Compiled in 1087ms (835 modules)
+ ✓ Compiled in 795ms (835 modules)
+ GET / 200 in 1180ms
+ ✓ Compiled in 646ms (835 modules)
+ GET / 200 in 928ms
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/'
+}
+ ✓ Compiled in 1197ms (835 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 4.9s (2252 modules)
+ GET / 500 in 7331ms
+ GET / 200 in 786ms
+ GET / 200 in 124ms
+ GET / 200 in 128ms
+ GET / 200 in 114ms
+ GET / 200 in 983ms
+ ✓ Compiled in 5.5s (2156 modules)
+ ✓ Compiled in 491ms (987 modules)
+ GET / 200 in 1340ms
+ GET / 200 in 203ms
+ ✓ Compiled in 1493ms (987 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\server\app-paths-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\server\\app-paths-manifest.json',
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 2.2s (2238 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\server\\pages\\_document.js'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\server\app-paths-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\server\\app-paths-manifest.json',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\routes-manifest.json'
+}
+ GET / 500 in 10500ms
+ GET / 500 in 261ms
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\routes-manifest.json',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\routes-manifest.json',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Users\hp\Desktop\usabilitydesign\Lemma-website\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\hp\\Desktop\\usabilitydesign\\Lemma-website\\.next\\routes-manifest.json'
+}
+ GET / 500 in 1056ms
+ GET / 500 in 121ms
+ GET /resources/blogs 200 in 299ms
+ ○ Compiling /resources ...
+ ✓ Compiled /resources in 2.6s (2175 modules)
+ GET /resources 200 in 4034ms
+ ⨯ Error: Could not find the module "[project]/components/providers/SmoothScrollProvider.tsx#SmoothScrollProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1787466621'
+}
+ ⨯ Error: Could not find the module "[project]/components/cookies/CookieConsentProvider.tsx#CookieConsentProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '61587069'
+}
+ ⨯ Error: Could not find the module "[project]/components/cookies/ConsentScripts.tsx#ConsentScripts" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '425989885'
+}
+ ⨯ Error: Could not find the module "[project]/components/request-demo/DemoModalProvider.tsx#DemoModalProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2435984445'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/layout-router.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '462957469'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/render-from-template-context.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2575778429'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/components/builtin/global-error.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '411641597'
+}
+ ⨯ Error: Could not find the module "[project]/components/layout/Footer.tsx#Footer" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3356664977'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#OutletBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3117699185'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/metadata/async-metadata.js#AsyncMetadataOutlet" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '894241457'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '4046795761'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#MetadataBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2580315441'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/metadata/generate/icon-mark.js#IconMark" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2196219889'
+}
+[Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1373586685'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#MetadataBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3781672509'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/components/builtin/global-error.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '411641597'
+}
+ ⨯ [Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597'
+}
+ ⨯ [Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597',
+  page: '/'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/metadata/generate/icon-mark.js#IconMark" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2196219889'
+}
+ ⨯ Error: Could not find the module "[project]/components/layout/Header.tsx#Header" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '988034272'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Hero.tsx#Hero" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1966282560'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/LogosMarquee.tsx#LogosMarquee" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3070150464'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Products.tsx#Products" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3202043456'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Solutions.tsx#Solutions" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3556589888'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/CaseStudies.tsx#CaseStudies" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3526114112'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/AiFeatures.tsx#AiFeatures" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3801004160'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/NextFrontier.tsx#NextFrontier" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '657117248'
+}
+ ⨯ Error: Could not find the module "[project]/components/Faq.tsx#Faq" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '214279232'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Cta.tsx#Cta" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '354197824'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 3.4s (2249 modules)
+ GET / 500 in 6616ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1532ms (1281 modules)
+ GET /favicon.ico 200 in 2301ms
+ ⨯ Error: Could not find the module "[project]/components/providers/SmoothScrollProvider.tsx#SmoothScrollProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1787466621'
+}
+ ⨯ Error: Could not find the module "[project]/components/cookies/CookieConsentProvider.tsx#CookieConsentProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '61587069'
+}
+ ⨯ Error: Could not find the module "[project]/components/cookies/ConsentScripts.tsx#ConsentScripts" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '425989885'
+}
+ ⨯ Error: Could not find the module "[project]/components/request-demo/DemoModalProvider.tsx#DemoModalProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2435984445'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/layout-router.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '462957469'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/render-from-template-context.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2575778429'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/components/builtin/global-error.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '411641597'
+}
+ ⨯ Error: Could not find the module "[project]/components/layout/Footer.tsx#Footer" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3356664977'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#OutletBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3117699185'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/metadata/async-metadata.js#AsyncMetadataOutlet" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '894241457'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '4046795761'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#MetadataBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2580315441'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/metadata/generate/icon-mark.js#IconMark" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2196219889'
+}
+[Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1373586685'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#MetadataBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3781672509'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/components/builtin/global-error.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '411641597'
+}
+ ⨯ [Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597'
+}
+ ⨯ [Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597',
+  page: '/'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/metadata/generate/icon-mark.js#IconMark" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2196219889'
+}
+ GET / 500 in 3492ms
+ ⨯ Error: Could not find the module "[project]/components/layout/Header.tsx#Header" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '988034272'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Hero.tsx#Hero" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1966282560'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/LogosMarquee.tsx#LogosMarquee" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3070150464'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Products.tsx#Products" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3202043456'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Solutions.tsx#Solutions" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3556589888'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/CaseStudies.tsx#CaseStudies" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3526114112'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/AiFeatures.tsx#AiFeatures" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3801004160'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/NextFrontier.tsx#NextFrontier" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '657117248'
+}
+ ⨯ Error: Could not find the module "[project]/components/Faq.tsx#Faq" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '214279232'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Cta.tsx#Cta" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '354197824'
+}
+ ⨯ Error: Could not find the module "[project]/components/providers/SmoothScrollProvider.tsx#SmoothScrollProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1787466621'
+}
+ ⨯ Error: Could not find the module "[project]/components/cookies/CookieConsentProvider.tsx#CookieConsentProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '61587069'
+}
+ ⨯ Error: Could not find the module "[project]/components/cookies/ConsentScripts.tsx#ConsentScripts" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '425989885'
+}
+ ⨯ Error: Could not find the module "[project]/components/request-demo/DemoModalProvider.tsx#DemoModalProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2435984445'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/layout-router.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '462957469'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/render-from-template-context.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2575778429'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/components/builtin/global-error.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '411641597'
+}
+ ⨯ Error: Could not find the module "[project]/components/layout/Footer.tsx#Footer" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3356664977'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#OutletBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3117699185'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/metadata/async-metadata.js#AsyncMetadataOutlet" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '894241457'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '4046795761'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#MetadataBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2580315441'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/metadata/generate/icon-mark.js#IconMark" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2196219889'
+}
+[Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1373586685'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#MetadataBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3781672509'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/components/builtin/global-error.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '411641597'
+}
+ ⨯ [Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597'
+}
+ ⨯ [Error: An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error.] {
+  digest: '411641597',
+  page: '/'
+}
+ ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/metadata/generate/icon-mark.js#IconMark" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '2196219889'
+}
+ GET / 500 in 3391ms
+ ⨯ Error: Could not find the module "[project]/components/layout/Header.tsx#Header" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '988034272'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Hero.tsx#Hero" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '1966282560'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/LogosMarquee.tsx#LogosMarquee" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3070150464'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Products.tsx#Products" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3202043456'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Solutions.tsx#Solutions" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3556589888'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/CaseStudies.tsx#CaseStudies" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3526114112'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/AiFeatures.tsx#AiFeatures" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '3801004160'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/NextFrontier.tsx#NextFrontier" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '657117248'
+}
+ ⨯ Error: Could not find the module "[project]/components/Faq.tsx#Faq" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '214279232'
+}
+ ⨯ Error: Could not find the module "[project]/components/home/Cta.tsx#Cta" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+    at stringify (<anonymous>) {
+  digest: '354197824'
+}
+ GET /favicon.ico 200 in 261ms
