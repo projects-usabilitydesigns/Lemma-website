@@ -24,12 +24,17 @@ import {
   publishersSuccessMetrics,
   publishersWhy,
 } from "@/lib/solutions-publishers-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "For Publishers",
-  description:
-    "Programmatic monetization for publishers—grow yield, protect brand safety, and unlock premium demand across web, video, CTV, and more with Lemma.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("solutions/publishers");
+  return buildMetadataFromSeo(seo, {
+    title: "For Publishers",
+    description:
+      "Programmatic monetization for publishers—grow yield, protect brand safety, and unlock premium demand across web, video, CTV, and more with Lemma.",
+  });
+}
 
 export default function PublishersPage() {
   return (

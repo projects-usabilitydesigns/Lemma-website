@@ -60,7 +60,7 @@ export const demoProducts: DemoProductBrief[] = [
     tagline: "Full-funnel platform",
     description:
       "Turn OOH impressions into measurable outcomes. Activate, retarget, and attribute every exposure across the funnel.",
-    logo: "/LEMMA_Integral_(R)%20(1).png",
+    logo: "/images/products/integral.svg",
     accent: "#009352",
     highlights: ["Audience graph", "Cross-screen retargeting", "Outcome attribution"],
     href: "/products/integral",

@@ -9,12 +9,17 @@ import {
   SigmaMonetization,
 } from "@/components/products/sigma";
 import { sigmaFaqs } from "@/lib/sigma-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Lemma Sigma",
-  description:
-    "Lemma Sigma is a transparent Supply Side Platform (SSP) that helps media owners onboard, package, optimize and monetize inventory across DOOH, CTV/OTT and retail media with real-time insights and global demand access.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("products/sigma");
+  return buildMetadataFromSeo(seo, {
+    title: "Lemma Sigma",
+    description:
+      "Lemma Sigma is a transparent Supply Side Platform (SSP) that helps media owners onboard, package, optimize and monetize inventory across DOOH, CTV/OTT and retail media with real-time insights and global demand access.",
+  });
+}
 
 export default function SigmaProductPage() {
   return (

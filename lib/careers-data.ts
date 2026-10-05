@@ -1,4 +1,5 @@
 import type { BlogBodySection } from "./resources-page-data";
+import type { StrapiSeo } from "./seo";
 
 export type CareersGalleryImage = {
   id: string;
@@ -35,6 +36,7 @@ export type CareersJobDetail = {
   skills: BlogBodySection[];
   softSkills: BlogBodySection[];
   note: BlogBodySection[];
+  seo?: StrapiSeo;
 };
 
 export type CareersFaq = {

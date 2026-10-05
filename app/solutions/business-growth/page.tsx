@@ -15,12 +15,17 @@ import {
   businessGrowthLogoIds,
   businessGrowthStats,
 } from "@/lib/solutions-business-growth-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "For Business Growth",
-  description:
-    "AI-driven performance marketing for entrepreneurs, startups, and SMBs. Full-funnel customer acquisition across every platform, market, and category.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("solutions/business-growth");
+  return buildMetadataFromSeo(seo, {
+    title: "For Business Growth",
+    description:
+      "AI-driven performance marketing for entrepreneurs, startups, and SMBs. Full-funnel customer acquisition across every platform, market, and category.",
+  });
+}
 
 export default async function BusinessGrowthPage() {
   const clientLogos = await getClientLogos();

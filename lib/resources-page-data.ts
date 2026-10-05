@@ -1,4 +1,5 @@
 import type { ArticleKind } from "./article-detail";
+import type { StrapiSeo } from "./seo";
 
 export type ResourceArticle = {
   id: string;
@@ -277,6 +278,7 @@ export type BlogPostDetail = {
   accent: string;
   tags: string[];
   body: BlogBodySection[];
+  seo?: StrapiSeo;
 };
 
 export const blogDetails: Record<string, BlogPostDetail> = {

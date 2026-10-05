@@ -37,7 +37,15 @@ export function RequestDemoProducts() {
                 aria-hidden
               />
 
-              <div className="relative mb-5 h-6 w-full max-w-[180px]">
+              <div
+                className={`relative mb-5 h-6 w-full ${
+                  product.id === "integral"
+                    ? "max-w-[240px]"
+                    : product.id === "phi"
+                      ? "max-w-[170px]"
+                      : "max-w-[180px]"
+                }`}
+              >
                 <Image
                   src={product.logo}
                   alt={`LEMMA ${product.name}`}

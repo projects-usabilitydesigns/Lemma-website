@@ -1,4 +1,5 @@
 import { DEMO_MODAL_HREF } from "@/lib/demo-cta";
+import type { StrapiSeo } from "@/lib/seo";
 
 export type ArticleKind = "blog" | "newsroom" | "case-study";
 
@@ -36,6 +37,7 @@ export type ArticleDetail = {
   tags: string[];
   body: ArticleBodySection[];
   cta: ArticleCta;
+  seo?: StrapiSeo;
 };
 
 export const articleListing = {

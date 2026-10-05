@@ -9,12 +9,17 @@ import {
   IntegralAudienceGraph,
 } from "@/components/products/integral";
 import { integralFaqs } from "@/lib/integral-data";
+import { getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Lemma Integral",
-  description:
-    "Lemma Integral is a full-funnel platform that transforms OOH impressions into impactful results — reach, reinforce, and convert with measurable outcomes.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("products/integral");
+  return buildMetadataFromSeo(seo, {
+    title: "Lemma Integral",
+    description:
+      "Lemma Integral is a full-funnel platform that transforms OOH impressions into impactful results — reach, reinforce, and convert with measurable outcomes.",
+  });
+}
 
 export default function IntegralProductPage() {
   return (

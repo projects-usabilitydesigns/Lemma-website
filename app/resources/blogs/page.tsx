@@ -4,13 +4,17 @@ import { Faq } from "@/components/Faq";
 import { AboutCta } from "@/components/about/AboutCta";
 import { BlogsPageContent } from "@/components/resources/BlogsPageContent";
 import { faqs } from "@/lib/data";
-import { getBlogPosts } from "@/lib/api";
+import { getBlogPosts, getPageSeo } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blogs | Lemma",
-  description:
-    "Read expert insights, industry analysis, and thought leadership on DOOH, CTV, programmatic advertising, and omnichannel marketing from the Lemma team.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getPageSeo("resources/blogs");
+  return buildMetadataFromSeo(seo, {
+    title: "Blogs | Lemma",
+    description:
+      "Read expert insights, industry analysis, and thought leadership on DOOH, CTV, programmatic advertising, and omnichannel marketing from the Lemma team.",
+  });
+}
 
 export default async function BlogsPage() {
   const blogs = await getBlogPosts();

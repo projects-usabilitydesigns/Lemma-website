@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { CareersCta, JobApplyForm, JobDetail } from "@/components/careers";
 import { Container } from "@/components/ui/Container";
 import { getJobByDocumentId } from "@/lib/api";
+import { buildMetadataFromSeo } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ documentId: string }>;
@@ -13,10 +14,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { documentId } = await params;
   const job = await getJobByDocumentId(documentId);
   if (!job) return { title: "Careers" };
-  return {
+  return buildMetadataFromSeo(job.seo, {
     title: `${job.title} — Careers`,
     description: `Apply for ${job.title} at Lemma Technologies${job.location ? ` (${job.location})` : ""}.`,
-  };
+  });
 }
 
 export default async function JobDetailPage({ params }: PageProps) {
