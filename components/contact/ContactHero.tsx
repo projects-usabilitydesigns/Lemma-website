@@ -40,21 +40,21 @@ export function ContactHero() {
             </FadeUp>
 
             <FadeUp delay={0.16}>
-              <div className="grid max-w-xl gap-3 sm:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 <a
                   href={getEmailComposeUrl(contactHero.email)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-white/80 p-4 transition hover:border-[var(--color-blue)] hover:bg-white"
+                  className="group flex items-center gap-2.5 rounded-2xl border border-[var(--color-border)] bg-white/80 px-3 py-4 transition hover:border-[var(--color-blue)] hover:bg-white"
                 >
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#008fdb] text-white">
                     <Mail className="size-4" />
                   </span>
-                  <span className="min-w-0">
+                  <span className="@container block min-w-0 flex-1">
                     <span className="block text-[11px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]">
                       Email us
                     </span>
-                    <span className="block truncate text-[15px] font-semibold text-[var(--color-ink)]">
+                    <span className="block whitespace-nowrap text-[clamp(13px,5.85cqi,15px)] font-semibold leading-snug tracking-[-0.2px] text-[var(--color-ink)]">
                       {contactHero.email}
                     </span>
                   </span>
@@ -62,7 +62,7 @@ export function ContactHero() {
 
                 <a
                   href={`tel:${contactHero.phone.replace(/\s/g, "")}`}
-                  className="group flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-white/80 p-4 transition hover:border-[var(--color-blue)] hover:bg-white"
+                  className="group flex items-center gap-2.5 rounded-2xl border border-[var(--color-border)] bg-white/80 px-3 py-4 transition hover:border-[var(--color-blue)] hover:bg-white"
                 >
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#74be44] text-white">
                     <Phone className="size-4" />
@@ -71,7 +71,7 @@ export function ContactHero() {
                     <span className="block text-[11px] font-semibold uppercase tracking-[1.4px] text-[var(--color-slate)]">
                       Call us
                     </span>
-                    <span className="block truncate text-[15px] font-semibold text-[var(--color-ink)]">
+                    <span className="block whitespace-nowrap text-[15px] font-semibold leading-snug text-[var(--color-ink)]">
                       {contactHero.phone}
                     </span>
                   </span>
