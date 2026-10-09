@@ -1,1 +1,1 @@
-export const FORM_INBOX_EMAIL = "enquiry@lemmamedia.com";
+export const FORM_INBOX_EMAIL = "support@lemmatechnologies.com";
