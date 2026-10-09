@@ -8,7 +8,7 @@ import { Button, pairCtaClassName } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { VideoModal } from "@/components/ui/VideoModal";
 
-const DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
+const DEMO_VIDEO = "https://www.youtube.com/watch?v=rnxUw4gfejY";
 
 export function NextFrontier() {
   const [videoOpen, setVideoOpen] = useState(false);

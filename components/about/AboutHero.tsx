@@ -68,6 +68,15 @@ export function AboutHero() {
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
+              <span
+                aria-hidden
+                className="absolute left-[48.43%] top-[49.5%] z-10 aspect-square w-[15%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"
+              />
+              <img
+                src={aboutAssets.registeredLogo}
+                alt=""
+                className="absolute left-[48.43%] top-[49.6%] z-10 w-[13.5%] -translate-x-1/2 -translate-y-1/2"
+              />
             </div>
           </motion.div>
         </div>

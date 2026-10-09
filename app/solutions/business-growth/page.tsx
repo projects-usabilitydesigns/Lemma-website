@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { LogosMarquee } from "@/components/home/LogosMarquee";
-import {
-  BrandsHero,
-  AdPlatforms,
-  FunnelJourney,
-  GrowthResults,
-  CTASection,
-} from "@/components/solutions";
+import { AdPlatforms } from "@/components/solutions/AdPlatforms";
+import { CTASection } from "@/components/solutions/CTASection";
+import { FunnelJourney } from "@/components/solutions/FunnelJourney";
+import { GrowthResults } from "@/components/solutions/GrowthResults";
+import { BrandsHero } from "@/components/solutions/Hero";
 import { getClientLogos } from "@/lib/api";
 import {
   businessGrowthCta,
