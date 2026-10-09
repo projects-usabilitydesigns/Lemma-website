@@ -348,6 +348,7 @@ export const aboutPrinciples = {
 
 export const aboutAssets = {
   hero: aboutImage("about-hero.png"),
+  registeredLogo: publicAsset("LEMMA\u00AELogo.png"),
   community: aboutImage("Component 11.png"),
   values: valuesHud,
   valuesBanner: publicAsset("leme-white-bg.svg"),

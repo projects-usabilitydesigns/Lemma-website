@@ -13,10 +13,10 @@ export const businessGrowthHero = {
   description:
     "Full-funnel customer acquisition across every platform, every market, every category powered by data intelligence.",
   primaryCta: { label: "Book a Free Audit", href: "/contact-us" },
-  image: "/images/business-growth-hero.png",
-  imageAlt: "Lemma AI Discovery — screens, audience reach, and campaign planning",
+  image: "/Thumbnail-02.jpg",
+  imageAlt: "Lemma performance marketing video",
   video: "/VIDEO-2026-09-09-12-30-13.mp4",
-  poster: "/images/solutions/business-growth-poster.png",
+  poster: "/Thumbnail-02.jpg",
 } as const;
 
 export const businessGrowthLogoIds = [
