@@ -16,7 +16,7 @@ export const integralAssets = {
   badgeReinforce: productImage("Frame 1597890298.png"),
   badgeResults: productImage("Frame 1597890299.png"),
   audienceGraph: productAsset("integral-audience-graph.png"),
-  logo: "/LEMMA_Integral_(R)%20(1).png",
+  logo: "/images/lemma-integral-logo.png",
 } as const;
 
 export const integralFaqs = [

@@ -13,7 +13,7 @@ import { heroStats as defaultHeroStats } from "@/lib/data";
 import type { Stat } from "@/types";
 import { cn } from "@/lib/utils";
 
-const HERO_DEMO_VIDEO = "https://youtu.be/aOQpghNmHsw?si=z_cx-MpQWi-oLPeT";
+const HERO_DEMO_VIDEO = "https://www.youtube.com/watch?v=rnxUw4gfejY";
 
 function StatItem({
   end,
@@ -140,7 +140,7 @@ export function Hero({ heroStats }: { heroStats?: Stat[] }) {
                 {/* LEMMA INTEGRAL logo — Figma: 381.63×35 @ x:143.18 y:38.33 */}
                 <div className="absolute left-[12%] top-[8%] z-10 w-[55%] max-w-[382px] md:left-[143px] md:top-[38px] md:w-[382px]">
                   <Image
-                    src="/LEMMA_Integral_(R)%20(1).png"
+                    src="/images/lemma-integral-logo.png"
                     alt="Lemma Integral®"
                     width={674}
                     height={65}
